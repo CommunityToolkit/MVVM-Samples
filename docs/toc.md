@@ -182,6 +182,9 @@
 ## [Introduction](mvvm/Introduction.md)
 ## ComponentModel
 ### [ObservableObject](mvvm/ObservableObject.md)
+## Input
+### [RelayCommand and RelayCommand<T>](mvvm/RelayCommand.md)
+### [AsyncRelayCommand and AsyncRelayCommand<T>](mvvm/AsyncRelayCommand.md)
 
 # High performance
 ## [Introduction](high-performance/Introduction.md)
