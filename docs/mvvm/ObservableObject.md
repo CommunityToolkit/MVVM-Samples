@@ -9,7 +9,7 @@ dev_langs:
 
 # ObservableObject
 
-The [ObservableObject](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject) is a base class for objects of which the properties must be observable, implementing the [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) interfaces. It can be used as a starting point for all kinds of objects that need to support property change notifications.
+The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject) is a base class for objects of which the properties must be observable, implementing the [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) interfaces. It can be used as a starting point for all kinds of objects that need to support property change notifications.
 
 ## How it works
 
@@ -92,8 +92,8 @@ You can find more examples in our [unit tests](https://github.com/Microsoft/Wind
 
 | Device family | Universal, 10.0.16299.0 or higher |
 | --- | --- |
-| Namespace | Microsoft.Toolkit.HighPerformance |
-| NuGet package | [Microsoft.Toolkit.HighPerformance](https://www.nuget.org/packages/Microsoft.Toolkit.HighPerformance/) |
+| Namespace | Microsoft.Toolkit.Mvvm |
+| NuGet package | [Microsoft.Toolkit.Mvvm](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm/) |
 
 ## API
 
