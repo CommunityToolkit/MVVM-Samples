@@ -180,6 +180,8 @@
 
 # MVVM
 ## [Introduction](mvvm/Introduction.md)
+## ComponentModel
+### [ObservableObject](mvvm/ObservableObject.md)
 
 # High performance
 ## [Introduction](high-performance/Introduction.md)
