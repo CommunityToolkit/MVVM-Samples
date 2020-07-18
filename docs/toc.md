@@ -182,6 +182,7 @@
 ## [Introduction](mvvm/Introduction.md)
 ## ComponentModel
 ### [ObservableObject](mvvm/ObservableObject.md)
+### [ObservableRecipient](mvvm/ObservableRecipient.md)
 ## Input
 ### [RelayCommand and RelayCommand<T>](mvvm/RelayCommand.md)
 ### [AsyncRelayCommand and AsyncRelayCommand<T>](mvvm/AsyncRelayCommand.md)
