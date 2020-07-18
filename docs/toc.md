@@ -186,6 +186,7 @@
 ### [RelayCommand and RelayCommand<T>](mvvm/RelayCommand.md)
 ### [AsyncRelayCommand and AsyncRelayCommand<T>](mvvm/AsyncRelayCommand.md)
 ## [Ioc](mvvm/Ioc.md)
+## [Messenger](mvvm/Messenger.md)
 
 # High performance
 ## [Introduction](high-performance/Introduction.md)
