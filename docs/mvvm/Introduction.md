@@ -14,8 +14,8 @@ dev_langs:
 The `Microsoft.Toolkit.Mvvm` package is a modern, fast, and modular MVVM library. It is part of the Windows Community Toolkit. It follows these key principles:
 
 - **Platform and Runtime Independent** - **.NET Standard 2.0** 🚀 (UI Framework Agnostic)
-- **Simple to pick-up and use** - No strict requirements on Application structure or coding-paradigms (outside of 'MVVM'ness) i.e. flexible usage
-- **À la carte** - Developer able to choose the components they wish to leverage
+- **Simple to pick-up and use** - No strict requirements on Application structure or coding-paradigms (outside of 'MVVM'ness), i.e., flexible usage.
+- **À la carte** - Freedom to choose which components to use.
 - **Reference Implementation** - Lean and performant, provides compliments to interfaces and paradigms hinted at in the Base Class Library, but without provided implementations.
 
 This package only targets .NET Standard so it can be used on any app platform, from UWP to WinForms or WPF, to Xamarin or Uno, and more, and on any runtime from .NET Native to .NET Core, .NET Framework or Mono. The API surface is identical in all cases, making this library perfect to build shared libraries whether you're using:
@@ -39,11 +39,13 @@ To install the package from within Visual Studio:
     Imports Microsoft.Toolkit.Mvvm
     ```
 
-3. Code samples, are available in the other docs pages for the MVVM package, and in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
+3. Code samples are available in the other docs pages for the MVVM package, and in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
 
 ## When should I use this package?
 
-This package provides a series of common, self-contained, lightweight types:
+Use this package for access to a collection of standard, self-contained, lightweight types that provide a starting implementation for building modern apps using the MVVM pattern. These types alone are usually enough for many users to build apps without needing additional external references.
+
+The included types are:
 
 - **Microsoft.Toolkit.Mvvm.ComponentModel**
   - `ObservableObject`
@@ -70,6 +72,4 @@ This package provides a series of common, self-contained, lightweight types:
   - `AsyncCollectionRequestMessage<T>`
   - `ValueChangedMessage<T>`
 
-These types provide a starting implementation of all the main primitives necessary to build modern apps using the MVVM pattern. These types alone are usually enough for many users to build apps using the MVVM toolkit, without needing additional external references.
-
-This package aims to offer as much flexibility as possible, so developers are free to choose which components to use.  All types are loosely-coupled, so that it's only necessary to include what you use. There is no requirement to go "all-in" with a specific series of all-encompassing APIs, nor is there a set of mandatory patterns that need to be followed when building apps using these helpers. Developers are free to combine these building blocks in the way that best fit their needs.
+This package aims to offer as much flexibility as possible, so developers are free to choose which components to use.  All types are loosely-coupled, so that it's only necessary to include what you use. There is no requirement to go "all-in" with a specific series of all-encompassing APIs, nor is there a set of mandatory patterns that need to be followed when building apps using these helpers. Combine these building blocks in a way that best fits your needs.
