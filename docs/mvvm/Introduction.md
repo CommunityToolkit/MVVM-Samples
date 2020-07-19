@@ -19,10 +19,11 @@ The `Microsoft.Toolkit.Mvvm` package is a modern, fast, and modular MVVM library
 - **Reference Implementation** - Lean and performant, provides compliments to interfaces and paradigms hinted at in the Base Class Library, but without provided implementations.
 
 This package only targets .NET Standard so it can be used on any app platform, from UWP to WinForms or WPF, to Xamarin or Uno, and more, and on any runtime from .NET Native to .NET Core, .NET Framework or Mono. The API surface is identical in all cases, making this library perfect to build shared libraries whether you're using:
- - UWP (>= 10.0)
+
+- UWP (>= 10.0)
 - .NET Standard (>= 1.4)
 - .NET Core (>= 1.0)
- - Any other framework supporting .NET Standard 2.0 and up
+- Any other framework supporting .NET Standard 2.0 and up
 
 To install the package from within Visual Studio:
 
