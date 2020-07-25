@@ -17,7 +17,7 @@ The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit
 
 - It provides a base implementation for `INotifyPropertyChanged` and `INotifyPropertyChanging`, exposing the `PropertyChanged` and `PropertyChanging` events.
 - It provides a series of `SetProperty` methods that can be used to easily set property values from types inheriting from `ObservableObject`, and to automatically raise the appropriate events.
-- It provides the `SetAndNotifyOnCompletion` method, which is analogous to `Set` but with the ability to set `Task` properties and raise the notification events automatically when the assigned tasks are completed.
+- It provides the `SetPropertyAndNotifyOnCompletion` method, which is analogous to `Set` but with the ability to set `Task` properties and raise the notification events automatically when the assigned tasks are completed.
 - It exposes the `OnPropertyChanged` and `OnPropertyChanging` methods, which can be overridden in derived types to customize how the notification events are raised.
 
 ## Simple property
@@ -72,7 +72,7 @@ public class MyModel : ObservableObject
     public Task<int> RequestTask
     {
         get => requestTask;
-        set => SetAndNotifyOnCompletion(ref requestTask, () => requestTask, value);
+        set => SetPropertyAndNotifyOnCompletion(ref requestTask, () => requestTask, value);
     }
 
     public void RequestValue()
@@ -82,7 +82,7 @@ public class MyModel : ObservableObject
 }
 ```
 
-Here the `SetAndNotifyOnCompletion<TTask>(ref TTask, Expression<Func<TTask>>, TTask, string)` method will take care of updating the target field, then monitoring the new task, if present, and raising the notification event again when that task completes. This way, it's possible to just bind to that task property and to be notified when its status changes.
+Here the `SetPropertyAndNotifyOnCompletion<TTask>(ref TTask, Expression<Func<TTask>>, TTask, string)` method will take care of updating the target field, then monitoring the new task, if present, and raising the notification event again when that task completes. This way, it's possible to just bind to that task property and to be notified when its status changes.
 
 ## Sample Code
 
