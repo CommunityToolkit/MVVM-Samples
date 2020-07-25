@@ -11,7 +11,7 @@ dev_langs:
 
 The [`Ioc`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.DependencyInjection.Ioc) class is a type that facilitates the use of the `IServiceProvider` type. It's powered by the `Microsoft.Extensions.DependencyInjection` package, which provides a fully featured and powerful DI set of APIs, and acts as an easy to setup and use `IServiceProvider`.
 
-## How it works
+## Configure and resolve services
 
 The main entry point is the `ConfigureServices` method, which can be used like so:
 
