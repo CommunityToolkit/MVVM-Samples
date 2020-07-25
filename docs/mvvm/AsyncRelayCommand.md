@@ -68,7 +68,7 @@ With the related UI code:
 </Page>
 ```
 
-When the user clicks the `Button`, the command will be invoked, and the `ExecutionTask` will be updated. When the operation completes, that property raises a notification again, which can be reflected in the UI. In this case, we are displaying both the task status, as well as the current result of the task. Note how in order to display the result we need to use the `TaskExtensions.ResultOrDefault` method - this is needed as we can't access the result of a task that has not yet completed, as that would cause the whole thread to block (and possibly a deadlock).
+Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` updated. When the operation completes, the property raises a notification which is reflected in the UI. In this case, both the task status and the current result of the task are displayed. Note that to show the result of the task, it is necessary to use the `TaskExtensions.ResultOrDefault` method - this provides access to the result of a task that has not yet completed without blocking the thread (and possibly causing a deadlock).
 
 The `IAsyncRelayCommand` interface also exposes an `IsRunning` property, which can be useful to bind UI elements (eg. a progress ring) to whether a given command is currently running an operation.
 
