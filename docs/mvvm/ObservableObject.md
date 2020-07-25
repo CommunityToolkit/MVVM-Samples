@@ -17,7 +17,7 @@ The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit
 
 - It provides a base implementation for `INotifyPropertyChanged` and `INotifyPropertyChanging`, exposing the `PropertyChanged` and `PropertyChanging` events.
 - It provides a series of `SetProperty` methods that can be used to easily set property values from types inheriting from `ObservableObject`, and to automatically raise the appropriate events.
-- It provides the `SetPropertyAndNotifyOnCompletion` method, which is analogous to `Set` but with the ability to set `Task` properties and raise the notification events automatically when the assigned tasks are completed.
+- It provides the `SetPropertyAndNotifyOnCompletion` method, which is analogous to `SetProperty` but with the ability to set `Task` properties and raise the notification events automatically when the assigned tasks are completed.
 - It exposes the `OnPropertyChanged` and `OnPropertyChanging` methods, which can be overridden in derived types to customize how the notification events are raised.
 
 ## Simple property
