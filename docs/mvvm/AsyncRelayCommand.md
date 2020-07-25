@@ -16,7 +16,7 @@ The [`AsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolki
 `AsyncRelayCommand` and `AsyncRelayCommand<T>` have the following main features:
 
 - They extend the functionalities of the non-asynchronous commands included in the library, with support for `Task`-returning delegates.
-- They expose a `Task` property that can be used to monitor the progress of a pending operation, and an `IsRunning` that can be used to check when an operation completes. This is particularly useful to bind a command to UI elements such as loading indicators.
+- They expose an `ExecutionTask` property that can be used to monitor the progress of a pending operation, and an `IsRunning` that can be used to check when an operation completes. This is particularly useful to bind a command to UI elements such as loading indicators.
 - They implement the `IAsyncRelayCommand` and `IAsyncRelayCommand<T>` interfaces, which means that viewmodel can easily expose commands using these to reduce the tight coupling between types. For instance, this makes it easier to replace a command with a custom implementation exposing the same public API surface, if needed.
 
 ## Working with asynchronous commands
