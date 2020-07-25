@@ -42,6 +42,8 @@ Messenger.Default.Register<LoggedInUserChangedMessage>(this, m =>
 Messenger.Default.Send(new LoggedInUserChangedMessage(user));
 ```
 
+Let's imagine this message type being used in a simple messaging application, which displays a header with the user name and profile image of the currently logged user, a panel with a list of conversations, and another panel with messages from the current conversation, if one is selected. Let's say these three sections are supported by the `HeaderViewModel`, `ConversationsListViewModel` and `ConversationViewModel` types respectively. In this scenario, the `LoggedInUserChangedMessage` message might be sent by the `HeaderViewModel` after a login operation has completed, and both those other viewmodels might register handlers for it. For instance, `ConversationsListViewModel` will load the list of conversations for the new user, and `ConversationViewModel` will just close the current conversation, if one is present.
+
 The `Messenger` class takes care of delivering messages to all the registered recipients. Note that a recipient can subscribe to messages of a specific type. Note that inherited message types are not registered in the default `Messenger` implementation.
 
 In order to avoid memory leaks, remember to unregister recipients when you don't need them anymore. You can unregister either by message type, by registration token, or by recipient:
