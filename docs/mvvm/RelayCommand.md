@@ -9,19 +9,19 @@ dev_langs:
 
 # RelayCommand and RelayCommand&lt;T>
 
-The [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [`RelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are two `ICommand` implementations that can be used to expose a specified method or delegate to the view. These types act as a way to bind commands from the viewmodel to UI elements.
+The [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [`RelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
 
 ## How they work
 
 `RelayCommand` and `RelayCommand<T>` have the following main features:
 
-- They provide a base implementation for the `ICommand` interface.
-- They also implement the `IRelayCommand` (and `IRelayCommand<T>`) interface, which exposes a `NotifyCanExecuteChanged` method that can be used to externally raise the `CanExecuteChanged` event when needed.
-- They expose constructors taking delegates like `Action` and `Func<T>`, which allow to wrap either standard methods or lambda expressions.
+- They provide a base implementation of the `ICommand` interface.
+- They also implement the `IRelayCommand` (and `IRelayCommand<T>`) interface, which exposes a `NotifyCanExecuteChanged` method to raise the `CanExecuteChanged` event.
+- They expose constructors taking delegates like `Action` and `Func<T>`, which allow the wrapping of standard methods and lambda expressions.
 
 ## Working with `ICommand`
 
-Here's an example of how to setup a simple command:
+The following shows how to set up a simple command:
 
 ```csharp
 public class MyViewModel : ObservableObject
@@ -64,7 +64,7 @@ And the relative UI could then be (using WinUI XAML):
 </Page>
 ```
 
-We can see how the `Button` binds to the `ICommand` we have in the viewmodel, which again wraps the private `IncrementCounter` method. The `TextBlock` simply displays the value of the `Counter` property, updating its representation every time the property value changes.
+The `Button` binds to the `ICommand` in the viewmodel, which wraps the private `IncrementCounter` method. The `TextBlock` displays the value of the `Counter` property and is updated every time the property value changes.
 
 ## Sample Code
 

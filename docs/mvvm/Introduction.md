@@ -10,16 +10,16 @@ dev_langs:
 
 # Introduction to the MVVM package
 
-The `Microsoft.Toolkit.Mvvm` package is a modern, fast and modular MVVM library, part of the Windows Community Toolkit. It's built around the following key principles:
+The `Microsoft.Toolkit.Mvvm` package is a modern, fast, and modular MVVM library. It is part of the Windows Community Toolkit and is built around the following principles:
 
 - **Platform and Runtime Independent** - **.NET Standard 2.0** 🚀 (UI Framework Agnostic)
-- **Simple to pick-up and use** - No strict requirements on Application structure or coding-paradigms (outside of 'MVVM'ness) i.e. flexible usage
-- **À la carte** - Developer able to choose the components they wish to leverage
+- **Simple to pick-up and use** - No strict requirements on Application structure or coding-paradigms (outside of 'MVVM'ness), i.e., flexible usage.
+- **À la carte** - Freedom to choose which components to use.
 - **Reference Implementation** - Lean and performant, provides compliments to interfaces and paradigms hinted at in the Base-Class Library, but without provided implementations.
 
-The fact that this package only targets .NET Standard means that it can be used on any app platform, from UWP to WinForms or WPF, to Xamarin or Uno, and more, and on any runtime from .NET Native to .NET Core, .NET Framework or Mono. The API surface is identical in all cases, which makes this library perfect to build shared backend libraries for applications.
+This package targets .NET Standard so it can be used on any app platform: UWP, WinForms, WPF, Xamarin, Uno, and more; and on any runtime: .NET Native, .NET Core, .NET Framework, or Mono. It runs on all of them. The API surface is identical in all cases, making it perfect for building shared libraries.
 
-Follow these steps to install the MVVM package:
+To install the package from within Visual Studio::
 
 1. Open an existing project in Visual studio, targeting any of the following:
     - UWP (>= 10.0)
@@ -27,21 +27,26 @@ Follow these steps to install the MVVM package:
     - .NET Core (>= 1.0)
     - Any other framework supporting .NET Standard 2.0 and up
 
-2. In Solution Explorer panel, right click on your project name and select **Manage NuGet Packages**. Search for **Microsoft.Toolkit.Mvvm** and install it.
+1. In Solution Explorer, right-click on the project and select **Manage NuGet Packages**. Search for **Microsoft.Toolkit.Mvvm** and install it.
 
     ![NuGet Packages](../resources/images/ManageNugetPackages.png "Manage NuGet Packages Image")
 
-3. Add a using directive in your C# files to use the new APIs:
+2. Add a using or Imports directive to use the new APIs:
 
     ```c#
     using Microsoft.Toolkit.Mvvm;
     ```
+    ```vb
+    Imports Microsoft.Toolkit.Mvvm
+    ```
 
-4. If you want so see some code samples, you can either read through the other docs pages for the MVVM package, or have a look at the various [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
+3. Code samples are available in the other docs pages for the MVVM package, and in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
 
 ## When should I use this package?
 
-The idea for this package would be to have a series of common, self-contained, lightweight types:
+Use this package for access to a collection of standard, self-contained, lightweight types that provide a starting implementation for building modern apps using the MVVM pattern. These types alone are usually enough for many users to build apps without needing additional external references.
+
+The included types are:
 
 - **Microsoft.Toolkit.Mvvm.ComponentModel**
   - `ObservableObject`
@@ -68,6 +73,4 @@ The idea for this package would be to have a series of common, self-contained, l
   - `AsyncCollectionRequestMessage<T>`
   - `ValueChangedMessage<T>`
 
-These types can be used as a base to build modern apps using the MVVM pattern, as they provide a starting implementation of all the main primitives that are necessary (property change notifications, commands, dependency injection, etc.). These types alone are usually enough for many users building apps using the MVVM toolkit, without the need to add additional external references.
-
-One key point of this package is also to offer as much flexibility as possible: developers are free to pick and choose which components to use, and all the available types are loosely coupled so that it's possible to just pick as many of them as needed and only use them in applications. There is no requirement to go "all-in" with a specific series of all encompassing APIs, nor is there a set of mandatory patterns that need to be followed when building apps using these helpers. It's really up to each developer to combine these building blocks in the way that best fit their needs.
+This package aims to offer as much flexibility as possible, so developers are free to choose which components to use.  All types are loosely-coupled, so that it's only necessary to include what you use. There is no requirement to go "all-in" with a specific series of all-encompassing APIs, nor is there a set of mandatory patterns that need to be followed when building apps using these helpers. Combine these building blocks in a way that best fits your needs.

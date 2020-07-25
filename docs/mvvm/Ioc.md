@@ -28,11 +28,11 @@ Ioc.Default.ConfigureServices(services =>
 IFilesService fileService = Ioc.Default.GetService<IFilesService>();
 ```
 
-The `Ioc.Default` property offers a thread safe `IServiceProvider` instance that can be used anywhere in the application to resolve services. The `ConfigureService` method handles all the initialization of that service provider. It is of course also possible to create different `Ioc` instances, and to initialize each one with different services, if needed.
+The `Ioc.Default` property offers a thread-safe `IServiceProvider` instance that can be used anywhere in the application to resolve services. The `ConfigureService` method handles the initialization of that service. It is also possible to create different `Ioc` instances and to initialize each with different services.
 
 ## Constructor injection
 
-One powerful feature that is available is the so called "constructor injection", which means that the DI service provider is able to automatically resolve indirect dependencies between registered services when creating instances of a specified type being requested. Consider the following service:
+One powerful feature that is available is "constructor injection", which means that the DI service provider is able to automatically resolve indirect dependencies between registered services when creating instances of the type being requested. Consider the following service:
 
 ```csharp
 public class ConsoleLogger : ILogger
@@ -52,7 +52,7 @@ public class ConsoleLogger : ILogger
 }
 ```
 
-Here we have a type, `ConsoleLogger`, implementing the `ILogger` interface, that also depends on having an `IFileService` instance and an `IConsoleService` instance. We can use constructor injection to have our DI service provider "automagically" gather all the necessary services, like so:
+Here we have a `ConsoleLogger` implementing the `ILogger` interface, and requiring `IFileService` and `IConsoleService` instances. Constructor injection means the DI service provider will "automagically" gather all the necessary services, like so:
 
 ```csharp
 // Register the services at startup
@@ -67,7 +67,7 @@ Ioc.Default.ConfigureServices(services =>
 ConsoleLogger consoleLogger = Ioc.Default.GetService<ConsoleLogger>();
 ```
 
-The DI service provider will automatically check whether all the necessary services are register, then it will retrieve them and invoke the constructor for the registered `ILogger` concrete type, to get the instance to return - all done automatically!
+The DI service provider will automatically check whether all the necessary services are registered, then it will retrieve them and invoke the constructor for the registered `ILogger` concrete type, to get the instance to return - all done automatically!
 
 ## More docs
 

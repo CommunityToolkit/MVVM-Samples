@@ -9,14 +9,14 @@ dev_langs:
 
 # ObservableObject
 
-The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject) is a base class for objects of which the properties must be observable, implementing the [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) interfaces. It can be used as a starting point for all kinds of objects that need to support property change notifications.
+The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject) is a base class for objects that are observable by implementing the [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) interfaces. It can be used as a starting point for all kinds of objects that need to support property change notifications.
 
 ## How it works
 
 `ObservableObject` has the following main features:
 
 - It provides a base implementation for `INotifyPropertyChanged` and `INotifyPropertyChanging`, exposing the `PropertyChanged` and `PropertyChanging` events.
-- It provides a series of `Set` methods that can be used to easily set property values from types inheriting from `ObservableObject`, and to automatically raise the appropriate events.
+- It provides a series of `SetProperty` methods that can be used to easily set property values from types inheriting from `ObservableObject`, and to automatically raise the appropriate events.
 - It provides the `SetAndNotifyOnCompletion` method, which is analogous to `Set` but with the ability to set `Task` properties and raise the notification events automatically when the assigned tasks are completed.
 - It exposes the `OnPropertyChanged` and `OnPropertyChanging` methods, which can be overridden in derived types to customize how the notification events are raised.
 
@@ -32,16 +32,16 @@ public class User : ObservableObject
     public string Name
     {
         get => name;
-        set => Set(ref name, value);
+        set => SetProperty(ref name, value);
     }
 }
 ```
 
-The provided `Set<T>(ref T, T, string)` method can be used to check the current value of the property, and update it if needed, and then also raise the relevant events automatically. The property name is automatically captured through the use of the `[CallerMemberName]` attribute, so there's no need to manually specify which property is being updated.
+The provided `SetProperty<T>(ref T, T, string)` method checks the current value of the property, and updates it if different, and then also raises the relevant events automatically. The property name is automatically captured through the use of the `[CallerMemberName]` attribute, so there's no need to manually specify which property is being updated.
 
 ## Wrapping a non-observable model
 
-A common scenario, for instance when working with database items, is to create a wrapping "bindable" model that simply relays property to the database model, and raises the property changed notifications when needed. This is also needed when we want to inject notification support to models we don't own, that don't directly implement the `INotifyPropertyChanged` interface. `ObservableObject` provides a dedicated method to make this process simpler. For the following example, imagine that `User` was a model directly mapping a database table, without inheriting from `ObservableObject`:
+A common scenario, for instance, when working with database items, is to create a wrapping "bindable" model that relays properties of the database model, and raises the property changed notifications when needed. This is also needed when wanting to inject notification support to models, that don't implement the `INotifyPropertyChanged` interface. `ObservableObject` provides a dedicated method to make this process simpler. For the following example, `User` is a model directly mapping a database table, without inheriting from `ObservableObject`:
 
 ```csharp
 public class ObservableUser : ObservableObject
@@ -58,11 +58,11 @@ public class ObservableUser : ObservableObject
 }
 ```
 
-The `Set<T>(Expression<Func<T>>, T, string)` method makes creating these wrapping properties extremely simple, as it takes of both retrieving and setting the target properties while providing an extremely compact API to do so.
+The `SetProperty<T>(Expression<Func<T>>, T, string)` method makes creating these wrapping properties extremely simple, as it takes care of both retrieving and setting the target properties while providing an extremely compact API.
 
 ## Handling `Task<T>` properties
 
-Lastly, what if the property we want to set is a `Task`? In that case, we'd wait to also raise the notification event when the task completes, so that we could bind to that property eg. to display some loading indicator or some other status info on the operation represented by the task. `ObservableObject` has a useful API for this scenario as well:
+If a property is a `Task` it's necessary to also raise the notification event once the task completes, so that bindings are updated at the right time. eg. to display a loading indicator or other status info on the operation represented by the task. `ObservableObject` has an API for this scenario:
 
 ```csharp
 public class MyModel : ObservableObject

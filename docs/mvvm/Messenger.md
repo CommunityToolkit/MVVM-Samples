@@ -9,19 +9,19 @@ dev_langs:
 
 # Messenger
 
-The [`Messenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messenger) class (with the accompanying [`IMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface) is a type that can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an applications. 
+The [`Messenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messenger) class (with the accompanying [`IMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface) can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an application. 
 
 ## How it works
 
-The `Messenger` type is responsible for maintaining a table that links recipients (receivers of messages) and their registered message types, with relative message handlers. Any object can be registered as a recipient for a given message type using a message handler, which will be invoked whenever the `Messenger` instance is used to send a message of that type. It is also possible to send messages across different communication channels (each identified by a unique token), so that multiple modules can exchange messages of the same type without causing conflicts, if needed. Messages sent without a token will just use the default, shared channel.
+The `Messenger` type is responsible for maintaining links between recipients (receivers of messages) and their registered message types, with relative message handlers. Any object can be registered as a recipient for a given message type using a message handler, which will be invoked whenever the `Messenger` instance is used to send a message of that type. It is also possible to send messages through specific communication channels (each identified by a unique token), so that multiple modules can exchange messages of the same type without causing conflicts. Messages sent without a token use the default shared channel.
 
-There are two main ways to perform a message registration: either through the `IRecipient<TMessage>` interface, or using an `Action<TMessage>` delegate acting as message handler. The first lets you register all the handlers with a single call to the `RegisterAll` extension, which will automatically register the recipient for all the declared message handlers, while the latter is useful when you need more flexibility or when you want to use a simple lambda expression as a message handler.
+There are two ways to perform message registration: either through the `IRecipient<TMessage>` interface, or using an `Action<TMessage>` delegate acting as message handler. The first lets you register all the handlers with a single call to the `RegisterAll` extension, which automatically registers the recipients of all the declared message handlers, while the latter is useful when you need more flexibility or when you want to use a simple lambda expression as a message handler.
 
-Similarly to the `Ioc` class, `Messenger` also exposes a `Default` property that offers a thread-safe implementation built-in into the toolkit package. It is also possible to create multiple `Messenger` instance if needed, for instance if a different one is injected with a DI service provider into a different module of the app (for instance, multiple windows running in the same process).
+Similar to the `Ioc` class, `Messenger` exposes a `Default` property that offers a thread-safe implementation built-in into the package. It is also possible to create multiple `Messenger` instances if needed, for instance if a different one is injected with a DI service provider into a different module of the app (for instance, multiple windows running in the same process).
 
-## Sending and receiving a message
+## Sending and receiving messages
 
-It can be used as follows:
+Consider the following:
 
 ```csharp
 // Create a message
@@ -42,9 +42,9 @@ Messenger.Default.Register<LoggedInUserChangedMessage>(this, m =>
 Messenger.Default.Send(new LoggedInUserChangedMessage(user));
 ```
 
-The `Messenger` class will take care of delivering that message to all the registered recipients. Note that a recipient can subscribe to messages of a specific type - inherited message types are not registered, at least not in the default `Messenger` implementation.
+The `Messenger` class takes care of delivering messages to all the registered recipients. Note that a recipient can subscribe to messages of a specific type. Note that inherited message types are not registered in the default `Messenger` implementation.
 
-In order to avoid memory leaks, remember to also unregister recipients when you don't need them anymore. You can unregister either by message type, by registration token, or by recipient:
+In order to avoid memory leaks, remember to unregister recipients when you don't need them anymore. You can unregister either by message type, by registration token, or by recipient:
 
 ```csharp
 // Unregisters the recipient from a message type
@@ -77,9 +77,10 @@ Messenger.Default.Register<LoggedInUserRequestMessage>(this, m =>
 User user = Messenger.Default.Send<LoggedInUserRequestMessage>();
 ```
 
-The `RequestMessage<T>` class includes an implicit converter that makes that conversion from an `LoggedInUserRequestMessage` to its contained `User` object possible. This will also check that a response has been received for the message, and throw an exception if that's not the case. It is also possible to send request messages without this mandatory response guarantee: just store the returned message in a local variable, and then manually check whether a response value is available or not. Doing so will not trigger the automatic exception if a response is not received when the `Send` method returns.
+The `RequestMessage<T>` class includes an implicit converter that makes the conversion from a `LoggedInUserRequestMessage` to its contained `User` object possible. This will also check that a response has been received for the message, and throw an exception if that's not the case. It is also possible to send request messages without this mandatory response guarantee: just store the returned message in a local variable, and then manually check whether a response value is available or not. Doing so will not trigger the automatic exception if a response is not received when the `Send` method returns.
 
-The same namespace also includes more base request message for other scenarios: `AsyncRequestMessage<T>`, `CollectionRequestMessage<T>` and `AsyncCollectionRequestMessage<T>`. For instance, here's how you can use an async request message:
+The same namespace also includes base requests message for other scenarios: `AsyncRequestMessage<T>`, `CollectionRequestMessage<T>` and `AsyncCollectionRequestMessage<T>`.
+Here's how you can use an async request message:
 
 ```csharp
 // Create a message
