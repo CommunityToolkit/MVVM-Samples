@@ -19,13 +19,7 @@ The `Microsoft.Toolkit.Mvvm` package is a modern, fast, and modular MVVM library
 
 This package targets .NET Standard so it can be used on any app platform: UWP, WinForms, WPF, Xamarin, Uno, and more; and on any runtime: .NET Native, .NET Core, .NET Framework, or Mono. It runs on all of them. The API surface is identical in all cases, making it perfect for building shared libraries.
 
-To install the package from within Visual Studio::
-
-1. Open an existing project in Visual studio, targeting any of the following:
-    - UWP (>= 10.0)
-    - .NET Standard (>= 1.4)
-    - .NET Core (>= 1.0)
-    - Any other framework supporting .NET Standard 2.0 and up
+To install the package from within Visual Studio:
 
 1. In Solution Explorer, right-click on the project and select **Manage NuGet Packages**. Search for **Microsoft.Toolkit.Mvvm** and install it.
 
