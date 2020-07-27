@@ -72,7 +72,7 @@ Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` upda
 
 ## Sample Code
 
-You can find more examples in our [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm)
+There are more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
 
 ## Requirements
 
