@@ -82,7 +82,7 @@ public class MyModel : ObservableObject
 }
 ```
 
-Here the `SetPropertyAndNotifyOnCompletion<TTask>(ref TTask, Expression<Func<TTask>>, TTask, string)` method will take care of updating the target field, then monitoring the new task, if present, and raising the notification event again when that task completes. This way, it's possible to just bind to that task property and to be notified when its status changes.
+Here the `SetPropertyAndNotifyOnCompletion<TTask>(ref TTask, Expression<Func<TTask>>, TTask, string)` method will take care of updating the target field, monitoring the new task, if present, and raising the notification event when that task completes. This way, it's possible to just bind to a task property and to be notified when its status changes.
 
 ## Sample Code
 
