@@ -21,7 +21,7 @@ The [`AsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolki
 
 ## Working with asynchronous commands
 
-Let's now imagine the same situation, but with an asynchronous operation:
+Let's imagine a scenario similar to the one described in the `RelayCommand` sample, but a command executing an asynchronous operation:
 
 ```csharp
 public class MyViewModel : ObservableObject
