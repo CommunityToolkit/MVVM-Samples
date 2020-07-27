@@ -15,7 +15,7 @@ The `Microsoft.Toolkit.Mvvm` package is a modern, fast, and modular MVVM library
 - **Platform and Runtime Independent** - **.NET Standard 2.0** 🚀 (UI Framework Agnostic)
 - **Simple to pick-up and use** - No strict requirements on Application structure or coding-paradigms (outside of 'MVVM'ness), i.e., flexible usage.
 - **À la carte** - Freedom to choose which components to use.
-- **Reference Implementation** - Lean and performant, provides compliments to interfaces and paradigms hinted at in the Base-Class Library, but without provided implementations.
+- **Reference Implementation** - Lean and performant, providing implementations for interfaces that are included in the Base Class Library, but lack concrete types to use them directly.
 
 This package targets .NET Standard so it can be used on any app platform: UWP, WinForms, WPF, Xamarin, Uno, and more; and on any runtime: .NET Native, .NET Core, .NET Framework, or Mono. It runs on all of them. The API surface is identical in all cases, making it perfect for building shared libraries.
 
