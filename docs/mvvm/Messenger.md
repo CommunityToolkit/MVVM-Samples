@@ -46,7 +46,7 @@ Let's imagine this message type being used in a simple messaging application, wh
 
 The `Messenger` class takes care of delivering messages to all the registered recipients. Note that a recipient can subscribe to messages of a specific type. Note that inherited message types are not registered in the default `Messenger` implementation.
 
-In order to avoid memory leaks, remember to unregister recipients when you don't need them anymore. You can unregister either by message type, by registration token, or by recipient:
+When a recipient is not needed anymore, you should unregister it so that it will stop receiving messages. You can unregister either by message type, by registration token, or by recipient:
 
 ```csharp
 // Unregisters the recipient from a message type
@@ -58,6 +58,9 @@ Messenger.Default.Unregister<LoggedInUserChangedMessage, int>(this, 42);
 // Unregister the recipient from all messages, across all channels
 Messenger.Default.UnregisterAll(this);
 ```
+
+> [!WARNING]
+> The `Messenger` implementation uses strong references to track the registered recipients. This is done for performance reasons, and it means that each registered recipient should manually be unregistered to avoid memory leaks. That is, as long as a recipient is registered, the `Messenger` instance in use will keep an active reference to it, which will prevent the garbage collector from being able to collect that instance. You can either handle this manually, or you can inherit from [`ObservableRecipient`](ObservableRecipient.md), which by default automatically takes care of removing all the message registrations for recipient when it is deactivated (see docs on `ObservableRecipient` for more info about this).
 
 ## Using request messages
 
