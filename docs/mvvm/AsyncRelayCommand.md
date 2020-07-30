@@ -58,7 +58,7 @@ With the related UI code:
             <Run Text="Result:"/>
             <Run
                 xmlns:ex="using:Microsoft.Toolkit.Extensions"
-                Text="{x:Bind ex:TaskExtensions.ResultOrDefault(ViewModel.DownloadTextCommand.ExecutionTask), Mode=OneWay}"/>
+                Text="{x:Bind ex:TaskExtensions.GetResultOrDefault(ViewModel.DownloadTextCommand.ExecutionTask), Mode=OneWay}"/>
         </TextBlock>
         <Button
             Content="Click me!"
@@ -68,7 +68,7 @@ With the related UI code:
 </Page>
 ```
 
-Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` updated. When the operation completes, the property raises a notification which is reflected in the UI. In this case, both the task status and the current result of the task are displayed. Note that to show the result of the task, it is necessary to use the `TaskExtensions.ResultOrDefault` method - this provides access to the result of a task that has not yet completed without blocking the thread (and possibly causing a deadlock).
+Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` updated. When the operation completes, the property raises a notification which is reflected in the UI. In this case, both the task status and the current result of the task are displayed. Note that to show the result of the task, it is necessary to use the `TaskExtensions.GetResultOrDefault` method - this provides access to the result of a task that has not yet completed without blocking the thread (and possibly causing a deadlock).
 
 ## Sample Code
 
