@@ -54,16 +54,45 @@ public string Name
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Wrapping a non-observable model'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Handling `Task&lt;T>` properties'), Mode=OneWay}"/>
 
-            <controls:InteractiveSample>
-                <StackPanel Spacing="8">
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8">
 
+                        <!--Async property sample-->
+                        <Button
+                                Content="Click me to load a Task to await"
+                                Click="{x:Bind ViewModel.ReloadTask}"/>
+                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing="8">
+    &lt;Button
+        Content="Click me to load a Task to await"
+        Click="{x:Bind ViewModel.ReloadTask}"/>
+    &lt;TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
+&lt;/StackPanel>
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+private Task myTask;
 
-                    <!--Async property sample-->
-                    <Button
-                        Content="Click me to load a Task to await"
-                        Click="{x:Bind ViewModel.ReloadTask}"/>
-                    <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
-                </StackPanel>
+/// &lt;summary>
+/// Gets or sets the name to display.
+/// &lt;/summary>
+public Task MyTask
+{
+    get => myTask;
+    private set => SetPropertyAndNotifyOnCompletion(ref myTask, () => myTask, value);
+}
+
+/// &lt;summary>
+/// Simulates an asynchronous method.
+/// &lt;/summary>
+public void ReloadTask()
+{
+    MyTask = Task.Delay(3000);
+}
+                </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
         </StackPanel>
     </ScrollViewer>
