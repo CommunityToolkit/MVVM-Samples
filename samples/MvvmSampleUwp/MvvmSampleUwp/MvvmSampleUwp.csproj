@@ -127,8 +127,12 @@
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\RelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\ObservableObjectPageViewModel.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
+    <Compile Include="Views\RelayCommandPage.xaml.cs">
+      <DependentUpon>RelayCommandPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ObservableObjectPage.xaml.cs">
       <DependentUpon>ObservableObjectPage.xaml</DependentUpon>
     </Compile>
@@ -177,6 +181,10 @@
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RelayCommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ObservableObjectPage.xaml">
       <SubType>Designer</SubType>

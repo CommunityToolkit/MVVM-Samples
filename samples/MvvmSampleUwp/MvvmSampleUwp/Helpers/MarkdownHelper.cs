@@ -19,8 +19,8 @@ namespace MvvmSampleUwp.Helpers
             return
                 Regex.Matches(text, @"(#+ ([^\n]+)[^#]+)", RegexOptions.Singleline)
                 .ToDictionary(
-                    m => m.Groups[2].Value.Trim(),
-                    m => m.Groups[1].Value.Trim());
+                    m => m.Groups[2].Value.Trim().Replace("&lt;", "<"),
+                    m => m.Groups[1].Value.Trim().Replace("&lt;", "<"));
         }
     }
 }

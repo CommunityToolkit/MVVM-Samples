@@ -34,9 +34,9 @@
                 <muxc:NavigationViewItem Content="Building Blocks" Icon="Contact" ToolTipService.ToolTip="Account">
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem Content="ObservableObject" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="ObservableObjectPage"/>
-                        <muxc:NavigationViewItem Content="Commands" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                        <muxc:NavigationViewItem Content="Commands" Icon="Contact" ToolTipService.ToolTip="Account">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Introduction" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Introduction" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="RelayCommandPage"/>
                                 <muxc:NavigationViewItem Content="Async commands" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>

@@ -31,7 +31,10 @@ namespace MvvmSampleUwp.ViewModels
         /// </summary>
         /// <param name="key">The key of the paragraph to retrieve.</param>
         /// <returns>The text of the specified paragraph, or <see langword="null"/>.</returns>
-        public string GetParagraph(string key) => texts?[key] ?? string.Empty;
+        public string GetParagraph(string key)
+        {
+            return texts != null && texts.TryGetValue(key, out var value) ? value : string.Empty;
+        }
 
         /// <summary>
         /// Implements the logic for <see cref="LoadDocsCommand"/>.

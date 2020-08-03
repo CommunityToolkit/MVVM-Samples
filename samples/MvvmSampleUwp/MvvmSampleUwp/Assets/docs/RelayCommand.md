@@ -9,7 +9,7 @@ dev_langs:
 
 # RelayCommand and RelayCommand&lt;T>
 
-The [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [`RelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
+The [RelayCommand](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [RelayCommand<T>](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
 
 ## How they work
 
@@ -36,7 +36,7 @@ public class MyViewModel : ObservableObject
     public int Counter
     {
         get => counter;
-        private set => Set(ref counter, value);
+        private set => SetProperty(ref counter, value);
     }
 
     public ICommand IncrementCounterCommand { get; }
