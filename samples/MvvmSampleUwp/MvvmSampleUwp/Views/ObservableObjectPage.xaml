@@ -11,16 +11,6 @@
     <Page.DataContext>
         <viewModels:ObservableObjectPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
-    <Page.Resources>
-        <Style TargetType="toolkit:MarkdownTextBlock">
-            <Setter Property="Background" Value="#60222222"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="Header2FontWeight" Value="Bold" />
-            <Setter Property="Header2FontSize" Value="20" />
-            <Setter Property="Header2Margin" Value="0, 15, 0, 15" />
-            <Setter Property="Header2Foreground" Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
-        </Style>
-    </Page.Resources>
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
@@ -28,16 +18,37 @@
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Simple property'), Mode=OneWay}"/>
 
-            <controls:InteractiveSample>
-                <StackPanel Spacing="8">
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8">
 
+                        <!--Simple property sample-->
+                        <TextBox
+                            PlaceholderText="Type here to update the text below"
+                            Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Name, Mode=OneWay}"/>
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing="8">
+    &lt;TextBox
+        PlaceholderText="Type here to update the text below"
+        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    &lt;TextBlock Text="{x:Bind ViewModel.Name, Mode=OneWay}"/>
+&lt;/StackPanel>
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+private string name;
 
-                    <!--Simple property sample-->
-                    <TextBox
-                        PlaceholderText="Type here to update the text below"
-                        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{x:Bind ViewModel.Name, Mode=OneWay}"/>
-                </StackPanel>
+/// &lt;summary>
+/// Gets or sets the name to display.
+/// &lt;/summary>
+public string Name
+{
+    get => name;
+    set => SetProperty(ref name, value);
+}
+                </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
 
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Wrapping a non-observable model'), Mode=OneWay}"/>
