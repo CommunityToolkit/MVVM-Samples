@@ -114,7 +114,7 @@
             Background="Transparent">
             <TextBlock
                 VerticalAlignment="Center"
-                Text="MVVM sample app"/>
+                Text="WCT MVVM Toolkit Sample App"/>
         </Border>
     </Grid>
 </UserControl>
