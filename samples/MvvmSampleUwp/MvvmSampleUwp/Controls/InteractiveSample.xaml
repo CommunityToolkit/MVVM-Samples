@@ -21,7 +21,10 @@
                                 <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="SystemControlHighlightAccentBrush"/>
                             </muxc:TabView.Resources>
                             <muxc:TabViewItem Header="Interactive Sample" IsClosable="False">
-                                <ContentPresenter Padding="12" Content="{TemplateBinding Content}"/>
+                                <ContentPresenter
+                                    Background="#60222222"
+                                    Padding="12"
+                                    Content="{TemplateBinding Content}"/>
                             </muxc:TabViewItem>
                             <muxc:TabViewItem Header="See XAML" IsClosable="False">
                                 <controls:MarkdownTextBlock
