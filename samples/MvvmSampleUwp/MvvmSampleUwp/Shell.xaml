@@ -66,8 +66,27 @@
                 <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Content="Building Blocks" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                     <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem Content="Mail" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
-                        <muxc:NavigationViewItem Content="Calendar" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                        <muxc:NavigationViewItem Content="ObservableObject" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                        <muxc:NavigationViewItem Content="Commands" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Introduction" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Async commands" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem Content="Messenger" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Introduction" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Replying" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                                <muxc:NavigationViewItem Content="Tokens" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                                <muxc:NavigationViewItem Content="ObservableRecipient" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem Content="Inversion of control" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Dependency injection" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Service locator" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Putting Things Together" Icon="Contact" ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app." Tag="SamplePage2">
