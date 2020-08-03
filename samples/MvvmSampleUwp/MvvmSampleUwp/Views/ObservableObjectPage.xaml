@@ -22,7 +22,7 @@
         </Style>
     </Page.Resources>
 
-    <ScrollViewer Padding="16">
+    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('ObservableObject'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}"/>
