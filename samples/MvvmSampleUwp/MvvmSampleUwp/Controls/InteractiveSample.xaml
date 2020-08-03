@@ -18,21 +18,29 @@
                         <muxc:TabView IsAddTabButtonVisible="False">
                             <muxc:TabView.Resources>
                                 <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
+                                <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
                                 <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="SystemControlHighlightAccentBrush"/>
                             </muxc:TabView.Resources>
-                            <muxc:TabViewItem Header="Interactive Sample" IsClosable="False">
+                            <muxc:TabViewItem
+                                Header="INTERACTIVE SAMPLE"
+                                IsClosable="False"
+                                FontWeight="Bold">
                                 <ContentPresenter
                                     Background="#60222222"
                                     Padding="12"
                                     Content="{TemplateBinding Content}"/>
                             </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See XAML" IsClosable="False">
+                            <muxc:TabViewItem
+                                Header="See XAML"
+                                IsClosable="False">
                                 <controls:MarkdownTextBlock
                                     Background="#FF202020"
                                     Padding="8"
                                     Text="{TemplateBinding XamlCode}"/>
                             </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See C#" IsClosable="False">
+                            <muxc:TabViewItem
+                                Header="See C#"
+                                IsClosable="False">
                                 <controls:MarkdownTextBlock
                                     Background="#FF202020"
                                     Padding="8"
