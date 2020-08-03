@@ -77,7 +77,7 @@ public class MyModel : ObservableObject
 
     public void RequestValue()
     {
-        LoadingTask = WebService.LoadMyValueAsync();
+        RequestTask = WebService.LoadMyValueAsync();
     }
 }
 ```
