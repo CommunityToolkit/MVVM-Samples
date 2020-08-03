@@ -12,9 +12,13 @@
     <Grid>
         <Image
             Source="https://images.unsplash.com/photo-1524439654840-b12734d89414?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80"
-            Stretch="UniformToFill"/>
+            Stretch="UniformToFill"
+            Visibility="Collapsed"/>
 
-        <muxc:NavigationView IsTitleBarAutoPaddingEnabled="False" IsBackEnabled="True">
+        <muxc:NavigationView
+            IsTitleBarAutoPaddingEnabled="False"
+            IsBackEnabled="True"
+            ItemInvoked="NavigationView_OnItemInvoked">
             <muxc:NavigationView.Header>
                 <Grid Margin="-12,-6,0,0">
                     <Grid.RowDefinitions>
@@ -64,9 +68,9 @@
                 <muxc:NavigationViewItem Content="Introduction" Icon="Play" Tag="SamplePage1" />
                 <muxc:NavigationViewItem Content="All Samples" Icon="Save" Tag="SamplePage2" />
                 <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem Content="Building Blocks" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                <muxc:NavigationViewItem Content="Building Blocks" Icon="Contact" ToolTipService.ToolTip="Account">
                     <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem Content="ObservableObject" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                        <muxc:NavigationViewItem Content="ObservableObject" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="ObservableObjectPage"/>
                         <muxc:NavigationViewItem Content="Commands" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem Content="Introduction" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
@@ -101,6 +105,10 @@
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
+
+            <muxc:NavigationView.Content>
+                <Frame x:Name="NavigationFrame"/>
+            </muxc:NavigationView.Content>
 
         </muxc:NavigationView>
 

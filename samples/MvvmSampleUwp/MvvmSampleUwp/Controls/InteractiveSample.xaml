@@ -1,0 +1,44 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:local="using:MvvmSampleUwp.Controls">
+
+    <!--Operator button-->
+    <Style TargetType="local:InteractiveSample">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:InteractiveSample">
+                    <Grid
+                        CornerRadius="4"
+                        BorderThickness="2"
+                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Title-->
+                        <Border
+                            Background="{ThemeResource SystemControlHighlightAccentBrush}"
+                            HorizontalAlignment="Left"
+                            Padding="4,2,4,2"
+                            CornerRadius="0,0,4,0">
+                            <TextBlock
+                                Text="INTERACTIVE SAMPLE"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                FontSize="16"/>
+                        </Border>
+
+                        <!--Content-->
+                        <ContentPresenter
+                            Grid.Row="1"
+                            Padding="12"
+                            Content="{TemplateBinding Content}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>
