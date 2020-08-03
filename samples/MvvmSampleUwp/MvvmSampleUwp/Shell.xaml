@@ -10,11 +10,14 @@
     d:DesignWidth="400">
 
     <Grid>
+
+        <!--Background image-->
         <Image
             Source="https://images.unsplash.com/photo-1524439654840-b12734d89414?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80"
             Stretch="UniformToFill"
-            Visibility="Collapsed"/>
+            Opacity="0.4"/>
 
+        <!--Navigation view-->
         <muxc:NavigationView
             IsTitleBarAutoPaddingEnabled="False"
             IsBackEnabled="True"
