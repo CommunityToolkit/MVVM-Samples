@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace MvvmSampleUwp
 {
@@ -7,6 +8,9 @@ namespace MvvmSampleUwp
         public Shell()
         {
             this.InitializeComponent();
+
+            // Set the custom title bar to act as a draggable region
+            Window.Current.SetTitleBar(TitleBarBorder);
         }
     }
 }

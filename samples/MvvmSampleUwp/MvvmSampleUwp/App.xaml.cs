@@ -1,6 +1,7 @@
 ﻿using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
+using MvvmSampleUwp.Helpers;
 
 namespace MvvmSampleUwp
 {
@@ -22,7 +23,13 @@ namespace MvvmSampleUwp
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             // Ensure the UI is initialized
-            Window.Current.Content ??= new Shell();
+            if (Window.Current.Content is null)
+            {
+                Window.Current.Content = new Shell();
+
+                TitleBarHelper.StyleTitleBar();
+                TitleBarHelper.ExpandViewIntoTitleBar();
+            }
 
             // Enable the prelaunch if needed, and activate the window
             if (e.PrelaunchActivated == false)
