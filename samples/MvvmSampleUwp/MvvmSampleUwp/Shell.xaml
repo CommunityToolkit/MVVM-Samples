@@ -19,9 +19,11 @@
 
         <!--Navigation view-->
         <muxc:NavigationView
+            x:Name="NavigationView"
             IsTitleBarAutoPaddingEnabled="False"
-            IsBackEnabled="True"
-            ItemInvoked="NavigationView_OnItemInvoked">
+            IsBackEnabled="False"
+            ItemInvoked="NavigationView_OnItemInvoked"
+            BackRequested="NavigationView_OnBackRequested">
 
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" PlaceholderText="Search"/>
@@ -73,6 +75,7 @@
                     <!--Navigation frame-->
                     <Frame
                         x:Name="NavigationFrame"
+                        Navigated="NavigationFrame_OnNavigated"
                         Grid.Row="2"/>
 
                     <!--Acrylic background-->

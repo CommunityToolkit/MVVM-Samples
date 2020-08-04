@@ -1,7 +1,9 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
+using NavigationViewBackRequestedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
 using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
 
 namespace MvvmSampleUwp
@@ -25,6 +27,18 @@ namespace MvvmSampleUwp
 
                 NavigationFrame.Navigate(pageType);
             }
+        }
+
+        // Sets whether or not the back button is enabled
+        private void NavigationFrame_OnNavigated(object sender, NavigationEventArgs e)
+        {
+            NavigationView.IsBackEnabled = ((Frame)sender).BackStackDepth > 0;
+        }
+
+        // Navigates back
+        private void NavigationView_OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            NavigationFrame.GoBack();
         }
     }
 }
