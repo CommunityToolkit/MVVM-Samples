@@ -127,9 +127,13 @@
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AsyncRelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\ObservableObjectPageViewModel.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
+    <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
+      <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RelayCommandPage.xaml.cs">
       <DependentUpon>RelayCommandPage.xaml</DependentUpon>
     </Compile>
@@ -162,11 +166,14 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit">
+      <Version>7.0.0-build.152</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Mvvm">
       <Version>7.0.0-build.149</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>6.1.0</Version>
+      <Version>7.0.0-build.152</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.4.2</Version>
@@ -181,6 +188,10 @@
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AsyncRelayCommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RelayCommandPage.xaml">
       <Generator>MSBuild:Compile</Generator>
