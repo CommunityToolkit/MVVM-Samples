@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using MvvmSampleUwp.Views;
 using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
 using NavigationViewBackRequestedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
 using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
@@ -39,6 +40,14 @@ namespace MvvmSampleUwp
         private void NavigationView_OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             NavigationFrame.GoBack();
+        }
+
+        // Select the introduction item when the shell is loaded
+        private void Shell_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            NavigationView.SelectedItem = IntroductionItem;
+
+            NavigationFrame.Navigate(typeof(IntroductionPage));
         }
     }
 }

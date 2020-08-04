@@ -7,7 +7,8 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    Loaded="Shell_OnLoaded">
 
     <Grid>
 
@@ -30,8 +31,7 @@
             </muxc:NavigationView.AutoSuggestBox>
 
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Introduction" Icon="Play" Tag="SamplePage1" />
-                <muxc:NavigationViewItem Content="All Samples" Icon="Save" Tag="SamplePage2" />
+                <muxc:NavigationViewItem x:Name="IntroductionItem" Content="Introduction" Icon="Play" Tag="IntroductionPage" />
                 <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Content="Building Blocks" Icon="ViewAll" ToolTipService.ToolTip="Account">
                     <muxc:NavigationViewItem.MenuItems>

@@ -148,6 +148,9 @@
     <Compile Include="Views\IocPage.xaml.cs">
       <DependentUpon>IocPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IntroductionPage.xaml.cs">
+      <DependentUpon>IntroductionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RelayCommandPage.xaml.cs">
       <DependentUpon>RelayCommandPage.xaml</DependentUpon>
     </Compile>
@@ -193,7 +196,11 @@
       <Version>2.4.2</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\docs\Introduction.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\InteractiveSample.xaml">
       <SubType>Designer</SubType>
@@ -220,6 +227,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\IocPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\IntroductionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
