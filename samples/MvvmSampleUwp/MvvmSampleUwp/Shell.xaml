@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mvvmSampleUwp="using:MvvmSampleUwp"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -27,7 +28,18 @@
             BackRequested="NavigationView_OnBackRequested">
 
             <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" PlaceholderText="Search"/>
+                <AutoSuggestBox
+                    QueryIcon="Find"
+                    AutomationProperties.Name="Search"
+                    PlaceholderText="Search"
+                    TextChanged="SearchBox_OnTextChanged"
+                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen">
+                    <AutoSuggestBox.ItemTemplate>
+                        <DataTemplate x:DataType="mvvmSampleUwp:SampleEntry">
+                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"/>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
+                </AutoSuggestBox>
             </muxc:NavigationView.AutoSuggestBox>
 
             <muxc:NavigationView.MenuItems>

@@ -10,11 +10,13 @@ using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
 using NavigationViewBackRequestedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
 using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
 
+#nullable enable
+
 namespace MvvmSampleUwp
 {
     public sealed partial class Shell : UserControl
     {
-        private readonly IReadOnlyCollection<(NavigationViewItem Item, Type PageType)> NavigationItems;
+        private readonly IReadOnlyCollection<SampleEntry> NavigationItems;
 
         public Shell()
         {
@@ -22,14 +24,14 @@ namespace MvvmSampleUwp
 
             NavigationItems = new[]
             {
-                (IntroductionItem, typeof(IntroductionPage)),
-                (ObservableObjectItem, typeof(ObservableObjectPage)),
-                (CommandsItem, typeof(RelayCommandPage)),
-                (AsyncCommandsItem, typeof(AsyncRelayCommandPage)),
-                (MessengerItem, typeof(MessengerPage)),
-                (SendMessagesItem, typeof(MessengerSendPage)),
-                (RequestMessagesItem, typeof(MessengerRequestPage)),
-                (InversionOfControlItem, typeof(IocPage))
+                new SampleEntry(IntroductionItem, typeof(IntroductionPage)),
+                new SampleEntry(ObservableObjectItem, typeof(ObservableObjectPage), "ObservableObject", "observable inotify property changed propertychanging changing"),
+                new SampleEntry(CommandsItem, typeof(RelayCommandPage), "RelayCommand and RelayCommand<T>", "commands icommand relaycommand binding"),
+                new SampleEntry(AsyncCommandsItem, typeof(AsyncRelayCommandPage), "AsyncRelayCommand and AsyncRelayCommand<T>", "asynccommands icommand relaycommand binding asynchronous"),
+                new SampleEntry(MessengerItem, typeof(MessengerPage), "Messenger and IMessenger", "messenger messaging message receiver recipient"),
+                new SampleEntry(SendMessagesItem, typeof(MessengerSendPage), "[IMessenger] Send messages", "messenger messaging message receiver recipient send"),
+                new SampleEntry(RequestMessagesItem, typeof(MessengerRequestPage), "[IMessenger] Request messages", "messenger messaging message receiver recipient request reply"),
+                new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator")
             };
 
             // Set the custom title bar to act as a draggable region
@@ -69,5 +71,63 @@ namespace MvvmSampleUwp
 
             NavigationFrame.Navigate(typeof(IntroductionPage));
         }
+
+        // Updates the search results
+        private void SearchBox_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                // Not a simple tokenized search, but good enough for now
+                string query = sender.Text.ToLowerInvariant();
+
+                sender.ItemsSource = NavigationItems.Where(item => item.Tags?.Contains(query) == true);
+            }
+        }
+
+        // Navigates to a selected item
+        private void AutoSuggestBox_OnSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            SampleEntry entry = (SampleEntry)args.SelectedItem;
+
+            NavigationFrame.Navigate(entry.PageType);
+
+            NavigationView.SelectedItem = entry.Item;
+
+            sender.Text = string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// A simple model for tracking sample pages associated with buttons.
+    /// </summary>
+    public sealed class SampleEntry
+    {
+        public SampleEntry(NavigationViewItem viewItem, Type pageType, string? name = null, string? tags = null)
+        {
+            Item = viewItem;
+            PageType = pageType;
+            Name = name;
+            Tags = tags;
+        }
+
+        /// <summary>
+        /// The navigation item for the current entry.
+        /// </summary>
+        public NavigationViewItem Item { get; }
+
+        /// <summary>
+        /// The associated page type for the current entry.
+        /// </summary>
+        public Type PageType { get; }
+
+        /// <summary>
+        /// Gets the name of the current entry.
+        /// </summary>
+        public string? Name { get; }
+
+        /// <summary>
+        /// Gets the tag for the current entry, if any.
+        /// </summary>
+        public string? Tags { get; }
     }
 }
