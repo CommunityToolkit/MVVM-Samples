@@ -9,11 +9,18 @@
     xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
     xmlns:views="using:MvvmSampleUwp.Views"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
     <Page.DataContext>
         <viewModels:AsyncRelayCommandPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="AsyncRelayCommand"/>
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
     <Page.Resources>
         <views:TaskResultConverter x:Key="TaskResultConverter"/>
     </Page.Resources>

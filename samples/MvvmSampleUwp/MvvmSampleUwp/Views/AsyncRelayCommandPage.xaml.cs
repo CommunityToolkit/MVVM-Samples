@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Navigation;
 
 namespace MvvmSampleUwp.Views
 {
@@ -14,12 +13,6 @@ namespace MvvmSampleUwp.Views
         public AsyncRelayCommandPage()
         {
             this.InitializeComponent();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel.LoadDocsCommand.Execute("AsyncRelayCommand");
         }
     }
 

@@ -1,5 +1,4 @@
 ﻿using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace MvvmSampleUwp.Views
 {
@@ -11,12 +10,6 @@ namespace MvvmSampleUwp.Views
         public IntroductionPage()
         {
             this.InitializeComponent();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel.LoadDocsCommand.Execute("Introduction");
         }
     }
 }

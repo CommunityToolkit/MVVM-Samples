@@ -7,11 +7,18 @@
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:controls="using:MvvmSampleUwp.Controls"
     xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
     <Page.DataContext>
         <viewModels:RelayCommandPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="RelayCommand"/>
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
