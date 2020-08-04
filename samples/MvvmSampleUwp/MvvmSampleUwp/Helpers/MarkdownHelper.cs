@@ -20,7 +20,7 @@ namespace MvvmSampleUwp.Helpers
                 Regex.Matches(text, @"(#+ ([^\n]+)[^#]+)", RegexOptions.Singleline)
                 .ToDictionary(
                     m => m.Groups[2].Value.Trim().Replace("&lt;", "<"),
-                    m => m.Groups[1].Value.Trim().Replace("&lt;", "<"));
+                    m => m.Groups[1].Value.Trim().Replace("&lt;", "<").Replace("[!WARNING]", "**WARNING:**"));
         }
     }
 }

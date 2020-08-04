@@ -128,11 +128,15 @@
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AsyncRelayCommandPageViewModel.cs" />
+    <Compile Include="ViewModels\MessengerPageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\ObservableObjectPageViewModel.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
     <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
       <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessengerPage.xaml.cs">
+      <DependentUpon>MessengerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RelayCommandPage.xaml.cs">
       <DependentUpon>RelayCommandPage.xaml</DependentUpon>
@@ -190,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AsyncRelayCommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MessengerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

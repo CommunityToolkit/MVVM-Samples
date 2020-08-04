@@ -9,7 +9,7 @@ dev_langs:
 
 # Messenger
 
-The [`Messenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messenger) class (with the accompanying [`IMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface) can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an application. 
+The [Messenger](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messenger) class (with the accompanying [IMessenger](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface) can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an application. 
 
 ## How it works
 
@@ -60,7 +60,7 @@ Messenger.Default.UnregisterAll(this);
 ```
 
 > [!WARNING]
-> The `Messenger` implementation uses strong references to track the registered recipients. This is done for performance reasons, and it means that each registered recipient should manually be unregistered to avoid memory leaks. That is, as long as a recipient is registered, the `Messenger` instance in use will keep an active reference to it, which will prevent the garbage collector from being able to collect that instance. You can either handle this manually, or you can inherit from [`ObservableRecipient`](ObservableRecipient.md), which by default automatically takes care of removing all the message registrations for recipient when it is deactivated (see docs on `ObservableRecipient` for more info about this).
+> The `Messenger` implementation uses strong references to track the registered recipients. This is done for performance reasons, and it means that each registered recipient should manually be unregistered to avoid memory leaks. That is, as long as a recipient is registered, the `Messenger` instance in use will keep an active reference to it, which will prevent the garbage collector from being able to collect that instance. You can either handle this manually, or you can inherit from [ObservableRecipient](ObservableRecipient.md), which by default automatically takes care of removing all the message registrations for recipient when it is deactivated (see docs on `ObservableRecipient` for more info about this).
 
 ## Using request messages
 
