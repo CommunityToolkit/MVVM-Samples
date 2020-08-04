@@ -17,6 +17,101 @@
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Messenger'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Sending and receiving messages'), Mode=OneWay}"/>
+
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8" xml:space="default">
+
+                        <!--Sender module-->
+                        <Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}"/>
+                                <Button
+                                    Content="Click to send a message!"
+                                    Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!--Receiver module-->
+                        <Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="{x:Bind ViewModel.ReceiverViewModel.Username, Mode=OneWay}"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing="8" xml:space="default">
+
+    &lt;!--Sender module-->
+    &lt;Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
+        &lt;StackPanel Spacing="8">
+            &lt;TextBlock Text="{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}"/>
+            &lt;Button
+                Content="Click to send a message!"
+                Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>
+        &lt;/StackPanel>
+    &lt;/Border>
+
+    &lt;!--Receiver module-->
+    &lt;Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
+        &lt;StackPanel Spacing="8">
+            &lt;TextBlock Text="{x:Bind ViewModel.ReceiverViewModel.Username, Mode=OneWay}"/>
+        &lt;/StackPanel>
+    &lt;/Border>
+&lt;/StackPanel>
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+public UserSenderViewModel SenderViewModel { get; } = new UserSenderViewModel();
+
+public UserReceiverViewModel ReceiverViewModel { get; } = new UserReceiverViewModel();
+
+// Simple viewmodel for a module sending a username message
+public class UserSenderViewModel : ObservableRecipient
+{
+    private string username = "Bob";
+
+    public string Username
+    {
+        get => username;
+        private set => SetProperty(ref username, value);
+    }
+
+    public void SendUserMessage()
+    {
+        Username = Username == "Bob" ? "Alice" : "Bob";
+
+        Messenger.Send(new UsernameChangedMessage(Username));
+    }
+}
+
+// Simple viewmodel for a module receiving a username message
+public class UserReceiverViewModel : ObservableRecipient
+{
+    private string username = "Bob";
+
+    public string Username
+    {
+        get => username;
+        private set => SetProperty(ref username, value);
+    }
+
+    protected override void OnActivated()
+    {
+        Messenger.Register&lt;UsernameChangedMessage>(this, m => Username = m.Value);
+    }
+}
+
+// A sample message with a username value
+public sealed class UsernameChangedMessage : ValueChangedMessage&lt;string>
+{
+    public UsernameChangedMessage(string value) : base(value)
+    {
+    }
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Using request messages'), Mode=OneWay}"/>
         </StackPanel>
     </ScrollViewer>

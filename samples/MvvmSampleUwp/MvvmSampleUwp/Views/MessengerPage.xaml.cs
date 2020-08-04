@@ -17,6 +17,13 @@ namespace MvvmSampleUwp.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel.LoadDocsCommand.Execute("Messenger");
+            ViewModel.ReceiverViewModel.IsActive = true;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.ReceiverViewModel.IsActive = false;
         }
     }
 }
