@@ -46,12 +46,7 @@
                                 <muxc:NavigationViewItem Content="Request messages" Icon="Switch" Tag="MessengerRequestPage"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Inversion of control" Icon="StopSlideShow" Tag="IocPage">
-                            <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Dependency injection" Icon="NewWindow"/>
-                                <muxc:NavigationViewItem Content="Service locator" Icon="Trim"/>
-                            </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem Content="Inversion of control" Icon="StopSlideShow" Tag="IocPage"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Putting Things Together" Icon="Contact" ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app." Tag="SamplePage2">
