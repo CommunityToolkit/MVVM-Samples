@@ -21,6 +21,11 @@ namespace MvvmSampleUwp.ViewModels
                 private set => SetProperty(ref username, value);
             }
 
+            protected override void OnActivated()
+            {
+                Messenger.Register<CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+            }
+
             public void SendUserMessage()
             {
                 Username = Username == "Bob" ? "Alice" : "Bob";
@@ -32,7 +37,7 @@ namespace MvvmSampleUwp.ViewModels
         // Simple viewmodel for a module receiving a username message
         public class UserReceiverViewModel : ObservableRecipient
         {
-            private string username = "Bob";
+            private string username = "";
 
             public string Username
             {
@@ -46,12 +51,35 @@ namespace MvvmSampleUwp.ViewModels
             }
         }
 
+        private string username;
+
+        public string Username
+        {
+            get => username;
+            private set => SetProperty(ref username, value);
+        }
+
+        public void RequestCurrentUsername()
+        {
+            Username = Messenger.Default.Send<CurrentUsernameRequestMessage>();
+        }
+
+        public void ResetCurrentUsername()
+        {
+            Username = null;
+        }
+
         // A sample message with a username value
         public sealed class UsernameChangedMessage : ValueChangedMessage<string>
         {
             public UsernameChangedMessage(string value) : base(value)
             {
             }
+        }
+
+        // A sample request message to get the current username
+        public sealed class CurrentUsernameRequestMessage : RequestMessage<string>
+        {
         }
     }
 }

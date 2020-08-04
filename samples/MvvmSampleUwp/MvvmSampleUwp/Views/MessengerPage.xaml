@@ -41,7 +41,7 @@
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
-&lt;StackPanel Spacing="8" xml:space="default">
+&lt;StackPanel Spacing="8">
 
     &lt;!--Sender module-->
     &lt;Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
@@ -88,7 +88,7 @@ public class UserSenderViewModel : ObservableRecipient
 // Simple viewmodel for a module receiving a username message
 public class UserReceiverViewModel : ObservableRecipient
 {
-    private string username = "Bob";
+    private string username = "";
 
     public string Username
     {
@@ -113,6 +113,70 @@ public sealed class UsernameChangedMessage : ValueChangedMessage&lt;string>
             </controls:InteractiveSample>
 
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Using request messages'), Mode=OneWay}"/>
+
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8" xml:space="default">
+
+                        <TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
+                        <Button
+                            Content="Click to request the username!"
+                            Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
+                        <Button
+                            Content="Click to reset the local username!"
+                            Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing="8">
+    &lt;TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
+    &lt;Button
+        Content="Click to request the username!"
+        Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
+    &lt;Button
+        Content="Click to reset the local username!"
+        Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
+&lt;/StackPanel>
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+// Simple viewmodel for a module responding to a request username message.
+// Don't forget to set the IsActive property to true when this viewmodel is in use!
+public class UserSenderViewModel : ObservableRecipient
+{
+    public string Username { get; private set; } = "Bob";
+
+    protected override void OnActivated()
+    {
+        Messenger.Register&lt;CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+    }
+}
+
+private string username;
+
+public string Username
+{
+    get => username;
+    private set => SetProperty(ref username, value);
+}
+
+// Sends a message to request the current username, and updates the property
+public void RequestCurrentUsername()
+{
+    Username = Messenger.Default.Send&lt;CurrentUsernameRequestMessage>();
+}
+
+// Resets the current username
+public void ResetCurrentUsername()
+{
+    Username = null;
+}
+
+// A sample request message to get the current username
+public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string>
+{
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
         </StackPanel>
     </ScrollViewer>
 </Page>
