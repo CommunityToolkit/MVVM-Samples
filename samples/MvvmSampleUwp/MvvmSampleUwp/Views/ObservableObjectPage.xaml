@@ -7,7 +7,8 @@
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:controls="using:MvvmSampleUwp.Controls"
     xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
     <Page.DataContext>
         <viewModels:ObservableObjectPageViewModel x:Name="ViewModel"/>
     </Page.DataContext>

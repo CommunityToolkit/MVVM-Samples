@@ -6,9 +6,9 @@ namespace MvvmSampleUwp.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MessengerPage : Page
+    public sealed partial class MessengerRequestPage : Page
     {
-        public MessengerPage()
+        public MessengerRequestPage()
         {
             this.InitializeComponent();
         }
@@ -17,6 +17,15 @@ namespace MvvmSampleUwp.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel.LoadDocsCommand.Execute("Messenger");
+            ViewModel.SenderViewModel.IsActive = true;
+            ViewModel.ReceiverViewModel.IsActive = true;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.ReceiverViewModel.IsActive = false;
+            ViewModel.ReceiverViewModel.IsActive = false;
         }
     }
 }

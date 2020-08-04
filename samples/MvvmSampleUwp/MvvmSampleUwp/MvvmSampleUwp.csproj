@@ -135,6 +135,12 @@
     <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
       <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessengerRequestPage.xaml.cs">
+      <DependentUpon>MessengerRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessengerSendPage.xaml.cs">
+      <DependentUpon>MessengerSendPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MessengerPage.xaml.cs">
       <DependentUpon>MessengerPage.xaml</DependentUpon>
     </Compile>
@@ -194,6 +200,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AsyncRelayCommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MessengerRequestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MessengerSendPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

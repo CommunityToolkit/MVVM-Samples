@@ -40,7 +40,12 @@
                                 <muxc:NavigationViewItem Content="Async commands" Icon="Flag" Tag="AsyncRelayCommandPage"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Messenger" Icon="Comment" Tag="MessengerPage"/>
+                        <muxc:NavigationViewItem Content="Messenger" Icon="Comment" Tag="MessengerPage">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Sending messages" Icon="Send" Tag="MessengerSendPage"/>
+                                <muxc:NavigationViewItem Content="Request messages" Icon="Switch" Tag="MessengerRequestPage"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem Content="Inversion of control" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem Content="Dependency injection" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
