@@ -45,25 +45,29 @@ With the related UI code:
 ```xml
 <Page
     x:Class="MyApp.Views.MyPage"
-    xmlns:viewModels="using:MyApp.ViewModels">
+    xmlns:viewModels="using:MyApp.ViewModels"
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters">
     <Page.DataContext>
         <viewModels:MyViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <Page.Resources>
+        <converters:TaskResultConverter x:Key="TaskResultConverter"/>
+    </Page.Resources>
 
-    <StackPanel Spacing="8">
+    <StackPanel Spacing="8" xml:space="default">
         <TextBlock>
             <Run Text="Task status:"/>
             <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}"/>
             <LineBreak/>
             <Run Text="Result:"/>
-            <Run
-                xmlns:ex="using:Microsoft.Toolkit.Extensions"
-                Text="{x:Bind ex:TaskExtensions.GetResultOrDefault(ViewModel.DownloadTextCommand.ExecutionTask), Mode=OneWay}"/>
+            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}"/>
         </TextBlock>
         <Button
             Content="Click me!"
             Command="{x:Bind ViewModel.DownloadTextCommand}"/>
-        <ProgressRing IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
+        <ProgressRing
+            HorizontalAlignment="Left"
+            IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
     </StackPanel>
 </Page>
 ```
