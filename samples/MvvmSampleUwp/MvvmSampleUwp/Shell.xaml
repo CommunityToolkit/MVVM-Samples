@@ -31,27 +31,74 @@
             </muxc:NavigationView.AutoSuggestBox>
 
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem x:Name="IntroductionItem" Content="Introduction" Icon="Play" Tag="IntroductionPage" />
+                <muxc:NavigationViewItem
+                    x:Name="IntroductionItem"
+                    Content="Introduction"
+                    Icon="Play"
+                    ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains."
+                    Tag="IntroductionPage" />
                 <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem Content="Building Blocks" Icon="ViewAll" ToolTipService.ToolTip="Account">
+                <muxc:NavigationViewItem
+                    Content="Building Blocks"
+                    Icon="ViewAll"
+                    ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit."
+                    IsExpanded="True">
                     <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem Content="ObservableObject" Icon="Sort" Tag="ObservableObjectPage"/>
-                        <muxc:NavigationViewItem Content="Commands" Icon="Calendar">
+                        <muxc:NavigationViewItem
+                            Content="ObservableObject"
+                            Icon="Sort"
+                            ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged."
+                            Tag="ObservableObjectPage"/>
+                        <muxc:NavigationViewItem
+                            Content="Commands"
+                            Icon="Calendar"
+                            ToolTipService.ToolTip="A collection of types implementing the ICommand interface."
+                            IsExpanded="True">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Introduction" Icon="Library" Tag="RelayCommandPage"/>
-                                <muxc:NavigationViewItem Content="Async commands" Icon="Flag" Tag="AsyncRelayCommandPage"/>
+                                <muxc:NavigationViewItem
+                                    Content="Introduction"
+                                    Icon="Library"
+                                    ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit."
+                                    Tag="RelayCommandPage"/>
+                                <muxc:NavigationViewItem
+                                    Content="Async commands"
+                                    Icon="Flag"
+                                    ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations."
+                                    Tag="AsyncRelayCommandPage"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Messenger" Icon="Comment" Tag="MessengerPage">
+                        <muxc:NavigationViewItem
+                            Content="Messenger"
+                            Icon="Comment"
+                            ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules."
+                            Tag="MessengerPage"
+                            IsExpanded="True">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Sending messages" Icon="Send" Tag="MessengerSendPage"/>
-                                <muxc:NavigationViewItem Content="Request messages" Icon="Switch" Tag="MessengerRequestPage"/>
+                                <muxc:NavigationViewItem
+                                    Content="Sending messages"
+                                    Icon="Send"
+                                    ToolTipService.ToolTip="Send custom messages between different app modules."
+                                    Tag="MessengerSendPage"/>
+                                <muxc:NavigationViewItem
+                                    Content="Request messages"
+                                    Icon="Switch"
+                                    ToolTipService.ToolTip="Request values from loosely coupled app modules."
+                                    Tag="MessengerRequestPage"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Inversion of control" Icon="StopSlideShow" Tag="IocPage"/>
+                        <muxc:NavigationViewItem
+                            Content="Inversion of control"
+                            Icon="StopSlideShow"
+                            ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns."
+                            Tag="IocPage"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Putting Things Together" Icon="Contact" ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app." Tag="SamplePage2">
+                <muxc:NavigationViewItem
+                    Content="Putting Things Together"
+                    Icon="Contact"
+                    ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app."
+                    Tag="SamplePage2"
+                    IsExpanded="True">
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem Content="Creating a ViewModel" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
                         <muxc:NavigationViewItem Content="Creating a Service" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4">
