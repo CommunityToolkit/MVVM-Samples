@@ -67,10 +67,10 @@ public string Name
                     <StackPanel Spacing="8">
 
                         <!--Async property sample-->
-                        <!--<Button
+                        <Button
                                 Content="Click me to load a Task to await"
                                 Click="{x:Bind ViewModel.ReloadTask}"/>
-                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>-->
+                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>

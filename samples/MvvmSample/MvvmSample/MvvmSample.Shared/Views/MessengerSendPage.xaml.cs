@@ -23,7 +23,7 @@ namespace MvvmSampleUwp.Views
         /// <inheritdoc/>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            ViewModel.ReceiverViewModel.IsActive = false;
+            ViewModel.SenderViewModel.IsActive = false;
             ViewModel.ReceiverViewModel.IsActive = false;
         }
     }
