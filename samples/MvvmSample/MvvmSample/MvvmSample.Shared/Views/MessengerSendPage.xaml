@@ -22,7 +22,7 @@
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Sending and receiving messages'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Sending and receiving messages'}" />
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
@@ -32,9 +32,9 @@
                         <Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
                             <StackPanel Spacing="8">
                                 <TextBlock Text="{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}"/>
-                                <Button
+                                <!--<Button
                                     Content="Click to send a message!"
-                                    Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>
+                                    Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>-->
                             </StackPanel>
                         </Border>
 

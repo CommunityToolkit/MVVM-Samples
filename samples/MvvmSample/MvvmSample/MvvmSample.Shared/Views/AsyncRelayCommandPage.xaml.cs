@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MvvmSampleUwp.Helpers;
+using MvvmSampleUwp.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -22,16 +25,33 @@ namespace MvvmSampleUwp.Views
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is Task task &&
-                task.IsCompletedSuccessfully)
-            {
-                return task.GetType().GetProperty(nameof(Task<object>.Result))?.GetValue(task);
-            }
+            //if (value is Task task &&
+            //    task.IsCompletedSuccessfully)
+            //{
+            //    return task.GetType().GetProperty(nameof(Task<object>.Result))?.GetValue(task);
+            //}
 
             return null;
         }
 
         /// <inheritdoc/>
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class MarkdownSectionConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if(value is IReadOnlyDictionary<string, string>  texts)
+            {
+                return texts != null && texts.TryGetValue(parameter as string, out var match) ? match : string.Empty;
+            }
+            return null;
+        }
+
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();

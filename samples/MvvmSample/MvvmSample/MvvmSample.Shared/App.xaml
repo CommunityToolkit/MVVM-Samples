@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-             xmlns:local="using:MvvmSample">
+             xmlns:local="using:MvvmSample"
+             xmlns:views="using:MvvmSampleUwp.Views">
     <Application.Resources>
         <ResourceDictionary>
 
@@ -28,6 +29,9 @@
                 <Setter Property="Header2Foreground"
                         Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
             </Style>
+
+            <views:MarkdownSectionConverter x:Key="MarkdownSectionConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
