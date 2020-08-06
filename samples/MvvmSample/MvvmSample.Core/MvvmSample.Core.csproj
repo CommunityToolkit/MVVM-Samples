@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
 	  <TargetFrameworks>uap10.0.16299;netstandard2.0</TargetFrameworks>
@@ -20,6 +20,10 @@
   </ItemGroup>
 
 	<ItemGroup Condition="'$(IsWindows)' != 'true'">
-		<PackageReference Include="Uno.UI" Version="2.4.4" />
+		<PackageReference Include="Uno.UI" Version="3.0.0-dev.1388" />
+	</ItemGroup>
+
+	<ItemGroup  Condition="'$(IsWindows)' == 'true'">
+	  <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
 	</ItemGroup>
 </Project>

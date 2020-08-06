@@ -14,6 +14,8 @@ namespace MvvmSampleUwp.ViewModels
     /// </summary>
     public class SamplePageViewModel : ObservableObject
     {
+        private IReadOnlyDictionary<string, string> texts;
+
         public SamplePageViewModel()
         {
             LoadDocsCommand = new AsyncRelayCommand<string>(LoadDocsAsync);
@@ -24,7 +26,7 @@ namespace MvvmSampleUwp.ViewModels
         /// </summary>
         public IAsyncRelayCommand<string> LoadDocsCommand { get; }
 
-        private IReadOnlyDictionary<string, string> texts;
+        public IReadOnlyDictionary<string, string> Texts { get => texts; set => SetProperty(ref texts,value); }
 
         /// <summary>
         /// Gets the markdown for a specified paragraph from the docs page.
@@ -33,7 +35,7 @@ namespace MvvmSampleUwp.ViewModels
         /// <returns>The text of the specified paragraph, or <see langword="null"/>.</returns>
         public string GetParagraph(string key)
         {
-            return texts != null && texts.TryGetValue(key, out var value) ? value : string.Empty;
+            return Texts != null && Texts.TryGetValue(key, out var value) ? value : string.Empty;
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace MvvmSampleUwp.ViewModels
             using var reader = new StreamReader(stream);
             var text = await reader.ReadToEndAsync();
 
-            texts = MarkdownHelper.GetParagraphs(text);
+            Texts = MarkdownHelper.GetParagraphs(text);
 
             OnPropertyChanged(nameof(GetParagraph));
         }

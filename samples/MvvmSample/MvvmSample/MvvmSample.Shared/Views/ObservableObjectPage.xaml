@@ -22,9 +22,9 @@
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('ObservableObject'), Mode=OneWay}"/>
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}"/>
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Simple property'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'ObservableObject'}" />
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'How it works'}" />
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Simple property'}" />
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
@@ -67,10 +67,10 @@ public string Name
                     <StackPanel Spacing="8">
 
                         <!--Async property sample-->
-                        <Button
+                        <!--<Button
                                 Content="Click me to load a Task to await"
                                 Click="{x:Bind ViewModel.ReloadTask}"/>
-                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
+                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>-->
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
