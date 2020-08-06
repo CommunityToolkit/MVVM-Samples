@@ -6,7 +6,7 @@ namespace MvvmSampleUwp.Controls
     /// <summary>
     /// A simple control that acts as a frame for an interactive sample.
     /// </summary>
-    public sealed class InteractiveSample : ContentControl
+    public partial class InteractiveSample : ContentControl
     {
         /// <summary>
         /// Gets or sets the <see cref="string"/> representing the C# code to display.

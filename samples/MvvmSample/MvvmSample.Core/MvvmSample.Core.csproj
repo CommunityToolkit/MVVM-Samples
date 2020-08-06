@@ -1,29 +1,11 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-	  <TargetFrameworks>uap10.0.16299;netstandard2.0</TargetFrameworks>
+	  <TargetFrameworks>netstandard2.0</TargetFrameworks>
 	  <LangVersion>8.0</LangVersion>
-	  <IsWindows>$(TargetFramework.StartsWith('uap'))</IsWindows>
   </PropertyGroup>
-
-	<PropertyGroup Condition="'$(IsWindows)' == 'true'">
-		<TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-		<TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
-		<TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
-		<MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
-		<FileAlignment>512</FileAlignment>
-		<AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
-	</PropertyGroup>
-
 	<ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-build.152" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-build.156" />
+    <PackageReference Include="Uno.UI" Version="3.0.0-dev.1447" />
   </ItemGroup>
-
-	<ItemGroup Condition="'$(IsWindows)' != 'true'">
-		<PackageReference Include="Uno.UI" Version="3.0.0-dev.1388" />
-	</ItemGroup>
-
-	<ItemGroup  Condition="'$(IsWindows)' == 'true'">
-	  <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
-	</ItemGroup>
 </Project>

@@ -39,11 +39,11 @@
     <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-build.152" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-build.156" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI" Version="6.1.0-build.186.g928c99f74d" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls" Version="6.1.0-build.186.g928c99f74d" />
-    <PackageReference Include="Uno.UI.RemoteControl" Version="3.0.0-dev.1388" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Uno.UI.WebAssembly" Version="3.0.0-dev.1388" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.0.0-dev.1447" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="3.0.0-dev.1447" />
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.4.0-dev.16" />
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.4.0-dev.16" />
   </ItemGroup>

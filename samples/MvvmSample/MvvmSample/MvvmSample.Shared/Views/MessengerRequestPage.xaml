@@ -28,12 +28,12 @@
                     <StackPanel Spacing="8" xml:space="default">
 
                         <TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
-                        <Button
+                        <!--<Button
                             Content="Click to request the username!"
                             Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
                         <Button
                             Content="Click to reset the local username!"
-                            Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
+                            Click="{x:Bind ViewModel.ResetCurrentUsername}"/>-->
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
