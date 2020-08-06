@@ -59,17 +59,17 @@ public string Name
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
 
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Wrapping a non-observable model'), Mode=OneWay}"/>
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Handling `Task&lt;T>` properties'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Wrapping a non-observable model'}" />
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Handling `Task&lt;T>'}" />
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
                     <StackPanel Spacing="8">
 
                         <!--Async property sample-->
-                        <Button
+                        <!--<Button
                                 Content="Click me to load a Task to await"
-                                Click="{x:Bind ViewModel.ReloadTask}"/>
+                                Click="{x:Bind ViewModel.ReloadTask}"/>-->
                         <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}"/>
                     </StackPanel>
                 </controls:InteractiveSample.Content>

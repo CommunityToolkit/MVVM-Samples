@@ -22,6 +22,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
     <ResourcesDirectory>..\MvvmSample.Shared\Strings</ResourcesDirectory>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,10 +63,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Mvvm">
-      <Version>7.0.0-build.152</Version>
+      <Version>7.0.0-build.156</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="2.4.0" />
-    <PackageReference Include="Uno.UI.RemoteControl" Version="2.4.0" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.Core" Version="2.0.0" />
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI">
+      <Version>6.1.0-build.186.g928c99f74d</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.1.0-build.186.g928c99f74d</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI">
+      <Version>3.0.0-dev.1447</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.0.0-dev.1447" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />

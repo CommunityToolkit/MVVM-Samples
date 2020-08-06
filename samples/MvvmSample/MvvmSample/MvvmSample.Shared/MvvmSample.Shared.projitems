@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -104,13 +105,13 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\AsyncRelayCommand.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\Introduction.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\Ioc.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\Messenger.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableObject.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableRecipient.md" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\docs\RelayCommand.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\AsyncRelayCommand.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\Introduction.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\Ioc.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\Messenger.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableObject.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableRecipient.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\RelayCommand.md" />
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
   </ItemGroup>
 </Project>

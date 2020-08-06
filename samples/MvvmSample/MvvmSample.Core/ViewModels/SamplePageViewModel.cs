@@ -52,7 +52,7 @@ namespace MvvmSampleUwp.ViewModels
             // Skip if the loading has already started
             if (!(LoadDocsCommand.ExecutionTask is null)) return;
 
-            var path = Path.Combine(FilesServices.InstallationPath, "Assets", "docs", $"{name}.md");
+            var path = Path.Combine("Assets", "docs", $"{name}.md");
             using var stream = await FilesServices.OpenForReadAsync(path);
             using var reader = new StreamReader(stream);
             var text = await reader.ReadToEndAsync();

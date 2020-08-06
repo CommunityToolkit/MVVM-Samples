@@ -32,9 +32,9 @@
                         <Border BorderBrush="#40FFFFFF" BorderThickness="2" CornerRadius="4" Padding="8">
                             <StackPanel Spacing="8">
                                 <TextBlock Text="{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}"/>
-                                <Button
+                                <!--<Button
                                     Content="Click to send a message!"
-                                    Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>
+                                    Click="{x:Bind ViewModel.SenderViewModel.SendUserMessage}"/>-->
                             </StackPanel>
                         </Border>
 
