@@ -1,0 +1,56 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MvvmSampleUwp.Controls"
+                    xmlns:muxc="using:Microsoft.Toolkit.Uwp.UI.Controls">
+
+    <!--Operator button-->
+    <Style TargetType="local:InteractiveSample">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:InteractiveSample">
+                    <Border
+                        CornerRadius="4"
+                        BorderThickness="2"
+                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}">
+                        <!--IsAddTabButtonVisible="False"-->
+                        <muxc:TabView>
+                            <muxc:TabView.Resources>
+                                <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
+                                <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
+                                <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="SystemControlHighlightAccentBrush"/>
+                            </muxc:TabView.Resources>
+                            <muxc:TabViewItem
+                                Header="INTERACTIVE SAMPLE"
+                                IsClosable="False"
+                                FontWeight="Bold">
+                                <ContentPresenter
+                                    Background="#60222222"
+                                    Padding="12"
+                                    Content="{TemplateBinding Content}"/>
+                            </muxc:TabViewItem>
+                            <muxc:TabViewItem
+                                Header="See XAML"
+                                IsClosable="False">
+                                <muxc:MarkdownTextBlock
+                                    Background="#FF202020"
+                                    Padding="8"
+                                    Text="{TemplateBinding XamlCode}"/>
+                            </muxc:TabViewItem>
+                            <muxc:TabViewItem
+                                Header="See C#"
+                                IsClosable="False">
+                                <muxc:MarkdownTextBlock
+                                    Background="#FF202020"
+                                    Padding="8"
+                                    Text="{TemplateBinding CSharpCode}"/>
+                            </muxc:TabViewItem>
+                        </muxc:TabView>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>
