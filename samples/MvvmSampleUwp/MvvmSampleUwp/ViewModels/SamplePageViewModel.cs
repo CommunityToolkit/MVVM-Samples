@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.Storage;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using MvvmSampleUwp.Helpers;
+using MvvmSampleUwp.Services;
 
 namespace MvvmSampleUwp.ViewModels
 {
@@ -14,6 +15,11 @@ namespace MvvmSampleUwp.ViewModels
     /// </summary>
     public class SamplePageViewModel : ObservableObject
     {
+        /// <summary>
+        /// The <see cref="IFilesService"/> instance currently in use.
+        /// </summary>
+        private readonly IFilesService FilesServices = Ioc.Default.GetRequiredService<IFilesService>();
+
         public SamplePageViewModel()
         {
             LoadDocsCommand = new AsyncRelayCommand<string>(LoadDocsAsync);
@@ -45,8 +51,8 @@ namespace MvvmSampleUwp.ViewModels
             // Skip if the loading has already started
             if (!(LoadDocsCommand.ExecutionTask is null)) return;
 
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/docs/{name}.md"));
-            using var stream = await file.OpenStreamForReadAsync();
+            var path = Path.Combine(FilesServices.InstallationPath, "Assets", "docs", $"{name}.md");
+            using var stream = await FilesServices.OpenForReadAsync(path);
             using var reader = new StreamReader(stream);
             var text = await reader.ReadToEndAsync();
 

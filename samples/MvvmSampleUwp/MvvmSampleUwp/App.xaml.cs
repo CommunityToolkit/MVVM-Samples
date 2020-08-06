@@ -1,7 +1,10 @@
 ﻿using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using MvvmSampleUwp.Helpers;
+using MvvmSampleUwp.Services;
 
 namespace MvvmSampleUwp
 {
@@ -29,6 +32,12 @@ namespace MvvmSampleUwp
 
                 TitleBarHelper.StyleTitleBar();
                 TitleBarHelper.ExpandViewIntoTitleBar();
+
+                // Register services
+                Ioc.Default.ConfigureServices(services =>
+                {
+                    services.AddSingleton<IFilesService, FilesService>();
+                });
             }
 
             // Enable the prelaunch if needed, and activate the window
