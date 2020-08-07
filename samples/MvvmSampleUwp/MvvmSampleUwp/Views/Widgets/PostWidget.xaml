@@ -17,22 +17,23 @@
     <!--Feed-->
     <Grid
         BorderThickness="1"
-        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-        extensions:UIElementExtensions.ClipToBounds="True">
+        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Self text-->
-        <ScrollViewer
+        <Border
             Grid.Row="1"
-            CanContentRenderOutsideBounds="True">
-            <TextBlock
-                Text="{x:Bind ViewModel.Post.SelfText, Mode=OneWay}"
-                TextWrapping="WrapWholeWords"
-                Margin="16"/>
-        </ScrollViewer>
+            extensions:UIElementExtensions.ClipToBounds="True">
+            <ScrollViewer CanContentRenderOutsideBounds="True">
+                <TextBlock
+                    Text="{x:Bind ViewModel.Post.SelfText, Mode=OneWay}"
+                    TextWrapping="WrapWholeWords"
+                    Margin="16"/>
+            </ScrollViewer>
+        </Border>
 
         <!--Header-->
         <Grid
