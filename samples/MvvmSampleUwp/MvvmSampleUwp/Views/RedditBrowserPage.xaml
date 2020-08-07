@@ -11,8 +11,15 @@
     <Grid Padding="16">
         <controls:InteractiveSample xml:space="preserve">
             <controls:InteractiveSample.Content>
-                <Grid xml:space="default">
+                <Grid
+                    xml:space="default"
+                    ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <widgets:SubredditWidget/>
+                    <widgets:PostWidget Grid.Column="1"/>
                 </Grid>
             </controls:InteractiveSample.Content>
             <controls:InteractiveSample.XamlCode>

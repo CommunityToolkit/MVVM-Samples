@@ -14,7 +14,7 @@ namespace MvvmSampleUwp.ViewModels.Widgets
     /// <summary>
     /// A viewmodel for a subreddit widget.
     /// </summary>
-    public sealed class SubredditWidgetViewModel : ObservableObject
+    public sealed class SubredditWidgetViewModel : ObservableRecipient
     {
         /// <summary>
         /// Gets the <see cref="IRedditService"/> instance to use.
@@ -72,7 +72,23 @@ namespace MvvmSampleUwp.ViewModels.Widgets
         public string SelectedSubreddit
         {
             get => selectedSubreddit;
-            set => SetProperty(ref selectedSubreddit, value);
+            set
+            {
+                SetProperty(ref selectedSubreddit, value);
+
+                SettingsService.SetValue(nameof(SelectedSubreddit), value);
+            }
+        }
+
+        private Post selectedPost;
+
+        /// <summary>
+        /// Gets or sets the currently selected subreddit.
+        /// </summary>
+        public Post SelectedPost
+        {
+            get => selectedPost;
+            set => SetProperty(ref selectedPost, value, true);
         }
 
         /// <summary>

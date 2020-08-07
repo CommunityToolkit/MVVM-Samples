@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace MvvmSampleUwp.Models
@@ -55,5 +56,19 @@ namespace MvvmSampleUwp.Models
         /// </summary>
         [JsonProperty("thumbnail")]
         public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Gets the text of the post.
+        /// </summary>
+        /// <remarks>
+        /// Here we're just hardcoding some sample text to simplify how posts are displayed.
+        /// Normally, not all posts have a self text post available.
+        /// </remarks>
+        [JsonIgnore]
+        public string SelfText { get; } = string.Join(' ', Enumerable.Repeat(
+@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 20));
     }
 }

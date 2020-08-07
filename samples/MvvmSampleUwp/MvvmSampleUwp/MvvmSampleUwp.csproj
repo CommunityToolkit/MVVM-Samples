@@ -140,6 +140,7 @@
     <Compile Include="ViewModels\RelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\ObservableObjectPageViewModel.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
+    <Compile Include="ViewModels\Widgets\PostWidgetViewModel.cs" />
     <Compile Include="ViewModels\Widgets\SubredditWidgetViewModel.cs" />
     <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
       <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
@@ -167,6 +168,9 @@
     </Compile>
     <Compile Include="Views\ObservableObjectPage.xaml.cs">
       <DependentUpon>ObservableObjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Widgets\PostWidget.xaml.cs">
+      <DependentUpon>PostWidget.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Widgets\SubredditWidget.xaml.cs">
       <DependentUpon>SubredditWidget.xaml</DependentUpon>
@@ -265,6 +269,10 @@
     <Page Include="Views\ObservableObjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Widgets\PostWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Widgets\SubredditWidget.xaml">
       <SubType>Designer</SubType>

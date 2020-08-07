@@ -21,7 +21,7 @@
     <!--Feed-->
     <Grid
         BorderThickness="1"
-        BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
+        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="8"/>
@@ -55,7 +55,9 @@
         <ListView
             Grid.Row="1"
             Grid.RowSpan="2"
-            ItemsSource="{x:Bind ViewModel.Posts}">
+            ItemsSource="{x:Bind ViewModel.Posts}"
+            SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}"
+            ScrollViewer.CanContentRenderOutsideBounds="True">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Background" Value="#10FFFFFF"/>
@@ -76,7 +78,8 @@
                             Text="{x:Bind Title}"
                             FontSize="15"
                             FontWeight="Normal"
-                            TextWrapping="WrapWholeWords"/>
+                            TextWrapping="WrapWholeWords"
+                            VerticalAlignment="Center"/>
                         <controls:ImageEx
                             Grid.Column="1"
                             Source="{x:Bind Thumbnail}"
