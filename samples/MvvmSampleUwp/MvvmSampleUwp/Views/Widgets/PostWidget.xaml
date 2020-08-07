@@ -14,7 +14,7 @@
         <widgets:PostWidgetViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
 
-    <!--Feed-->
+    <!--Post-->
     <Grid
         BorderThickness="1"
         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
