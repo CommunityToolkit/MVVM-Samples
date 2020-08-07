@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using MvvmSampleUwp.Helpers;
 using MvvmSampleUwp.Services;
+using Refit;
 
 namespace MvvmSampleUwp
 {
@@ -37,6 +38,8 @@ namespace MvvmSampleUwp
                 Ioc.Default.ConfigureServices(services =>
                 {
                     services.AddSingleton<IFilesService, FilesService>();
+                    services.AddSingleton<ISettingsService, SettingsService>();
+                    services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
                 });
             }
 

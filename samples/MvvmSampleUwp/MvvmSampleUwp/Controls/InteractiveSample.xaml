@@ -7,6 +7,10 @@
 
     <!--Operator button-->
     <Style TargetType="local:InteractiveSample">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -14,8 +18,13 @@
                     <Border
                         CornerRadius="4"
                         BorderThickness="2"
-                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}">
-                        <muxc:TabView IsAddTabButtonVisible="False">
+                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <muxc:TabView
+                            IsAddTabButtonVisible="False"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
                             <muxc:TabView.Resources>
                                 <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
                                 <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>

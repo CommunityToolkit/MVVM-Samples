@@ -31,7 +31,8 @@ namespace MvvmSampleUwp
                 new SampleEntry(MessengerItem, typeof(MessengerPage), "Messenger and IMessenger", "messenger messaging message receiver recipient"),
                 new SampleEntry(SendMessagesItem, typeof(MessengerSendPage), "[IMessenger] Send messages", "messenger messaging message receiver recipient send"),
                 new SampleEntry(RequestMessagesItem, typeof(MessengerRequestPage), "[IMessenger] Request messages", "messenger messaging message receiver recipient request reply"),
-                new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator")
+                new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator"),
+                new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser") 
             };
 
             // Set the custom title bar to act as a draggable region
