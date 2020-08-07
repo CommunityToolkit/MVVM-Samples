@@ -136,7 +136,6 @@
     <Compile Include="ViewModels\AsyncRelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\MessengerPageViewModel.cs" />
     <Compile Include="ViewModels\IocPageViewModel.cs" />
-    <Compile Include="ViewModels\RedditBrowserPageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommandPageViewModel.cs" />
     <Compile Include="ViewModels\ObservableObjectPageViewModel.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
