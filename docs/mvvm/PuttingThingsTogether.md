@@ -256,6 +256,84 @@ Ioc.Default.ConfigureServices(services =>
 
 This will register a singleton instance of our `SettingsService` as a type implementing `ISettingsService`. This means that every time one of our viewmodels uses `Ioc.Default.GetService<ISettingsService>()` while the app in use is the UWP one, it will receive a `SettingsService` instance, which will use the UWP APIs behind the scene to manipulate settings. Perfect!
 
+## Building the Reddit service
+
+The last component of the backend that we're missing is a service that is able to use the Reddit REST APIs to fetch the posts from the subreddits we're interested in. To build it, we're going to use [refit](https://github.com/reactiveui/refit), which is a library to easily build type-safe services to interact with REST APIs. As before, we need to define the interface with all the APIs that our service will implement, like so:
+
+```csharp
+public interface IRedditService
+{
+    /// <summary>
+    /// Get a list of posts from a given subreddit
+    /// </summary>
+    /// <param name="subreddit">The subreddit name.</param>
+    [Get("/r/{subreddit}/.json")]
+    Task<PostsQueryResponse> GetSubredditPostsAsync(string subreddit);
+}
+```
+
+That `PostsQueryResponse` is a model we wrote that maps the JSON response for that API. The exact structure of that class is not important - suffice to say that it contains a collection of `Post` items, which are simple models representing our posts, that like like this:
+
+```csharp
+public class Post
+{
+    /// <summary>
+    /// Gets or sets the title of the post.
+    /// </summary>
+    public string Title { get; set; }
+
+    /// <summary>
+    /// Gets or sets the URL to the post thumbnail, if present.
+    /// </summary>
+    public string Thumbnail { get; set; }
+
+    /// <summary>
+    /// Gets the text of the post.
+    /// </summary>
+    public string SelfText { get; }
+}
+```
+
+Once we have our service and our models, can plug them into our viewmodels to complete our backend. While doing so, we can also replace those `object` placeholders with the `Post` type we've defined:
+
+```csharp
+public sealed class SubredditWidgetViewModel : ObservableRecipient
+{
+/// <summary>
+/// Gets the <see cref="IRedditService"/> instance to use.
+/// </summary>
+private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
+
+/// <summary>
+/// Loads the posts from a specified subreddit.
+/// </summary>
+private async Task LoadPostsAsync()
+{
+    var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+
+    Posts.Clear();
+
+    foreach (var item in response.Data.Items)
+    {
+        Posts.Add(item.Data);
+    }
+}
+```
+
+We have added a new `IRedditService` field to store our service, just like we did for the settings service, and we implemented our `LoadPostsAsync` method, which was previously empty.
+
+The last missing piece now is just to inject the actual service into our service provider. The big difference in this case is that by using `refit` we don't actually need to implement the service at all! The library will automatically create a type implementing the service for us, behind the scenes. So we only need to get an `IRedditService` instance and inject it directly, like so:
+
+```csharp
+Ioc.Default.ConfigureServices(services =>
+{
+    services.AddSingleton<ISettingsService, SettingsService>();
+    services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
+});
+```
+
+And that's all we need to do! We now have all our backend ready to use, including two custom services that we created specifically for this app! 🎉
+
 ## Building the UI
 
 Now that all the backend is completed, we can write the UI for our widgets. Note how using the MVVM pattern let us focus exclusively on the business logic at first, without having to write any UI-related code until now. Here we'll remove all the UI code that's not interacting with our viewmodels, for simplicity, and we'll go through each different control one by one. The full source code can be found in the sample app.

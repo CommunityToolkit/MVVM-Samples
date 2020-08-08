@@ -60,7 +60,7 @@
             ScrollViewer.CanContentRenderOutsideBounds="True">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="#10FFFFFF"/>
+                    <Setter Property="Background" Value="#30808080"/>
                     <Setter Property="Margin" Value="0,2,0,2"/>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>

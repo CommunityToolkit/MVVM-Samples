@@ -117,7 +117,7 @@
                         <muxc:NavigationViewItem Content="Creating a Service" Icon="Calendar" ToolTipService.ToolTip="Calendar">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem x:Name="SettingsServiceItem" Content="Settings service" Icon="Mail" ToolTipService.ToolTip="Mail" />
-                                <muxc:NavigationViewItem Content="Navigation" Icon="Calendar" ToolTipService.ToolTip="Calendar"/>
+                                <muxc:NavigationViewItem x:Name="RedditServiceItem" Content="Reddit service" Icon="Mail" ToolTipService.ToolTip="Mail" />
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem

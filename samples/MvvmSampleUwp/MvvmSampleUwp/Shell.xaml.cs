@@ -39,6 +39,7 @@ namespace MvvmSampleUwp
                 new SampleEntry(RedditBrowserOverviewItem, typeof(PuttingThingsTogetherPage), "Putting things together"),
                 new SampleEntry(ViewModelsSetupItem, typeof(SettingUpTheViewModelsPage), "Setting up the ViewModels"),
                 new SampleEntry(SettingsServiceItem, typeof(SettingsServicePage), "Settings service"),
+                new SampleEntry(RedditServiceItem, typeof(RedditServicePage), "Reddit service"),
                 new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
                 new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
             };
