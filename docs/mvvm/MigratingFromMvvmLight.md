@@ -1,7 +1,7 @@
 ---
 title: Migrating from MvvmLight
 author: jamesmcroft
-description: This article describes how to migrate MVVM Light solutions to the Windows Community Toolkit Mvvm framework.
+description: This article describes how to migrate MVVM Light solutions to the Windows Community Toolkit MVVM framework.
 keywords: windows 10, uwp, windows community toolkit, uwp community toolkit, uwp toolkit, mvvm, mvvmlight, net core, net standard
 dev_langs:
   - csharp
@@ -11,58 +11,132 @@ dev_langs:
 
 This article outlines some of the key differences between the [MVVM Light Toolkit](https://github.com/lbugnion/mvvmlight) and the Windows Community Toolkit MVVM framework to ease your migration. 
 
-## Differences
+## Installing the WCT MVVM Toolkit
 
-### ObservableObject
-- Namespace (GalaSoft.MvvmLight -> Microsoft.Toolkit.Mvvm.ComponentModel)
+To take advantage of the Windows Community Toolkit MVVM framework, you'll first need to install the latest NuGet package to your existing Windows application.
 
-#### Changed methods
-- RaisePropertyChanged(string) -> OnPropertyChanged(string)
-- Set(Expression, ref, value) -> SetProperty(Expression, value)
-- Set(propertyName, ref, value) -> SetProperty(ref, value, propertyName)
-- Set(ref, value, propertyName) -> SetProperty(ref, value, propertyName)
+### Install via .NET CLI
 
-#### Missing properties
-- protected PropertyChangedEventHandler PropertyChangedHandler
-  - Can be accessed through PropertyChanged property
+```
+dotnet add package Microsoft.Toolkit.Mvvm --version x.x.x
+```
 
-#### Missing methods
-- VerifyPropertyName
-  - No replacement
+### Install via PackageReference
 
-- RaisePropertyChanged(Expression)
-  - No replacement, change from RaisePropertyChanged(() => this.X) to RaisePropertyChanged(nameof(X))
+```
+<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="x.x.x" />
+```
 
-### ViewModelBase
-- Type (ViewModelBase -> ObservableRecipient)
+## Migrating ObservableObject
 
-#### Changed properties
-- MessengerInstance(IMessenger) -> Messenger(IMessenger)
+The following steps focus on migrating your existing components which take advantage of the `ObservableObject` of the MVVM Light Toolkit. 
 
-#### Changed methods
-- ICleanup.Cleanup -> OnDeactivated
-- Set(propertyName, ref, newValue, broadcast) -> SetProperty(ref, newValue, broadcast, propertyName)
-  - NewValue is not optional
-  - Broadcast is not optional
-- Set(ref, newValue, broadcast, propertyName) -> SetProperty(ref, newValue, broadcast, propertyName)
-  - NewValue is not optional
-  - Broadcast is not optional
+The Windows Community Toolkit MVVM framework provides an [`ObservableObject`](ObservableObject) type that is similar. 
 
-#### Broadcast method
-- Publishes message with same signature
+The first change here will be swapping using directives in your components.
 
-#### Missing properties
-- IsInDesignMode
-  - No replacement, used only for design mode in VS or Blend
+```csharp
+// MvvmLight
+using GalaSoft.MvvmLight;
 
-#### Missing methods
-- RaisePropertyChanged(propertyName, oldValue, newValue, broadcast)
-  - No direct replacement. 
-- RaisePropertyChanged(Expression, oldValue, newValue, broadcast)
-  - No direct replacement.
-- Set(Expression, ref, newValue, broadcast)
-  - No direct replacement.
+// Toolkit.Mvvm
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+```
 
-## Missing
+Below are a list of migrations that will need to be performed if being used in your current solution.
 
-- Android/iOS Xamarin Bindings
+### ObservableObject Methods
+
+#### VerifyPropertyName ( string )
+
+There is no direct replacement for the `VerifyPropertyName(string)` method and any code using this should be altered or removed.
+
+```csharp
+// MvvmLight
+this.VerifyPropertyName(nameof(this.MyProperty));
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+#### RaisePropertyChanged ( string )
+
+`RaisePropertyChanged(string)` has a renamed direct replacement, `OnPropertyChanged(string)`.
+
+```csharp
+// MvvmLight
+this.RaisePropertyChanged(nameof(this.MyProperty));
+
+// Toolkit.Mvvm
+this.OnPropertyChanged(nameof(this.MyProperty));
+```
+
+#### RaisePropertyChanged ( Expression )
+
+`RaisePropertyChanged(Expression)` does not have a direct replacement. 
+
+It is recommended for improved performance that you replace `RaisePropertyChanged(Expression)` with the Toolkit's `OnPropertyChanged(string)` using the `nameof` keyword instead.
+
+```csharp
+// MvvmLight
+this.RaisePropertyChanged(() => this.MyProperty);
+
+// Toolkit.Mvvm
+this.OnPropertyChanged(nameof(this.MyProperty));
+```
+
+#### Set ( Expression, ref, value )
+
+`Set(Expression, ref, value)` does not have a like-for-like method signature replacement. 
+
+However, `SetProperty(Expression, value)` provides the same functionality without the additional reference parameter.
+
+```csharp
+// MvvmLight
+this.Set(() => this.MyProperty, ref this.myProperty, value);
+
+// Toolkit.Mvvm
+this.SetProperty(() => this.MyProperty, value);
+```
+
+#### Set ( string, ref, value )
+
+`Set(string, ref, value)` does not have a like-for-like method signature replacement. 
+
+However, `SetProperty(ref, value, string)` provides the same functionality with re-ordered parameters.
+
+```csharp
+// MvvmLight
+this.Set(nameof(this.MyProperty), ref this.myProperty, value);
+
+// Toolkit.Mvvm
+this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
+```
+
+#### Set ( ref, value, string )
+
+`Set(ref, value, string)` has a renamed direct replacement, `SetProperty(ref, value, string)`.
+
+```csharp
+// MvvmLight
+this.Set(ref this.myProperty, value, nameof(this.MyProperty));
+
+// Toolkit.Mvvm
+this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
+```
+
+### ObservableObject Properties
+
+#### PropertyChangedHandler
+
+`PropertyChangedHandler` does not have a direct replacement. 
+
+However, the same implementation can be achieved by accessing the `PropertyChanged` event handler from the `ObservableObject`.
+
+```csharp
+// MvvmLight
+PropertyChangedEventHandler handler = this.PropertyChangedHandler;
+
+// Toolkit.Mvvm
+PropertyChangedEventHandler handler = this.PropertyChanged;
+```
