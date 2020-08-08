@@ -71,11 +71,13 @@ this.RaisePropertyChanged(nameof(this.MyProperty));
 this.OnPropertyChanged(nameof(this.MyProperty));
 ```
 
-#### RaisePropertyChanged ( Expression )
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
 
-`RaisePropertyChanged(Expression)` does not have a direct replacement. 
+#### RaisePropertyChanged<T> ( Expression )
 
-It is recommended for improved performance that you replace `RaisePropertyChanged(Expression)` with the Toolkit's `OnPropertyChanged(string)` using the `nameof` keyword instead.
+`RaisePropertyChanged<T>(Expression)` does not have a direct replacement. 
+
+It is recommended for improved performance that you replace `RaisePropertyChanged<T>(Expression)` with the Toolkit's `OnPropertyChanged(string)` using the `nameof` keyword instead.
 
 ```csharp
 // MvvmLight
@@ -85,25 +87,25 @@ this.RaisePropertyChanged(() => this.MyProperty);
 this.OnPropertyChanged(nameof(this.MyProperty));
 ```
 
-#### Set ( Expression, ref, value )
+#### Set<T> ( Expression, ref T, T )
 
-`Set(Expression, ref, value)` does not have a like-for-like method signature replacement. 
+`Set(Expression, ref T, T)` does not have a like-for-like method signature replacement. 
 
-However, `SetProperty(Expression, value)` provides the same functionality without the additional reference parameter.
+However, `SetProperty(ref T, T, string)` provides the same functionality with additional performance benefits. 
 
 ```csharp
 // MvvmLight
 this.Set(() => this.MyProperty, ref this.myProperty, value);
 
 // Toolkit.Mvvm
-this.SetProperty(() => this.MyProperty, value);
+this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
 
-#### Set ( string, ref, value )
+#### Set<T> ( string, ref T, T )
 
-`Set(string, ref, value)` does not have a like-for-like method signature replacement. 
+`Set<T>(string, ref T, T)` does not have a like-for-like method signature replacement. 
 
-However, `SetProperty(ref, value, string)` provides the same functionality with re-ordered parameters.
+However, `SetProperty<T>(ref T, T, string)` provides the same functionality with re-ordered parameters.
 
 ```csharp
 // MvvmLight
@@ -113,9 +115,9 @@ this.Set(nameof(this.MyProperty), ref this.myProperty, value);
 this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
 
-#### Set ( ref, value, string )
+#### Set<T> ( ref T, T, string )
 
-`Set(ref, value, string)` has a renamed direct replacement, `SetProperty(ref, value, string)`.
+`Set<T>(ref T, T, string)` has a renamed direct replacement, `SetProperty<T>(ref T, T, string)`.
 
 ```csharp
 // MvvmLight
@@ -169,11 +171,11 @@ Note, the `OnActivated` and `OnDeactivated` methods can be called from your exis
 
 However, the `ObservableRecipient` exposes an `IsActive` property that also controls the call to these methods when it is set. 
 
-#### Set ( string, ref, value, bool )
+#### Set<T> ( string, ref T, T, bool )
 
-`Set(string, ref, value, bool)` does not have a like-for-like method signature replacement. 
+`Set<T>(string, ref T, T, bool)` does not have a like-for-like method signature replacement. 
 
-However, `SetProperty(ref, value, bool, string)` provides the same functionality with re-ordered parameters.
+However, `SetProperty<T>(ref T, T, bool, string)` provides the same functionality with re-ordered parameters.
 
 ```csharp
 // MvvmLight
@@ -185,9 +187,9 @@ this.SetProperty(ref this.myProperty, value, true, nameof(this.MyProperty));
 
 Note, the value and broadcast boolean parameters are not optional in the Toolkit's implementation and must be provided to use this method.
 
-#### Set ( ref, value, bool, string )
+#### Set<T> ( ref T, T, bool, string )
 
-`Set(ref, value, bool, string)` has a renamed direct replacement, `SetProperty(ref, value, bool, string)`. 
+`Set<T>(ref T, T, bool, string)` has a renamed direct replacement, `SetProperty<T>(ref T, T, bool, string)`. 
 
 ```csharp
 // MvvmLight
