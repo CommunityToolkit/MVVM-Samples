@@ -24,6 +24,7 @@
             x:Name="NavigationView"
             IsTitleBarAutoPaddingEnabled="False"
             IsBackEnabled="False"
+            IsSettingsVisible="False"
             ItemInvoked="NavigationView_OnItemInvoked"
             BackRequested="NavigationView_OnBackRequested">
 
@@ -105,19 +106,23 @@
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem
+                    x:Name="RedditBrowserOverviewItem"
                     Content="Putting Things Together"
                     Icon="Contact"
-                    ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app."
-                    Tag="SamplePage2"
-                    IsExpanded="True">
+                    ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app.">
                     <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem Content="Creating a ViewModel" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
-                        <muxc:NavigationViewItem Content="Creating a Service" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4">
+                        <muxc:NavigationViewItem
+                            x:Name="ViewModelsSetupItem"
+                            Content="Setting up the ViewModels" Icon="Mail" ToolTipService.ToolTip="Mail"/>
+                        <muxc:NavigationViewItem Content="Creating a Service" Icon="Calendar" ToolTipService.ToolTip="Calendar">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="App Settings" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
-                                <muxc:NavigationViewItem Content="Navigation" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                                <muxc:NavigationViewItem x:Name="SettingsServiceItem" Content="Settings service" Icon="Mail" ToolTipService.ToolTip="Mail" />
+                                <muxc:NavigationViewItem Content="Navigation" Icon="Calendar" ToolTipService.ToolTip="Calendar"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem
+                            x:Name="BuildingTheUIItem"
+                            Content="Building the UI" Icon="Mail" ToolTipService.ToolTip="Mail"/>
                         <muxc:NavigationViewItem x:Name="FinalResultItem" Content="The final result!" Icon="Mail" ToolTipService.ToolTip="Mail"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>

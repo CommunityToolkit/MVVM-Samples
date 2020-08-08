@@ -144,6 +144,18 @@
     <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
       <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BuildingTheUIPage.xaml.cs">
+      <DependentUpon>BuildingTheUIPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsServicePage.xaml.cs">
+      <DependentUpon>SettingsServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingUpTheViewModelsPage.xaml.cs">
+      <DependentUpon>SettingUpTheViewModelsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PuttingThingsTogetherPage.xaml.cs">
+      <DependentUpon>PuttingThingsTogetherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MessengerRequestPage.xaml.cs">
       <DependentUpon>MessengerRequestPage.xaml</DependentUpon>
     </Compile>
@@ -237,6 +249,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\BuildingTheUIPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingsServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingUpTheViewModelsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PuttingThingsTogetherPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MessengerRequestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -298,7 +326,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\docs\PuttingThingsTogether.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
