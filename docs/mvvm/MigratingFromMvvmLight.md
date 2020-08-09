@@ -101,6 +101,8 @@ this.Set(() => this.MyProperty, ref this.myProperty, value);
 this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
 
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
 #### Set<T> ( string, ref T, T )
 
 `Set<T>(string, ref T, T)` does not have a like-for-like method signature replacement. 
@@ -115,6 +117,8 @@ this.Set(nameof(this.MyProperty), ref this.myProperty, value);
 this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
 
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
 #### Set<T> ( ref T, T, string )
 
 `Set<T>(ref T, T, string)` has a renamed direct replacement, `SetProperty<T>(ref T, T, string)`.
@@ -126,6 +130,8 @@ this.Set(ref this.myProperty, value, nameof(this.MyProperty));
 // Toolkit.Mvvm
 this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
+
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
 
 ### ObservableObject Properties
 
@@ -187,6 +193,8 @@ this.SetProperty(ref this.myProperty, value, true, nameof(this.MyProperty));
 
 Note, the value and broadcast boolean parameters are not optional in the Toolkit's implementation and must be provided to use this method.
 
+Also, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
 #### Set<T> ( ref T, T, bool, string )
 
 `Set<T>(ref T, T, bool, string)` has a renamed direct replacement, `SetProperty<T>(ref T, T, bool, string)`. 
@@ -198,6 +206,8 @@ this.Set(ref this.myProperty, value, true, nameof(this.MyProperty));
 // Toolkit.Mvvm
 this.SetProperty(ref this.myProperty, value, true, nameof(this.MyProperty));
 ```
+
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
 
 #### Set<T> ( Expression, ref T, T, bool )
 
@@ -229,6 +239,8 @@ this.Broadcast<MyObject>(this.oldValue, this.newValue, nameof(this.MyProperty));
 
 Note, the message sent via the `Messenger` property when calling the `Broadcast` method has a direct replacement for `PropertyChangedMessage` within the Toolkit's framework. 
 
+Also, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
 #### RaisePropertyChanged<T> ( string, T, T, bool )
 
 There is no direct replacement for the `RaisePropertyChanged<T>(string, T, T, bool)` method and any code using this should be altered or removed.
@@ -243,14 +255,16 @@ this.RaisePropertyChanged<MyObject>(nameof(this.MyProperty), this.oldValue, this
 
 #### RaisePropertyChanged<T> ( Expression, T, T, bool )
 
-There is no direct replacement for the `RaisePropertyChanged<T>(Expression, T, T, bool)` method and any code using this should be altered or removed.
+There is no direct replacement for the `RaisePropertyChanged<T>(Expression, T, T, bool)` method.
+
+It is recommended for improved performance that you replace this with the Toolkit's `RaisePropertyChanged<T>(string, T, T bool)` using the `nameof` keyword instead.
 
 ```csharp
 // MvvmLight
 this.RaisePropertyChanged<MyObject>(() => this.MyProperty, this.oldValue, this.newValue, true);
 
 // Toolkit.Mvvm
-// No direct replacement, remove
+this.RaisePropertyChanged<MyObject>(nameof(this.MyProperty), this.oldValue, this.newValue, true);
 ```
 
 ### ViewModelBase Properties
