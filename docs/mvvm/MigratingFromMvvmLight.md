@@ -1,7 +1,7 @@
 ---
 title: Migrating from MvvmLight
 author: jamesmcroft
-description: This article describes how to migrate MVVM Light solutions to the Windows Community Toolkit MVVM framework.
+description: This article describes how to migrate MvvmLight solutions to the Windows Community Toolkit MVVM framework.
 keywords: windows 10, uwp, windows community toolkit, uwp community toolkit, uwp toolkit, mvvm, mvvmlight, net core, net standard
 dev_langs:
   - csharp
@@ -9,7 +9,7 @@ dev_langs:
 
 # Migrating from MvvmLight
 
-This article outlines some of the key differences between the [MVVM Light Toolkit](https://github.com/lbugnion/mvvmlight) and the Windows Community Toolkit MVVM framework to ease your migration. 
+This article outlines some of the key differences between the [MvvmLight Toolkit](https://github.com/lbugnion/mvvmlight) and the Windows Community Toolkit MVVM framework to ease your migration. 
 
 ## Installing the WCT MVVM Toolkit
 
@@ -29,7 +29,7 @@ dotnet add package Microsoft.Toolkit.Mvvm --version x.x.x
 
 ## Migrating ObservableObject
 
-The following steps focus on migrating your existing components which take advantage of the `ObservableObject` of the MVVM Light Toolkit. 
+The following steps focus on migrating your existing components which take advantage of the `ObservableObject` of the MvvmLight Toolkit. 
 
 The Windows Community Toolkit MVVM framework provides an [`ObservableObject`](ObservableObject) type that is similar. 
 
@@ -151,7 +151,7 @@ PropertyChangedEventHandler handler = this.PropertyChanged;
 
 ## Migrating ViewModelBase
 
-The following steps focus on migrating your existing components which take advantage of the `ViewModelBase` of the MVVM Light Toolkit. 
+The following steps focus on migrating your existing components which take advantage of the `ViewModelBase` of the MvvmLight Toolkit. 
 
 The Windows Community Toolkit MVVM framework provides an [`ObservableRecipient`](ObservableRecipient) type that provides similar functionality. 
 
@@ -306,3 +306,66 @@ var isInDesignMode = ViewModelBase.IsInDesignModeStatic;
 // Toolkit.Mvvm
 // No direct replacement, remove
 ```
+
+## SimpleIoc
+
+The [IoC](Ioc) implementation in the MVVM Toolkit takes advantage of existing .NET APIs through the `Microsoft.Extensions.DependencyInjection` library. 
+
+This is the biggest change between MvvmLight and the MVVM Toolkit. 
+
+This implementation will feel familiar if you've implemented dependency injection with ASP.NET Core applications.
+
+### Registering your dependencies
+
+With MvvmLight, you may have registered your dependencies similar to these scenarios using `SimpleIoc`.
+
+```csharp
+public void RegisterServices()
+{
+  SimpleIoc.Default.Register<INavigationService, NavigationService>();
+
+  SimpleIoc.Default.Register<IDialogService>(() => new DialogService());
+}
+```
+
+With the MVVM Toolkit, you would achieve the same as follows.
+
+```csharp
+public void RegisterServices()
+{
+  Ioc.Default.ConfigureServices(services => 
+  {
+    services.AddSingleton<INavigationService, NavigationService>();
+
+    services.AddSingleton<IDialogService>(new DialogService());
+  });
+}
+```
+
+### Resolving dependencies
+
+Ioc in the MVVM Toolkit, like many other service providers, is capable of constructor injection. 
+
+There are also often times in your application where you need to access the services from the service itself.
+
+In MvvmLight, you might access a service directly as follows:
+
+```csharp
+IDialogService dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
+```
+
+Migrating to the MVVM Toolkit, you will achieve the same with:
+
+```csharp
+IDialogService dialogService = Ioc.Default.GetService<IDialogService>();
+```
+
+### Removing dependencies
+
+With `SimpleIoc`, you would unregister your dependencies with the following method call.
+
+```csharp
+SimpleIoc.Default.Unregister<INavigationService>();
+```
+
+There is no direct replacement for removing dependencies with the MVVM Toolkit `Ioc` implementation.
