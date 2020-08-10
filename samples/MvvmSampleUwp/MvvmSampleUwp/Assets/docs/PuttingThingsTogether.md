@@ -301,23 +301,24 @@ Once we have our service and our models, can plug them into our viewmodels to co
 ```csharp
 public sealed class SubredditWidgetViewModel : ObservableRecipient
 {
-/// <summary>
-/// Gets the <see cref="IRedditService"/> instance to use.
-/// </summary>
-private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
+    /// <summary>
+    /// Gets the <see cref="IRedditService"/> instance to use.
+    /// </summary>
+    private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
 
-/// <summary>
-/// Loads the posts from a specified subreddit.
-/// </summary>
-private async Task LoadPostsAsync()
-{
-    var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
-
-    Posts.Clear();
-
-    foreach (var item in response.Data.Items)
+    /// <summary>
+    /// Loads the posts from a specified subreddit.
+    /// </summary>
+    private async Task LoadPostsAsync()
     {
-        Posts.Add(item.Data);
+        var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+
+        Posts.Clear();
+
+        foreach (var item in response.Data.Items)
+        {
+            Posts.Add(item.Data);
+        }
     }
 }
 ```

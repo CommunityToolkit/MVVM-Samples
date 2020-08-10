@@ -40,7 +40,7 @@ public class ConsoleLogger : ILogger
     private readonly IFileService FileService;
     private readonly IConsoleService ConsoleService;
 
-    public FileLogger(
+    public ConsoleLogger(
         IFileService fileService,
         IConsoleService consoleService)
     {
@@ -63,8 +63,8 @@ Ioc.Default.ConfigureServices(services =>
     services.AddSingleton<ILogger, ConsoleLogger>();
 });
 
-// Retrieve a console logger with constructor injection
-ConsoleLogger consoleLogger = Ioc.Default.GetService<ConsoleLogger>();
+// Retrieve a logger service with constructor injection
+ILogger consoleLogger = Ioc.Default.GetService<ILogger>();
 ```
 
 The DI service provider will automatically check whether all the necessary services are registered, then it will retrieve them and invoke the constructor for the registered `ILogger` concrete type, to get the instance to return - all done automatically!
