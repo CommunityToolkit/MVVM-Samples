@@ -52,9 +52,6 @@ When a recipient is not needed anymore, you should unregister it so that it will
 // Unregisters the recipient from a message type
 Messenger.Default.Unregister<LoggedInUserChangedMessage>(this);
 
-// Unregisters the recipient from a message type in a specified channel
-Messenger.Default.Unregister<LoggedInUserChangedMessage, int>(this, 42);
-
 // Unregister the recipient from all messages, across all channels
 Messenger.Default.UnregisterAll(this);
 ```
