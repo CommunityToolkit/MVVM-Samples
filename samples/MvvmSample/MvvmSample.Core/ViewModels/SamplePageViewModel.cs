@@ -61,5 +61,10 @@ namespace MvvmSampleUwp.ViewModels
 
             OnPropertyChanged(nameof(GetParagraph));
         }
+
+        public void Rebind()
+        {
+            OnPropertyChanged(nameof(Texts));
+        }
     }
 }

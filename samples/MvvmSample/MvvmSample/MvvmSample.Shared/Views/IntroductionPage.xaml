@@ -1,28 +1,31 @@
-﻿<Page
-    x:Class="MvvmSampleUwp.Views.IntroductionPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    mc:Ignorable="d"
-    NavigationCacheMode="Enabled">
+﻿<Page x:Class="MvvmSampleUwp.Views.IntroductionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:MvvmSampleUwp.Controls"
+      mc:Ignorable="d"
+      NavigationCacheMode="Enabled">
     <Page.DataContext>
-        <viewModels:ObservableObjectPageViewModel x:Name="ViewModel"/>
+        <viewModels:ObservableObjectPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="Introduction"/>
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}"
+                                      CommandParameter="Introduction" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
+    <ScrollViewer>
         <StackPanel Spacing="16">
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Introduction to the MVVM package'), Mode=OneWay}"/>
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('When should I use this package?'), Mode=OneWay}"/>
+            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Introduction to the MVVM package'}"
+                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'When should I use this package?'}"
+                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
         </StackPanel>
     </ScrollViewer>
 </Page>

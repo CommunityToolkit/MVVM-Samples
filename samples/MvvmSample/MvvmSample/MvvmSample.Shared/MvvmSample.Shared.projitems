@@ -19,6 +19,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\InteractiveSample.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\JavaScriptControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MarkedControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TitleBarHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -113,5 +115,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableRecipient.md" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\RelayCommand.md" />
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)marked.min.js" />
   </ItemGroup>
 </Project>

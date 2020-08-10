@@ -31,16 +31,20 @@ namespace MvvmSampleUwp
             };
 
             // Set the custom title bar to act as a draggable region
-            Window.Current.SetTitleBar(TitleBarBorder);
+            //Window.Current.SetTitleBar(TitleBarBorder);
         }
 
         // Navigates to a sample page when a button is clicked
         private void NavigationView_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
+            Console.WriteLine("Invoked - start");
             if (NavigationItems.FirstOrDefault(item => item.Item == args.InvokedItemContainer)?.PageType is Type pageType)
             {
+                Console.WriteLine($"Navigating to {pageType.Name}");
                 NavigationFrame.Navigate(pageType);
+                //NavigationFrame.Content = new IntroductionPage();
             }
+            Console.WriteLine("Invoked - end");
         }
 
         // Sets whether or not the back button is enabled
@@ -63,9 +67,9 @@ namespace MvvmSampleUwp
         // Select the introduction item when the shell is loaded
         private void Shell_OnLoaded(object sender, RoutedEventArgs e)
         {
-            NavigationView.SelectedItem = IntroductionItem;
+            //NavigationView.SelectedItem = IntroductionItem;
 
-            NavigationFrame.Navigate(typeof(IntroductionPage));
+            //NavigationFrame.Navigate(typeof(IntroductionPage));
         }
 
         // Updates the search results
