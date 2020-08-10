@@ -137,16 +137,16 @@ Note, string parameter is not required if the method is being called from the pr
 
 #### PropertyChangedHandler
 
-`PropertyChangedHandler` does not have a direct replacement. 
+`PropertyChangedHandler` does not have a direct replacement.
 
-However, the same implementation can be achieved by accessing the `PropertyChanged` event handler from the `ObservableObject`.
+To raise a property changed event via the `PropertyChanged` event handler, you need to call the `OnPropertyChanged` method instead. 
 
 ```csharp
 // MvvmLight
 PropertyChangedEventHandler handler = this.PropertyChangedHandler;
 
 // Toolkit.Mvvm
-PropertyChangedEventHandler handler = this.PropertyChanged;
+this.OnPropertyChanged(nameof(this.MyProperty));
 ```
 
 ## Migrating ViewModelBase
@@ -369,3 +369,41 @@ SimpleIoc.Default.Unregister<INavigationService>();
 ```
 
 There is no direct replacement for removing dependencies with the MVVM Toolkit `Ioc` implementation.
+
+### Preferred constructor
+
+When registering your dependencies with MvvmLight's `SimpleIoc`, you have the option in your classes to provide a `PreferredConstructor` attribute for those with multiple constructors. 
+
+This attribute will need removing where used. 
+
+The dependency injection within the MVVM Toolkit's `Ioc` determines the best constructor based on the dependencies that have been added to the collection.
+
+The example below shows a dependency that relies on other dependencies with multiple constructors.
+
+```csharp
+public class NavigationService : INavigationService
+{
+    public NavigationService()
+    {
+    }
+
+    public NavigationService(IDialogService dialogService) : this(null, dialogService)
+    {
+    }
+
+    public NavigationService(IToastService toastService, IDialogService dialogService)
+    {
+    }
+}
+```
+
+With your dependencies registered as below, the `NavigationService(IToastService, IDialogService)` constructor will be called as both of the required dependencies are registered also.
+
+```csharp
+Ioc.Default.ConfigureServices(services =>
+{
+    services.AddSingleton<IDialogService, DialogService>();
+    services.AddSingleton<IToastService, ToastService>();
+    services.AddSingleton<INavigationService, NavigationService>();
+});
+```
