@@ -28,95 +28,90 @@
             ItemInvoked="NavigationView_OnItemInvoked"
             BackRequested="NavigationView_OnBackRequested">
 
-            <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox
-                    QueryIcon="Find"
-                    AutomationProperties.Name="Search"
-                    PlaceholderText="Search"
-                    TextChanged="SearchBox_OnTextChanged"
-                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen">
-                    <AutoSuggestBox.ItemTemplate>
-                        <DataTemplate x:DataType="mvvmSampleUwp:SampleEntry">
-                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"/>
-                        </DataTemplate>
-                    </AutoSuggestBox.ItemTemplate>
-                </AutoSuggestBox>
-            </muxc:NavigationView.AutoSuggestBox>
+        <muxc:NavigationView.AutoSuggestBox>
+            <AutoSuggestBox QueryIcon="Find"
+                            AutomationProperties.Name="Search"
+                            PlaceholderText="Search"
+                            TextChanged="SearchBox_OnTextChanged"
+                            SuggestionChosen="AutoSuggestBox_OnSuggestionChosen">
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="mvvmSampleUwp:SampleEntry">
+                        <TextBlock Text="{x:Bind Name}"
+                                   TextTrimming="CharacterEllipsis" />
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+            </AutoSuggestBox>
+        </muxc:NavigationView.AutoSuggestBox>
 
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem
-                    x:Name="IntroductionItem"
-                    Content="Introduction"
-                    Icon="Play"
-                    ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains."/>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem x:Name="IntroductionItem"
+                                     Content="Introduction"
+                                     Icon="Play" 
+                                     ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains."/>
                 <muxc:NavigationViewItemSeparator/>
                 <!--IsExpanded="True"-->
-                <muxc:NavigationViewItem Content="Building Blocks"
-                                         Icon="ViewAll"
-                                         ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit." />
+            <muxc:NavigationViewItem Content="Building Blocks"
+                                     Icon="ViewAll" />
+                <!--ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit." />-->
                 <!--<muxc:NavigationViewItem.MenuItems>-->
-                    <muxc:NavigationViewItem x:Name="ObservableObjectItem"
-                                             Content="ObservableObject"
-                                             Icon="Sort"
-                                             ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged." />
+            <muxc:NavigationViewItem x:Name="ObservableObjectItem"
+                                     Content="ObservableObject"
+                                     Icon="Sort" /> 
+                <!--ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged." />-->
                 <!--IsExpanded="True"-->
                 <muxc:NavigationViewItem Content="Commands"
-                                         Icon="Calendar"
-                                         ToolTipService.ToolTip="A collection of types implementing the ICommand interface." />
+                                         Icon="Calendar" /> 
+                <!--ToolTipService.ToolTip="A collection of types implementing the ICommand interface." />-->
                 <!--<muxc:NavigationViewItem.MenuItems>-->
-                    <muxc:NavigationViewItem x:Name="CommandsItem"
-                                             Content="Introduction"
-                                             Icon="Library"
-                                             ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit." />
-                    <muxc:NavigationViewItem x:Name="AsyncCommandsItem"
-                                             Content="Async commands"
-                                             Icon="Flag"
-                                             ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations." />
+            <muxc:NavigationViewItem x:Name="CommandsItem"
+                                     Content="Introduction"
+                                     Icon="Library" />
+                <!--ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit." />-->
+            <muxc:NavigationViewItem x:Name="AsyncCommandsItem"
+                                     Content="Async commands"
+                                     Icon="Flag" />
+                <!--ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations." />-->
                 <!--</muxc:NavigationViewItem.MenuItems>-->
                 <!--IsExpanded="True"-->
-                <muxc:NavigationViewItem x:Name="MessengerItem"
-                                         Content="Messenger"
-                                         Icon="Comment"
-                                         ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules." />
+            <muxc:NavigationViewItem x:Name="MessengerItem"
+                                     Content="Messenger"
+                                     Icon="Comment" />
+                <!--ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules." />-->
                 <!--<muxc:NavigationViewItem.MenuItems>-->
-                    <muxc:NavigationViewItem x:Name="SendMessagesItem"
-                                             Content="Sending messages"
-                                             Icon="Send"
-                                             ToolTipService.ToolTip="Send custom messages between different app modules." />
-                    <muxc:NavigationViewItem x:Name="RequestMessagesItem"
-                                             Content="Request messages"
-                                             Icon="Switch"
-                                             ToolTipService.ToolTip="Request values from loosely coupled app modules." />
+            <muxc:NavigationViewItem x:Name="SendMessagesItem"
+                                     Content="Sending messages" />
+            <!--Icon="Send" /> ToolTipService.ToolTip="Send custom messages between different app modules." />-->
+            <muxc:NavigationViewItem x:Name="RequestMessagesItem"
+                                     Content="Request messages" />
+            <!--Icon="Switch" /> ToolTipService.ToolTip="Request values from loosely coupled app modules." />-->
                 <!--</muxc:NavigationViewItem.MenuItems>-->
 
                 <muxc:NavigationViewItem x:Name="InversionOfControlItem"
-                                             Content="Inversion of control"
-                                             Icon="StopSlideShow"
-                                             ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns." />
+                                         Content="Inversion of control" />
+                <!--Icon="StopSlideShow" /> ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns." />-->
                 <!--</muxc:NavigationViewItem.MenuItems>-->
                 <!--IsExpanded="True"-->
-                <muxc:NavigationViewItem Content="Putting Things Together"
-                                         Icon="Contact"
-                                         ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app."
-                                         Tag="SamplePage2" />
+                    <muxc:NavigationViewItem Content="Putting Things Together" />
+                    <!--Icon="Contact" /> ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app."-->
+                                         <!--Tag="SamplePage2" />-->
                 <!--<muxc:NavigationViewItem.MenuItems>-->
-                    <muxc:NavigationViewItem Content="Creating a ViewModel"
-                                             Icon="Mail"
-                                             ToolTipService.ToolTip="Mail"
-                                             Tag="SamplePage3" />
-                <muxc:NavigationViewItem Content="Creating a Service"
-                                         Icon="Calendar"
-                                         ToolTipService.ToolTip="Calendar"
-                                         Tag="SamplePage4" />
+                            <muxc:NavigationViewItem Content="Creating a ViewModel"
+                                                     Icon="Mail" />
+                            <!--ToolTipService.ToolTip="Mail"-->
+                                             <!--Tag="SamplePage3" />-->
+                            <muxc:NavigationViewItem Content="Creating a Service"
+                                                     Icon="Calendar" />
+                            <!--ToolTipService.ToolTip="Calendar"
+                                         Tag="SamplePage4" />-->
                 <!--<muxc:NavigationViewItem.MenuItems>-->
-                    <muxc:NavigationViewItem Content="App Settings"
-                                             Icon="Mail"
-                                             ToolTipService.ToolTip="Mail"
-                                             Tag="SamplePage3" />
-                    <muxc:NavigationViewItem Content="Navigation"
-                                             Icon="Calendar"
-                                             ToolTipService.ToolTip="Calendar"
-                                             Tag="SamplePage4" />
+                            <muxc:NavigationViewItem Content="App Settings"
+                                                     Icon="Mail" />
+                            <!--ToolTipService.ToolTip="Mail"
+                                             Tag="SamplePage3" />-->
+                            <muxc:NavigationViewItem Content="Navigation"
+                                                     Icon="Calendar" />
+                            <!--ToolTipService.ToolTip="Calendar"
+                                             Tag="SamplePage4" />-->
                 <!--</muxc:NavigationViewItem.MenuItems>-->
 
                 <!--</muxc:NavigationViewItem.MenuItems>-->
@@ -132,12 +127,11 @@
                     </Grid.RowDefinitions>
 
                     <!--Navigation frame-->
-                    <Frame
-                        x:Name="NavigationFrame"
-                        Navigated="NavigationFrame_OnNavigated"
-                        Grid.Row="2"/>
+            <Frame x:Name="NavigationFrame"
+                   Navigated="NavigationFrame_OnNavigated"
+                   Grid.Row="2" />
 
-                    <!--Acrylic background-->
+            <!--Acrylic background-->
                     <Border
                         Grid.Row="0"
                         Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"/>

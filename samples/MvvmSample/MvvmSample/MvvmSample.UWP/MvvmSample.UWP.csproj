@@ -17,13 +17,13 @@
     </PackageReference>
     <PackageReference Include="Uno.Core" Version="2.0.0" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI">
-      <Version>6.1.0-build.186.g928c99f74d</Version>
+      <Version>6.1.0-build.191.gc988bdd4ff</Version>
     </PackageReference>
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>6.1.0-build.186.g928c99f74d</Version>
+      <Version>6.1.0-build.191.gc988bdd4ff</Version>
     </PackageReference>
     <PackageReference Include="Uno.UI">
-      <Version>3.0.0-dev.1447</Version>
+      <Version>3.0.0-dev.1515</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup>

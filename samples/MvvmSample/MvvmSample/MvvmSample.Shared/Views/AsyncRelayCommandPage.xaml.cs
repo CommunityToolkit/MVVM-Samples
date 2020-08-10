@@ -43,11 +43,14 @@ namespace MvvmSampleUwp.Views
 
     public class MarkdownSectionConverter : IValueConverter
     {
+        //public int MaxLength { get; set; } = 5;
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if(value is IReadOnlyDictionary<string, string>  texts)
             {
-                return texts != null && texts.TryGetValue(parameter as string, out var match) ? match : string.Empty;
+                var result = texts != null && texts.TryGetValue(parameter as string, out var match) ? match : string.Empty;
+                return result;//?.Substring(0, MaxLength);
             }
             return null;
         }

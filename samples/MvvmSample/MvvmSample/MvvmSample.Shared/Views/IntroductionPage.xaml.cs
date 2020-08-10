@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using MvvmSample;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace MvvmSampleUwp.Views
 {
