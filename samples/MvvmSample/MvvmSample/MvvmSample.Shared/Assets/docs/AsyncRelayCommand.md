@@ -21,52 +21,7 @@ The [AsyncRelayCommand](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.
 
 ## Working with asynchronous commands
 
-Let's imagine a scenario similar to the one described in the `RelayCommand` sample, but a command executing an asynchronous operation:
-
-```csharp
-public class MyViewModel : ObservableObject
-{
-    public MyViewModel()
-    {
-        DownloadTextCommand = new AsyncRelayCommand(DownloadText);
-    }
-
-    public IAsyncRelayCommand DownloadTextCommand { get; }
-
-    private Task<string> DownloadText()
-    {
-        return WebService.LoadMyTextAsync();
-    }
-}
-```
-
-With the related UI code:
-
-```xml
-<Page
-    x:Class="MyApp.Views.MyPage"
-    xmlns:viewModels="using:MyApp.ViewModels">
-    <Page.DataContext>
-        <viewModels:MyViewModel x:Name="ViewModel"/>
-    </Page.DataContext>
-
-    <StackPanel Spacing="8">
-        <TextBlock>
-            <Run Text="Task status:"/>
-            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}"/>
-            <LineBreak/>
-            <Run Text="Result:"/>
-            <Run
-                xmlns:ex="using:Microsoft.Toolkit.Extensions"
-                Text="{x:Bind ex:TaskExtensions.GetResultOrDefault(ViewModel.DownloadTextCommand.ExecutionTask), Mode=OneWay}"/>
-        </TextBlock>
-        <Button
-            Content="Click me!"
-            Command="{x:Bind ViewModel.DownloadTextCommand}"/>
-        <ProgressRing IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
-    </StackPanel>
-</Page>
-```
+Let's imagine a scenario similar to the one described in the `RelayCommand` sample, but a command executing an asynchronous operation.
 
 Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` updated. When the operation completes, the property raises a notification which is reflected in the UI. In this case, both the task status and the current result of the task are displayed. Note that to show the result of the task, it is necessary to use the `TaskExtensions.GetResultOrDefault` method - this provides access to the result of a task that has not yet completed without blocking the thread (and possibly causing a deadlock).
 

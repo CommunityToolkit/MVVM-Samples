@@ -21,50 +21,7 @@ The [RelayCommand](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.
 
 ## Working with `ICommand`
 
-The following shows how to set up a simple command:
-
-```csharp
-public class MyViewModel : ObservableObject
-{
-    public MyViewModel()
-    {
-        IncrementCounterCommand = new RelayCommand(IncrementCounter);
-    }
-
-    private int counter;
-
-    public int Counter
-    {
-        get => counter;
-        private set => SetProperty(ref counter, value);
-    }
-
-    public ICommand IncrementCounterCommand { get; }
-
-    private void IncrementCounter() => Counter++;
-}
-```
-
-And the relative UI could then be (using WinUI XAML):
-
-```xml
-<Page
-    x:Class="MyApp.Views.MyPage"
-    xmlns:viewModels="using:MyApp.ViewModels">
-    <Page.DataContext>
-        <viewModels:MyViewModel x:Name="ViewModel"/>
-    </Page.DataContext>
-
-    <StackPanel Spacing="8">
-        <TextBlock Text="{x:Bind ViewModel.Counter, Mode=OneWay}"/>
-        <Button
-            Content="Click me!"
-            Command="{x:Bind ViewModel.IncrementCounterCommand}"/>
-    </StackPanel>
-</Page>
-```
-
-The `Button` binds to the `ICommand` in the viewmodel, which wraps the private `IncrementCounter` method. The `TextBlock` displays the value of the `Counter` property and is updated every time the property value changes.
+The following sample shows how to set up a simple command using `RelayCommand` to abstract a method in the viewmodel. We also have a property raising change notifications through the `SetProperty` method inherited from `ObservableObject`. The UI has a `Button` control binding to the `ICommand` in the viewmodel, and a `TextBlock` that displays the value of the `Counter` property.
 
 ## Sample Code
 

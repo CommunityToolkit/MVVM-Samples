@@ -2,10 +2,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MvvmSampleUwp.Controls"
-                    xmlns:muxc="using:Microsoft.Toolkit.Uwp.UI.Controls">
+                    xmlns:muxc="using:Microsoft.Toolkit.Uwp.UI.Controls"
+>
 
     <!--Operator button-->
     <Style TargetType="local:InteractiveSample">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -13,9 +18,13 @@
                     <Border
                         CornerRadius="4"
                         BorderThickness="2"
-                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}">
+                        BorderBrush="{ThemeResource SystemControlHighlightAccentBrush}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <!--IsAddTabButtonVisible="False"-->
-                        <muxc:TabView>
+                        <muxc:TabView
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
                             <muxc:TabView.Resources>
                                 <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
                                 <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
@@ -33,18 +42,22 @@
                             <muxc:TabViewItem
                                 Header="See XAML"
                                 IsClosable="False">
-                                <muxc:MarkdownTextBlock
-                                    Background="#FF202020"
-                                    Padding="8"
-                                    Text="{TemplateBinding XamlCode}"/>
+                                <ScrollViewer>
+                                    <muxc:MarkdownTextBlock
+                                        Background="#FF202020"
+                                        Padding="8"
+                                        Text="{TemplateBinding XamlCode}"/>
+                                </ScrollViewer>
                             </muxc:TabViewItem>
                             <muxc:TabViewItem
                                 Header="See C#"
                                 IsClosable="False">
-                                <muxc:MarkdownTextBlock
-                                    Background="#FF202020"
-                                    Padding="8"
-                                    Text="{TemplateBinding CSharpCode}"/>
+                                <ScrollViewer>
+                                    <muxc:MarkdownTextBlock
+                                        Background="#FF202020"
+                                        Padding="8"
+                                        Text="{TemplateBinding CSharpCode}"/>
+                                </ScrollViewer>
                             </muxc:TabViewItem>
                         </muxc:TabView>
                     </Border>
