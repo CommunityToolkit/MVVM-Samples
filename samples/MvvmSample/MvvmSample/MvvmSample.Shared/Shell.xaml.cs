@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -27,24 +31,26 @@ namespace MvvmSampleUwp
                 new SampleEntry(MessengerItem, typeof(MessengerPage), "Messenger and IMessenger", "messenger messaging message receiver recipient"),
                 new SampleEntry(SendMessagesItem, typeof(MessengerSendPage), "[IMessenger] Send messages", "messenger messaging message receiver recipient send"),
                 new SampleEntry(RequestMessagesItem, typeof(MessengerRequestPage), "[IMessenger] Request messages", "messenger messaging message receiver recipient request reply"),
-                new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator")
+                new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator"),
+                new SampleEntry(RedditBrowserOverviewItem, typeof(PuttingThingsTogetherPage), "Putting things together"),
+                new SampleEntry(ViewModelsSetupItem, typeof(SettingUpTheViewModelsPage), "Setting up the ViewModels"),
+                new SampleEntry(SettingsServiceItem, typeof(SettingsServicePage), "Settings service"),
+                new SampleEntry(RedditServiceItem, typeof(RedditServicePage), "Reddit service"),
+                new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
+                new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
             };
 
             // Set the custom title bar to act as a draggable region
-            //Window.Current.SetTitleBar(TitleBarBorder);
+            Window.Current.SetTitleBar(TitleBarBorder);
         }
 
         // Navigates to a sample page when a button is clicked
         private void NavigationView_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            Console.WriteLine("Invoked - start");
             if (NavigationItems.FirstOrDefault(item => item.Item == args.InvokedItemContainer)?.PageType is Type pageType)
             {
-                Console.WriteLine($"Navigating to {pageType.Name}");
                 NavigationFrame.Navigate(pageType);
-                //NavigationFrame.Content = new IntroductionPage();
             }
-            Console.WriteLine("Invoked - end");
         }
 
         // Sets whether or not the back button is enabled

@@ -36,39 +36,50 @@
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
-&lt;StackPanel Spacing="8">
-    &lt;TextBlock Text="{x:Bind ViewModel.Counter, Mode=OneWay}"/>
-    &lt;Button
-        Content="Click me!"
-        Command="{x:Bind ViewModel.IncrementCounterCommand}"/>
-&lt;/StackPanel>
+&lt;Page
+    x:Class="MyApp.Views.MyPage"
+    xmlns:viewModels="using:MyApp.ViewModels">
+    &lt;Page.DataContext>
+        &lt;viewModels:MyViewModel x:Name="ViewModel"/>
+    &lt;/Page.DataContext>
+
+    &lt;StackPanel Spacing="8">
+        &lt;TextBlock Text="{x:Bind ViewModel.Counter, Mode=OneWay}"/>
+        &lt;Button
+            Content="Click me!"
+            Command="{x:Bind ViewModel.IncrementCounterCommand}"/>
+    &lt;/StackPanel>
+&lt;/Page>
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
-public MyViewModel()
+public class MyViewModel : ObservableObject
 {
-    IncrementCounterCommand = new RelayCommand(IncrementCounter);
+    public MyViewModel()
+    {
+        IncrementCounterCommand = new RelayCommand(IncrementCounter);
+    }
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
+    /// &lt;/summary>
+    public ICommand IncrementCounterCommand { get; }
+
+    private int counter;
+
+    /// &lt;summary>
+    /// Gets the current value of the counter.
+    /// &lt;/summary>
+    public int Counter
+    {
+        get => counter;
+        private set => SetProperty(ref counter, value);
+    }
+
+    /// &lt;summary>
+    /// Increments &lt;see cref="Counter"/>.
+    /// &lt;/summary>
+    private void IncrementCounter() => Counter++;
 }
-
-/// &lt;summary>
-/// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
-/// &lt;/summary>
-public ICommand IncrementCounterCommand { get; }
-
-private int counter;
-
-/// &lt;summary>
-/// Gets the current value of the counter.
-/// &lt;/summary>
-public int Counter
-{
-    get => counter;
-    private set => SetProperty(ref counter, value);
-}
-
-/// &lt;summary>
-/// Increments &lt;see cref="Counter"/>.
-/// &lt;/summary>
-private void IncrementCounter() => Counter++;
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
         </StackPanel>

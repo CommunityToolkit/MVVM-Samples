@@ -1,5 +1,7 @@
-﻿using MvvmSampleUwp.Helpers;
-using MvvmSampleUwp.ViewModels;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -47,7 +49,7 @@ namespace MvvmSampleUwp.Views
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if(value is IReadOnlyDictionary<string, string>  texts)
+            if (value is IReadOnlyDictionary<string, string> texts)
             {
                 var result = texts != null && texts.TryGetValue(parameter as string, out var match) ? match : string.Empty;
                 return result;//?.Substring(0, MaxLength);
