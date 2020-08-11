@@ -7,10 +7,10 @@
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:controls="using:MvvmSampleUwp.Controls"
     xmlns:viewModels="using:MvvmSampleUwp.ViewModels"
-    xmlns:views="using:MvvmSampleUwp.Views"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
     <Page.DataContext>
@@ -22,7 +22,7 @@
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
     <Page.Resources>
-        <views:TaskResultConverter x:Key="TaskResultConverter"/>
+        <converters:TaskResultConverter x:Key="TaskResultConverter"/>
     </Page.Resources>
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
