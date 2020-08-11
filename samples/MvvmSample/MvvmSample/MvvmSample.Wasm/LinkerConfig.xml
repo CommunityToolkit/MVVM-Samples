@@ -1,5 +1,6 @@
 ﻿<linker>
-  <assembly fullname="MvvmSample.Wasm" />
+	<assembly fullname="MvvmSample.Core" />
+	<assembly fullname="MvvmSample.Wasm" />
   <assembly fullname="Uno.UI" />
 
   <assembly fullname="System.Core">

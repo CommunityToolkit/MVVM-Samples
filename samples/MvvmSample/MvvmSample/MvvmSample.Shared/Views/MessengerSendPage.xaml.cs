@@ -30,5 +30,10 @@ namespace MvvmSampleUwp.Views
             ViewModel.SenderViewModel.IsActive = false;
             ViewModel.ReceiverViewModel.IsActive = false;
         }
+
+        private void SendUserMessage_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.SenderViewModel.SendUserMessage();
+        }
     }
 }

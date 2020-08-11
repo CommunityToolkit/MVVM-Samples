@@ -30,5 +30,15 @@ namespace MvvmSampleUwp.Views
             ViewModel.SenderViewModel.IsActive = false;
             ViewModel.ReceiverViewModel.IsActive = false;
         }
+
+        private void RequestCurrentUsername_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.RequestCurrentUsername();
+        }
+private void ResetCurrentUsername_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.ResetCurrentUsername();
+        }
+        
     }
 }

@@ -15,5 +15,10 @@ namespace MvvmSampleUwp.Views
         {
             this.InitializeComponent();
         }
+
+        private void ReloadTask_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.ReloadTask();
+        }
     }
 }
