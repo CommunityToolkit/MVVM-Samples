@@ -109,7 +109,7 @@
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MvvmSample.Core\MvvmSample.Core.csproj">
+    <ProjectReference Include="..\..\..\MvvmSample.Core\MvvmSample.Core.csproj">
       <Project>{98ccbe56-376a-409d-93e6-6424337333a7}</Project>
       <Name>MvvmSample.Core</Name>
     </ProjectReference>
