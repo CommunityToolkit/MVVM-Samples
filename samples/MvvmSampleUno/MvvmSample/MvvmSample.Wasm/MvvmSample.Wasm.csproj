@@ -50,7 +50,7 @@
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.4.0-dev.16" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MvvmSample.Core\MvvmSample.Core.csproj" />
+    <ProjectReference Include="..\..\..\MvvmSample.Core\MvvmSample.Core.csproj" />
   </ItemGroup>
   <Import Project="..\MvvmSample.Shared\MvvmSample.Shared.projitems" Label="Shared" Condition="Exists('..\MvvmSample.Shared\MvvmSample.Shared.projitems')" />
 </Project>
