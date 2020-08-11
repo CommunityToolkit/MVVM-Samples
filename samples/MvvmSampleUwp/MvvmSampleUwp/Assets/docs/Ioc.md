@@ -9,7 +9,7 @@ dev_langs:
 
 # Ioc ([Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control))
 
-The [`Ioc`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.DependencyInjection.Ioc) class is a type that facilitates the use of the `IServiceProvider` type. It's powered by the `Microsoft.Extensions.DependencyInjection` package, which provides a fully featured and powerful DI set of APIs, and acts as an easy to setup and use `IServiceProvider`.
+The [Ioc](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.DependencyInjection.Ioc) class is a type that facilitates the use of the `IServiceProvider` type. It's powered by the `Microsoft.Extensions.DependencyInjection` package, which provides a fully featured and powerful DI set of APIs, and acts as an easy to setup and use `IServiceProvider`.
 
 ## Configure and resolve services
 

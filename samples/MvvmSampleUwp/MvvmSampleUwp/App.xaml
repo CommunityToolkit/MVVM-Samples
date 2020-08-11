@@ -1,0 +1,27 @@
+﻿<Application
+    x:Class="MvvmSampleUwp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    RequestedTheme="Dark">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--Resource dictionaries-->
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+                <ResourceDictionary Source="Controls/InteractiveSample.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--MarkdownTextBlock style-->
+            <Style TargetType="controls:MarkdownTextBlock">
+                <Setter Property="Background" Value="#60222222"/>
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="Header2FontWeight" Value="Bold" />
+                <Setter Property="Header2FontSize" Value="20" />
+                <Setter Property="Header2Margin" Value="0, 15, 0, 15" />
+                <Setter Property="Header2Foreground" Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
