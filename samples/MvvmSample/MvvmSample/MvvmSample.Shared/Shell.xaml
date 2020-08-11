@@ -96,17 +96,17 @@
                 <!--ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns."/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>-->
-                <muxc:NavigationViewItem x:Name="RedditBrowserOverviewItem"
+                <!--<muxc:NavigationViewItem x:Name="RedditBrowserOverviewItem"
                                          Content="Putting Things Together"
-                                         Icon="{extensions:FontIcon Glyph=&#xE74C;}" />
+                                         Icon="{extensions:FontIcon Glyph=&#xE74C;}" />-->
                 <!--ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app.">
                     <muxc:NavigationViewItem.MenuItems>-->
-                <muxc:NavigationViewItem x:Name="ViewModelsSetupItem"
+                <!--<muxc:NavigationViewItem x:Name="ViewModelsSetupItem"
                                          Content="Setting up the ViewModels"
-                                         Icon="{extensions:FontIcon Glyph=&#xEBD2;}" />
+                                         Icon="{extensions:FontIcon Glyph=&#xEBD2;}" />-->
                 <!--ToolTipService.ToolTip="Setting up viewmodels for the two widgets."/>-->
-                <muxc:NavigationViewItem Content="Creating a Service"
-                                         Icon="{extensions:FontIcon Glyph=&#xF69E;}" />
+                <!--<muxc:NavigationViewItem Content="Creating a Service"
+                                         Icon="{extensions:FontIcon Glyph=&#xF69E;}" />-->
                 <!--ToolTipService.ToolTip="Build custom services to expand the app's functionalities.">
                             <muxc:NavigationViewItem.MenuItems>-->
                 <muxc:NavigationViewItem x:Name="SettingsServiceItem"
@@ -119,13 +119,13 @@
                 <!--ToolTipService.ToolTip="Injecting a service to use Reddit APIs." />
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>-->
-                <muxc:NavigationViewItem x:Name="BuildingTheUIItem"
+                <!--<muxc:NavigationViewItem x:Name="BuildingTheUIItem"
                                          Content="Building the UI"
-                                         Icon="{extensions:FontIcon Glyph=&#xEB3C;}" />
+                                         Icon="{extensions:FontIcon Glyph=&#xEB3C;}" />-->
                 <!--ToolTipService.ToolTip="Building the UI to connect to the backend."/>-->
-                <muxc:NavigationViewItem x:Name="FinalResultItem"
+                <!--<muxc:NavigationViewItem x:Name="FinalResultItem"
                                          Content="The final result!"
-                                         Icon="{extensions:FontIcon Glyph=&#xF1AD;}" />
+                                         Icon="{extensions:FontIcon Glyph=&#xF1AD;}" />-->
                 <!--ToolTipService.ToolTip="The final working sample!"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>-->
@@ -146,9 +146,9 @@
                         Grid.Row="2"/>
 
                     <!--Acrylic background-->
-                    <Border
+                    <!--<Border
                         Grid.Row="0"
-                        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"/>
+                        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"/>-->
 
                     <StackPanel Grid.Row="0">
 

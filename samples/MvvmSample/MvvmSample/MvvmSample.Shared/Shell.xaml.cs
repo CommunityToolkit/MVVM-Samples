@@ -32,16 +32,16 @@ namespace MvvmSampleUwp
                 new SampleEntry(SendMessagesItem, typeof(MessengerSendPage), "[IMessenger] Send messages", "messenger messaging message receiver recipient send"),
                 new SampleEntry(RequestMessagesItem, typeof(MessengerRequestPage), "[IMessenger] Request messages", "messenger messaging message receiver recipient request reply"),
                 new SampleEntry(InversionOfControlItem, typeof(IocPage), "Ioc (Inversion of control)", "ioc inversion control dependency injection service locator"),
-                new SampleEntry(RedditBrowserOverviewItem, typeof(PuttingThingsTogetherPage), "Putting things together"),
-                new SampleEntry(ViewModelsSetupItem, typeof(SettingUpTheViewModelsPage), "Setting up the ViewModels"),
+                //new SampleEntry(RedditBrowserOverviewItem, typeof(PuttingThingsTogetherPage), "Putting things together"),
+                //new SampleEntry(ViewModelsSetupItem, typeof(SettingUpTheViewModelsPage), "Setting up the ViewModels"),
                 new SampleEntry(SettingsServiceItem, typeof(SettingsServicePage), "Settings service"),
                 new SampleEntry(RedditServiceItem, typeof(RedditServicePage), "Reddit service"),
-                new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
-                new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
+                //new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
+                //new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
             };
 
             // Set the custom title bar to act as a draggable region
-            Window.Current.SetTitleBar(TitleBarBorder);
+           // Window.Current.SetTitleBar(TitleBarBorder);
         }
 
         // Navigates to a sample page when a button is clicked
