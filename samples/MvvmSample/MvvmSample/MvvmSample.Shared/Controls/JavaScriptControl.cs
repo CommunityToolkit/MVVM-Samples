@@ -37,6 +37,7 @@ UserControl
 
         public JavaScriptControl()
         {
+
 #if !__WASM__
             Content = internalWebView = new WebView();
             internalWebView.DefaultBackgroundColor = Colors.Transparent;
@@ -56,10 +57,11 @@ UserControl
 
         private void JavaScriptControl_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+
 #if !__WASM__
             var html = @"<html>
-     <body>
-       <div id = ""content""></ div>
+     <body style=""background-color: transparent"">
+         <div id = ""content""></ div>
     </ body>
     </ html>
 ";
@@ -81,6 +83,12 @@ UserControl
 #if !__WASM__
         private void NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
+#if __ANDROID__
+            var wv = internalWebView.GetType().GetField("_webView", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(internalWebView) as Android.Webkit.WebView;
+            wv.SetBackgroundColor(Android.Graphics.Color.Transparent);
+#endif
+
+
             LoadJavaScript();
         }
 #endif
@@ -185,16 +193,4 @@ UserControl
         }
     }
 
-    //public static class WebViewExtensions
-    //{
-    //    public static async Task ResizeToContent(this WebView webView)
-    //    {
-    //        var heightString = await webView.InvokeScriptAsync("eval", new[] { "document.body.scrollHeight.toString()" });
-    //        int height;
-    //        if (int.TryParse(heightString, out height))
-    //        {
-    //            webView.Height = height;
-    //        }
-    //    }
-    //}
 }
