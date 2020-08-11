@@ -87,10 +87,13 @@ UserControl
 
         protected async Task UpdateHtmlFromScript(string contentScript)
         {
-            var color = (Foreground as SolidColorBrush)?.Color;
-            if (color != null)
+            if (Foreground is SolidColorBrush colorBrush)
             {
-                var colorScript= $@"document.getElementById('{HtmlContentId}').style.color = '#{color.ToString().Substring(3)}';";
+                var color = colorBrush.Color;
+                // This is required because default tostring on wasm doesn't come out in the format #RRGGBB or even #AARRGGBB
+                var colorString = $"#{color.R.ToString("X")}{color.G.ToString("X")}{color.B.ToString("X")}";
+                Console.WriteLine($"Color {colorString}");
+                var colorScript = $@"document.getElementById('{HtmlContentId}').style.color = '{colorString}';";
                 await InvokeScriptAsync(colorScript);
             }
 
