@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmSample.Wasm", "MvvmSamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmSample.macOS", "MvvmSample\MvvmSample.macOS\MvvmSample.macOS.csproj", "{60704335-4B3D-47D9-8684-BBEE1AC8EE88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmSample.Core", "MvvmSample.Core\MvvmSample.Core.csproj", "{98CCBE56-376A-409D-93E6-6424337333A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmSample.Core", "..\MvvmSample.Core\MvvmSample.Core.csproj", "{98CCBE56-376A-409D-93E6-6424337333A7}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
