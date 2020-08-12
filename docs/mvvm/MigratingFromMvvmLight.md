@@ -751,3 +751,41 @@ The message types provided in the MvvmLight toolkit are designed as a base for y
 While the MVVM Toolkit provides some alternatives, there are no direct replacement for these message types. We recommend looking at our [available message types](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Mvvm/Messaging/Messages).
 
 Alternatively, if your solution takes advantage of the MvvmLight message types, these can easily be ported into your own codebase.
+
+## Migrating platform-specific components
+
+In the current MVVM Toolkit implementation, there are no replacements for platform-specific components which exist in the MvvmLight toolkit. 
+
+The following components and their associated helpers/extension methods do not have a replacement and will need considering when migrating to the MVVM Toolkit.
+
+### Android/iOS/Windows specific
+
+- DialogService
+- DispatcherHelper
+- NavigationService
+
+### Android/iOS specific
+
+- ActivityBase
+- Binding
+- BindingMode
+- PropertyChangedEventManager
+- UpdateTriggerMode
+
+### Android specific
+
+- CachingViewHolder
+- ObservableAdapter
+- ObservableRecyclerAdapter
+
+### iOS specific
+
+- ObservableCollectionViewSource
+- ObservableTableViewController
+- ObservableTableViewSource
+
+### Helpers
+
+- Empty
+- WeakAction
+- WeakFunc
