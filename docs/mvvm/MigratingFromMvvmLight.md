@@ -309,6 +309,81 @@ var isInDesignMode = ViewModelBase.IsInDesignModeStatic;
 // No direct replacement, remove
 ```
 
+## Migrating RelayCommand
+
+The following steps focus on migrating your existing components which take advantage of the `RelayCommand` of the MvvmLight Toolkit. 
+
+The Windows Community Toolkit MVVM framework provides a [`RelayCommand`](RelayCommand) type that provides like-for-like functionality taking advantage of the `ICommand` System interface. 
+
+Below are a list of migrations that will need to be performed if being used in your current solution. Where a method or property isn't listed, there is a direct replacement with the same name in the MVVM Toolkit and there is no change required.
+
+The first change here will be swapping using directives in your components.
+
+```csharp
+// MvvmLight
+using GalaSoft.MvvmLight.Command;
+using Galasoft.MvvmLight.CommandWpf;
+
+// Toolkit.Mvvm
+using Microsoft.Toolkit.Mvvm.Input;
+```
+
+**Note** on `RelayCommand` constructors. MvvmLight uses weak references to establish the link between the command and the action called from the associated class. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your constructors, this will be removed.
+
+### RelayCommand Methods
+
+#### RaiseCanExecuteChanged ()
+
+The functionality of `RaiseCanExecuteChanged()` can be achieved with the MVVM Toolkit's `NotifyCanExecuteChanged()` method. 
+
+
+```csharp
+// MvvmLight
+var command = new RelayCommand(this.OnCommand);
+command.RaiseCanExecuteChanged();
+
+// Toolkit.Mvvm
+var command = new RelayCommand(this.OnCommand);
+command.NotifyCanExecuteChanged();
+```
+
+## Migrating RelayCommand<T>
+
+The following steps focus on migrating your existing components which take advantage of the `RelayCommand<T>` of the MvvmLight Toolkit. 
+
+The Windows Community Toolkit MVVM framework provides a [`RelayCommand<T>`](RelayCommand) type that provides like-for-like functionality taking advantage of the `ICommand` System interface. 
+
+Below are a list of migrations that will need to be performed if being used in your current solution. Where a method or property isn't listed, there is a direct replacement with the same name in the MVVM Toolkit and there is no change required.
+
+The first change here will be swapping using directives in your components.
+
+```csharp
+// MvvmLight
+using GalaSoft.MvvmLight.Command;
+using Galasoft.MvvmLight.CommandWpf;
+
+// Toolkit.Mvvm
+using Microsoft.Toolkit.Mvvm.Input;
+```
+
+**Note** on `RelayCommand<T>` constructors. MvvmLight uses weak references to establish the link between the command and the action called from the associated class. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your constructors, this will be removed.
+
+### RelayCommand<T> Methods
+
+#### RaiseCanExecuteChanged ()
+
+The functionality of `RaiseCanExecuteChanged()` can be achieved with the MVVM Toolkit's `NotifyCanExecuteChanged()` method. 
+
+```csharp
+// MvvmLight
+var command = new RelayCommand<string>(this.OnCommand);
+command.RaiseCanExecuteChanged();
+
+// Toolkit.Mvvm
+var command = new RelayCommand<string>(this.OnCommand);
+command.NotifyCanExecuteChanged();
+```
+
 ## Migrating SimpleIoc
 
 The [IoC](Ioc) implementation in the MVVM Toolkit takes advantage of existing .NET APIs through the `Microsoft.Extensions.DependencyInjection` library. 
@@ -419,6 +494,16 @@ The Windows Community Toolkit MVVM framework provides a [`Messenger`](Messenger)
 A note on `Register` methods throughout this migration. MvvmLight uses weak references to establish the link between the `Messenger` instance and the recipient. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your `Register` method calls, this will be removed.
 
 Below are a list of migrations that will need to be performed if being used in your current solution.
+
+The first change here will be swapping using directives in your components.
+
+```csharp
+// MvvmLight
+using GalaSoft.MvvmLight.Messaging;
+
+// Toolkit.Mvvm
+using Microsoft.Toolkit.Mvvm.Messaging;
+```
 
 ### Messenger Methods
 
@@ -659,7 +744,7 @@ IMessenger messenger = Messenger.Default;
 IMessenger messenger = Messenger.Default;
 ```
 
-## Message type migrations
+## Migrating message types
 
 The message types provided in the MvvmLight toolkit are designed as a base for you as a developer to work with if needed. 
 
