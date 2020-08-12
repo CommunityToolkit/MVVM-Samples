@@ -9,7 +9,9 @@ dev_langs:
 
 # Migrating from MvvmLight
 
-This article outlines some of the key differences between the [MvvmLight Toolkit](https://github.com/lbugnion/mvvmlight) and the Windows Community Toolkit MVVM framework to ease your migration. 
+This article outlines some of the key differences between the [MvvmLight Toolkit](https://github.com/lbugnion/mvvmlight) and the MVVM Toolkit to ease your migration. 
+
+While this article specifically focuses on the migrations from MvvmLight to the MVVM Toolkit, note that there are additional improvements that have been made within the MVVM Toolkit so I highly recommend taking a look at the documentation for the APIs. 
 
 ## Installing the WCT MVVM Toolkit
 
@@ -307,7 +309,7 @@ var isInDesignMode = ViewModelBase.IsInDesignModeStatic;
 // No direct replacement, remove
 ```
 
-## SimpleIoc
+## Migrating SimpleIoc
 
 The [IoC](Ioc) implementation in the MVVM Toolkit takes advantage of existing .NET APIs through the `Microsoft.Extensions.DependencyInjection` library. 
 
@@ -406,4 +408,253 @@ Ioc.Default.ConfigureServices(services =>
     services.AddSingleton<IToastService, ToastService>();
     services.AddSingleton<INavigationService, NavigationService>();
 });
+```
+
+## Migrating Messenger
+
+The following steps focus on migrating your existing components which take advantage of the `Messenger` of the MvvmLight Toolkit. 
+
+The Windows Community Toolkit MVVM framework provides a [`Messenger`](Messenger) type that provides similar functionality. 
+
+A note on `Register` methods throughout this migration. MvvmLight uses weak references to establish the link between the `Messenger` instance and the recipient. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your `Register` method calls, this will be removed.
+
+Below are a list of migrations that will need to be performed if being used in your current solution.
+
+### Messenger Methods
+
+#### Register<TMessage> ( object, Action<TMessage> )
+
+The functionality of `Register<TMessage>(object, Action<TMessage>)` can be achieved with the MVVM Toolkit's `IMessenger` extension method `Register<TMessage>(object, Action<TMessage>)`. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Register<MyMessage>(this, this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Register<MyMessage>(this, this.OnMyMessageReceived);
+```
+
+#### Register<TMessage> ( object, bool, Action<TMessage> )
+
+There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve it's performance benefits.
+
+Alternatively, there are a few options that can be done to achieve this functionality. 
+
+- Create a custom `IMessenger` implementation
+- Register the additional message types using a shared `Action`
+
+```csharp
+// MvvmLight
+Messenger.Default.Register<MyMessage>(this, true, this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Register<MyMessage, string>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+Messenger.Default.Register<MyOtherMessage, string>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+```
+
+#### Register<TMessage> ( object, object, Action<TMessage> )
+
+The functionality of `Register<TMessage>(object, object, Action<TMessage>)` can be achieved with the MVVM Toolkit's `Register<TMessage, TToken>(object, TToken, Action<TMessage>)` method. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Register<MyMessage>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Register<MyMessage, string>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+```
+
+#### Register<TMessage> ( object, object, bool, Action<TMessage> )
+
+There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve it's performance benefits.
+
+Alternatively, there are a few options that can be done to achieve this functionality. 
+
+- Create a custom `IMessenger` implementation
+- Register the additional message types using a shared `Action`
+
+```csharp
+// MvvmLight
+Messenger.Default.Register<MyMessage>(this, nameof(MyViewModel), true, this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Register<MyMessage, string>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+Messenger.Default.Register<MyOtherMessage, string>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+```
+
+#### Send<TMessage> ( TMessage )
+
+The functionality of `Send<TMessage>(TMessage)` can be achieved with the MVVM Toolkit's `IMessenger` extension method `Send<TMessage>(TMessage)`. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Send<MyMessage>(new MyMessage());
+Messenger.Default.Send(new MyMessage());
+
+// Toolkit.Mvvm
+Messenger.Default.Send<MyMessage>(new MyMessage());
+Messenger.Default.Send(new MyMessage());
+```
+
+#### Send<TMessage> ( TMessage, object )
+
+The functionality of `Send<TMessage>(TMessage, object)` can be achieved with the MVVM Toolkit's `Send<TMessage, TToken>(TMessage, TToken)` method. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Send<MyMessage>(new MyMessage(), nameof(MyViewModel));
+Messenger.Default.Send(new MyMessage(), nameof(MyViewModel));
+
+// Toolkit.Mvvm
+Messenger.Default.Send(new MyMessage(), nameof(MyViewModel));
+```
+
+#### Unregister ( object )
+
+The functionality of `Unregister(object)` can be achieved with the MVVM Toolkit's `UnregisterAll(object)` method. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Unregister(this);
+
+// Toolkit.Mvvm
+Messenger.Default.UnregisterAll(this);
+```
+
+#### Unregister<TMessage> ( object )
+
+The functionality of `Unregister<TMessage>(object)` can be achieved with the MVVM Toolkit's `IMessenger` extension method `Unregister<TMessage>(object)`. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Unregister<MyMessage>(this);
+
+// Toolkit.Mvvm
+Messenger.Default.Unregister<MyMessage>(this);
+```
+
+#### Unregister<TMessage> ( object, Action<TMessage> )
+
+There is no direct replacement for the `Unregister<TMessage>(object, Action<TMessage>)` method in the MVVM Toolkit. 
+
+Alternatively, we recommend achieving a similar functionality with the MVVM Toolkit's `IMessenger` extension method `Unregister<TMessage>(object)`. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Unregister<MyMessage>(this, this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Unregister<MyMessage>(this);
+```
+
+#### Unregister<TMessage> ( object, object )
+
+The functionality of `Unregister<TMessage>(object, object)` can be achieved with the MVVM Toolkit's `Unregister<TMessage, TToken>(object, TToken)` method. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Unregister<MyMessage>(this, nameof(MyViewModel));
+
+// Toolkit.Mvvm
+Messenger.Default.Unregister<MyMessage, string>(this, nameof(MyViewModel));
+```
+
+#### Unregister<TMessage> ( object, object, Action<TMessage> )
+
+There is no direct replacement for the `Unregister<TMessage>(object, object, Action<TMessage>)` method in the MVVM Toolkit. 
+
+Alternatively, we recommend achieving a similar functionality with the MVVM Toolkit's `Unregister<TMessage, TToken>(object, TToken)` method. 
+
+```csharp
+// MvvmLight
+Messenger.Default.Unregister<MyMessage>(this, nameof(MyViewModel), this.OnMyMessageReceived);
+
+// Toolkit.Mvvm
+Messenger.Default.Unregister<MyMessage, string>(this, nameof(MyViewModel));
+```
+
+#### Cleanup ()
+
+There is no direct replacement for the `Cleanup` method in the MVVM Toolkit. In the context of MvvmLight, `Cleanup` is used to remove registrations which are no longer alive as the implementation takes advantage of weak references. 
+
+Any calls to the `Cleanup` method can be removed.
+
+```csharp
+// MvvmLight
+Messenger.Default.Cleanup();
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+#### RequestCleanup ()
+
+There is no direct replacement for the `RequestCleanup` method in the MVVM Toolkit. In the context of MvvmLight, `RequestCleanup` is used to initiate a request to remove registrations which are no longer alive as the implementation takes advantage of weak references. 
+
+Any calls to the `RequestCleanup` method can be removed.
+
+```csharp
+// MvvmLight
+Messenger.Default.RequestCleanup();
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+#### ResetAll ()
+
+There is no direct replacement for the `ResetAll` method in the MVVM Toolkit. In the context of MvvmLight, this method is used to reset the default `IMessenger` instance by calling the static `Reset` method.
+
+Any calls to the `ResetAll()` method can be removed.
+
+```csharp
+// MvvmLight
+Messenger.Default.ResetAll();
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+### Messenger Static Methods
+
+#### OverrideDefault ( IMessenger )
+
+There is no direct replacement for the `OverrideDefault(IMessenger)` method in the MVVM Toolkit.
+
+Any calls to the `Messenger.OverrideDefault(IMessenger)` method can be removed.
+
+```csharp
+// MvvmLight
+Messenger.OverrideDefault(new Messenger());
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+#### Reset ()
+
+There is no direct replacement for the `Reset` method in the MVVM Toolkit. In the context of MvvmLight, this static method is used to reset the default `IMessenger` instance.
+
+Any calls to the `Messenger.Reset()` method can be removed.
+
+```csharp
+// MvvmLight
+Messenger.Reset();
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
+
+### Messenger Static Properties
+
+#### Default
+
+`Default` has a direct replacement, `Default`, requiring no change to your existing implementation.
+
+```csharp
+// MvvmLight
+IMessenger messenger = Messenger.Default;
+
+// Toolkit.Mvvm
+IMessenger messenger = Messenger.Default;
 ```
