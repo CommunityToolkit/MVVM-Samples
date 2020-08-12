@@ -658,3 +658,11 @@ IMessenger messenger = Messenger.Default;
 // Toolkit.Mvvm
 IMessenger messenger = Messenger.Default;
 ```
+
+## Message type migrations
+
+The message types provided in the MvvmLight toolkit are designed as a base for you as a developer to work with if needed. 
+
+While the MVVM Toolkit provides some alternatives, there are no direct replacement for these message types. We recommend looking at our [available message types](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Mvvm/Messaging/Messages).
+
+Alternatively, if your solution takes advantage of the MvvmLight message types, these can easily be ported into your own codebase.
