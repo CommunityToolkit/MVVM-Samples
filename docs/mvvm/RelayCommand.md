@@ -36,7 +36,7 @@ public class MyViewModel : ObservableObject
     public int Counter
     {
         get => counter;
-        private set => Set(ref counter, value);
+        private set => SetProperty(ref counter, value);
     }
 
     public ICommand IncrementCounterCommand { get; }
