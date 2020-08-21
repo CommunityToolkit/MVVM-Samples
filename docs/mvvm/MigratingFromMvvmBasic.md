@@ -60,7 +60,7 @@ If you try and build the project at this point you will see lots of errors. Thes
 
 The `Observable` class was used as a base class for ViewModels. The MVVM Toolkit contains a similar class with additional functionality that is called `ObservableObject`.
 
-Change all classes that previously inherited from `Observable` to inherit from `Observable Object`.
+Change all classes that previously inherited from `Observable` to inherit from `ObservableObject`.
 
 For example
 
