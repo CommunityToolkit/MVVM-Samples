@@ -10,7 +10,7 @@ dev_langs:
 
 # Migrating from MVVM Basic
 
-This article explains how to migrate apps built with the [MVVM](https://github.com/microsoft/WindowsTemplateStudio/blob/dev/docs/UWP/frameworks/mvvmbasic.md) Basic option in [Windows Template Studio](https://marketplace.visualstudio.com/items?itemName=WASTeamAccount.WindowsTemplateStudio) to use the Toolkit MVVM library instead.
+This article explains how to migrate apps built with the [MVVM](https://github.com/microsoft/WindowsTemplateStudio/blob/dev/docs/UWP/frameworks/mvvmbasic.md) Basic option in [Windows Template Studio](https://marketplace.visualstudio.com/items?itemName=WASTeamAccount.WindowsTemplateStudio) to use the Toolkit MVVM library instead. It applies to both UWP and WPF apps created with Windows Template Studio.
 
 This article focuses exclusively on migration and does not cover how to use the additional functionality that the library provides.
 
