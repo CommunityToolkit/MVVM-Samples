@@ -169,6 +169,8 @@ There is no direct replacement for the `ICleanup` interface.
 
 However, the `ObservableRecipient` provides an `OnDeactivated` method which should be used to provide the same functionality as `Cleanup`. 
 
+`OnDeactivated` in the MVVM Toolkit will also unregister all of the registered messenger events when called.
+
 ```csharp
 // MvvmLight
 this.Cleanup();
