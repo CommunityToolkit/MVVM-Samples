@@ -739,16 +739,16 @@ Messenger.Default.RequestCleanup();
 
 #### ResetAll ()
 
-There is no direct replacement for the `ResetAll` method in the MVVM Toolkit. In the context of MvvmLight, this method is used to reset the default `IMessenger` instance by calling the static `Reset` method.
+The functionality of `ResetAll()` can be achieved with the MVVM Toolkit's `Reset()` method. 
 
-Any calls to the `ResetAll()` method can be removed.
+Unlike MvvmLight's implementation which nulls out the instance, the MVVM Toolkit clears the registered maps. 
 
 ```csharp
 // MvvmLight
 Messenger.Default.ResetAll();
 
 // Toolkit.Mvvm
-// No direct replacement, remove
+Messenger.Default.Reset();
 ```
 
 ### Messenger Static Methods
@@ -757,28 +757,28 @@ Messenger.Default.ResetAll();
 
 There is no direct replacement for the `OverrideDefault(IMessenger)` method in the MVVM Toolkit.
 
-Any calls to the `Messenger.OverrideDefault(IMessenger)` method can be removed.
+To use a custom implementation of the `IMessenger`, either registered the custom implementation in the service registrations for dependency injection or manually contruct a static instance and pass this where required. 
 
 ```csharp
 // MvvmLight
 Messenger.OverrideDefault(new Messenger());
 
 // Toolkit.Mvvm
-// No direct replacement, remove
+// No direct replacement
 ```
 
 #### Reset ()
 
-There is no direct replacement for the `Reset` method in the MVVM Toolkit. In the context of MvvmLight, this static method is used to reset the default `IMessenger` instance.
+There is no direct replacement for the static `Reset` method in the MVVM Toolkit.
 
-Any calls to the `Messenger.Reset()` method can be removed.
+The same functionality can be achieved by calling the `Reset` method of the static `Default` instance of the `Messenger` class.
 
 ```csharp
 // MvvmLight
 Messenger.Reset();
 
 // Toolkit.Mvvm
-// No direct replacement, remove
+Messenger.Default.Reset();
 ```
 
 ### Messenger Static Properties
