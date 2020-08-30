@@ -49,46 +49,6 @@ Below are a list of migrations that will need to be performed if being used in y
 
 ### ObservableObject Methods
 
-#### VerifyPropertyName ( string )
-
-There is no direct replacement for the `VerifyPropertyName(string)` method and any code using this should be altered or removed.
-
-```csharp
-// MvvmLight
-this.VerifyPropertyName(nameof(this.MyProperty));
-
-// Toolkit.Mvvm
-// No direct replacement, remove
-```
-
-#### RaisePropertyChanged ( string )
-
-`RaisePropertyChanged(string)` has a renamed direct replacement, `OnPropertyChanged(string)`.
-
-```csharp
-// MvvmLight
-this.RaisePropertyChanged(nameof(this.MyProperty));
-
-// Toolkit.Mvvm
-this.OnPropertyChanged(nameof(this.MyProperty));
-```
-
-Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
-
-#### RaisePropertyChanged<T> ( Expression )
-
-`RaisePropertyChanged<T>(Expression)` does not have a direct replacement. 
-
-It is recommended for improved performance that you replace `RaisePropertyChanged<T>(Expression)` with the Toolkit's `OnPropertyChanged(string)` using the `nameof` keyword instead.
-
-```csharp
-// MvvmLight
-this.RaisePropertyChanged(() => this.MyProperty);
-
-// Toolkit.Mvvm
-this.OnPropertyChanged(nameof(this.MyProperty));
-```
-
 #### Set<T> ( Expression, ref T, T )
 
 `Set(Expression, ref T, T)` does not have a like-for-like method signature replacement. 
@@ -134,6 +94,46 @@ this.SetProperty(ref this.myProperty, value, nameof(this.MyProperty));
 ```
 
 Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
+#### RaisePropertyChanged ( string )
+
+`RaisePropertyChanged(string)` has a renamed direct replacement, `OnPropertyChanged(string)`.
+
+```csharp
+// MvvmLight
+this.RaisePropertyChanged(nameof(this.MyProperty));
+
+// Toolkit.Mvvm
+this.OnPropertyChanged(nameof(this.MyProperty));
+```
+
+Note, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
+
+#### RaisePropertyChanged<T> ( Expression )
+
+`RaisePropertyChanged<T>(Expression)` does not have a direct replacement. 
+
+It is recommended for improved performance that you replace `RaisePropertyChanged<T>(Expression)` with the Toolkit's `OnPropertyChanged(string)` using the `nameof` keyword instead.
+
+```csharp
+// MvvmLight
+this.RaisePropertyChanged(() => this.MyProperty);
+
+// Toolkit.Mvvm
+this.OnPropertyChanged(nameof(this.MyProperty));
+```
+
+#### VerifyPropertyName ( string )
+
+There is no direct replacement for the `VerifyPropertyName(string)` method and any code using this should be altered or removed.
+
+```csharp
+// MvvmLight
+this.VerifyPropertyName(nameof(this.MyProperty));
+
+// Toolkit.Mvvm
+// No direct replacement, remove
+```
 
 ### ObservableObject Properties
 
