@@ -163,26 +163,6 @@ Below are a list of migrations that will need to be performed if being used in y
 
 ### ViewModelBase Methods
 
-#### ICleanup.Cleanup ()
-
-There is no direct replacement for the `ICleanup` interface.
-
-However, the `ObservableRecipient` provides an `OnDeactivated` method which should be used to provide the same functionality as `Cleanup`. 
-
-`OnDeactivated` in the MVVM Toolkit will also unregister all of the registered messenger events when called.
-
-```csharp
-// MvvmLight
-this.Cleanup();
-
-// Toolkit.Mvvm
-this.OnDeactivated();
-```
-
-Note, the `OnActivated` and `OnDeactivated` methods can be called from your existing solution as with `Cleanup`. 
-
-However, the `ObservableRecipient` exposes an `IsActive` property that also controls the call to these methods when it is set. 
-
 #### Set<T> ( string, ref T, T, bool )
 
 `Set<T>(string, ref T, T, bool)` does not have a like-for-like method signature replacement. 
@@ -272,6 +252,26 @@ this.RaisePropertyChanged<MyObject>(() => this.MyProperty, this.oldValue, this.n
 // Toolkit.Mvvm
 this.RaisePropertyChanged<MyObject>(nameof(this.MyProperty), this.oldValue, this.newValue, true);
 ```
+
+#### ICleanup.Cleanup ()
+
+There is no direct replacement for the `ICleanup` interface.
+
+However, the `ObservableRecipient` provides an `OnDeactivated` method which should be used to provide the same functionality as `Cleanup`. 
+
+`OnDeactivated` in the MVVM Toolkit will also unregister all of the registered messenger events when called.
+
+```csharp
+// MvvmLight
+this.Cleanup();
+
+// Toolkit.Mvvm
+this.OnDeactivated();
+```
+
+Note, the `OnActivated` and `OnDeactivated` methods can be called from your existing solution as with `Cleanup`. 
+
+However, the `ObservableRecipient` exposes an `IsActive` property that also controls the call to these methods when it is set. 
 
 ### ViewModelBase Properties
 
