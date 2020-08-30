@@ -295,6 +295,8 @@ IMessenger messenger = this.Messenger;
 
 There is no direct replacement for the `IsInDesignMode` property and any code using this should be altered or removed.
 
+The reason for the omission from the MVVM Toolkit is that the `IsInDesignMode` property exposed platform-specific implementations. The MVVM Toolkit has been designed to be platform agnostic.
+
 ```csharp
 // MvvmLight
 var isInDesignMode = this.IsInDesignMode;
@@ -308,6 +310,8 @@ var isInDesignMode = this.IsInDesignMode;
 #### IsInDesignModeStatic
 
 There is no direct replacement for the `IsInDesignModeStatic` property and any code using this should be altered or removed.
+
+The reason for the omission from the MVVM Toolkit is that the `IsInDesignMode` property exposed platform-specific implementations. The MVVM Toolkit has been designed to be platform agnostic.
 
 ```csharp
 // MvvmLight
