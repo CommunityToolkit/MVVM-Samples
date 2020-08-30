@@ -127,6 +127,8 @@ this.OnPropertyChanged(nameof(this.MyProperty));
 
 There is no direct replacement for the `VerifyPropertyName(string)` method and any code using this should be altered or removed.
 
+The reason for the omission from the MVVM Toolkit is that using the `nameof` keyword for a property verifies that it exists. When MvvmLight was built, the `nameof` keyword was not available and this method was used to ensure that the property existed on the object.
+
 ```csharp
 // MvvmLight
 this.VerifyPropertyName(nameof(this.MyProperty));
