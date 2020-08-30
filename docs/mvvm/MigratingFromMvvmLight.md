@@ -561,7 +561,7 @@ Messenger.Default.Register<MyMessage>(this, this.OnMyMessageReceived);
 
 #### Register<TMessage> ( object, bool, Action<TMessage> )
 
-There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve it's performance benefits.
+There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve its performance benefits.
 
 Alternatively, there are a few options that can be done to achieve this functionality. 
 
@@ -591,7 +591,7 @@ Messenger.Default.Register<MyMessage, string>(this, nameof(MyViewModel), this.On
 
 #### Register<TMessage> ( object, object, bool, Action<TMessage> )
 
-There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve it's performance benefits.
+There is no direct replacement for this registration mechanism which allows you to support receiving messages for derived message types also. This change is intentional as the `Messenger` implementation aims to not use reflection to achieve its performance benefits.
 
 Alternatively, there are a few options that can be done to achieve this functionality. 
 
