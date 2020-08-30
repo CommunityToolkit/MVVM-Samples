@@ -342,12 +342,26 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 **Note** on `RelayCommand` constructors. MvvmLight uses weak references to establish the link between the command and the action called from the associated class. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your constructors, this will be removed.
 
+### Using RelayCommand with asynchronous actions
+
+If you are currently using the MvvmLight `RelayCommand` implementation with asynchronous actions, the MVVM Toolkit exposes an improved implementation for these scenarios. 
+
+You can simply replace your existing `RelayCommand` with the `AsyncRelayCommand` which has been built for asynchronous purposes.
+
+```csharp
+// MvvmLight
+var command = new RelayCommand(() => this.OnCommandAsync());
+var command = new RelayCommand(async () => await this.OnCommandAsync());
+
+// Toolkit.Mvvm
+var asyncCommand = new AsyncRelayCommand(this.OnCommandAsync);
+```
+
 ### RelayCommand Methods
 
 #### RaiseCanExecuteChanged ()
 
 The functionality of `RaiseCanExecuteChanged()` can be achieved with the MVVM Toolkit's `NotifyCanExecuteChanged()` method. 
-
 
 ```csharp
 // MvvmLight
@@ -379,6 +393,20 @@ using Microsoft.Toolkit.Mvvm.Input;
 ```
 
 **Note** on `RelayCommand<T>` constructors. MvvmLight uses weak references to establish the link between the command and the action called from the associated class. This is not required by the MVVM Toolkit implementation and if this optional parameter has been set to `true` in any of your constructors, this will be removed.
+
+### Using RelayCommand with asynchronous actions
+
+If you are currently using the MvvmLight `RelayCommand<T>` implementation with asynchronous actions, the MVVM Toolkit exposes an improved implementation for these scenarios. 
+
+You can simply replace your existing `RelayCommand<T>` with the `AsyncRelayCommand<T>` which has been built for asynchronous purposes.
+
+```csharp
+// MvvmLight
+var command = new RelayCommand<string>(async () => await this.OnCommandAsync());
+
+// Toolkit.Mvvm
+var asyncCommand = new AsyncRelayCommand<string>(this.OnCommandAsync);
+```
 
 ### RelayCommand<T> Methods
 
