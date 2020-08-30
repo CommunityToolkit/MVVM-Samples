@@ -669,7 +669,9 @@ Messenger.Default.Unregister<MyMessage>(this);
 
 There is no direct replacement for the `Unregister<TMessage>(object, Action<TMessage>)` method in the MVVM Toolkit. 
 
-Alternatively, we recommend achieving a similar functionality with the MVVM Toolkit's `IMessenger` extension method `Unregister<TMessage>(object)`. 
+The reason for the omission is that a message recipient can only have a single registered handler for any given message type. 
+
+We recommend achieving this functionality with the MVVM Toolkit's `IMessenger` extension method `Unregister<TMessage>(object)`. 
 
 ```csharp
 // MvvmLight
@@ -695,7 +697,9 @@ Messenger.Default.Unregister<MyMessage, string>(this, nameof(MyViewModel));
 
 There is no direct replacement for the `Unregister<TMessage>(object, object, Action<TMessage>)` method in the MVVM Toolkit. 
 
-Alternatively, we recommend achieving a similar functionality with the MVVM Toolkit's `Unregister<TMessage, TToken>(object, TToken)` method. 
+The reason for the omission is that a message recipient can only have a single registered handler for any given message type. 
+
+We recommend achieving this functionality with the MVVM Toolkit's `Unregister<TMessage, TToken>(object, TToken)` method. 
 
 ```csharp
 // MvvmLight
