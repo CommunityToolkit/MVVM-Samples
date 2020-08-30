@@ -177,7 +177,7 @@ this.Set(nameof(this.MyProperty), ref this.myProperty, value, true);
 this.SetProperty(ref this.myProperty, value, true, nameof(this.MyProperty));
 ```
 
-Note, the value and broadcast boolean parameters are not optional in the Toolkit's implementation and must be provided to use this method.
+Note, the value and broadcast boolean parameters are not optional in the Toolkit's implementation and must be provided to use this method. The reason for this change is that by omitting the broadcast parameter when calling this method, it will by default call the ObservableObject's `SetProperty` method.
 
 Also, string parameter is not required if the method is being called from the property's setter as it is inferred from the caller member name.
 
