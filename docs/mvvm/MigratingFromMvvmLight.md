@@ -621,6 +621,13 @@ Messenger.Default.Send<MyMessage>(new MyMessage());
 Messenger.Default.Send(new MyMessage());
 ```
 
+In the above scenario where the message being sent has a parameterless constructor, the MVVM Toolkit has a simplified extension to send a message in this format.
+
+```csharp
+// Toolkit.Mvvm
+Messenger.Default.Send<MyMessage>();
+```
+
 #### Send<TMessage> ( TMessage, object )
 
 The functionality of `Send<TMessage>(TMessage, object)` can be achieved with the MVVM Toolkit's `Send<TMessage, TToken>(TMessage, TToken)` method. 
