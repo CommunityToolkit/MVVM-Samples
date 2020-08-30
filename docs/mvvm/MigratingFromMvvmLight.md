@@ -229,28 +229,32 @@ Also, string parameter is not required if the method is being called from the pr
 
 #### RaisePropertyChanged<T> ( string, T, T, bool )
 
-There is no direct replacement for the `RaisePropertyChanged<T>(string, T, T, bool)` method and any code using this should be altered or removed.
+There is no direct replacement for the `RaisePropertyChanged<T>(string, T, T, bool)` method. 
+
+The simplest alternative is to call `OnPropertyChanged` and subsequently call `Broadcast` to achieve this functionality.
 
 ```csharp
 // MvvmLight
 this.RaisePropertyChanged<MyObject>(nameof(this.MyProperty), this.oldValue, this.newValue, true);
 
 // Toolkit.Mvvm
-// No direct replacement, remove
+this.OnPropertyChanged<MyObject>(nameof(this.MyProperty));
+this.Broadcast<MyObject>(this.oldValue, this.newValue, nameof(this.MyProperty));
 ```
 
 #### RaisePropertyChanged<T> ( Expression, T, T, bool )
 
 There is no direct replacement for the `RaisePropertyChanged<T>(Expression, T, T, bool)` method.
 
-It is recommended for improved performance that you replace this with the Toolkit's `RaisePropertyChanged<T>(string, T, T bool)` using the `nameof` keyword instead.
+The simplest alternative is to call `OnPropertyChanged` and subsequently call `Broadcast` to achieve this functionality.
 
 ```csharp
 // MvvmLight
 this.RaisePropertyChanged<MyObject>(() => this.MyProperty, this.oldValue, this.newValue, true);
 
 // Toolkit.Mvvm
-this.RaisePropertyChanged<MyObject>(nameof(this.MyProperty), this.oldValue, this.newValue, true);
+this.OnPropertyChanged<MyObject>(nameof(this.MyProperty));
+this.Broadcast<MyObject>(this.oldValue, this.newValue, nameof(this.MyProperty));
 ```
 
 #### ICleanup.Cleanup ()
