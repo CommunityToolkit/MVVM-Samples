@@ -43,7 +43,7 @@
                             <muxc:TabViewItem Header="See XAML"
                                               IsClosable="False">
                                 <ScrollViewer>
-                                    <controls:MarkedControl MarkdownText="{TemplateBinding XamlCode}"
+                                    <controls:MarkedControl Text="{TemplateBinding XamlCode}"
                                                             Background="#FF202020"
                                                             Padding="8"
                                                             Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
@@ -57,7 +57,7 @@
                             <muxc:TabViewItem Header="See C#"
                                               IsClosable="False">
                                 <ScrollViewer>
-                                    <controls:MarkedControl MarkdownText="{TemplateBinding CSharpCode}"
+                                    <controls:MarkedControl Text="{TemplateBinding CSharpCode}"
                                                             Background="#FF202020"
                                                             Padding="8"
                                                             Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />

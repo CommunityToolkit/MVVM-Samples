@@ -23,7 +23,7 @@
     <ScrollViewer Padding="16"
                   CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Sending and receiving messages'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Sending and receiving messages'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Sending and receiving messages'), Mode=OneWay}"/>-->
 
