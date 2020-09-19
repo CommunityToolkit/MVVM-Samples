@@ -23,9 +23,9 @@
     <!--CanContentRenderOutsideBounds="True"-->
     <ScrollViewer Padding="16">
         <StackPanel Spacing="16">
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Introduction to the MVVM package'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Introduction to the MVVM package'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'When should I use this package?'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'When should I use this package?'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Introduction to the MVVM package'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('When should I use this package?'), Mode=OneWay}"/>-->

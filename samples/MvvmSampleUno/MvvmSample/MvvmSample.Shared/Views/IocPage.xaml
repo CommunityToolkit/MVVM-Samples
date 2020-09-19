@@ -23,13 +23,13 @@
     <ScrollViewer Padding="16"
                   CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Ioc ([Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control))'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Ioc ([Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control))'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Ioc ([Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control))'), Mode=OneWay}"/>-->
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Configure and resolve services'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Configure and resolve services'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Configure and resolve services'), Mode=OneWay}"/>-->
-            <controls:MarkedControl MarkdownText="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Constructor injection'}"
+            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Constructor injection'}"
                                     Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Constructor injection'), Mode=OneWay}"/>-->
         </StackPanel>

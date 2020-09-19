@@ -13,22 +13,6 @@
                 <ResourceDictionary Source="Controls/InteractiveSample.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--MarkdownTextBlock style-->
-            <!--<Style TargetType="controls:MarkdownTextBlock">
-                <Setter Property="Background"
-                        Value="#60222222" />
-                <Setter Property="Padding"
-                        Value="8" />
-                <Setter Property="Header2FontWeight"
-                        Value="Bold" />
-                <Setter Property="Header2FontSize"
-                        Value="20" />
-                <Setter Property="Header2Margin"
-                        Value="0, 15, 0, 15" />
-                <Setter Property="Header2Foreground"
-                        Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
-            </Style>-->
-
             <views:MarkdownSectionConverter x:Key="MarkdownSectionConverter" />
 
         </ResourceDictionary>

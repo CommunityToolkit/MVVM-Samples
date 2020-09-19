@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if !WINDOWS_UWP
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using System.Threading.Tasks;
 using Uno.Extensions;
-using Windows.UI;
-#if !WINDOWS_UWP
 using Uno.Foundation;
-#endif
 #if __WASM__
 using Uno.Foundation.Interop;
 #endif
@@ -87,8 +84,6 @@ UserControl
             var wv = internalWebView.GetType().GetField("_webView", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(internalWebView) as Android.Webkit.WebView;
             wv.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #endif
-
-
             LoadJavaScript();
         }
 #endif
@@ -116,9 +111,7 @@ UserControl
 #if !__WASM__
             var source = new CancellationTokenSource();
             var result = await internalWebView.InvokeScriptAsync(
-#if !WINDOWS_UWP
                 source.Token,
-#endif
                 "eval", new[] { scriptToRun }).AsTask();
             if (resizeAfterScript)
             {
@@ -151,11 +144,7 @@ UserControl
         }
 
         private static Func<string, string> ReplaceLiterals = txt =>
-#if WINDOWS_UWP
-        txt;
-#else
-        txt.Replace("\\", "\\\\").Replace("\n", "\\n").Replace("\r", "\\r").Replace("\"", "\\\"").Replace("\'", "\\\'").Replace("`", "\\`").Replace("^", "\\^");
-#endif
+            txt.Replace("\\", "\\\\").Replace("\n", "\\n").Replace("\r", "\\r").Replace("\"", "\\\"").Replace("\'", "\\\'").Replace("`", "\\`").Replace("^", "\\^");
 
 
         public static async Task<Stream> GetEmbeddedFileStreamAsync(Type assemblyType, string fileName)
@@ -192,5 +181,6 @@ UserControl
             }
         }
     }
-
 }
+
+#endif
