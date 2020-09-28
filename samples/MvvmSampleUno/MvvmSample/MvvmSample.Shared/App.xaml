@@ -9,7 +9,6 @@
 
             <!--Resource dictionaries-->
             <ResourceDictionary.MergedDictionaries>
-                <!--<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />-->
                 <ResourceDictionary Source="Controls/InteractiveSample.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
