@@ -26,7 +26,8 @@
                             VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <!--IsAddTabButtonVisible="False"-->
                         <muxc:TabView HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                      Margin="-2,0,-2,0">
                             <muxc:TabView.Resources>
                                 <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
                                 <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
