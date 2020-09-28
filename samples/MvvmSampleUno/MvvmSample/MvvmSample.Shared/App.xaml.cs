@@ -5,23 +5,9 @@ using MvvmSampleUwp;
 using MvvmSampleUwp.Helpers;
 using MvvmSampleUwp.Services;
 using Refit;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace MvvmSample
 {
@@ -47,6 +33,11 @@ namespace MvvmSample
             // Ensure the UI is initialized
             if (Window.Current.Content is null)
             {
+#if WINDOWS_UWP
+                // Load the WinUI resource dictionaries on UWP
+                Resources.MergedDictionaries.Add(new Microsoft.UI.Xaml.Controls.XamlControlsResources());
+#endif
+
                 Window.Current.Content = new Shell();
 
                 TitleBarHelper.StyleTitleBar();
