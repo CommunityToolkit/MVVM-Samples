@@ -6,7 +6,38 @@
 
 🆕 Added a new `WeakReferenceMessenger` type. This type is less performant than the other messenger, and uses more memory, and in return only uses weak references to track recipients. This type essentially mirrors the behavior of the `Messenger` type from `MvvmLight`, making the transition easier for developers migrating from that library.
 
-🆕 Introduced a new custom delegate to represent message handlers, which also receives the current recipient as additional input parameter. No API changes are required for users registering messages through the `IRecipient<TMessage>` interface, whereas users manually registering will need to modify their code as follows:
+🆕 Introduced a new custom delegate to represent message handlers, which also receives the current recipient as additional input parameter (see code changes below).
+
+✅ Renamed `Messenger` to `StrongReferenceMessenger`.
+
+✅ The `WeakReferenceMessenger` is now the default messenger used by the `ObservableRecipient` class.
+
+✅ Changed `ObservableObject` overloads using `Expression<Func<T>>` to be more efficient (see code changes below).
+
+✅ API changes to the `SetPropertyAndNotifyOnCompletion` (as detailed in [this blog post]( https://devblogs.microsoft.com/pax-windows/mvvm-toolkit-preview-3-the-journey-of-an-api/)).
+
+🚨 Removed the `Ioc` class (we will include docs on how to easily start using the `Microsoft.Extensions.DependencyInjection` library directly to work with dependency injection).
+
+## Breaking changes
+
+💥 If you were using the `ObservableObject.SetProperty<T>(Expression<Func<T>>, ...)` overload, the code needs to be updated as follows to replace the LINQ expression with a stateless lambda expression:
+
+```cs
+private readonly User user;
+
+public string Name
+{
+    // Preview 2
+    set => SetProperty(() => user.Name, value);
+
+    // Preview 3
+    set => SetProperty(user.Name, value, user, (u, n) => u.Name = n);
+}
+```
+
+The syntax is slightly more complex, but results in a 150x speed improvement (that's not a typo), requires no memory allocations at all and no reflection, and ensures that all necessary validation of the arguments can be done at compile time too.
+
+💥 If you were registering message handlers, no API changes are required for messages registered through the `IRecipient<TMessage>` interface. If you were manually registering handlers with the `Action<TMessage>` delegate instead, you will need to modify their code as follows:
 
 ```cs
 // Preview 2
@@ -32,30 +63,9 @@ Messenger.Register<MyViewModel, MyMessage>(this, (recipient, message) =>
 });
 ```
 
-✅ Renamed `Messenger` to `StrongReferenceMessenger`.
+💥 If you were directly referencing `Messenger.Default` to send messages (ie. outside of the `ObservableRecipient` class, which exposes a `Messenger` property which is unchanged), you'll need to replace that with either `WeakReferenceMessenger.Default` or `StrongReferenceMessenger.Default`, depending on the desired messenger to use.
 
-✅ The `WeakReferenceMessenger` is now the default messenger used by the `ObservableRecipient` class.
-
-✅ Changed `ObservableObject` overloads using `Expression<Func<T>>` to be more efficient. For instance, the one used to wrap a non-observable model:
-
-```cs
-private readonly User user;
-
-public string Name
-{
-    // Preview 2
-    set => SetProperty(() => user.Name, value);
-
-    // Preview 3
-    set => SetProperty(user.Name, value, user, (u, n) => u.Name = n);
-}
-```
-
-The syntax is slightly more complex, but results in a 150x speed improvement (that's not a typo), requires no memory allocations at all and no reflection, and ensures that all necessary validation of the arguments can be done at compile time too.
-
-✅ API changes to the `SetPropertyAndNotifyOnCompletion` (as detailed in [this blog post]( https://devblogs.microsoft.com/pax-windows/mvvm-toolkit-preview-3-the-journey-of-an-api/)).
-
-🚨 Removed the `Ioc` class (we will include docs on how to easily start using the `Microsoft.Extensions.DependencyInjection` library directly to work with dependency injection).
+💥 If you want to use the `StrongReferenceMessenger` class for better performance, make sure to pass that to the constructor of the `ObservableRecipient` class, otherwise the `WeakReferenceMessenger.Default` instance will be used.
 
 ## Notes
 
