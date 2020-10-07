@@ -53,7 +53,7 @@ public string Name
 
 The syntax is slightly more complex, but results in a 150x speed improvement (that's not a typo), requires no memory allocations at all and no reflection, and ensures that all necessary validation of the arguments can be done at compile time too.
 
-✅ API changes to the `SetPropertyAndNotifyOnCompletion` (as detailed in the blog post).
+✅ API changes to the `SetPropertyAndNotifyOnCompletion` (as detailed in [this blog post]( https://devblogs.microsoft.com/pax-windows/mvvm-toolkit-preview-3-the-journey-of-an-api/)).
 
 🚨 Removed the `Ioc` class (we will include docs on how to easily start using the `Microsoft.Extensions.DependencyInjection` library directly to work with dependency injection).
 
