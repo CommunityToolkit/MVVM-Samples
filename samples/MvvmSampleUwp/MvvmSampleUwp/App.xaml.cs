@@ -39,12 +39,12 @@ namespace MvvmSampleUwp
                 TitleBarHelper.ExpandViewIntoTitleBar();
 
                 // Register services
-                Ioc.Default.ConfigureServices(services =>
-                {
-                    services.AddSingleton<IFilesService, FilesService>();
-                    services.AddSingleton<ISettingsService, SettingsService>();
-                    services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
-                });
+                Ioc.Default.ConfigureServices(
+                    new ServiceCollection()
+                    .AddSingleton<IFilesService, FilesService>()
+                    .AddSingleton<ISettingsService, SettingsService>()
+                    .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    .BuildServiceProvider());
             }
 
             // Enable the prelaunch if needed, and activate the window
