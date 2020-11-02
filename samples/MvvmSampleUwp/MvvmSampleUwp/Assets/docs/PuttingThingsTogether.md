@@ -136,7 +136,7 @@ public sealed class PostWidgetViewModel : ObservableRecipient
     protected override void OnActivated()
     {
         // We use a method group here, but a lambda expression is also valid
-        Messenger.Register<PropertyChangedMessage<object>>(this, Receive);
+        Messenger.Register<PostWidgetViewModel, PropertyChangedMessage<object>>(this, (r, m) => r.Receive(m));
     }
 
     /// <inheritdoc/>
@@ -155,9 +155,10 @@ We now have a draft of our viewmodels ready, and we can start looking into the s
 
 ## Building the settings service
 
-> **NOTE:** the sample is built using the service locator pattern, but this is not the only possible pattern to use to manage service. The MVVM Toolkit also fully supports the dependency injection pattern, and you can choose the one you prefer depending on the architecture of your application, the available development time or personal preference.
+> [!NOTE]
+> The sample is built using the dependency injection pattern, which is the recommended approach to deal with services in viewmodels. It is also possible to use other patterns, such as the service locator pattern, but the MVVM Toolkit does not offer built-in APIs to enable that.
 
-Since we want some of our properties to be saved and persisted, we need a way for viewmodels to be able to interact with the application settings. We shouldn't use platform-specific APIs directly in our viewmodels though, as that would prevent us from having all our viewmodels in a portable, .NET Standard project. We can solve this issue by using services, and the `Ioc` class. The idea is to write interfaces that represent all the API surface that we need, and then to implement platform-specific types implementing this interface on all our application targets. The viewmodels will only interact with the interfaces, so they will not have any strong reference to any platform-specific type at all.
+Since we want some of our properties to be saved and persisted, we need a way for viewmodels to be able to interact with the application settings. We shouldn't use platform-specific APIs directly in our viewmodels though, as that would prevent us from having all our viewmodels in a portable, .NET Standard project. We can solve this issue by using services, and the APIs in the `Microsoft.Extensions.DependencyInjection` library to setup our `IServiceProvider` instance for the application. The idea is to write interfaces that represent all the API surface that we need, and then to implement platform-specific types implementing this interface on all our application targets. The viewmodels will only interact with the interfaces, so they will not have any strong reference to any platform-specific type at all.
 
 Here's a simple interface for a settings service:
 
@@ -188,14 +189,16 @@ We can assume that platform-specific types implementing this interface will take
 /// <summary>
 /// Gets the <see cref="ISettingsService"/> instance to use.
 /// </summary>
-private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService<ISettingsService>();
+private readonly ISettingsService SettingsService;
 
 /// <summary>
 /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
 /// </summary>
-public SubredditWidgetViewModel()
+public SubredditWidgetViewModel(ISettingsService settingsService)
 {
-    selectedSubreddit = SettingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+    SettingsService = settingsService;
+
+    selectedSubreddit = settingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
 }
 
 private string selectedSubreddit;
@@ -215,7 +218,7 @@ public string SelectedSubreddit
 }
 ```
 
-Here we're using the service locator pattern, which is one of the supported patterns by the `Ioc` class. We've declared an `ISettingsService SettingsService` field that just stores our settings service (we're retrieving it from the static `Ioc.Default` instance), and then we're initializing the `SelectedSubreddit` property in the constructor, by either using the previous value or just the first available subreddit. Then we also modified the `SelectedSubreddit` setter, so that it will also use the settings service to save the new value to disk.
+Here we're using dependency injection and constructor injection, as mentioned above. We've declared an `ISettingsService SettingsService` field that just stores our settings service (which we're receiving as parameter in the viewmodel constructor), and then we're initializing the `SelectedSubreddit` property in the constructor, by either using the previous value or just the first available subreddit. Then we also modified the `SelectedSubreddit` setter, so that it will also use the settings service to save the new value to disk.
 
 Great! Now we just need to write a platform specific version of this service, this time directly inside one of our app projects. Here's what that service might look like on UWP:
 
@@ -247,16 +250,29 @@ public sealed class SettingsService : ISettingsService
 }
 ```
 
-The final piece of the puzzle is to inject this platform-specific service into our service provider instance, which in this case is the `Ioc.Default` instance. We can do this at startup, like so:
+The final piece of the puzzle is to inject this platform-specific service into our service provider instance. We can do this at startup, like so:
 
 ```csharp
-Ioc.Default.ConfigureServices(services =>
+/// <summary>
+/// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
+/// </summary>
+public IServiceProvider Services { get; }
+
+/// <summary>
+/// Configures the services for the application.
+/// </summary>
+private static IServiceProvider ConfigureServices()
 {
+    var services = new ServiceCollection();
+
     services.AddSingleton<ISettingsService, SettingsService>();
-});
+    services.AddTransient<PostWidgetViewModel>();
+
+    return services.BuildServiceProvider();
+}
 ```
 
-This will register a singleton instance of our `SettingsService` as a type implementing `ISettingsService`. This means that every time one of our viewmodels uses `Ioc.Default.GetService<ISettingsService>()` while the app in use is the UWP one, it will receive a `SettingsService` instance, which will use the UWP APIs behind the scene to manipulate settings. Perfect!
+This will register a singleton instance of our `SettingsService` as a type implementing `ISettingsService`. We are also registering the `PostWidgetViewModel` as a transient service, meaning every time we retrieve an instance, it will be a new one (you can imagine this being useful if wanted to have multiple, independent post widgets). This means that every time we resolve an `ISettingsService` instance while the app in use is the UWP one, it will receive a `SettingsService` instance, which will use the UWP APIs behind the scene to manipulate settings. Perfect!
 
 ## Building the Reddit service
 
@@ -328,11 +344,19 @@ We have added a new `IRedditService` field to store our service, just like we di
 The last missing piece now is just to inject the actual service into our service provider. The big difference in this case is that by using `refit` we don't actually need to implement the service at all! The library will automatically create a type implementing the service for us, behind the scenes. So we only need to get an `IRedditService` instance and inject it directly, like so:
 
 ```csharp
-Ioc.Default.ConfigureServices(services =>
+/// <summary>
+/// Configures the services for the application.
+/// </summary>
+private static IServiceProvider ConfigureServices()
 {
+    var services = new ServiceCollection();
+
     services.AddSingleton<ISettingsService, SettingsService>();
     services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
-});
+    services.AddTransient<PostWidgetViewModel>();
+
+    return services.BuildServiceProvider();
+}
 ```
 
 And that's all we need to do! We now have all our backend ready to use, including two custom services that we created specifically for this app! 🎉
@@ -341,9 +365,23 @@ And that's all we need to do! We now have all our backend ready to use, includin
 
 Now that all the backend is completed, we can write the UI for our widgets. Note how using the MVVM pattern let us focus exclusively on the business logic at first, without having to write any UI-related code until now. Here we'll remove all the UI code that's not interacting with our viewmodels, for simplicity, and we'll go through each different control one by one. The full source code can be found in the sample app.
 
+Before going through the various controls, here's how we can resolve viewmodels for all the different views in our application (eg. the `PostWidgetView`):
+
+```csharp
+public PostWidgetView()
+{
+    this.InitializeComponent();
+    this.DataContext = App.Current.Services.GetService<PostWidgetViewModel>();
+}
+
+public PostWidgetViewModel ViewModel => (PostWidgetViewModel)DataContext;
+```
+
+We're using our `IServiceProvider` instance to resolve the `PostWidgetViewModel` object we need, which is then assigned to the data context property. We're also creating a strongly-typed `ViewModel` property that simply casts the data context to the correct viewmodel type - this is needed to enable `x:Bind` in the XAML code.
+
 Let's start with the subreddit widget, which features a `ComboBox` to select a subreddit, a `Button` to refresh the feed, a `ListView` to display posts and a `ProgressBar` to indicate when the feed is loading. We'll assume that the `ViewModel` property represents an instance of the viewmodel we've described before - this can be declared either in XAML or directly in code behind.
 
-**Subreddit selector:**
+### Subreddit selector:
 
 ```xml
 <ComboBox
@@ -359,7 +397,7 @@ Let's start with the subreddit widget, which features a `ComboBox` to select a s
 
 Here we're binding the source to the `Subreddits` property, and the selected item to the `SelectedSubreddit` property. Note how the `Subreddits` property is only bound once, as the collection itself sends change notifications, while the `SelectedSubreddit` property is bound with the `TwoWay` mode, as we need it both to be able to load the value we retrieve from our settings, as well as updating the property in the viewmodel when the user changes the selection. Additionally, we're using a XAML behavior to invoke our command whenever the selection changes.
 
-**Refresh button:**
+### Refresh button:
 
 ```xml
 <Button Command="{x:Bind ViewModel.LoadPostsCommand}"/>
@@ -367,7 +405,7 @@ Here we're binding the source to the `Subreddits` property, and the selected ite
 
 This component is extremely simple, we're just binding our custom command to the `Command` property of the button, so that the command will be invoked whenever the user clicks on it.
 
-**Posts list:**
+### Posts list:
 
 ```xml
 <ListView
@@ -386,7 +424,7 @@ This component is extremely simple, we're just binding our custom command to the
 
 Here we have a `ListView` binding the source and selection to our viewmodel property, and also a template used to display each post that is available. We're using `x:DataType` to enable `x:Bind` in our template, and we have two controls binding directly to the `Title` and `Thumbnail` properties of our post.
 
-**Loading bar:**
+### Loading bar:
 
 ```xml
 <ProgressBar Visibility="{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}"/>

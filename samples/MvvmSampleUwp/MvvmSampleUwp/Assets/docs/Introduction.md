@@ -33,6 +33,8 @@ using Microsoft.Toolkit.Mvvm;
 Imports Microsoft.Toolkit.Mvvm
 ```
 
+3. Code samples are available in the other docs pages for the MVVM package, and in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
+
 ## When should I use this package?
 
 Use this package for access to a collection of standard, self-contained, lightweight types that provide a starting implementation for building modern apps using the MVVM pattern. These types alone are usually enough for many users to build apps without needing additional external references.
@@ -65,5 +67,3 @@ The included types are:
   - `ValueChangedMessage<T>`
 
 This package aims to offer as much flexibility as possible, so developers are free to choose which components to use.  All types are loosely-coupled, so that it's only necessary to include what you use. There is no requirement to go "all-in" with a specific series of all-encompassing APIs, nor is there a set of mandatory patterns that need to be followed when building apps using these helpers. Combine these building blocks in a way that best fits your needs.
-
-Code samples are available in the other docs pages for the MVVM package, and in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/UnitTests/UnitTests.Shared/Mvvm) for the project.
