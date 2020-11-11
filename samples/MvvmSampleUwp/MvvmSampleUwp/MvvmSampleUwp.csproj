@@ -266,7 +266,7 @@
       <Version>7.0.0-preview3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Mvvm">
-      <Version>7.0.0-build.280.g34b749dfb9</Version>
+      <Version>7.0.0-build.486</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>7.0.0-preview2</Version>
