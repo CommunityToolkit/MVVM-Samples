@@ -53,7 +53,7 @@ public class ObservableUser : ObservableObject
     public string Name
     {
         get => user.Name;
-        set => Set(user.Name, value, user, (u, n) => u.Name = n);
+        set => SetProperty(user.Name, value, user, (u, n) => u.Name = n);
     }
 }
 ```
