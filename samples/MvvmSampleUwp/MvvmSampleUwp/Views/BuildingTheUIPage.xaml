@@ -22,6 +22,10 @@
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Building the UI'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Subreddit selector:'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Refresh button:'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Posts list:'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Loading bar:'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Good to go! 🚀'), Mode=OneWay}"/>
         </StackPanel>
     </ScrollViewer>
