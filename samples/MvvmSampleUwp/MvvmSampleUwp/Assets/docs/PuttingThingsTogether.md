@@ -156,7 +156,7 @@ We now have a draft of our viewmodels ready, and we can start looking into the s
 ## Building the settings service
 
 > [!NOTE]
-> The sample is built using the dependency injection pattern, which is the recommended approach to deal with services in viewmodels. It is also possible to use other patterns, such as the service locator pattern, but the MVVM Toolkit does not offer built-in APIs to enable that.
+> The sample is built using the dependency injection pattern, which is a commonly used approach to deal with services in viewmodels. It is also possible to use other patterns, such as the service locator pattern, but the MVVM Toolkit does not offer built-in APIs to enable that.
 
 Since we want some of our properties to be saved and persisted, we need a way for viewmodels to be able to interact with the application settings. We shouldn't use platform-specific APIs directly in our viewmodels though, as that would prevent us from having all our viewmodels in a portable, .NET Standard project. We can solve this issue by using services, and the APIs in the `Microsoft.Extensions.DependencyInjection` library to setup our `IServiceProvider` instance for the application. The idea is to write interfaces that represent all the API surface that we need, and then to implement platform-specific types implementing this interface on all our application targets. The viewmodels will only interact with the interfaces, so they will not have any strong reference to any platform-specific type at all.
 
