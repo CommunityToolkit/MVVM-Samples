@@ -82,7 +82,7 @@ public string Name
 &lt;/StackPanel>
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
-private Task myTask;
+private TaskNotifier myTask;
 
 /// &lt;summary>
 /// Gets or sets the name to display.
@@ -90,7 +90,7 @@ private Task myTask;
 public Task MyTask
 {
     get => myTask;
-    private set => SetPropertyAndNotifyOnCompletion(ref myTask, () => myTask, value);
+    private set => SetPropertyAndNotifyOnCompletion(ref myTask, value);
 }
 
 /// &lt;summary>

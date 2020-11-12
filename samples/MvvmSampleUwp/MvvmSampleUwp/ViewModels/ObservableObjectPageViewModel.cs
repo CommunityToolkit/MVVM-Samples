@@ -19,7 +19,7 @@ namespace MvvmSampleUwp.ViewModels
             set => SetProperty(ref name, value);
         }
 
-        private Task myTask;
+        private TaskNotifier myTask;
 
         /// <summary>
         /// Gets or sets the name to display.
@@ -27,7 +27,7 @@ namespace MvvmSampleUwp.ViewModels
         public Task MyTask
         {
             get => myTask;
-            private set => SetPropertyAndNotifyOnCompletion(ref myTask, () => myTask, value);
+            private set => SetPropertyAndNotifyOnCompletion(ref myTask, value);
         }
 
         /// <summary>

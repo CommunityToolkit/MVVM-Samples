@@ -104,7 +104,7 @@ public class UserReceiverViewModel : ObservableRecipient
 
     protected override void OnActivated()
     {
-        Messenger.Register&lt;UsernameChangedMessage>(this, m => Username = m.Value);
+        Messenger.Register&lt;UserReceiverViewModel, UsernameChangedMessage>(this, (r, m) => r.Username = m.Value);
     }
 }
 
