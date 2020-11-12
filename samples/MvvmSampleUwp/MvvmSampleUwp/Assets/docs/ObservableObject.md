@@ -113,3 +113,7 @@ There are more examples in the [unit tests](https://github.com/Microsoft/Windows
 ## API
 
 * [ObservableObject source code](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/Microsoft.Toolkit.Mvvm/ComponentModel/ObservableObject.cs)
+
+## Related
+
+* [MVVM Toolkit Preview 3: the journey of an API](https://devblogs.microsoft.com/pax-windows/mvvm-toolkit-preview-3-the-journey-of-an-api/)
