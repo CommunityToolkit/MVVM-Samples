@@ -1,3 +1,6 @@
+> ### NOTE
+> The MVVM Toolkit is currently work in progress. You can track the development and all changes in each preview release [here](https://github.com/windows-toolkit/WindowsCommunityToolkit/issues/3428).
+
 # Windows Community Toolkit
 This new "MVVM Toolkit" is part of the [Windows Community Toolkit](https://aka.ms/wct). The Windows Community Toolkit is part of the [.NET Foundation](https://dotnetfoundation.org/).
 
