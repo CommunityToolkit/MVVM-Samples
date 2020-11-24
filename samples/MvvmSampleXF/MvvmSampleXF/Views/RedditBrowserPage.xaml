@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			 xmlns:widgets="clr-namespace:MvvmSampleXF.Views.Widgets"
+			 x:Class="MvvmSampleXF.Views.RedditBrowserPage"
+			 Title="The Final Result!">
+	<Grid Padding="16">
+		<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
+			<xct:TabView x:Name="RedditTabView" 
+						 TabIndicatorPlacement="Bottom"
+						 TabIndicatorColor="Orange"
+						 IsSwipeEnabled="False">
+				<xct:TabViewItem Text="Subreddit">
+					<widgets:SubredditWidget x:Name="SubredditWidget" />
+				</xct:TabViewItem>
+				<xct:TabViewItem Text="Post">
+					<widgets:PostWidget x:Name="PostWidget" />
+				</xct:TabViewItem>
+			</xct:TabView>
+			<controls:InteractiveSample.XamlCode>
+	
+			```xml
+&lt;!--Feed-->
+&lt;Grid RowDefinitions="60, 8, *">
+
+    &lt;!--Header with topic selector and refresh button-->
+    &lt;Frame Padding="10,0,10,0">
+    &lt;Grid ColumnDefinitions="*, Auto">
+        &lt;Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
+                SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
+                VerticalOptions="Center"
+                HorizontalOptions="StartAndExpand">
+            &lt;Picker.Behaviors>
+                &lt;xct:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                            Command="{Binding LoadPostsCommand}" />
+            &lt;/Picker.Behaviors>
+        &lt;/Picker>
+        &lt;Button Text="Refresh"
+                Grid.Column="1"
+                Command="{Binding LoadPostsCommand}" />
+    &lt;/Grid>
+    &lt;/Frame>
+
+    &lt;!--Items list-->
+    &lt;CollectionView Grid.Row="2"
+                    ItemsSource="{Binding Posts}"
+                    SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged"
+                    IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay, Converter={StaticResource InvertedBoolConverter}}">
+        &lt;CollectionView.ItemTemplate>
+            &lt;DataTemplate x:DataType="models:Post">
+                &lt;Frame BorderColor="Black">
+                    &lt;Grid ColumnSpacing="8"
+                            Padding="16"
+                            ColumnDefinitions="*, Auto">
+                        &lt;Label Text="{Binding Title}"
+                                FontSize="15"
+                                LineBreakMode="WordWrap"
+                                VerticalOptions="Center" />
+                        &lt;Image Grid.Column="1"
+                                Source="{Binding Thumbnail}"
+                                Aspect="AspectFit"
+                                HorizontalOptions="End"
+                                WidthRequest="{Binding Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+                    &lt;/Grid>
+                &lt;/Frame>
+            &lt;/DataTemplate>
+        &lt;/CollectionView.ItemTemplate>
+    &lt;/CollectionView>
+
+    &lt;!--Loading bar-->
+    &lt;ActivityIndicator Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Margin="0, 10, 0, 0"
+                        VerticalOptions="Start"
+                        IsRunning="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}"
+                        IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}" />
+&lt;/Grid>
+
+&lt;!--Post-->
+&lt;Grid RowDefinitions="Auto, *">
+
+    &lt;!--Self text-->
+    &lt;Frame Grid.Row="1">
+        &lt;ScrollView>
+            &lt;Label Text="{Binding Post.SelfText, Mode=OneWay}"
+                    LineBreakMode="WordWrap"
+                    Margin="16" />
+        &lt;/ScrollView>
+    &lt;/Frame>
+
+    &lt;!--Header-->
+    &lt;Frame>
+        &lt;Grid Grid.Row="0"
+                ColumnSpacing="8"
+                Padding="16"
+                ColumnDefinitions="*, Auto">
+            &lt;Label Text="{Binding Post.Title, Mode=OneWay}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    LineBreakMode="WordWrap"
+                    VerticalOptions="Center" />
+            &lt;Image Grid.Column="1"
+                    Source="{Binding Post.Thumbnail, Mode=OneWay}"
+                    Aspect="AspectFit"
+                    HorizontalOptions="End"
+                    WidthRequest="{Binding Post.Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+        &lt;/Grid>
+    &lt;/Frame>
+&lt;/Grid>
+```
+            </controls:InteractiveSample.XamlCode>
+            <controls:InteractiveSample.CSharpCode>
+```csharp
+/// &lt;summary>
+/// A viewmodel for a subreddit widget.
+/// &lt;/summary>
+public sealed class SubredditWidgetViewModel : ObservableRecipient
+{
+    /// &lt;summary>
+    /// Gets the &lt;see cref="IRedditService"/> instance to use.
+    /// &lt;/summary>
+    private readonly IRedditService RedditService = Ioc.Default.GetRequiredService&lt;IRedditService>();
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="ISettingsService"/> instance to use.
+    /// &lt;/summary>
+    private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService&lt;ISettingsService>();
+
+    /// &lt;summary>
+    /// An &lt;see cref="AsyncLock"/> instance to avoid concurrent requests.
+    /// &lt;/summary>
+    private readonly AsyncLock LoadingLock = new AsyncLock();
+
+    /// &lt;summary>
+    /// Creates a new &lt;see cref="SubredditWidgetViewModel"/> instance.
+    /// &lt;/summary>
+    public SubredditWidgetViewModel()
+    {
+        LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
+
+        selectedSubreddit = SettingsService.GetValue&lt;string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+    }
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="IAsyncRelayCommand"/> instance responsible for loading posts.
+    /// &lt;/summary>
+    public IAsyncRelayCommand LoadPostsCommand { get; }
+
+    /// &lt;summary>
+    /// Gets the collection of loaded posts.
+    /// &lt;/summary>
+    public ObservableCollection&lt;Post> Posts { get; } = new ObservableCollection&lt;Post>();
+
+    /// &lt;summary>
+    /// Gets the collection of available subreddits to pick from.
+    /// &lt;/summary>
+    public IReadOnlyList&lt;string> Subreddits { get; } = new[]
+    {
+        "microsoft",
+        "windows",
+        "surface",
+        "windowsphone",
+        "dotnet",
+        "csharp"
+    };
+
+    private string selectedSubreddit;
+
+    /// &lt;summary>
+    /// Gets or sets the currently selected subreddit.
+    /// &lt;/summary>
+    public string SelectedSubreddit
+    {
+        get => selectedSubreddit;
+        set
+        {
+            SetProperty(ref selectedSubreddit, value);
+
+            SettingsService.SetValue(nameof(SelectedSubreddit), value);
+        }
+    }
+
+    private Post selectedPost;
+
+    /// &lt;summary>
+    /// Gets or sets the currently selected subreddit.
+    /// &lt;/summary>
+    public Post SelectedPost
+    {
+        get => selectedPost;
+        set => SetProperty(ref selectedPost, value, true);
+    }
+
+    /// &lt;summary>
+    /// Loads the posts from a specified subreddit.
+    /// &lt;/summary>
+    private async Task LoadPostsAsync()
+    {
+        using (await LoadingLock.LockAsync())
+        {
+            try
+            {
+                var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+
+                Posts.Clear();
+
+                foreach (var item in response.Data.Items)
+                {
+                    Posts.Add(item.Data);
+                }
+            }
+            catch
+            {
+                // Whoops!
+            }
+        }
+    }
+}
+
+/// &lt;summary>
+/// A viewmodel for a post widget.
+/// &lt;/summary>
+public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient&lt;PropertyChangedMessage&lt;Post>>
+{
+    private Post post;
+
+    /// &lt;summary>
+    /// Gets the currently selected post, if any.
+    /// &lt;/summary>
+    public Post Post
+    {
+        get => post;
+        private set => SetProperty(ref post, value);
+    }
+
+    /// &lt;inheritdoc/>
+    public void Receive(PropertyChangedMessage&lt;Post> message)
+    {
+        if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &amp;&amp;
+            message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
+        {
+            Post = message.NewValue;
+        }
+    }
+}
+```
+            </controls:InteractiveSample.CSharpCode>
+        </controls:InteractiveSample>
+	</Grid>
+</ContentPage>

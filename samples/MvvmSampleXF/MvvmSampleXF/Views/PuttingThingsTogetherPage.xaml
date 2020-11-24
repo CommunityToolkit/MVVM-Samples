@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 x:Class="MvvmSampleXF.Views.PuttingThingsTogetherPage"
+			 x:DataType="vm:SamplePageViewModel">
+	<ContentPage.BindingContext>
+		<vm:SamplePageViewModel x:Name="ViewModel" />
+	</ContentPage.BindingContext>
+	<ScrollView Padding="16">
+		<StackLayout Spacing="16">
+			<md:MarkdownView Markdown="{Binding Path=Texts[Putting things together], Mode=OneWay}" />
+			<md:MarkdownView Markdown="{Binding Path=Texts[What do we want to build], Mode=OneWay}" />
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

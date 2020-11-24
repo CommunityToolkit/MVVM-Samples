@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 x:Class="MvvmSampleXF.Controls.InteractiveSample">
+	<ContentView.Resources>
+		<ControlTemplate x:Key="InteractiveSampleTemplate">
+			<Frame CornerRadius="4"
+				   BackgroundColor="Transparent"
+				   BorderColor="{StaticResource PrimaryColor}">
+				<xct:TabView TabIndicatorColor="{StaticResource PrimaryColor}"
+							 TabIndicatorPlacement="Bottom">
+					<xct:TabViewItem Text="INTERACTIVE SAMPLE"
+									 FontAttributes="Bold">
+						<ContentPresenter Padding="12"
+										  Content="{TemplateBinding Content}"
+										  BindingContext="{TemplateBinding BindingContext}"/>
+					</xct:TabViewItem>
+					<xct:TabViewItem Text="See XAML">
+						<ScrollView>
+							<md:MarkdownView Padding="8"
+											 Markdown="{TemplateBinding XamlCode}" />
+						</ScrollView>
+					</xct:TabViewItem>
+					<xct:TabViewItem Text="See C#">
+						<ScrollView>
+							<md:MarkdownView Padding="8"
+											 Markdown="{TemplateBinding CSharpCode}" />
+						</ScrollView>
+					</xct:TabViewItem>
+				</xct:TabView>
+			</Frame>
+		</ControlTemplate>
+	</ContentView.Resources>
+</ContentView>

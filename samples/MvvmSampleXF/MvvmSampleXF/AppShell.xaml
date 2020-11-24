@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+	   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+	   xmlns:views="clr-namespace:MvvmSampleXF.Views"
+	   x:Class="MvvmSampleXF.AppShell">
+	<Shell.FlyoutHeader>
+		<controls:FlyoutHeader />
+	</Shell.FlyoutHeader>
+	<ShellContent Title="Introduction"
+				  Icon="{StaticResource PlayIcon}"
+				  ContentTemplate="{DataTemplate views:IntroductionPage}" />
+
+	<ShellContent Title="ObservableObject"
+				  Icon="{StaticResource SortIcon}"
+				  ContentTemplate="{DataTemplate views:ObservableObjectPage}" />
+
+	<FlyoutItem Title="Commands"
+				Icon="{StaticResource CalendarIcon}">
+		<ShellContent Title="Introduction"
+					  Icon="{StaticResource BookIcon}"
+					  ContentTemplate="{DataTemplate views:RelayCommandPage}" />
+
+		<ShellContent Title="Async Commands"
+					  Icon="{StaticResource FlagIcon}"
+					  ContentTemplate="{DataTemplate views:AsyncRelayCommandPage}" />
+	</FlyoutItem>
+
+	<FlyoutItem Title="Messenger"
+				Icon="{StaticResource CommentIcon}">
+		<ShellContent Title="Introduction"
+					  Icon="{StaticResource BookIcon}"
+					  ContentTemplate="{DataTemplate views:MessengerPage}" />
+		<ShellContent Title="Sending Messages"
+					  Icon="{StaticResource SendIcon}"
+					  ContentTemplate="{DataTemplate views:MessengerSendPage}" />
+		<ShellContent Title="Request Messages"
+					  Icon="{StaticResource ExchangeIcon}"
+					  ContentTemplate="{DataTemplate views:MessengerRequestPage}" />
+	</FlyoutItem>
+
+	<ShellContent Title="Inversion of Control"
+				  Icon="{StaticResource UndoIcon}"
+				  ContentTemplate="{DataTemplate views:IoCPage}" />
+	
+	<ShellContent Title="ViewModel Setup"
+				  Icon="{StaticResource CubeIcon}"
+				  ContentTemplate="{DataTemplate views:SettingUpTheViewModelsPage}" />
+
+	<FlyoutItem Title="Creating a Service"
+				Icon="{StaticResource ToolsIcon}">
+		<ShellContent Title="Settings Service"
+					  Icon="{StaticResource WrenchIcon}"
+					  ContentTemplate="{DataTemplate views:SettingsServicePage}" />
+		<ShellContent Title="Reddit Service"
+					  Icon="{StaticResource GlobeIcon}"
+					  ContentTemplate="{DataTemplate views:RedditServicePage}" />
+	</FlyoutItem>
+
+	<ShellContent Title="Building the UI"
+				  Icon="{StaticResource RulerIcon}"
+				  ContentTemplate="{DataTemplate views:BuildingTheUIPage}" />
+
+	<ShellContent Title="The Final Result!"
+				  Icon="{StaticResource CheckerIcon}"
+				  ContentTemplate="{DataTemplate views:RedditBrowserPage}" />
+</Shell>
