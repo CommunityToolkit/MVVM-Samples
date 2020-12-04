@@ -1,3 +1,50 @@
+# API changes in Preview 4:
+
+🆕 Reintroduced `Ioc` class
+
+🆕 Added new `ObservableObject.OnPropertyChanged(PropertyChangedEventArgs)` overload
+
+🆕 Added new `ObservableObject.OnPropertyChanging(PropertyChangingEventArgs)` overload
+
+🆕 Added new `TrySetProperty` methods to `ObservableValidator`
+
+✅ The `OnPropertyChanged(string)` and `OnPropertyChanging(string)` overloads with a string param are no longer virtual (💥)
+
+✅ Added notification support to `IAsyncRelayCommand.CanBeCanceled` property
+
+✅ Improved notification logic for other `IAsyncRelayCommand` properties
+
+✅ Added notification support to `ObservableValidator.HasErrors` property
+
+✅ Minor performance/memory usage improvements and bug fixes
+
+## Breaking changes
+
+💥 If you were overriding `OnPropertyChanged(string)` or `OnPropertyChanging(string)`, you should now override the overloads taking `PropertyChangedEventArgs` and `PropertyChangingEventArgs` instead, and move your additional logic there.
+
+## A note on the `Ioc` class
+
+The `Ioc` class exposes similar APIs to the ones in Preview 2, but it now doesn't include a direct reference to `Microsoft.Extensions.DependencyInjection`. You can add a reference to any DI library you wish to use, and then you can use the `Ioc.Default.ConfigureServices(IServiceProvider)` method to initialize the `Ioc.Default` instance. From there, you'll be able to use it normally just like in Preview 2. For instance:
+
+```cs
+// Preview 2
+Ioc.Default.ConfigureServices(services =>
+{
+    services.AddSingleton<ILogger, Logger>();
+    services.AddSingleton<IDialogService, DialogService>();
+    // Other services...
+});
+
+// Preview 3
+Ioc.Default.ConfigureServices(
+    new ServiceCollection()
+    .AddSingleton<ILogger, Logger>()
+    .AddSingleton<IDialogService, DialogService>()
+    .BuildServiceProvider());
+```
+
+Here we're using the `ServiceCollection` class from the `Microsoft.Extensions.DependencyInjection` library, but you're free to use any other DI library as well - the `Ioc` class only needs an input `IServiceProvider` instance to work.
+
 # API changes in Preview 3:
 
 🆕 New `ObservableValidator` class, which supports the [`INotifyDataErrorInfo`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifydataerrorinfo) interface.
