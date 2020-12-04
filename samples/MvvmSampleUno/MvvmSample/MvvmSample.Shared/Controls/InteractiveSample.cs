@@ -5,7 +5,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmSampleUwp.Controls
+namespace MvvmSample.Controls
 {
     /// <summary>
     /// A simple control that acts as a frame for an interactive sample.

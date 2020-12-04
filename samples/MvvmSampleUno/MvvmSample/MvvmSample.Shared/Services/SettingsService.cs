@@ -5,7 +5,7 @@
 using Windows.Foundation.Collections;
 using Windows.Storage;
 
-namespace MvvmSampleUwp.Services
+namespace MvvmSample.Services
 {
     /// <summary>
     /// A simple <see langword="class"/> that handles the local app settings.

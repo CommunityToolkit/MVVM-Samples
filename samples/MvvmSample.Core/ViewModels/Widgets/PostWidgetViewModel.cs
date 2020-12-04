@@ -5,9 +5,9 @@
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.Messaging.Messages;
-using MvvmSampleUwp.Models;
+using MvvmSample.Models;
 
-namespace MvvmSampleUwp.ViewModels.Widgets
+namespace MvvmSample.ViewModels.Widgets
 {
     /// <summary>
     /// A viewmodel for a post widget.

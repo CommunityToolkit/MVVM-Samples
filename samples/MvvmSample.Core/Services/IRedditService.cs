@@ -3,10 +3,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Threading.Tasks;
-using MvvmSampleUwp.Models;
+using MvvmSample.Models;
 using Refit;
 
-namespace MvvmSampleUwp.Services
+namespace MvvmSample.Services
 {
     /// <summary>
     /// An interface for a simple Reddit service.

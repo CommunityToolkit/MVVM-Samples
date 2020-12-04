@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 
-namespace MvvmSampleUwp.Views
+namespace MvvmSample.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

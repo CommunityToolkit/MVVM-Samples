@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using MvvmSampleUwp;
-using MvvmSampleUwp.Helpers;
-using MvvmSampleUwp.Services;
+using MvvmSample;
+using MvvmSample.Helpers;
+using MvvmSample.Services;
 using Refit;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;

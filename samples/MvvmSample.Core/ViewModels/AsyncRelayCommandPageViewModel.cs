@@ -5,7 +5,7 @@
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Mvvm.Input;
 
-namespace MvvmSampleUwp.ViewModels
+namespace MvvmSample.ViewModels
 {
     public class AsyncRelayCommandPageViewModel : SamplePageViewModel
     {

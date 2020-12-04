@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace MvvmSampleUwp.Models
+namespace MvvmSample.Models
 {
     /// <summary>
     /// A class for a query for posts in a given subreddit.

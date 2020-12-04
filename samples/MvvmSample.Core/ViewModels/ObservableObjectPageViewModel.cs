@@ -4,7 +4,7 @@
 
 using System.Threading.Tasks;
 
-namespace MvvmSampleUwp.ViewModels
+namespace MvvmSample.ViewModels
 {
     public class ObservableObjectPageViewModel : SamplePageViewModel
     {

@@ -8,11 +8,11 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using MvvmSampleUwp.Views;
+using MvvmSample.Views;
 
 #nullable enable
 
-namespace MvvmSampleUwp
+namespace MvvmSample
 {
     public sealed partial class Shell : UserControl
     {

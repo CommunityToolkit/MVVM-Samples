@@ -6,7 +6,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Microsoft.Toolkit.Uwp.Helpers;
 
-namespace MvvmSampleUwp.Controls
+namespace MvvmSample.Controls
 {
     public partial class MarkedControl
 #if WINDOWS_UWP

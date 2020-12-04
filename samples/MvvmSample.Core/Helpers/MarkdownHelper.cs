@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace MvvmSampleUwp.Helpers
+namespace MvvmSample.Helpers
 {
     /// <summary>
     /// A simple class to help with basic operations on markdown documents.

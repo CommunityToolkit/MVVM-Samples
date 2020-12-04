@@ -9,11 +9,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using MvvmSampleUwp.Models;
-using MvvmSampleUwp.Services;
+using MvvmSample.Models;
+using MvvmSample.Services;
 using Nito.AsyncEx;
 
-namespace MvvmSampleUwp.ViewModels.Widgets
+namespace MvvmSample.ViewModels.Widgets
 {
     /// <summary>
     /// A viewmodel for a subreddit widget.

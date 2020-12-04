@@ -5,7 +5,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace MvvmSampleUwp.Services
+namespace MvvmSample.Services
 {
     /// <summary>
     /// The default <see langword="interface"/> for a service that handles files.

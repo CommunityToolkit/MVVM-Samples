@@ -4,7 +4,7 @@
 
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmSampleUwp.Views
+namespace MvvmSample.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

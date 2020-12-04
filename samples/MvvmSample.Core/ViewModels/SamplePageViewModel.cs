@@ -9,10 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using MvvmSampleUwp.Helpers;
-using MvvmSampleUwp.Services;
+using MvvmSample.Helpers;
+using MvvmSample.Services;
 
-namespace MvvmSampleUwp.ViewModels
+namespace MvvmSample.ViewModels
 {
     /// <summary>
     /// A base class for viewmodels for sample pages in the app.

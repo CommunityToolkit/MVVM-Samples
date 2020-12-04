@@ -16,7 +16,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-namespace MvvmSampleUwp.Controls
+namespace MvvmSample.Controls
 {
 
     public abstract partial class JavaScriptControl :

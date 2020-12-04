@@ -6,7 +6,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.Messaging.Messages;
 
-namespace MvvmSampleUwp.ViewModels
+namespace MvvmSample.ViewModels
 {
     public class MessengerPageViewModel : SamplePageViewModel
     {

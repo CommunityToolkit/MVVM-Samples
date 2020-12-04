@@ -5,7 +5,7 @@
 using System;
 using System.Diagnostics.Contracts;
 
-namespace MvvmSampleUwp.Services
+namespace MvvmSample.Services
 {
     /// <summary>
     /// The default <see langword="interface"/> for the settings manager used in the app.
