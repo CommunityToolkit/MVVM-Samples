@@ -57,7 +57,7 @@ public class UserSenderViewModel : ObservableRecipient
 
     protected override void OnActivated()
     {
-        Messenger.Register&lt;CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+        Messenger.Register&lt;UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
     }
 }
 
