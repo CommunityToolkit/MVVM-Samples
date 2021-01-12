@@ -21,9 +21,9 @@ This package targets .NET Standard so it can be used on any app platform: UWP, W
 
 To install the package from within Visual Studio:
 
-1. In Solution Explorer, right-click on the project and select **Manage NuGet Packages**. Search for **Microsoft.Toolkit.Mvvm** and install it.
+1. In Solution Explorer, right-click on the project and select **Manage NuGet Packages**. Search for **Microsoft.Toolkit.Mvvm** and install it. (Don't forget to check Include prerelease)
 
-    ![NuGet Packages](../resources/images/ManageNugetPackages.png "Manage NuGet Packages Image")
+    ![NuGet Package](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm/7.0.0-preview4)
 
 2. Add a using or Imports directive to use the new APIs:
 
