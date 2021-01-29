@@ -39,9 +39,10 @@ namespace MvvmSample
                 new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
                 new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
             };
-
+#if !__IOS__ && !__MACOS__
             // Set the custom title bar to act as a draggable region
             Window.Current.SetTitleBar(TitleBarBorder);
+#endif
         }
 
         // Navigates to a sample page when a button is clicked

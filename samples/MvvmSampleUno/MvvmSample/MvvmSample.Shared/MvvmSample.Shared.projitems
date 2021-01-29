@@ -172,7 +172,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\ObservableRecipient.md" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\RelayCommand.md" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\docs\PuttingThingsTogether.md" />
-    <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)marked.min.js" />
   </ItemGroup>
 </Project>

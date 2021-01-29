@@ -9,7 +9,7 @@
 
   <Identity
     Name="455221b3-484e-412b-adb1-d884cca47383"
-    Publisher="CN=NickRandolph"
+    Publisher="CN=WindowsCommunityToolkit"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="7f1c3f03-c8a5-448c-9a39-d4ed9f8be9d3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
