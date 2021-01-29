@@ -15,97 +15,92 @@
     d:DesignWidth="400"
     mc:Ignorable="d">
     <UserControl.DataContext>
-        <widgets:SubredditWidgetViewModel x:Name="ViewModel"/>
+        <widgets:SubredditWidgetViewModel x:Name="ViewModel" />
     </UserControl.DataContext>
 
-    <!--Feed-->
-    <Grid
-        BorderThickness="1"
-        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+    <!--  Feed  -->
+    <Grid BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--Header with topic selector and refresh button-->
-        <Border
-            Padding="12"
-            Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+        <!--  Header with topic selector and refresh button  -->
+        <Border Padding="12" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
             <StackPanel Orientation="Horizontal" Spacing="16">
                 <ComboBox
+                    MinWidth="240"
+                    VerticalAlignment="Center"
                     ItemsSource="{x:Bind ViewModel.Subreddits, Mode=OneWay}"
                     SelectedItem="{x:Bind ViewModel.SelectedSubreddit, Mode=TwoWay}"
-                    SelectionChangedTrigger="Committed"
-                    VerticalAlignment="Center"
-                    MinWidth="240">
+                    SelectionChangedTrigger="Committed">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="SelectionChanged">
-                            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadPostsCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadPostsCommand}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                 </ComboBox>
-                <Button
-                    Content="{extensions:SymbolIcon Symbol=Refresh}"
-                    Command="{x:Bind ViewModel.LoadPostsCommand}"/>
+                <Button Command="{x:Bind ViewModel.LoadPostsCommand}" Content="{extensions:SymbolIcon Symbol=Refresh}" />
             </StackPanel>
         </Border>
 
-        <!--Items list-->
+        <!--  Items list  -->
         <ListView
             Grid.Row="1"
             Grid.RowSpan="2"
             ItemsSource="{x:Bind ViewModel.Posts}"
-            SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}"
-            ScrollViewer.CanContentRenderOutsideBounds="True">
+            ScrollViewer.CanContentRenderOutsideBounds="True"
+            SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="#30808080"/>
-                    <Setter Property="Margin" Value="0,2,0,2"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="#30808080" />
+                    <Setter Property="Margin" Value="0,2,0,2" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Post">
-                    <Grid
-                        ColumnSpacing="8"
-                        Padding="16">
+                    <Grid Padding="16" ColumnSpacing="8">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Text="{x:Bind Title}"
+                            VerticalAlignment="Center"
                             FontSize="15"
                             FontWeight="Normal"
-                            TextWrapping="WrapWholeWords"
-                            VerticalAlignment="Center"/>
+                            Text="{x:Bind Title}"
+                            TextWrapping="WrapWholeWords" />
                         <controls:ImageEx
                             Grid.Column="1"
-                            Source="{x:Bind Thumbnail}"
-                            Stretch="Uniform"
+                            Width="120"
                             HorizontalAlignment="Right"
-                            Width="120"/>
+                            Source="{x:Bind Thumbnail}"
+                            Stretch="Uniform" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <!--Loading bar-->
+        <!--  Loading bar  -->
         <ProgressBar
             Grid.Row="1"
             Grid.RowSpan="2"
-            IsHitTestVisible="False"
             VerticalAlignment="Top"
+            IsHitTestVisible="False"
             IsIndeterminate="True"
-            Visibility="{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}"/>
+            Visibility="{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}" />
 
-        <!--Header drop shadow-->
-        <Rectangle Grid.Row="1" Height="8" IsHitTestVisible="False">
+        <!--  Header drop shadow  -->
+        <Rectangle
+            Grid.Row="1"
+            Height="8"
+            IsHitTestVisible="False">
             <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
-                    <GradientStop Color="#60000000" Offset="1"/>
-                    <GradientStop Offset="0"/>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                    <GradientStop Offset="1" Color="#60000000" />
+                    <GradientStop Offset="0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>

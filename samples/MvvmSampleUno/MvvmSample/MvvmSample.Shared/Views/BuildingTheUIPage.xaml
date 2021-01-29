@@ -16,19 +16,15 @@
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}"
-                                      CommandParameter="PuttingThingsTogether" />
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="PuttingThingsTogether" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <ScrollViewer Padding="16"
-                  CanContentRenderOutsideBounds="True">
+    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Building the UI'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Building the UI'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Building the UI'), Mode=OneWay}"/>-->
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Good to go! 🚀'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Good to go! 🚀'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Good to go! 🚀'), Mode=OneWay}"/>-->
         </StackPanel>
     </ScrollViewer>

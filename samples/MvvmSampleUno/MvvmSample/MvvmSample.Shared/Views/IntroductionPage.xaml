@@ -16,18 +16,15 @@
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}"
-                                      CommandParameter="Introduction" />
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="Introduction" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <!--CanContentRenderOutsideBounds="True"-->
+    <!--  CanContentRenderOutsideBounds="True"  -->
     <ScrollViewer Padding="16">
         <StackPanel Spacing="16">
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Introduction to the MVVM package'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'When should I use this package?'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Introduction to the MVVM package'}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='When should I use this package?'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Introduction to the MVVM package'), Mode=OneWay}"/>
             <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('When should I use this package?'), Mode=OneWay}"/>-->
         </StackPanel>

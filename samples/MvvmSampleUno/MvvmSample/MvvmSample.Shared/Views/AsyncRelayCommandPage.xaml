@@ -14,68 +14,61 @@
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <Page.DataContext>
-        <viewModels:AsyncRelayCommandPageViewModel x:Name="ViewModel"/>
+        <viewModels:AsyncRelayCommandPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="AsyncRelayCommand"/>
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="AsyncRelayCommand" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
     <Page.Resources>
-        <views:TaskResultConverter x:Key="TaskResultConverter"/>
+        <views:TaskResultConverter x:Key="TaskResultConverter" />
     </Page.Resources>
 
     <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'AsyncRelayCommand and AsyncRelayCommand&lt;T>'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='AsyncRelayCommand and AsyncRelayCommand&lt;T>'}" />
 
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('AsyncRelayCommand and AsyncRelayCommand&lt;T>'), Mode=OneWay}"/>-->
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'How they work'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='How they work'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How they work'), Mode=OneWay}"/>-->
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Working with asynchronous commands'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Working with asynchronous commands'}" />
 
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Working with asynchronous commands'), Mode=OneWay}"/>-->
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
-                    <StackPanel Spacing="8" xml:space="default">
+                    <StackPanel xml:space="default" Spacing="8">
                         <TextBlock>
-                            <Run Text="Task status:"/>
-                            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}"/>
-                            <LineBreak/>
-                            <Run Text="Result:"/>
-                            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}"/>
+                            <Run Text="Task status:" />
+                            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}" />
+                            <LineBreak />
+                            <Run Text="Result:" />
+                            <Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}" />
                         </TextBlock>
-                        <Button
-                            Content="Click me!"
-                            Command="{x:Bind ViewModel.DownloadTextCommand}"/>
-                        <ProgressRing
-                            HorizontalAlignment="Left"
-                            IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
+                        <Button Command="{x:Bind ViewModel.DownloadTextCommand}" Content="Click me!" />
+                        <ProgressRing HorizontalAlignment="Left" IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}" />
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
-&lt;Page.Resources>
-    &lt;converters:TaskResultConverter x:Key="TaskResultConverter"/>
-&lt;/Page.Resources>
-&lt;StackPanel Spacing="8">
-    &lt;TextBlock>
-        &lt;Run Text="Task status:"/>
-        &lt;Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}"/>
-        &lt;LineBreak/>
-        &lt;Run Text="Result:"/>
-        &lt;Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}"/>
-    &lt;/TextBlock>
+&lt;Page.Resources&gt;
+    &lt;converters:TaskResultConverter x:Key=&quot;TaskResultConverter&quot;/&gt;
+&lt;/Page.Resources&gt;
+&lt;StackPanel Spacing=&quot;8&quot;&gt;
+    &lt;TextBlock&gt;
+        &lt;Run Text=&quot;Task status:&quot;/&gt;
+        &lt;Run Text=&quot;{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}&quot;/&gt;
+        &lt;LineBreak/&gt;
+        &lt;Run Text=&quot;Result:&quot;/&gt;
+        &lt;Run Text=&quot;{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}&quot;/&gt;
+    &lt;/TextBlock&gt;
     &lt;Button
-        Content="Click me!"
-        Command="{x:Bind ViewModel.DownloadTextCommand}"/>
+        Content=&quot;Click me!&quot;
+        Command=&quot;{x:Bind ViewModel.DownloadTextCommand}&quot;/&gt;
     &lt;muxc:ProgressRing
-        HorizontalAlignment="Left"
-        IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
-&lt;/StackPanel>
+        HorizontalAlignment=&quot;Left&quot;
+        IsActive=&quot;{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}&quot;/&gt;
+&lt;/StackPanel&gt;
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
 public MyViewModel()
@@ -85,11 +78,11 @@ public MyViewModel()
 
 public IAsyncRelayCommand DownloadTextCommand { get; }
 
-private async Task&lt;string> DownloadTextAsync()
+private async Task&lt;string&gt; DownloadTextAsync()
 {
     await Task.Delay(3000); // Simulate a web request
 
-    return "Hello world!";
+    return &quot;Hello world!&quot;;
 }
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>

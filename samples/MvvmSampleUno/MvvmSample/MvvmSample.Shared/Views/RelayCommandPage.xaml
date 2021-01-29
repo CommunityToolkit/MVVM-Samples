@@ -16,47 +16,41 @@
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}"
-                                      CommandParameter="RelayCommand" />
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="RelayCommand" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <ScrollViewer Padding="16"
-                  CanContentRenderOutsideBounds="True">
+    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'RelayCommand and RelayCommand&lt;T>'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='RelayCommand and RelayCommand&lt;T>'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('RelayCommand and RelayCommand&lt;T>'), Mode=OneWay}"/>-->
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'How they work'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='How they work'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How they work'), Mode=OneWay}"/>-->
-            <controls:MarkedControl Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter = 'Working with `ICommand`'}"
-                                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Working with `ICommand`'}" />
             <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Working with `ICommand`'), Mode=OneWay}"/>-->
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
                     <StackPanel Spacing="8">
                         <TextBlock Text="{x:Bind ViewModel.Counter, Mode=OneWay}" />
-                        <Button Content="Click me!"
-                                Command="{x:Bind ViewModel.IncrementCounterCommand}" />
+                        <Button Command="{x:Bind ViewModel.IncrementCounterCommand}" Content="Click me!" />
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
 &lt;Page
-    x:Class="MyApp.Views.MyPage"
-    xmlns:viewModels="using:MyApp.ViewModels">
-    &lt;Page.DataContext>
-        &lt;viewModels:MyViewModel x:Name="ViewModel"/>
-    &lt;/Page.DataContext>
+    x:Class=&quot;MyApp.Views.MyPage&quot;
+    xmlns:viewModels=&quot;[viewModels]using:MyApp.ViewModels&quot;&gt;
+    &lt;Page.DataContext&gt;
+        &lt;viewModels:MyViewModel x:Name=&quot;ViewModel&quot;/&gt;
+    &lt;/Page.DataContext&gt;
 
-    &lt;StackPanel Spacing="8">
-        &lt;TextBlock Text="{x:Bind ViewModel.Counter, Mode=OneWay}"/>
+    &lt;StackPanel Spacing=&quot;8&quot;&gt;
+        &lt;TextBlock Text=&quot;{x:Bind ViewModel.Counter, Mode=OneWay}&quot;/&gt;
         &lt;Button
-            Content="Click me!"
-            Command="{x:Bind ViewModel.IncrementCounterCommand}"/>
-    &lt;/StackPanel>
-&lt;/Page>
+            Content=&quot;Click me!&quot;
+            Command=&quot;{x:Bind ViewModel.IncrementCounterCommand}&quot;/&gt;
+    &lt;/StackPanel&gt;
+&lt;/Page&gt;
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
 public class MyViewModel : ObservableObject
@@ -66,26 +60,26 @@ public class MyViewModel : ObservableObject
         IncrementCounterCommand = new RelayCommand(IncrementCounter);
     }
 
-    /// &lt;summary>
-    /// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
-    /// &lt;/summary>
+    /// &lt;summary&gt;
+    /// Gets the &lt;see cref=&quot;ICommand&quot;/&gt; responsible for incrementing &lt;see cref=&quot;Counter&quot;/&gt;.
+    /// &lt;/summary&gt;
     public ICommand IncrementCounterCommand { get; }
 
     private int counter;
 
-    /// &lt;summary>
+    /// &lt;summary&gt;
     /// Gets the current value of the counter.
-    /// &lt;/summary>
+    /// &lt;/summary&gt;
     public int Counter
     {
-        get => counter;
-        private set => SetProperty(ref counter, value);
+        get =&gt; counter;
+        private set =&gt; SetProperty(ref counter, value);
     }
 
-    /// &lt;summary>
-    /// Increments &lt;see cref="Counter"/>.
-    /// &lt;/summary>
-    private void IncrementCounter() => Counter++;
+    /// &lt;summary&gt;
+    /// Increments &lt;see cref=&quot;Counter&quot;/&gt;.
+    /// &lt;/summary&gt;
+    private void IncrementCounter() =&gt; Counter++;
 }
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
