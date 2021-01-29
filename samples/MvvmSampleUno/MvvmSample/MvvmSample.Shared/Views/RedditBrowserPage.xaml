@@ -2,10 +2,10 @@
     x:Class="MvvmSample.Views.RedditBrowserPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSample.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:MvvmSampleUwp.Controls"
-    xmlns:widgets="using:MvvmSampleUwp.Views.Widgets"
+    xmlns:widgets="using:MvvmSample.Views.Widgets"
     mc:Ignorable="d">
 
     <Grid Padding="16">

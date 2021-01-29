@@ -2,18 +2,18 @@
     x:Class="MvvmSample.Views.Widgets.SubredditWidget"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:models="using:MvvmSampleUwp.Models"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MvvmSample.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:widgets="using:MvvmSampleUwp.ViewModels.Widgets"
-    mc:Ignorable="d"
+    xmlns:widgets="using:MvvmSample.ViewModels.Widgets"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    mc:Ignorable="d">
     <UserControl.DataContext>
         <widgets:SubredditWidgetViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>

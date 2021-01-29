@@ -3,42 +3,42 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:muxc="using:Windows.UI.Xaml.Controls"
-             xmlns:mvvmSampleUwp="using:MvvmSampleUwp"
     xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
-    mc:Ignorable="d"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Windows.UI.Xaml.Controls"
+    xmlns:mvvmSample="using:MvvmSample"
     d:DesignHeight="300"
     d:DesignWidth="400"
-    Loaded="Shell_OnLoaded">
+    Loaded="Shell_OnLoaded"
+    mc:Ignorable="d">
 
     <Grid>
 
-        <!--Background image-->
+        <!--  Background image  -->
         <Image
+            Opacity="0.4"
             Source="https://images.unsplash.com/photo-1524439654840-b12734d89414?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80"
-            Stretch="UniformToFill"
-            Opacity="0.4"/>
+            Stretch="UniformToFill" />
 
-        <!--Navigation view-->
-        <!--IsTitleBarAutoPaddingEnabled="False"-->
+        <!--  Navigation view  -->
+        <!--  IsTitleBarAutoPaddingEnabled="False"  -->
         <muxc:NavigationView
             x:Name="NavigationView"
+            BackRequested="NavigationView_OnBackRequested"
             IsBackEnabled="False"
             IsSettingsVisible="False"
-            ItemInvoked="NavigationView_OnItemInvoked"
-            BackRequested="NavigationView_OnBackRequested">
+            ItemInvoked="NavigationView_OnItemInvoked">
 
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
-                    QueryIcon="Find"
                     AutomationProperties.Name="Search"
                     PlaceholderText="Search"
-                    TextChanged="SearchBox_OnTextChanged"
-                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen">
+                    QueryIcon="Find"
+                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen"
+                    TextChanged="SearchBox_OnTextChanged">
                     <AutoSuggestBox.ItemTemplate>
-                        <DataTemplate x:DataType="mvvmSampleUwp:SampleEntry">
-                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"/>
+                        <DataTemplate x:DataType="mvvmSample:SampleEntry">
+                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
                         </DataTemplate>
                     </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
