@@ -27,7 +27,7 @@ namespace MvvmSampleUwp.ViewModels
 
             protected override void OnActivated()
             {
-                Messenger.Register<CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+                Messenger.Register<UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
             }
 
             public void SendUserMessage()
@@ -51,7 +51,7 @@ namespace MvvmSampleUwp.ViewModels
 
             protected override void OnActivated()
             {
-                Messenger.Register<UsernameChangedMessage>(this, m => Username = m.Value);
+                Messenger.Register<UserReceiverViewModel, UsernameChangedMessage>(this, (r, m) => r.Username = m.Value);
             }
         }
 
@@ -65,7 +65,7 @@ namespace MvvmSampleUwp.ViewModels
 
         public void RequestCurrentUsername()
         {
-            Username = Messenger.Default.Send<CurrentUsernameRequestMessage>();
+            Username = WeakReferenceMessenger.Default.Send<CurrentUsernameRequestMessage>();
         }
 
         public void ResetCurrentUsername()

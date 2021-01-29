@@ -8,7 +8,7 @@ using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace MvvmSampleUwp.Controls
 {
-    public class MarkedControl
+    public partial class MarkedControl
 #if WINDOWS_UWP
         : Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock
     {

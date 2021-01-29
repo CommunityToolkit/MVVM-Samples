@@ -4,9 +4,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using Uno.Extensions;
 using Uno.Foundation;
+using Windows.UI;
 #if __WASM__
 using Uno.Foundation.Interop;
 #endif

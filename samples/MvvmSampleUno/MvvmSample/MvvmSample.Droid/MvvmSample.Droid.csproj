@@ -18,7 +18,7 @@
     <AndroidUseAapt2>false</AndroidUseAapt2>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
     <ResourcesDirectory>..\MvvmSample.Shared\Strings</ResourcesDirectory>
@@ -32,8 +32,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>portable</DebugType>
@@ -62,16 +63,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>5.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Mvvm">
-      <Version>7.0.0-build.156</Version>
+      <Version>7.0.0-preview4</Version>
     </PackageReference>
     <PackageReference Include="Nito.AsyncEx.Coordination">
-      <Version>5.0.0</Version>
+      <Version>5.1.0</Version>
     </PackageReference>
     <PackageReference Include="Refit">
-      <Version>5.1.67</Version>
+      <Version>5.2.4</Version>
     </PackageReference>
-    <PackageReference Include="Uno.Core" Version="2.0.0" />
+    <PackageReference Include="Uno.Core" Version="2.1.0" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI">
       <Version>6.1.0-build.191.gc988bdd4ff</Version>
     </PackageReference>
@@ -79,10 +83,10 @@
       <Version>6.1.0-build.191.gc988bdd4ff</Version>
     </PackageReference>
     <PackageReference Include="Uno.UI">
-      <Version>3.0.0-dev.1515</Version>
+      <Version>3.4.0</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI.RemoteControl" Version="3.0.0-dev.1515" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.4.0" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.33" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
   </ItemGroup>
