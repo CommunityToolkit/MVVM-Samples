@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Windows.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mvvmSample="using:MvvmSample"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -52,21 +52,18 @@
                 ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains."/> 
                 <muxc:NavigationViewItemSeparator />
                 <muxc:NavigationViewItem Content="Building Blocks" Icon="ViewAll" 
-                                         ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit."/>
-                <!--
-                    
+                                         ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit."
                     IsExpanded="True">
-                -->
-                <!--<muxc:NavigationViewItem.MenuItems>-->
+                <muxc:NavigationViewItem.MenuItems>
                 <muxc:NavigationViewItem
                     x:Name="ObservableObjectItem"
                     Content="ObservableObject"
                     Icon="Sort" 
                     ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged."/>  
                 <muxc:NavigationViewItem Content="Commands" Icon="Calendar" 
-                ToolTipService.ToolTip="A collection of types implementing the ICommand interface." />
-                <!--            IsExpanded="True">
-                            <muxc:NavigationViewItem.MenuItems>-->
+                ToolTipService.ToolTip="A collection of types implementing the ICommand interface." 
+                            IsExpanded="True">
+                            <muxc:NavigationViewItem.MenuItems>
                 <muxc:NavigationViewItem
                     x:Name="CommandsItem"
                     Content="Introduction"
@@ -76,16 +73,16 @@
                     x:Name="AsyncCommandsItem"
                     Content="Async commands"
                     Icon="Flag" ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations."/>
-                <!--
+                
                             </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>-->
+                        </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem
                     x:Name="MessengerItem"
                     Content="Messenger"
-                    Icon="Comment" ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules." />
-                <!--
+                    Icon="Comment" ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules." 
+                
                             IsExpanded="True">
-                            <muxc:NavigationViewItem.MenuItems>-->
+                            <muxc:NavigationViewItem.MenuItems>
                 <muxc:NavigationViewItem
                     x:Name="SendMessagesItem"
                     Content="Sending messages"
@@ -96,37 +93,35 @@
                     Content="Request messages"
                     Icon="Switch" 
                     ToolTipService.ToolTip="Request values from loosely coupled app modules."/>
-                <!--
+                
                             </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>-->
+                        </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem
                     x:Name="InversionOfControlItem"
                     Content="Inversion of control"
                     Icon="StopSlideShow" 
                     ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns."/>
-                <!--
+                
                     </muxc:NavigationViewItem.MenuItems>
-                </muxc:NavigationViewItem>-->
+                </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem x:Name="RedditBrowserOverviewItem" 
                                          Content="Putting Things Together" 
-                                         ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app."/>
+                                         ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app.">
                 <!--
                     Icon="{extensions:FontIcon Glyph=&#xE74C;}" />
                 -->
-                <!-->
-                    <muxc:NavigationViewItem.MenuItems>-->
+                    <muxc:NavigationViewItem.MenuItems>
                 <muxc:NavigationViewItem x:Name="ViewModelsSetupItem" Content="Setting up the ViewModels" 
                                          ToolTipService.ToolTip="Setting up viewmodels for the two widgets." />
                 <!--
                     Icon="{extensions:FontIcon Glyph=&#xEBD2;}" />
                 -->
-                <muxc:NavigationViewItem Content="Creating a Service" 
-                                         ToolTipService.ToolTip="Build custom services to expand the app's functionalities."/>
+                        <muxc:NavigationViewItem Content="Creating a Service" 
+                                         ToolTipService.ToolTip="Build custom services to expand the app's functionalities.">
                 <!--
                     Icon="{extensions:FontIcon Glyph=&#xF69E;}" />
                 -->
-                <!-->
-                            <muxc:NavigationViewItem.MenuItems>-->
+                            <muxc:NavigationViewItem.MenuItems>
                 <muxc:NavigationViewItem
                     x:Name="SettingsServiceItem"
                     Content="Settings service"
@@ -137,9 +132,9 @@
                     Content="Reddit service"
                     Icon="World" 
                     ToolTipService.ToolTip="Injecting a service to use Reddit APIs." />
-                <!--
+                
                             </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>-->
+                        </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem x:Name="BuildingTheUIItem" Content="Building the UI" 
                                          ToolTipService.ToolTip="Building the UI to connect to the backend."/> 
                 <!--
@@ -150,9 +145,9 @@
                                          Content="The final result!" 
                                          ToolTipService.ToolTip="The final working sample!" />
                 <!--  Icon="{extensions:FontIcon Glyph=&#xF1AD;}" />  -->
-                <!--/>
+                
                     </muxc:NavigationViewItem.MenuItems>
-                </muxc:NavigationViewItem>-->
+                </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
             <muxc:NavigationView.Content>

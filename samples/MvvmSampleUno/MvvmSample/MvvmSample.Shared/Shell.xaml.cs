@@ -46,7 +46,7 @@ namespace MvvmSample
         }
 
         // Navigates to a sample page when a button is clicked
-        private void NavigationView_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void NavigationView_OnItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (NavigationItems.FirstOrDefault(item => item.Item == args.InvokedItemContainer)?.PageType is Type pageType)
             {
@@ -61,7 +61,7 @@ namespace MvvmSample
         }
 
         // Navigates back
-        private void NavigationView_OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        private void NavigationView_OnBackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
         {
             if (NavigationFrame.BackStack.LastOrDefault() is PageStackEntry entry)
             {
@@ -109,7 +109,7 @@ namespace MvvmSample
     /// </summary>
     public sealed class SampleEntry
     {
-        public SampleEntry(NavigationViewItem viewItem, Type pageType, string? name = null, string? tags = null)
+        public SampleEntry(Microsoft.UI.Xaml.Controls.NavigationViewItem viewItem, Type pageType, string? name = null, string? tags = null)
         {
             Item = viewItem;
             PageType = pageType;
@@ -120,7 +120,7 @@ namespace MvvmSample
         /// <summary>
         /// The navigation item for the current entry.
         /// </summary>
-        public NavigationViewItem Item { get; }
+        public Microsoft.UI.Xaml.Controls.NavigationViewItem Item { get; }
 
         /// <summary>
         /// The associated page type for the current entry.
