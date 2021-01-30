@@ -1,0 +1,122 @@
+﻿<Page
+    x:Class="MvvmSample.Views.ObservableObjectPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSample.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:viewModels="using:MvvmSample.ViewModels"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:ObservableObjectPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="ObservableObject" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
+        <StackPanel Spacing="16">
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='ObservableObject'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('ObservableObject'), Mode=OneWay}"/>-->
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='How it works'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}"/>-->
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Simple property'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Simple property'), Mode=OneWay}"/>-->
+
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8">
+
+                        
+                        
+                        
+                        
+                        <!--  Simple property sample  -->
+                        <TextBox PlaceholderText="Type here to update the text below" Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing=&quot;8&quot;&gt;
+    &lt;TextBox
+        PlaceholderText=&quot;Type here to update the text below&quot;
+        Text=&quot;{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot;/&gt;
+    &lt;TextBlock Text=&quot;{x:Bind ViewModel.Name, Mode=OneWay}&quot;/&gt;
+&lt;/StackPanel&gt;
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+private string name;
+
+/// &lt;summary&gt;
+/// Gets or sets the name to display.
+/// &lt;/summary&gt;
+public string Name
+{
+    get =&gt; name;
+    set =&gt; SetProperty(ref name, value);
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Wrapping a non-observable model'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Wrapping a non-observable model'), Mode=OneWay}"/>-->
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Handling `Task&lt;T>` properties'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Handling `Task&lt;T>` properties'), Mode=OneWay}"/>-->
+
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel Spacing="8">
+
+                        
+                        
+                        
+                        
+                        <!--  Async property sample  -->
+                        
+                        
+                        
+                        
+                        <!--<Button Content="Click me to load a Task to await"
+                                Click="{x:Bind ViewModel.ReloadTask}" />-->
+                        <Button Click="ReloadTask_Click" Content="Click me to load a Task to await" />
+                        <TextBlock Text="{x:Bind ViewModel.MyTask.Status, Mode=OneWay}" />
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing=&quot;8&quot;&gt;
+    &lt;Button
+        Content=&quot;Click me to load a Task to await&quot;
+        Click=&quot;{x:Bind ViewModel.ReloadTask}&quot;/&gt;
+    &lt;TextBlock Text=&quot;{x:Bind ViewModel.MyTask.Status, Mode=OneWay}&quot;/&gt;
+&lt;/StackPanel&gt;
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+private Task myTask;
+
+/// &lt;summary&gt;
+/// Gets or sets the name to display.
+/// &lt;/summary&gt;
+public Task MyTask
+{
+    get =&gt; myTask;
+    private set =&gt; SetPropertyAndNotifyOnCompletion(ref myTask, () =&gt; myTask, value);
+}
+
+/// &lt;summary&gt;
+/// Simulates an asynchronous method.
+/// &lt;/summary&gt;
+public void ReloadTask()
+{
+    MyTask = Task.Delay(3000);
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

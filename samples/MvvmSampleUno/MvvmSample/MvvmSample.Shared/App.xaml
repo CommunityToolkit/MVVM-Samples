@@ -1,0 +1,19 @@
+﻿<Application
+    x:Class="MvvmSample.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MvvmSample"
+    xmlns:views="using:MvvmSample.Views">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--  Resource dictionaries  -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Controls/InteractiveSample.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <views:MarkdownSectionConverter x:Key="MarkdownSectionConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

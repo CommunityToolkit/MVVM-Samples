@@ -1,0 +1,13 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+	  <TargetFrameworks>netstandard2.0</TargetFrameworks>
+	  <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+	<ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview4" />
+    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.0" />
+    <PackageReference Include="Refit" Version="5.2.4" />
+    <PackageReference Include="Uno.UI" Version="3.4.0" />
+  </ItemGroup>
+</Project>

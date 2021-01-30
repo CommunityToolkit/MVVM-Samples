@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="MvvmSample.Views.BuildingTheUIPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSample.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:viewModels="using:MvvmSample.ViewModels"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:SamplePageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="PuttingThingsTogether" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
+        <StackPanel Spacing="16">
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Building the UI'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Building the UI'), Mode=OneWay}"/>-->
+            <controls:MarkedControl Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{x:Bind ViewModel.Texts, Mode=OneWay, Converter={StaticResource MarkdownSectionConverter}, ConverterParameter='Good to go! 🚀'}" />
+            <!--<toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Good to go! 🚀'), Mode=OneWay}"/>-->
+        </StackPanel>
+    </ScrollViewer>
+</Page>
