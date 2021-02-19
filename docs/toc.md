@@ -183,6 +183,7 @@
 ## ComponentModel
 ### [ObservableObject](mvvm/ObservableObject.md)
 ### [ObservableRecipient](mvvm/ObservableRecipient.md)
+### [ObservableValidator](mvvm/ObservableValidator.md)
 ## Input
 ### [RelayCommand and RelayCommand<T>](mvvm/RelayCommand.md)
 ### [AsyncRelayCommand and AsyncRelayCommand<T>](mvvm/AsyncRelayCommand.md)
