@@ -21,10 +21,10 @@ namespace MvvmSampleUwp.Helpers
         public static IReadOnlyDictionary<string, string> GetParagraphs(string text)
         {
             return
-                Regex.Matches(text, @"(#+ ([^\n]+)[^#]+)", RegexOptions.Singleline)
+                Regex.Matches(text, @"(?<=\W)#+ ([^\n]+).+?(?=\W#|$)", RegexOptions.Singleline)
                 .ToDictionary(
-                    m => m.Groups[2].Value.Trim().Replace("&lt;", "<"),
-                    m => m.Groups[1].Value.Trim().Replace("&lt;", "<").Replace("[!WARNING]", "**WARNING:**"));
+                    m => m.Groups[1].Value.Trim().Replace("&lt;", "<"),
+                    m => m.Groups[0].Value.Trim().Replace("&lt;", "<").Replace("[!WARNING]", "**WARNING:**").Replace("[!NOTE]", "**NOTE:**"));
         }
     }
 }
