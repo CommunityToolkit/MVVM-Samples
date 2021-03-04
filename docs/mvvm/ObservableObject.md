@@ -11,6 +11,8 @@ dev_langs:
 
 The [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject) is a base class for objects that are observable by implementing the [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) interfaces. It can be used as a starting point for all kinds of objects that need to support property change notifications.
 
+> **Platform APIs:** [`ObservableObject`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject), [`TaskNotifier`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject.TaskNotifier), [`TaskNotifier<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject.TaskNotifier-1)
+
 ## How it works
 
 `ObservableObject` has the following main features:
@@ -94,22 +96,11 @@ public class MyModel : ObservableObject
 }
 ```
 
-Here the `SetPropertyAndNotifyOnCompletion<T>(ref TaskNotifier<T>, Task<T>, string)` method will take care of updating the target field, monitoring the new task, if present, and raising the notification event when that task completes. This way, it's possible to just bind to a task property and to be notified when its status changes. The `TaskNotifier<T>` is a special type exposed by `ObservableObject` that wraps a target `Task<T>` instance and enables the necessary notification logic for this method. The `TaskNotifier` type is also available to use directly if you have a general `Task` only.
+Here the `SetPropertyAndNotifyOnCompletion<T>(ref TaskNotifier<T>, Task<T>, string)` method will take care of updating the target field, monitoring the new task, if present, and raising the notification event when that task completes. This way, it's possible to just bind to a task property and to be notified when its status changes. The [`TaskNotifier<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject.TaskNotifier-1) is a special type exposed by `ObservableObject` that wraps a target `Task<T>` instance and enables the necessary notification logic for this method. The [`TaskNotifier`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject.TaskNotifier) type is also available to use directly if you have a general `Task` only.
 
 > [!NOTE]
 > The `SetPropertyAndNotifyOnCompletion` method is meant to replace the usage of the `NotifyTaskCompletion<T>` type from the `Microsoft.Toolkit` package. If this type was being used, it can be replaced with just the inner `Task` (or `Task<TResult>`) property, and then the `SetPropertyAndNotifyOnCompletion` method can be used to set its value and raise notification changes. All the properties exposed by the `NotifyTaskCompletion<T>` type are available directly on `Task` instances.
 
-## Sample Code
+## Examples
 
-There are more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
-
-## Requirements
-
-| Device family | Universal, 10.0.16299.0 or higher |
-| --- | --- |
-| Namespace | Microsoft.Toolkit.Mvvm |
-| NuGet package | [Microsoft.Toolkit.Mvvm](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm/) |
-
-## API
-
-* [ObservableObject source code](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/Microsoft.Toolkit.Mvvm/ComponentModel/ObservableObject.cs)
+You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).

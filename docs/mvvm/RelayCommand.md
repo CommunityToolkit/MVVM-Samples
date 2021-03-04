@@ -11,12 +11,14 @@ dev_langs:
 
 The [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [`RelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
 
+> **Platform APIs:** [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand), [`RelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1), [`IRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IRelayCommand), [`IRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IRelayCommand-1)
+
 ## How they work
 
 `RelayCommand` and `RelayCommand<T>` have the following main features:
 
 - They provide a base implementation of the `ICommand` interface.
-- They also implement the `IRelayCommand` (and `IRelayCommand<T>`) interface, which exposes a `NotifyCanExecuteChanged` method to raise the `CanExecuteChanged` event.
+- They also implement the [`IRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IRelayCommand) (and [`IRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IRelayCommand-1)) interface, which exposes a `NotifyCanExecuteChanged` method to raise the `CanExecuteChanged` event.
 - They expose constructors taking delegates like `Action` and `Func<T>`, which allow the wrapping of standard methods and lambda expressions.
 
 ## Working with `ICommand`
@@ -66,18 +68,6 @@ And the relative UI could then be (using WinUI XAML):
 
 The `Button` binds to the `ICommand` in the viewmodel, which wraps the private `IncrementCounter` method. The `TextBlock` displays the value of the `Counter` property and is updated every time the property value changes.
 
-## Sample Code
+## Examples
 
-There are more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
-
-## Requirements
-
-| Device family | Universal, 10.0.16299.0 or higher |
-| --- | --- |
-| Namespace | Microsoft.Toolkit.Mvvm |
-| NuGet package | [Microsoft.Toolkit.Mvvm](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm/) |
-
-## API
-
-* [RelayCommand source code](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/Microsoft.Toolkit.Mvvm/Input/RelayCommand.cs)
-* [RelayCommand&lt;T> source code](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/Microsoft.Toolkit.Mvvm/Input/RelayCommand{T}.cs)
+You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).

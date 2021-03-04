@@ -13,6 +13,8 @@ A common pattern that can be used to increase modularity in the codebase of an a
 
 The MVVM Toolkit doesn't provide built-in APIs to facilitate the usage of this pattern, as there already exist dedicated libraries specifically for this such as the `Microsoft.Extensions.DependencyInjection` package, which provides a fully featured and powerful DI set of APIs, and acts as an easy to setup and use `IServiceProvider`. The following guide will refer to this library and provide a series of examples of how to integrate it into applications using the MVVM pattern.
 
+> **Platform APIs:** [`Ioc`](Microsoft.Toolkit.Mvvm.DependencyInjection.Ioc)
+
 ## Configure and resolve services
 
 The first step is to declare an `IServiceProvider` instance, and to initialize all the necessary services, usually at startup. For instance, on UWP (but a similar setup can be used on other frameworks too):
@@ -147,17 +149,6 @@ public ContactsView()
 
 For more info about `Microsoft.Extensions.DependencyInjection`, see [here](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
 
-## Sample Code
+## Examples
 
-There are more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
-
-## Requirements
-
-| Device family | Universal, 10.0.16299.0 or higher |
-| --- | --- |
-| Namespace | Microsoft.Toolkit.Mvvm |
-| NuGet package | [Microsoft.Toolkit.Mvvm](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm/) |
-
-## API
-
-* [ObservableObject source code](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/Microsoft.Toolkit.Mvvm/ComponentModel/ObservableObject.cs)
+You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
