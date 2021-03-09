@@ -22,13 +22,13 @@ To take advantage of the Windows Community Toolkit MVVM framework, you'll first 
 ### Install via .NET CLI
 
 ```
-dotnet add package Microsoft.Toolkit.Mvvm --version x.x.x
+dotnet add package Microsoft.Toolkit.Mvvm --version 7.0.0
 ```
 
 ### Install via PackageReference
 
 ```xml
-<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="x.x.x" />
+<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0" />
 ```
 
 ## Migrating ObservableObject
