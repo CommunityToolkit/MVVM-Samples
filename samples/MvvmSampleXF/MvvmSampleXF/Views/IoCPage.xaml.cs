@@ -9,19 +9,19 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class IoCPage : ContentPage
-	{
-		public IoCPage()
-		{
-			InitializeComponent();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class IoCPage : ContentPage
+    {
+        public IoCPage()
+        {
+            InitializeComponent();
+        }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			ViewModel.LoadDocsCommand.Execute("IoC");
-		}
-	}
+            ViewModel.LoadDocsCommand.Execute("IoC");
+        }
+    }
 }

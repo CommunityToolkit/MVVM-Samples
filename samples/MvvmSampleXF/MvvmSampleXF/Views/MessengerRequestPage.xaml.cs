@@ -9,28 +9,28 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MessengerRequestPage : ContentPage
-	{
-		public MessengerRequestPage()
-		{
-			InitializeComponent();
-		}
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MessengerRequestPage : ContentPage
+    {
+        public MessengerRequestPage()
+        {
+            InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			ViewModel.LoadDocsCommand.Execute("Messenger");
-			ViewModel.SenderViewModel.IsActive = true;
-			ViewModel.ReceiverViewModel.IsActive = true;
-		}
+            ViewModel.LoadDocsCommand.Execute("Messenger");
+            ViewModel.SenderViewModel.IsActive = true;
+            ViewModel.ReceiverViewModel.IsActive = true;
+        }
 
-		protected override void OnDisappearing()
-		{
-			base.OnDisappearing();
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
 
-			ViewModel.SenderViewModel.IsActive = false;
-			ViewModel.ReceiverViewModel.IsActive = false;
-		}
-	}
+            ViewModel.SenderViewModel.IsActive = false;
+            ViewModel.ReceiverViewModel.IsActive = false;
+        }
+    }
 }

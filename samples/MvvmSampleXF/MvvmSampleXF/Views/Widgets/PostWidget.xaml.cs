@@ -10,22 +10,22 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views.Widgets
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PostWidget : ContentView
-	{
-		public PostWidget()
-		{
-			InitializeComponent();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PostWidget : ContentView
+    {
+        public PostWidget()
+        {
+            InitializeComponent();
+        }
 
-		public void OnAppearing()
-		{
-			ViewModel.IsActive = true;
-		}
+        public void OnAppearing()
+        {
+            ViewModel.IsActive = true;
+        }
 
-		public void OnDisappearing()
-		{
-			ViewModel.IsActive = false;
-		}
-	}
+        public void OnDisappearing()
+        {
+            ViewModel.IsActive = false;
+        }
+    }
 }

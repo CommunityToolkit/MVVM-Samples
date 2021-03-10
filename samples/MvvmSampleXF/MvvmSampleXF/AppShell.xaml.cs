@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AppShell : Shell
-	{
-		public AppShell()
-		{
-			InitializeComponent();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
+        }
+    }
 }

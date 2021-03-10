@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Controls
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FlyoutHeader : ContentView
-	{
-		public FlyoutHeader()
-		{
-			InitializeComponent();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FlyoutHeader : ContentView
+    {
+        public FlyoutHeader()
+        {
+            InitializeComponent();
+        }
+    }
 }

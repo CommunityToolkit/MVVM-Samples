@@ -13,39 +13,39 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF
 {
-	public partial class App : Application
-	{
-		private bool _initialized;
+    public partial class App : Application
+    {
+        private bool _initialized;
 
-		public App()
-		{
-			InitializeComponent();
+        public App()
+        {
+            InitializeComponent();
 
-			// Register services
-			if (!_initialized)
-			{
-				_initialized = true;
-				Ioc.Default.ConfigureServices(
-					new ServiceCollection()
-					.AddSingleton<IFilesService, FileService>()
-					.AddSingleton<ISettingsService, SettingsService>()
-					.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
-					.BuildServiceProvider());
-			}
+            // Register services
+            if (!_initialized)
+            {
+                _initialized = true;
+                Ioc.Default.ConfigureServices(
+                    new ServiceCollection()
+                    .AddSingleton<IFilesService, FileService>()
+                    .AddSingleton<ISettingsService, SettingsService>()
+                    .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    .BuildServiceProvider());
+            }
 
-			MainPage = new AppShell();
-		}
+            MainPage = new AppShell();
+        }
 
-		protected override void OnStart()
-		{
-		}
+        protected override void OnStart()
+        {
+        }
 
-		protected override void OnSleep()
-		{
-		}
+        protected override void OnSleep()
+        {
+        }
 
-		protected override void OnResume()
-		{
-		}
-	}
+        protected override void OnResume()
+        {
+        }
+    }
 }

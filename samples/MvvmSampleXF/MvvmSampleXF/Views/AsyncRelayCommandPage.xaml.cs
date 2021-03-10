@@ -9,19 +9,19 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AsyncRelayCommandPage : ContentPage
-	{
-		public AsyncRelayCommandPage()
-		{
-			InitializeComponent();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AsyncRelayCommandPage : ContentPage
+    {
+        public AsyncRelayCommandPage()
+        {
+            InitializeComponent();
+        }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			ViewModel.LoadDocsCommand.Execute("AsyncRelayCommand");
-		}
-	}
+            ViewModel.LoadDocsCommand.Execute("AsyncRelayCommand");
+        }
+    }
 }

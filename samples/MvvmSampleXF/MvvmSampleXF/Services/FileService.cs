@@ -9,9 +9,9 @@ using MvvmSample.Core.Services;
 
 namespace MvvmSampleXF.Services
 {
-	public sealed class FileService : IFilesService
-	{
-		public string InstallationPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+    public sealed class FileService : IFilesService
+    {
+        public string InstallationPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
         public async Task<Stream> OpenForReadAsync(string path)
         {

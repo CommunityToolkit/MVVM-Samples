@@ -12,8 +12,8 @@ namespace MvvmSample.Core.ViewModels
 {
     public class MessengerPageViewModel : SamplePageViewModel
     {
-		public MessengerPageViewModel()
-		{
+        public MessengerPageViewModel()
+        {
             RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
             ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);
         }

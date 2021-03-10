@@ -10,10 +10,10 @@ namespace MvvmSample.Core.ViewModels
 {
     public class ObservableObjectPageViewModel : SamplePageViewModel
     {
-		public ObservableObjectPageViewModel()
-		{
+        public ObservableObjectPageViewModel()
+        {
             ReloadTaskCommand = new RelayCommand(ReloadTask);
-		}
+        }
 
         /// <summary>
         /// Gets the <see cref="ICommand"/> responsible for setting <see cref="MyTask"/>.

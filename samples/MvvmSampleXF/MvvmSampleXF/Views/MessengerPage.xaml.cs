@@ -9,19 +9,19 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MessengerPage : ContentPage
-	{
-		public MessengerPage()
-		{
-			InitializeComponent();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MessengerPage : ContentPage
+    {
+        public MessengerPage()
+        {
+            InitializeComponent();
+        }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			ViewModel.LoadDocsCommand.Execute("Messenger");
-		}
-	}
+            ViewModel.LoadDocsCommand.Execute("Messenger");
+        }
+    }
 }

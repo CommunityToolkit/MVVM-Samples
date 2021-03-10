@@ -34,7 +34,11 @@ namespace MvvmSample.Core.ViewModels
         /// </summary>
         public IAsyncRelayCommand<string> LoadDocsCommand { get; }
 
-        public IReadOnlyDictionary<string, string> Texts { get => texts; set => SetProperty(ref texts, value); }
+        public IReadOnlyDictionary<string, string> Texts 
+        { 
+            get => texts; 
+            set => SetProperty(ref texts, value); 
+        }
 
         /// <summary>
         /// Gets the markdown for a specified paragraph from the docs page.

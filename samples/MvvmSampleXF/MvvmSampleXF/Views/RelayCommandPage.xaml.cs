@@ -9,20 +9,20 @@ using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RelayCommandPage : ContentPage
-	{
-		public RelayCommandPage()
-		{
-			InitializeComponent();
-			
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RelayCommandPage : ContentPage
+    {
+        public RelayCommandPage()
+        {
+            InitializeComponent();
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        }
 
-			ViewModel.LoadDocsCommand.Execute("RelayCommand");
-		}
-	}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.LoadDocsCommand.Execute("RelayCommand");
+        }
+    }
 }
