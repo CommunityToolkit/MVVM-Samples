@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmSampleXF.Controls.FlyoutHeader">
+	<Grid BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
+		<Image Aspect="AspectFill"
+			   Source="headerBg"
+			   Opacity="0.6" />
+	</Grid>
+</ContentView>
