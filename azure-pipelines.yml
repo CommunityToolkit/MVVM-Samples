@@ -8,7 +8,8 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solutionUwp: 'samples/MvvmSampleUwp.sln'
+  solutionXf: 'samples/MvvmSampleUwp.sln'
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
@@ -26,6 +27,12 @@ steps:
 - task: VSBuild@1
   inputs:
     platform: 'x86'
-    solution: '$(solution)'
+    solution: '$(solutionUwp)'
     configuration: '$(buildConfiguration)'
     msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+
+- task: VSBuild@1
+  inputs:
+    platform: 'Any CPU'
+    solution: '$(solutionXf)'
+    configuration: '$(buildConfiguration)'
