@@ -41,6 +41,11 @@ namespace MvvmSampleUwp
             };
         }
 
+        public void SetTitleBar(Window window)
+        {
+            window.SetTitleBar(TitleBarBorder);
+        }
+
         // Navigates to a sample page when a button is clicked
         private void NavigationView_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

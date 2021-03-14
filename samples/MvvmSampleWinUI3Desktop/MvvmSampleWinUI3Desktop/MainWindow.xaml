@@ -6,5 +6,5 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvmsampleuwp="using:MvvmSampleUwp"
     mc:Ignorable="d">
-    <mvvmsampleuwp:Shell/>
+    <mvvmsampleuwp:Shell x:Name="Shell"/>
 </Window>

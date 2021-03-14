@@ -11,6 +11,9 @@ namespace MvvmSampleWinUI3Desktop
         {
             this.InitializeComponent();
             this.Title = "MVVM Toolkit sample app";
+            this.ExtendsContentIntoTitleBar = true;
+
+            Shell.SetTitleBar(this);
         }
     }
 }

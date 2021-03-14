@@ -169,7 +169,7 @@
                     <!--Acrylic background-->
                     <Border
                         Grid.Row="0"
-                        Background="Transparent"/>
+                        Background="#E0000000"/>
 
                     <StackPanel Grid.Row="0">
 
@@ -204,7 +204,19 @@
                     </Rectangle>
                 </Grid>
             </muxc:NavigationView.Content>
-
         </muxc:NavigationView>
+
+        <!--Custom title bar-->
+        <Border
+            x:Name="TitleBarBorder"
+            Margin="40,0,0,0"
+            Padding="8,0,0,0"
+            Height="40"
+            VerticalAlignment="Top"
+            Background="Transparent">
+            <TextBlock
+                VerticalAlignment="Center"
+                Text="MVVM Toolkit Sample App"/>
+        </Border>
     </Grid>
 </UserControl>
