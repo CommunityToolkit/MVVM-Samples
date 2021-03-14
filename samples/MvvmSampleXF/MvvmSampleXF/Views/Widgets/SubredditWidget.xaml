@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			 xmlns:models="clr-namespace:MvvmSample.Core.Models;assembly=MvvmSample.Core"
+			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
+			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+			 x:Class="MvvmSampleXF.Views.Widgets.SubredditWidget">
+	<ContentView.BindingContext>
+		<widgets:SubredditWidgetViewModel x:Name="ViewModel" />
+	</ContentView.BindingContext>
+	<ContentView.Resources>
+		<converters:IsSelfPostToWidthRequestConverter WidthRequest="120"
+													  x:Key="IsSelfPostToWidthRequestConverter" />
+	</ContentView.Resources>
+	<!--Feed-->
+	<Grid RowDefinitions="60, 8, *">
+
+		<!--Header with topic selector and refresh button-->
+		<Frame Padding="10,0,10,0">
+			<Grid ColumnDefinitions="*, Auto">
+				<Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
+						SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
+						VerticalOptions="Center"
+						HorizontalOptions="FillAndExpand"
+						Title="Subreddit">
+					<Picker.Behaviors>
+						<xct:EventToCommandBehavior EventName="SelectedIndexChanged"
+													Command="{Binding LoadPostsCommand}" />
+					</Picker.Behaviors>
+				</Picker>
+				<Button Text="Refresh"
+						Grid.Column="1"
+						Command="{Binding LoadPostsCommand}" />
+			</Grid>
+		</Frame>
+
+		<!--Items list-->
+		<CollectionView Grid.Row="2"
+						ItemsSource="{Binding Posts}"
+						SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+						SelectionMode="Single"
+						SelectionChanged="CollectionView_SelectionChanged"
+						IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay, Converter={StaticResource InvertedBoolConverter}}">
+			<CollectionView.ItemTemplate>
+				<DataTemplate x:DataType="models:Post">
+					<Frame BorderColor="Black">
+						<Grid ColumnSpacing="8"
+							  Padding="16"
+							  ColumnDefinitions="*, Auto">
+							<Label Text="{Binding Title}"
+								   FontSize="15"
+								   LineBreakMode="WordWrap"
+								   VerticalOptions="Center" />
+							<Image Grid.Column="1"
+								   Source="{Binding Thumbnail}"
+								   Aspect="AspectFit"
+								   HorizontalOptions="End"
+								   WidthRequest="{Binding Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+						</Grid>
+					</Frame>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+
+		<!--Loading bar-->
+		<ActivityIndicator Grid.Row="1"
+						   Grid.RowSpan="2"
+						   Margin="0, 10, 0, 0"
+						   VerticalOptions="Start"
+						   IsRunning="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}"
+						   IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}" />
+	</Grid>
+</ContentView>

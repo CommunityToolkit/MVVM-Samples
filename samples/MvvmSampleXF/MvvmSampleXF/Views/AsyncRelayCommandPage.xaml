@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
+			 x:DataType="vm:AsyncRelayCommandPageViewModel"
+			 Title="Commands">
+	<ContentPage.BindingContext>
+		<vm:AsyncRelayCommandPageViewModel x:Name="ViewModel" />
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+		<converters:TaskResultConverter x:Key="TaskResultConverter" />
+	</ContentPage.Resources>
+	<ScrollView Padding="16">
+		<StackLayout Padding="16">
+			<md:MarkdownView Markdown="{Binding Path=Texts[AsyncRelayCommand and AsyncRelayCommand&lt;T>], Mode=OneWay}" />
+			<md:MarkdownView Markdown="{Binding Path=Texts[How they work], Mode=OneWay}" />
+			<md:MarkdownView Markdown="{Binding Path=Texts[Working with asynchronous commands], Mode=OneWay}" />
+
+			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
+										HeightRequest="400">
+				<StackLayout Spacing="8">
+					<Label Text="{Binding DownloadTextCommand.ExecutionTask.Status, TargetNullValue='Task status: ', FallbackValue='Task status: ', StringFormat='Task status: {0}' }" />
+					<Label Text="{Binding DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, StringFormat='Result: {0}' }" />
+					<Button Text="Click me!"
+							Command="{Binding DownloadTextCommand}" />
+					<ActivityIndicator HorizontalOptions="Center"
+									   IsVisible="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}"
+									   IsRunning="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}" />
+				</StackLayout>
+				<controls:InteractiveSample.XamlCode>
+					```xml
+&lt;ContentPage.Resources>
+	&lt;converters:TaskResultConverter x:Key="TaskResultConverter" />
+&lt;/ContentPage.Resources>
+&lt;StackLayout Spacing="8">
+    &lt;Label Text="{Binding DownloadTextCommand.ExecutionTask.Status, TargetNullValue='Task status: ', FallbackValue='Task status: ', StringFormat='Task status: {0}' }" />
+    &lt;Label Text="{Binding DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, StringFormat='Result: {0}' }" />
+    &lt;Button Text="Click me!"
+            Command="{Binding DownloadTextCommand}" />
+    &lt;ActivityIndicator HorizontalOptions="Center"
+                    IsVisible="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}"
+                    IsRunning="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}" />
+&lt;/StackLayout>
+
+```
+				</controls:InteractiveSample.XamlCode>
+				<controls:InteractiveSample.CSharpCode>
+					```csharp
+public MyViewModel()
+{
+    DownloadTextCommand = new AsyncRelayCommand(DownloadTextAsync);
+}
+
+public IAsyncRelayCommand DownloadTextCommand { get; }
+
+private async Task&lt;string> DownloadTextAsync()
+{
+    await Task.Delay(3000); // Simulate a web request
+
+    return "Hello world!";
+}
+
+```
+				</controls:InteractiveSample.CSharpCode>
+			</controls:InteractiveSample>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

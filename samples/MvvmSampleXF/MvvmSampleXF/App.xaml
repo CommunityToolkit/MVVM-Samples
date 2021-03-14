@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 x:Class="MvvmSampleXF.App">
+	<Application.Resources>
+		<Color x:Key="PrimaryColor">#3750D1</Color>
+		<Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>
+		<Color x:Key="BackgroundColorDark">#121212</Color>
+		<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
+
+		<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
+		<Color x:Key="TextPrimaryColorLight">#323130</Color>
+
+		<md:DarkMarkdownTheme x:Key="DarkMarkdownTheme" />
+		<md:LightMarkdownTheme x:Key="LightMarkdownTheme" />
+
+		<OnPlatform x:Key="ShellForegroundColorLight"
+					x:TypeArguments="Color">
+			<On Platform="Android"
+				Value="{StaticResource TextPrimaryColorDark}" />
+			<On Platform="iOS"
+				Value="{StaticResource TextPrimaryColorLight}" />
+		</OnPlatform>
+
+		<Style x:Key="BaseStyle"
+			   TargetType="Element"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="Shell.BackgroundColor"
+					Value="{AppThemeBinding {StaticResource PrimaryColor}}" />
+			<Setter Property="Shell.ForegroundColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource ShellForegroundColorLight}}" />
+			<Setter Property="Shell.TabBarBackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+			<Setter Property="Shell.NavBarHasShadow"
+					Value="false" />
+			<Setter Property="Shell.UnselectedColor"
+					Value="Gray" />
+			<Setter Property="Shell.TabBarTitleColor"
+					Value="{StaticResource PrimaryColor}" />
+		</Style>
+
+		<Style TargetType="TabBar"
+			   ApplyToDerivedTypes="True"
+			   BasedOn="{StaticResource BaseStyle}" />
+
+		<Style TargetType="FlyoutItem"
+			   ApplyToDerivedTypes="True"
+			   BasedOn="{StaticResource BaseStyle}">
+		</Style>
+
+
+		<Style BasedOn="{StaticResource BaseStyle}"
+			   ApplyToDerivedTypes="True"
+			   TargetType="Tab" />
+
+		<Style TargetType="Shell"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="FlyoutBackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+		</Style>
+
+
+		<Style TargetType="Label"
+			   Class="FlyoutItemLabelStyle">
+			<Setter Property="TextColor"
+					Value="{StaticResource TextPrimaryColorDark}" />
+		</Style>
+
+		<Style TargetType="Layout"
+			   Class="FlyoutItemLayoutStyle"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+			<Setter Property="VisualStateManager.VisualStateGroups">
+				<VisualStateGroupList>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal">
+							<VisualState.Setters>
+								<Setter Property="BackgroundColor"
+										Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+							</VisualState.Setters>
+						</VisualState>
+						<VisualState x:Name="Selected">
+							<VisualState.Setters>
+								<Setter Property="BackgroundColor"
+										Value="{AppThemeBinding Dark={StaticResource PrimaryColor}, Light={StaticResource FrameBackgroundColorDark}}" />
+							</VisualState.Setters>
+						</VisualState>
+					</VisualStateGroup>
+				</VisualStateGroupList>
+			</Setter>
+		</Style>
+
+		<Style TargetType="md:MarkdownView">
+			<Setter Property="Theme"
+					Value="{AppThemeBinding Dark={StaticResource DarkMarkdownTheme}, Light={StaticResource LightMarkdownTheme}}" />
+		</Style>
+
+		<Style TargetType="Page"
+			   ApplyToDerivedTypes="True"
+			   BasedOn="{StaticResource BaseStyle}">
+			<Setter Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+		</Style>
+
+		<Style TargetType="Label"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
+		<Style TargetType="Frame"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+		</Style>
+
+		<Style TargetType="xct:TabViewItem">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
+
+		<Style TargetType="Picker">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
+		<OnPlatform x:Key="FaSolidFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Free-Solid" />
+			<On Platform="Android"
+				Value="FontAwesomeSolid.otf#Regular" />
+		</OnPlatform>
+
+		<OnPlatform x:Key="FaRegularFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Free-Regular" />
+			<On Platform="Android"
+				Value="FontAwesomeRegular.otf#Regular" />
+		</OnPlatform>
+
+		<OnPlatform x:Key="FaBrandsFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Brands-Regular" />
+			<On Platform="Android"
+				Value="FontAwesomeBrands.otf#Regular" />
+		</OnPlatform>
+
+		<FontImage x:Key="PlayIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf04b;"/>
+
+		<FontImage x:Key="ExchangeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf362;" />
+
+		<FontImage x:Key="CalendarIcon"
+				   FontFamily="{StaticResource FaRegularFont}"
+				   Glyph="&#xf073;" />
+
+		<FontImage x:Key="BookIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf02d;" />
+
+		<FontImage x:Key="FlagIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf024;" />
+		
+		<FontImage x:Key="CommentIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf4ad;" />
+
+		<FontImage x:Key="SendIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf1d8;" />
+
+		<FontImage x:Key="SortIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf338;" />
+
+		<FontImage x:Key="UndoIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf0e2;" />
+
+		<FontImage x:Key="CubeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf1b3;" />
+
+		<FontImage x:Key="ToolsIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf7d9;" />
+
+		<FontImage x:Key="WrenchIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf0ad;" />
+
+		<FontImage x:Key="GlobeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf57d;" />
+
+		<FontImage x:Key="RulerIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf5ae;" />
+
+		<FontImage x:Key="CheckerIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf11e;" />
+		
+		<FontImage x:Key="RefreshIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf021;" />
+		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />
+	</Application.Resources>
+</Application>
