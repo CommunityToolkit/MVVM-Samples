@@ -10,6 +10,7 @@ namespace MvvmSampleWinUI3Desktop
         public MainWindow()
         {
             this.InitializeComponent();
+            this.Title = "MVVM Toolkit sample app";
         }
     }
 }

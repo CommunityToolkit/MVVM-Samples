@@ -70,9 +70,9 @@ namespace MvvmSampleUwp
         // Select the introduction item when the shell is loaded
         private void Shell_OnLoaded(object sender, RoutedEventArgs e)
         {
-            //NavigationView.SelectedItem = IntroductionItem;
+            NavigationView.SelectedItem = IntroductionItem;
 
-            //NavigationFrame.Navigate(typeof(IntroductionPage));
+            NavigationFrame.Navigate(typeof(IntroductionPage));
         }
 
         // Updates the search results

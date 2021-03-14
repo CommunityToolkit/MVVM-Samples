@@ -28,6 +28,10 @@
             IsSettingsVisible="False"
             ItemInvoked="NavigationView_OnItemInvoked"
             BackRequested="NavigationView_OnBackRequested">
+                <muxc:NavigationView.Resources>
+                    <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="Transparent" />
+                    <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent" />
+                </muxc:NavigationView.Resources>
 
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
@@ -165,7 +169,7 @@
                     <!--Acrylic background-->
                     <Border
                         Grid.Row="0"
-                        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"/>
+                        Background="Transparent"/>
 
                     <StackPanel Grid.Row="0">
 
