@@ -19,6 +19,7 @@ namespace MvvmSample.Core.ViewModels
     public class SamplePageViewModel : ObservableObject
     {
         private IReadOnlyDictionary<string, string> texts;
+
         /// <summary>
         /// The <see cref="IFilesService"/> instance currently in use.
         /// </summary>
@@ -59,7 +60,7 @@ namespace MvvmSample.Core.ViewModels
             // Skip if the loading has already started
             if (!(LoadDocsCommand.ExecutionTask is null)) return;
 
-            var path = Path.Combine("Assets", "docs", $"{name}.md");
+            var path = Path.Combine("Assets", $"{name}.md");
             using var stream = await FilesServices.OpenForReadAsync(path);
             using var reader = new StreamReader(stream);
             var text = await reader.ReadToEndAsync();

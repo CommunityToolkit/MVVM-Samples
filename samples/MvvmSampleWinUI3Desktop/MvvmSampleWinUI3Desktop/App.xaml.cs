@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
+using MvvmSample.Core.Services;
+using MvvmSampleUwp.Services;
+using Refit;
 using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace MvvmSampleWinUI3Desktop
 {
@@ -45,6 +32,14 @@ namespace MvvmSampleWinUI3Desktop
         {
             m_window = new MainWindow();
             m_window.Activate();
+
+            // Register services
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<IFilesService, FilesService>()
+                .AddSingleton<ISettingsService, SettingsService>()
+                .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                .BuildServiceProvider());
         }
 
         /// <summary>

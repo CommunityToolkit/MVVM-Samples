@@ -48,6 +48,38 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\MvvmSample.Core\Docs\AsyncRelayCommand.md">
+      <Link>Assets\AsyncRelayCommand.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\Introduction.md">
+      <Link>Assets\Introduction.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\Ioc.md">
+      <Link>Assets\Ioc.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\Messenger.md">
+      <Link>Assets\Messenger.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\ObservableObject.md">
+      <Link>Assets\ObservableObject.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\ObservableRecipient.md">
+      <Link>Assets\ObservableRecipient.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\PuttingThingsTogether.md">
+      <Link>Assets\PuttingThingsTogether.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\MvvmSample.Core\Docs\RelayCommand.md">
+      <Link>Assets\RelayCommand.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\SplashScreen.scale-200.png" />
     <Content Include="Images\LockScreenLogo.scale-200.png" />
     <Content Include="Images\Square150x150Logo.scale-200.png" />
@@ -81,6 +113,9 @@
     <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[0.5.0-prerelease]" GeneratePathProperty="true">
       <ExcludeAssets>all</ExcludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <Import Project="$(Microsoft_ProjectReunion_AppXReference_props)" />
