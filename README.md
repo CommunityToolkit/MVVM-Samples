@@ -1,14 +1,13 @@
-> ### NOTE
-> The MVVM Toolkit is currently work in progress. You can track the development and all changes in each preview release [here](https://github.com/windows-toolkit/WindowsCommunityToolkit/issues/3428).
-
 # Windows Community Toolkit
 This new "MVVM Toolkit" is part of the [Windows Community Toolkit](https://aka.ms/wct). The Windows Community Toolkit is part of the [.NET Foundation](https://dotnetfoundation.org/).
 
 # MVVM Toolkit & Samples
 
-The MVVM library of the Windows Community Toolkit can be found in the `Microsoft.Toolkit.Mvvm` NuGet package, currently in preview. It will be known as the "MVVM Toolkit" in short for reference.
+The MVVM library of the Windows Community Toolkit can be found in the [`Microsoft.Toolkit.Mvvm` NuGet package](https://www.nuget.org/packages/Microsoft.Toolkit.Mvvm). It will be known as the "MVVM Toolkit" in short for reference.
 
-This repo contains initial preview [documentation](docs/mvvm/Introduction.md) and samples for how to utilize the library.
+The full official documentation can be found [in MS Docs website](https://docs.microsoft.com/en-us/windows/communitytoolkit/mvvm/introduction).
+
+This repo contains initial samples for how to utilize the library.
 
 ## Introduction to the MVVM Toolkit
 
