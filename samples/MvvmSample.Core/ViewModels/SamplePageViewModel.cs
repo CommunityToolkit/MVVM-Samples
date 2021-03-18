@@ -4,12 +4,11 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using MvvmSample.Core.Helpers;
-using MvvmSample.Core.Services;
 
 namespace MvvmSample.Core.ViewModels
 {
@@ -18,12 +17,7 @@ namespace MvvmSample.Core.ViewModels
     /// </summary>
     public class SamplePageViewModel : ObservableObject
     {
-        private IReadOnlyDictionary<string, string> texts;
-
-        /// <summary>
-        /// The <see cref="IFilesService"/> instance currently in use.
-        /// </summary>
-        private readonly IFilesService FilesServices = Ioc.Default.GetRequiredService<IFilesService>();
+        private IReadOnlyDictionary<string, string>? texts;
 
         public SamplePageViewModel()
         {
@@ -35,7 +29,10 @@ namespace MvvmSample.Core.ViewModels
         /// </summary>
         public IAsyncRelayCommand<string> LoadDocsCommand { get; }
 
-        public IReadOnlyDictionary<string, string> Texts 
+        /// <summary>
+        /// Gets or sets the collection of loaded paragraphs.
+        /// </summary>
+        public IReadOnlyDictionary<string, string>? Texts 
         { 
             get => texts; 
             set => SetProperty(ref texts, value); 
@@ -55,15 +52,14 @@ namespace MvvmSample.Core.ViewModels
         /// Implements the logic for <see cref="LoadDocsCommand"/>.
         /// </summary>
         /// <param name="name">The name of the docs file to load.</param>
-        private async Task LoadDocsAsync(string name)
+        private async Task LoadDocsAsync(string? name)
         {
             // Skip if the loading has already started
             if (!(LoadDocsCommand.ExecutionTask is null)) return;
 
-            var path = Path.Combine("Assets", $"{name}.md");
-            using var stream = await FilesServices.OpenForReadAsync(path);
-            using var reader = new StreamReader(stream);
-            var text = await reader.ReadToEndAsync();
+            string
+                path = Path.Combine("Docs", $"{name!}.md"),
+                text = await EmbeddedResources.GetStringAsync(Assembly.GetExecutingAssembly(), path);
 
             Texts = MarkdownHelper.GetParagraphs(text);
 

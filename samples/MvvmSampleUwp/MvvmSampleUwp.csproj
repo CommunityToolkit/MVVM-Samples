@@ -340,40 +340,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\MvvmSample.Core\Docs\AsyncRelayCommand.md">
-      <Link>Assets\docs\AsyncRelayCommand.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Introduction.md">
-      <Link>Assets\docs\Introduction.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Ioc.md">
-      <Link>Assets\docs\Ioc.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Messenger.md">
-      <Link>Assets\docs\Messenger.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\ObservableObject.md">
-      <Link>Assets\docs\ObservableObject.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\ObservableRecipient.md">
-      <Link>Assets\docs\ObservableRecipient.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\PuttingThingsTogether.md">
-      <Link>Assets\docs\PuttingThingsTogether.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\MvvmSample.Core\Docs\RelayCommand.md">
-      <Link>Assets\docs\RelayCommand.md</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MvvmSample.Core\MvvmSample.Core.csproj">
       <Project>{28e524f7-61b3-455d-8cbd-615bc4fde814}</Project>
       <Name>MvvmSample.Core</Name>
