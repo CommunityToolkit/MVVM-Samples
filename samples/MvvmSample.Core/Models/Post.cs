@@ -17,7 +17,7 @@ namespace MvvmSample.Core.Models
         /// Gets or sets the listing data for the response.
         /// </summary>
         [JsonPropertyName("data")]
-        public PostListing? Data { get; init; }
+        public PostListing? Data { get; set; }
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ namespace MvvmSample.Core.Models
         /// Gets or sets the items in this listing.
         /// </summary>
         [JsonPropertyName("children")]
-        public IList<PostData>? Items { get; init; }
+        public IList<PostData>? Items { get; set; }
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ namespace MvvmSample.Core.Models
         /// Gets or sets the <see cref="Post"/> instance.
         /// </summary>
         [JsonPropertyName("data")]
-        public Post? Data { get; init; }
+        public Post? Data { get; set; }
     }
 
     /// <summary>
@@ -53,13 +53,13 @@ namespace MvvmSample.Core.Models
         /// Gets or sets the title of the post.
         /// </summary>
         [JsonPropertyName("title")]
-        public string? Title { get; init; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// Gets or sets the URL to the post thumbnail, if present.
         /// </summary>
         [JsonPropertyName("thumbnail")]
-        public string? Thumbnail { get; init; }
+        public string? Thumbnail { get; set; }
 
         /// <summary>
         /// Gets the text of the post.
