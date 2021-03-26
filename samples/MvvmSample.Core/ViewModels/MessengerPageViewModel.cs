@@ -73,9 +73,9 @@ namespace MvvmSample.Core.ViewModels
             }
         }
 
-        private string username;
+        private string? username;
 
-        public string Username
+        public string? Username
         {
             get => username;
             private set => SetProperty(ref username, value);

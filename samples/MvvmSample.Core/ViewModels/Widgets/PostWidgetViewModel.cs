@@ -14,12 +14,12 @@ namespace MvvmSample.Core.ViewModels.Widgets
     /// </summary>
     public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
     {
-        private Post post;
+        private Post? post;
 
         /// <summary>
         /// Gets the currently selected post, if any.
         /// </summary>
-        public Post Post
+        public Post? Post
         {
             get => post;
             private set => SetProperty(ref post, value);

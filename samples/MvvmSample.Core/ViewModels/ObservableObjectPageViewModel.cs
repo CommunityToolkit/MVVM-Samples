@@ -20,23 +20,23 @@ namespace MvvmSample.Core.ViewModels
         /// </summary>
         public ICommand ReloadTaskCommand { get; }
 
-        private string name;
+        private string? name;
 
         /// <summary>
         /// Gets or sets the name to display.
         /// </summary>
-        public string Name
+        public string? Name
         {
             get => name;
             set => SetProperty(ref name, value);
         }
 
-        private TaskNotifier myTask;
+        private TaskNotifier? myTask;
 
         /// <summary>
         /// Gets or sets the name to display.
         /// </summary>
-        public Task MyTask
+        public Task? MyTask
         {
             get => myTask;
             private set => SetPropertyAndNotifyOnCompletion(ref myTask, value);

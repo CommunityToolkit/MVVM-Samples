@@ -32,7 +32,7 @@ namespace MvvmSample.Core.ViewModels.Widgets
         /// <summary>
         /// An <see cref="AsyncLock"/> instance to avoid concurrent requests.
         /// </summary>
-        private readonly AsyncLock LoadingLock = new AsyncLock();
+        private readonly AsyncLock LoadingLock = new();
 
         /// <summary>
         /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
@@ -52,7 +52,7 @@ namespace MvvmSample.Core.ViewModels.Widgets
         /// <summary>
         /// Gets the collection of loaded posts.
         /// </summary>
-        public ObservableCollection<Post> Posts { get; } = new ObservableCollection<Post>();
+        public ObservableCollection<Post> Posts { get; } = new();
 
         /// <summary>
         /// Gets the collection of available subreddits to pick from.
@@ -83,12 +83,12 @@ namespace MvvmSample.Core.ViewModels.Widgets
             }
         }
 
-        private Post selectedPost;
+        private Post? selectedPost;
 
         /// <summary>
-        /// Gets or sets the currently selected subreddit.
+        /// Gets or sets the currently selected post, if any.
         /// </summary>
-        public Post SelectedPost
+        public Post? SelectedPost
         {
             get => selectedPost;
             set => SetProperty(ref selectedPost, value, true);
@@ -107,9 +107,9 @@ namespace MvvmSample.Core.ViewModels.Widgets
 
                     Posts.Clear();
 
-                    foreach (var item in response.Data.Items)
+                    foreach (var item in response.Data!.Items!)
                     {
-                        Posts.Add(item.Data);
+                        Posts.Add(item.Data!);
                     }
                 }
                 catch

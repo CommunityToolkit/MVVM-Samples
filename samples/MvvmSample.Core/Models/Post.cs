@@ -11,55 +11,55 @@ namespace MvvmSample.Core.Models
     /// <summary>
     /// A class for a query for posts in a given subreddit.
     /// </summary>
-    public class PostsQueryResponse
+    public sealed class PostsQueryResponse
     {
         /// <summary>
         /// Gets or sets the listing data for the response.
         /// </summary>
         [JsonPropertyName("data")]
-        public PostListing Data { get; set; }
+        public PostListing? Data { get; init; }
     }
 
     /// <summary>
     /// A class for a Reddit listing of posts.
     /// </summary>
-    public class PostListing
+    public sealed class PostListing
     {
         /// <summary>
         /// Gets or sets the items in this listing.
         /// </summary>
         [JsonPropertyName("children")]
-        public IList<PostData> Items { get; set; }
+        public IList<PostData>? Items { get; init; }
     }
 
     /// <summary>
     /// A wrapping class for a post.
     /// </summary>
-    public class PostData
+    public sealed class PostData
     {
         /// <summary>
         /// Gets or sets the <see cref="Post"/> instance.
         /// </summary>
         [JsonPropertyName("data")]
-        public Post Data { get; set; }
+        public Post? Data { get; init; }
     }
 
     /// <summary>
     /// A simple model for a Reddit post.
     /// </summary>
-    public class Post
+    public sealed class Post
     {
         /// <summary>
         /// Gets or sets the title of the post.
         /// </summary>
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string? Title { get; init; }
 
         /// <summary>
         /// Gets or sets the URL to the post thumbnail, if present.
         /// </summary>
         [JsonPropertyName("thumbnail")]
-        public string Thumbnail { get; set; }
+        public string? Thumbnail { get; init; }
 
         /// <summary>
         /// Gets the text of the post.

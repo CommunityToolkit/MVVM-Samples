@@ -18,7 +18,6 @@ namespace MvvmSample.Core.ViewModels
     /// </summary>
     public class SamplePageViewModel : ObservableObject
     {
-        private IReadOnlyDictionary<string, string> texts;
         /// <summary>
         /// The <see cref="IFilesService"/> instance currently in use.
         /// </summary>
@@ -34,7 +33,9 @@ namespace MvvmSample.Core.ViewModels
         /// </summary>
         public IAsyncRelayCommand<string> LoadDocsCommand { get; }
 
-        public IReadOnlyDictionary<string, string> Texts 
+        private IReadOnlyDictionary<string, string>? texts;
+
+        public IReadOnlyDictionary<string, string>? Texts 
         { 
             get => texts; 
             set => SetProperty(ref texts, value); 
@@ -47,15 +48,17 @@ namespace MvvmSample.Core.ViewModels
         /// <returns>The text of the specified paragraph, or <see langword="null"/>.</returns>
         public string GetParagraph(string key)
         {
-            return Texts != null && Texts.TryGetValue(key, out var value) ? value : string.Empty;
+            return Texts is not null && Texts.TryGetValue(key, out var value) ? value : string.Empty;
         }
 
         /// <summary>
         /// Implements the logic for <see cref="LoadDocsCommand"/>.
         /// </summary>
         /// <param name="name">The name of the docs file to load.</param>
-        private async Task LoadDocsAsync(string name)
+        private async Task LoadDocsAsync(string? name)
         {
+            if (name is null) return;
+
             // Skip if the loading has already started
             if (!(LoadDocsCommand.ExecutionTask is null)) return;
 
