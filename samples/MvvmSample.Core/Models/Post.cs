@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MvvmSample.Core.Models
 {
@@ -16,7 +16,7 @@ namespace MvvmSample.Core.Models
         /// <summary>
         /// Gets or sets the listing data for the response.
         /// </summary>
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public PostListing Data { get; set; }
     }
 
@@ -28,7 +28,7 @@ namespace MvvmSample.Core.Models
         /// <summary>
         /// Gets or sets the items in this listing.
         /// </summary>
-        [JsonProperty("children")]
+        [JsonPropertyName("children")]
         public IList<PostData> Items { get; set; }
     }
 
@@ -40,7 +40,7 @@ namespace MvvmSample.Core.Models
         /// <summary>
         /// Gets or sets the <see cref="Post"/> instance.
         /// </summary>
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public Post Data { get; set; }
     }
 
@@ -52,13 +52,13 @@ namespace MvvmSample.Core.Models
         /// <summary>
         /// Gets or sets the title of the post.
         /// </summary>
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the URL to the post thumbnail, if present.
         /// </summary>
-        [JsonProperty("thumbnail")]
+        [JsonPropertyName("thumbnail")]
         public string Thumbnail { get; set; }
 
         /// <summary>

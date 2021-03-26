@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>8.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <UserSecretsId>4e66f7b4-01a8-4f00-8733-4ae6a08c741f</UserSecretsId>
   </PropertyGroup>
 
@@ -43,9 +43,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview5" />
-		<PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.0" />
-		<PackageReference Include="Refit" Version="5.2.1" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0" />
+    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.0" />
+    <PackageReference Include="Refit" Version="6.0.38" />
+  </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:MvvmSample.Core.Models"
@@ -46,7 +46,7 @@
                     </interactivity:Interaction.Behaviors>
                 </ComboBox>
                 <Button
-                    Content="{extensions:SymbolIcon Symbol=Refresh}"
+                    Content="{ui:SymbolIcon Symbol=Refresh}"
                     Command="{x:Bind ViewModel.LoadPostsCommand}"/>
             </StackPanel>
         </Border>
