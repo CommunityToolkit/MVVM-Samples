@@ -2,11 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
-using Microsoft.Toolkit.Mvvm.Messaging;
-using Microsoft.Toolkit.Mvvm.Messaging.Messages;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 
 namespace MvvmSample.Core.ViewModels
 {
@@ -21,9 +21,9 @@ namespace MvvmSample.Core.ViewModels
         public ICommand RequestCurrentUsernameCommand { get; }
         public ICommand ResetCurrentUsernameCommand { get; }
 
-        public UserSenderViewModel SenderViewModel { get; } = new UserSenderViewModel();
+        public UserSenderViewModel SenderViewModel { get; } = new();
 
-        public UserReceiverViewModel ReceiverViewModel { get; } = new UserReceiverViewModel();
+        public UserReceiverViewModel ReceiverViewModel { get; } = new();
 
         // Simple viewmodel for a module sending a username message
         public class UserSenderViewModel : ObservableRecipient
