@@ -1,4 +1,4 @@
-﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSample.Core.Services;
 using MvvmSampleXF.Services;
