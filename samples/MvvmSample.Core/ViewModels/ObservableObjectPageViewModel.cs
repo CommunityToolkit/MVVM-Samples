@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 
 namespace MvvmSample.Core.ViewModels
 {
@@ -20,23 +20,23 @@ namespace MvvmSample.Core.ViewModels
         /// </summary>
         public ICommand ReloadTaskCommand { get; }
 
-        private string name;
+        private string? name;
 
         /// <summary>
         /// Gets or sets the name to display.
         /// </summary>
-        public string Name
+        public string? Name
         {
             get => name;
             set => SetProperty(ref name, value);
         }
 
-        private TaskNotifier myTask;
+        private TaskNotifier? myTask;
 
         /// <summary>
         /// Gets or sets the name to display.
         /// </summary>
-        public Task MyTask
+        public Task? MyTask
         {
             get => myTask;
             private set => SetPropertyAndNotifyOnCompletion(ref myTask, value);

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmSampleUwp", "MvvmSampleUwp\MvvmSampleUwp.csproj", "{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmSample.Core", "MvvmSample.Core\MvvmSample.Core.csproj", "{28E524F7-61B3-455D-8CBD-615BC4FDE814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmSample.Core", "MvvmSample.Core\MvvmSample.Core.csproj", "{28E524F7-61B3-455D-8CBD-615BC4FDE814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +22,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|Any CPU.Build.0 = Debug|x86
+		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|ARM.ActiveCfg = Debug|ARM
 		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|ARM.Build.0 = Debug|ARM
 		{E667FBF4-30F2-49AC-8576-7A2B867F8F1A}.Debug|ARM.Deploy.0 = Debug|ARM

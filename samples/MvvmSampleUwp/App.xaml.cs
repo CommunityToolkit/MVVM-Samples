@@ -5,8 +5,8 @@
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using MvvmSampleUwp.Services;
 using Refit;
 using MvvmSampleUwp.Helpers;

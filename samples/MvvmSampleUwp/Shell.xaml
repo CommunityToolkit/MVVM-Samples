@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mvvmSampleUwp="using:MvvmSampleUwp"
-    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -109,17 +109,17 @@
                 <muxc:NavigationViewItem
                     x:Name="RedditBrowserOverviewItem"
                     Content="Putting Things Together"
-                    Icon="{extensions:FontIcon Glyph=&#xE74C;}"
+                    Icon="{ui:FontIcon Glyph=&#xE74C;}"
                     ToolTipService.ToolTip="Examples of how to put multiple pieces together for building an app.">
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem
                             x:Name="ViewModelsSetupItem"
                             Content="Setting up the ViewModels"
-                            Icon="{extensions:FontIcon Glyph=&#xEBD2;}"
+                            Icon="{ui:FontIcon Glyph=&#xEBD2;}"
                             ToolTipService.ToolTip="Setting up viewmodels for the two widgets."/>
                         <muxc:NavigationViewItem
                             Content="Creating a Service"
-                            Icon="{extensions:FontIcon Glyph=&#xF69E;}"
+                            Icon="{ui:FontIcon Glyph=&#xF69E;}"
                             ToolTipService.ToolTip="Build custom services to expand the app's functionalities.">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
@@ -137,12 +137,12 @@
                         <muxc:NavigationViewItem
                             x:Name="BuildingTheUIItem"
                             Content="Building the UI"
-                            Icon="{extensions:FontIcon Glyph=&#xEB3C;}"
+                            Icon="{ui:FontIcon Glyph=&#xEB3C;}"
                             ToolTipService.ToolTip="Building the UI to connect to the backend."/>
                         <muxc:NavigationViewItem
                             x:Name="FinalResultItem"
                             Content="The final result!"
-                            Icon="{extensions:FontIcon Glyph=&#xF1AD;}"
+                            Icon="{ui:FontIcon Glyph=&#xF1AD;}"
                             ToolTipService.ToolTip="The final working sample!"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>

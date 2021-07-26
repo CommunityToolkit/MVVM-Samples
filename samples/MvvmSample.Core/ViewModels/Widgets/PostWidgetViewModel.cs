@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Messaging;
-using Microsoft.Toolkit.Mvvm.Messaging.Messages;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 using MvvmSample.Core.Models;
 
 namespace MvvmSample.Core.ViewModels.Widgets
@@ -14,12 +14,12 @@ namespace MvvmSample.Core.ViewModels.Widgets
     /// </summary>
     public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
     {
-        private Post post;
+        private Post? post;
 
         /// <summary>
         /// Gets the currently selected post, if any.
         /// </summary>
-        public Post Post
+        public Post? Post
         {
             get => post;
             private set => SetProperty(ref post, value);

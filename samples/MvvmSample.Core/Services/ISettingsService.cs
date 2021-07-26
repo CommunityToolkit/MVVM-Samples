@@ -26,6 +26,6 @@ namespace MvvmSample.Core.Services
         /// <typeparam name="T">The type of the object to retrieve.</typeparam>
         /// <param name="key">The key associated to the requested object.</param>
         [Pure]
-        T GetValue<T>(string key);
+        T? GetValue<T>(string key);
     }
 }
