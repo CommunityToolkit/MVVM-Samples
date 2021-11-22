@@ -140,6 +140,9 @@
     <Compile Include="Views\SettingsServicePage.xaml.cs">
       <DependentUpon>SettingsServicePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingUpTheViewModelsPage.xaml.cs">
       <DependentUpon>SettingUpTheViewModelsPage.xaml</DependentUpon>
     </Compile>
@@ -287,6 +290,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SettingsServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

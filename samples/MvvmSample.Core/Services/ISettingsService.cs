@@ -12,6 +12,10 @@ namespace MvvmSample.Core.Services
     /// </summary>
     public interface ISettingsService
     {
+        bool BoolSampleSetting { get; set; }
+
+        bool BoolSampleSetting2 { get; set; }
+
         /// <summary>
         /// Assigns a value to a settings key.
         /// </summary>

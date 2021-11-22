@@ -35,5 +35,20 @@ namespace MvvmSampleUwp.Services
 
             return default;
         }
+
+
+        public bool BoolSampleSetting
+        {
+            get => GetValue<bool>(nameof(BoolSampleSetting));
+            set => SetValue<bool>(nameof(BoolSampleSetting), value);
+        }
+
+        public bool BoolSampleSetting2
+        {
+            get => GetValue<bool>(nameof(BoolSampleSetting2));
+            set => SetValue<bool>(nameof(BoolSampleSetting2), value);
+        }
+
+
     }
 }

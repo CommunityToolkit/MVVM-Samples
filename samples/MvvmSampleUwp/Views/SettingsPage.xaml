@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="MvvmSampleUwp.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:viewModels="using:MvvmSample.Core.ViewModels"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
+    <Page.DataContext>
+        <viewModels:SettingsPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+       
+        <StackPanel Grid.Row="0">
+            <TextBlock 
+                   FontSize="24"
+                   Text="Settings"
+                   TextWrapping="WrapWholeWords"
+                   Margin="16,16,16,0"/>
+            <TextBlock
+                   FontSize="14"
+                   TextWrapping="WrapWholeWords"
+                   Margin="16,0,16,16">
+                <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/windows/apps/design/app-settings/guidelines-for-app-settings">
+                    https://docs.microsoft.com/en-us/windows/apps/design/app-settings/guidelines-for-app-settings
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+        
+        <ScrollViewer Grid.Row="1" 
+                      Padding="16" 
+                      CanContentRenderOutsideBounds="True">
+            <StackPanel>
+                <ToggleSwitch x:Name="BoolSampleSettingToggle" 
+                              Header="BoolSampleSetting"
+                              Margin="16"
+                              IsOn="{Binding BoolSetting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              />
+
+                <ToggleSwitch x:Name="BoolSampleSettingToggle2"
+                              Header="BoolSampleSetting2"
+                              Margin="16" 
+                              IsOn="{Binding BoolSetting2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+    
+   
+</Page>
