@@ -10,9 +10,6 @@
     d:DesignHeight="300"
     d:DesignWidth="400"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <widgets:PostWidgetViewModel x:Name="ViewModel" />
-    </UserControl.DataContext>
 
     <!--  Post  -->
     <Grid

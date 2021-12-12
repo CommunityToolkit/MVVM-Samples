@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using CommunityToolkit.Mvvm.DependencyInjection;
+using MvvmSample.Core.ViewModels.Widgets;
 using Windows.UI.Xaml.Controls;
 
 namespace MvvmSampleUwp.Views.Widgets;
@@ -11,7 +13,14 @@ public sealed partial class PostWidget : UserControl
     public PostWidget()
     {
         this.InitializeComponent();
+
+        ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
+
+        DataContext = ViewModel;
+
         this.Loaded += (s, e) => ViewModel.IsActive = true;
         this.Unloaded += (s, e) => ViewModel.IsActive = false;
     }
+
+    public PostWidgetViewModel ViewModel { get; }
 }
