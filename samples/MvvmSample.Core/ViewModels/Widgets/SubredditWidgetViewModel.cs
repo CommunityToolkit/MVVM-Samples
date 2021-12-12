@@ -22,12 +22,12 @@ namespace MvvmSample.Core.ViewModels.Widgets
         /// <summary>
         /// Gets the <see cref="IRedditService"/> instance to use.
         /// </summary>
-        private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
+        private readonly IRedditService RedditService;
 
         /// <summary>
         /// Gets the <see cref="ISettingsService"/> instance to use.
         /// </summary>
-        private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService<ISettingsService>();
+        private readonly ISettingsService SettingsService;
 
         /// <summary>
         /// An <see cref="AsyncLock"/> instance to avoid concurrent requests.
@@ -37,11 +37,14 @@ namespace MvvmSample.Core.ViewModels.Widgets
         /// <summary>
         /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
         /// </summary>
-        public SubredditWidgetViewModel()
+        public SubredditWidgetViewModel(IRedditService redditService, ISettingsService settingsService)
         {
+            RedditService = redditService;
+            SettingsService = settingsService;
+
             LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
 
-            selectedSubreddit = SettingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+            selectedSubreddit = SettingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];           
         }
 
         /// <summary>

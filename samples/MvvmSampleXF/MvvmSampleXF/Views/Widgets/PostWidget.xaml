@@ -4,9 +4,6 @@
 			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
 			 x:Class="MvvmSampleXF.Views.Widgets.PostWidget">
-	<ContentView.BindingContext>
-		<widgets:PostWidgetViewModel x:Name="ViewModel" />
-	</ContentView.BindingContext>
 	<ContentView.Resources>
 		<converters:IsSelfPostToWidthRequestConverter WidthRequest="160"
 													  x:Key="IsSelfPostToWidthRequestConverter" />

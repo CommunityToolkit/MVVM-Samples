@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MvvmSample.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +17,13 @@ namespace MvvmSampleXF.Views
         public RedditServicePage()
         {
             InitializeComponent();
+
+            ViewModel = Ioc.Default.GetRequiredService<SamplePageViewModel>();
+
+            BindingContext = ViewModel;
         }
+
+        public SamplePageViewModel ViewModel { get; }
 
         protected override void OnAppearing()
         {

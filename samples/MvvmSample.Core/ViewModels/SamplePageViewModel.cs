@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using MvvmSample.Core.Helpers;
 using MvvmSample.Core.Services;
@@ -21,10 +20,12 @@ namespace MvvmSample.Core.ViewModels
         /// <summary>
         /// The <see cref="IFilesService"/> instance currently in use.
         /// </summary>
-        private readonly IFilesService FilesServices = Ioc.Default.GetRequiredService<IFilesService>();
+        private readonly IFilesService FilesServices;
 
-        public SamplePageViewModel()
+        public SamplePageViewModel(IFilesService filesService)
         {
+            FilesServices = filesService;
+
             LoadDocsCommand = new AsyncRelayCommand<string>(LoadDocsAsync);
         }
 
