@@ -14,9 +14,6 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <UserControl.DataContext>
-        <widgets:SubredditWidgetViewModel x:Name="ViewModel"/>
-    </UserControl.DataContext>
 
     <!--Feed-->
     <Grid

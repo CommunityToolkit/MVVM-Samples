@@ -11,6 +11,8 @@ using MvvmSampleUwp.Services;
 using Refit;
 using MvvmSampleUwp.Helpers;
 using MvvmSample.Core.Services;
+using MvvmSample.Core.ViewModels.Widgets;
+using MvvmSample.Core.ViewModels;
 
 namespace MvvmSampleUwp
 {
@@ -42,9 +44,19 @@ namespace MvvmSampleUwp
                 // Register services
                 Ioc.Default.ConfigureServices(
                     new ServiceCollection()
+                    //Services
                     .AddSingleton<IFilesService, FilesService>()
                     .AddSingleton<ISettingsService, SettingsService>()
                     .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    //ViewModels
+                    .AddTransient<PostWidgetViewModel>()
+                    .AddTransient<SubredditWidgetViewModel>()
+                    .AddTransient<AsyncRelayCommandPageViewModel>()
+                    .AddTransient<IocPageViewModel>()
+                    .AddTransient<MessengerPageViewModel>()
+                    .AddTransient<ObservableObjectPageViewModel>()
+                    .AddTransient<RelayCommandPageViewModel>()
+                    .AddTransient<SamplePageViewModel>()
                     .BuildServiceProvider());
             }
 
