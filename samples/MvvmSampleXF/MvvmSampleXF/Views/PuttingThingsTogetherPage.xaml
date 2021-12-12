@@ -5,9 +5,6 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 x:Class="MvvmSampleXF.Views.PuttingThingsTogetherPage"
 			 x:DataType="vm:SamplePageViewModel">
-	<ContentPage.BindingContext>
-		<vm:SamplePageViewModel x:Name="ViewModel" />
-	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Putting things together], Mode=OneWay}" />

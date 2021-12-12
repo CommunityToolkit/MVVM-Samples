@@ -6,9 +6,6 @@
 			 x:Class="MvvmSampleXF.Views.BuildingTheUIPage"
 			 x:DataType="vm:SamplePageViewModel"
 			 Title="Building the UI">
-	<ContentPage.BindingContext>
-		<vm:SamplePageViewModel x:Name="ViewModel" />
-	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Building the UI], Mode=OneWay}" />
