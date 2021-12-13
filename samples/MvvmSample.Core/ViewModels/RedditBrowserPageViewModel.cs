@@ -13,7 +13,7 @@ namespace MvvmSample.Core.ViewModels
             PostWidgetViewModel = postWidgetViewModel;
             SubredditWidgetViewModel = subredditWidgetViewModel;
 
-            var subscription = Observable.FromEventPattern<PropertyChangedEventArgs>(SubredditWidgetViewModel, nameof(PropertyChanged))
+            var subscription = Observable.FromEventPattern<PropertyChangedEventArgs>(SubredditWidgetViewModel, nameof(INotifyPropertyChanged.PropertyChanged))
                 .Where(x => x.EventArgs.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
                 .Subscribe(pattern => PostWidgetViewModel.Post = SubredditWidgetViewModel.SelectedPost);
         }
