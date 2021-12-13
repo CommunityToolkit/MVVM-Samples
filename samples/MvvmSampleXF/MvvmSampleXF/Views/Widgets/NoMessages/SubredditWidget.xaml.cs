@@ -33,7 +33,7 @@ namespace MvvmSampleXF.Views.Widgets
 
         public void OnAppearing()
         {
-            //ViewModel.LoadPostsCommand.Execute(null);
+            ViewModel.LoadPostsCommand.Execute(null);
         }
     }
 }

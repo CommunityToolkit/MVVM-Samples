@@ -31,15 +31,13 @@ namespace MvvmSampleXF.Views
         {
             base.OnAppearing();
             SubredditWidget.PostSelected += SubredditWidget_PostSelected;
-            //PostWidget.OnAppearing();
             SubredditWidget.OnAppearing();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            SubredditWidget.PostSelected -= SubredditWidget_PostSelected;
-            //PostWidget.OnDisappearing();
+            SubredditWidget.PostSelected -= SubredditWidget_PostSelected;            
         }
 
         private void SubredditWidget_PostSelected(object sender, EventArgs e)
