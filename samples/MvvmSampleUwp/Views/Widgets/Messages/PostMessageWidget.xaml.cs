@@ -3,18 +3,18 @@
 // See the LICENSE file in the project root for more information.
 
 using CommunityToolkit.Mvvm.DependencyInjection;
-using MvvmSample.Core.ViewModels.Widgets;
+using MvvmSample.Core.ViewModels.Widgets.Messages;
 using Windows.UI.Xaml.Controls;
 
 namespace MvvmSampleUwp.Views.Widgets
 {
-    public sealed partial class PostWidget : UserControl
+    public sealed partial class PostMessageWidget : UserControl
     {
-        public PostWidget()
+        public PostMessageWidget()
         {
             this.InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<PostWidgetMessageViewModel>();
 
             DataContext = ViewModel;
 
@@ -22,6 +22,6 @@ namespace MvvmSampleUwp.Views.Widgets
             this.Unloaded += (s, e) => ViewModel.IsActive = false;
         }
 
-        public PostWidgetViewModel ViewModel { get; }
+        public PostWidgetMessageViewModel ViewModel { get; }
     }
 }

@@ -56,7 +56,7 @@
     <EmbeddedResource Update="Views\PuttingThingsTogetherPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RedditBrowserPage.xaml">
+    <EmbeddedResource Update="Views\RedditBrowserMessagePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RedditServicePage.xaml">
@@ -65,10 +65,10 @@
     <EmbeddedResource Update="Views\RelayCommandPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Widgets\PostWidget.xaml">
+    <EmbeddedResource Update="Views\Widgets\Messages\PostMessageWidget.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Widgets\SubredditWidget.xaml">
+    <EmbeddedResource Update="Views\Widgets\Messages\SubredditMessageWidget.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -90,5 +90,26 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MvvmSample.Core\MvvmSample.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\RedditBrowserPage.xaml.cs">
+      <DependentUpon>RedditBrowserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RedditBrowserMessagePage.xaml.cs">
+      <DependentUpon>RedditBrowserMessagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Widgets\Messages\PostMessageWidget.xaml.cs">
+      <DependentUpon>PostMessageWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Widgets\Messages\SubredditMessageWidget.xaml.cs">
+      <DependentUpon>SubredditMessageWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Widgets\NoMessages\PostWidget.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Widgets\NoMessages\SubredditWidget.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

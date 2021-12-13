@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using MvvmSample.Core.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -14,24 +12,18 @@ using Xamarin.Forms.Xaml;
 namespace MvvmSampleXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RedditBrowserPage : ContentPage
+    public partial class RedditBrowserMessagePage : ContentPage
     {
-        public RedditBrowserPage()
+        public RedditBrowserMessagePage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<RedditBrowserPageViewModel>();
-
-            BindingContext = ViewModel;
         }
-
-        public RedditBrowserPageViewModel ViewModel { get; }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             SubredditWidget.PostSelected += SubredditWidget_PostSelected;
-            //PostWidget.OnAppearing();
+            PostWidget.OnAppearing();
             SubredditWidget.OnAppearing();
         }
 
@@ -39,7 +31,7 @@ namespace MvvmSampleXF.Views
         {
             base.OnDisappearing();
             SubredditWidget.PostSelected -= SubredditWidget_PostSelected;
-            //PostWidget.OnDisappearing();
+            PostWidget.OnDisappearing();
         }
 
         private void SubredditWidget_PostSelected(object sender, EventArgs e)

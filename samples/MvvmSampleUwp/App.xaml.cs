@@ -13,6 +13,8 @@ using MvvmSampleUwp.Helpers;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels.Widgets;
 using MvvmSample.Core.ViewModels;
+using MvvmSample.Core.ViewModels.Widgets.NoMessages;
+using MvvmSample.Core.ViewModels.Widgets.Messages;
 
 namespace MvvmSampleUwp
 {
@@ -48,15 +50,19 @@ namespace MvvmSampleUwp
                     .AddSingleton<IFilesService, FilesService>()
                     .AddSingleton<ISettingsService, SettingsService>()
                     .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
-                    //ViewModels
+                    //Widget ViewModels
                     .AddTransient<PostWidgetViewModel>()
                     .AddTransient<SubredditWidgetViewModel>()
+                    .AddTransient<PostWidgetMessageViewModel>()
+                    .AddTransient<SubredditWidgetMessageViewModel>()
+                    //Page ViewModels
                     .AddTransient<AsyncRelayCommandPageViewModel>()
                     .AddTransient<IocPageViewModel>()
                     .AddTransient<MessengerPageViewModel>()
                     .AddTransient<ObservableObjectPageViewModel>()
                     .AddTransient<RelayCommandPageViewModel>()
                     .AddTransient<SamplePageViewModel>()
+                    .AddTransient<RedditBrowserPageViewModel>()
                     .BuildServiceProvider());
             }
 

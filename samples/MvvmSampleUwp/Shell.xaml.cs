@@ -41,7 +41,8 @@ namespace MvvmSampleUwp
                 new SampleEntry(SettingsServiceItem, typeof(SettingsServicePage), "Settings service"),
                 new SampleEntry(RedditServiceItem, typeof(RedditServicePage), "Reddit service"),
                 new SampleEntry(BuildingTheUIItem, typeof(BuildingTheUIPage), "Building the UI"),
-                new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser")
+                new SampleEntry(FinalResultItemMessage, typeof(RedditBrowserMessagePage), "Reddit browser (messages)"),
+                new SampleEntry(FinalResultItem, typeof(RedditBrowserPage), "Reddit browser (no messages)")
             };
 
             // Set the custom title bar to act as a draggable region

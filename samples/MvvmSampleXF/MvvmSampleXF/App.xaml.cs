@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels;
 using MvvmSample.Core.ViewModels.Widgets;
+using MvvmSample.Core.ViewModels.Widgets.Messages;
+using MvvmSample.Core.ViewModels.Widgets.NoMessages;
 using MvvmSampleXF.Services;
 using Refit;
 using Xamarin.Forms;
@@ -28,6 +30,8 @@ namespace MvvmSampleXF
                     .AddSingleton<ISettingsService, SettingsService>()
                     .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
                     //ViewModels
+                    .AddTransient<PostWidgetMessageViewModel>()
+                    .AddTransient<SubredditWidgetMessageViewModel>()
                     .AddTransient<PostWidgetViewModel>()
                     .AddTransient<SubredditWidgetViewModel>()
                     .AddTransient<AsyncRelayCommandPageViewModel>()
@@ -36,6 +40,7 @@ namespace MvvmSampleXF
                     .AddTransient<ObservableObjectPageViewModel>()
                     .AddTransient<RelayCommandPageViewModel>()
                     .AddTransient<SamplePageViewModel>()
+                    .AddTransient<RedditBrowserPageViewModel>()
                     .BuildServiceProvider());
             }
 

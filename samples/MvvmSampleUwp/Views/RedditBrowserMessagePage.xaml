@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MvvmSampleUwp.Views.RedditBrowserPage"
+    x:Class="MvvmSampleUwp.Views.RedditBrowserMessagePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,8 +18,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <widgets:SubredditWidget DataContext="{x:Bind ViewModel.SubredditWidgetViewModel}"/>
-                    <widgets:PostWidget DataContext="{x:Bind ViewModel.PostWidgetViewModel}" Grid.Column="1"/>
+                    <widgets:SubredditMessageWidget/>
+                    <widgets:PostMessageWidget Grid.Column="1"/>
                 </Grid>
             </controls:InteractiveSample.Content>
             <controls:InteractiveSample.XamlCode>

@@ -12,12 +12,12 @@ using MvvmSample.Core.Models;
 using MvvmSample.Core.Services;
 using Nito.AsyncEx;
 
-namespace MvvmSample.Core.ViewModels.Widgets
+namespace MvvmSample.Core.ViewModels.Widgets.Messages
 {
     /// <summary>
     /// A viewmodel for a subreddit widget.
     /// </summary>
-    public sealed class SubredditWidgetViewModel : ObservableRecipient
+    public sealed class SubredditWidgetMessageViewModel : ObservableRecipient
     {
         /// <summary>
         /// Gets the <see cref="IRedditService"/> instance to use.
@@ -35,9 +35,9 @@ namespace MvvmSample.Core.ViewModels.Widgets
         private readonly AsyncLock LoadingLock = new();
 
         /// <summary>
-        /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
+        /// Creates a new <see cref="SubredditWidgetMessageViewModel"/> instance.
         /// </summary>
-        public SubredditWidgetViewModel(IRedditService redditService, ISettingsService settingsService)
+        public SubredditWidgetMessageViewModel(IRedditService redditService, ISettingsService settingsService)
         {
             RedditService = redditService;
             SettingsService = settingsService;

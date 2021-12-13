@@ -4,8 +4,8 @@
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			 xmlns:widgets="clr-namespace:MvvmSampleXF.Views.Widgets"
-			 x:Class="MvvmSampleXF.Views.RedditBrowserPage"
-			 Title="The Final Result (no messages)!">
+			 x:Class="MvvmSampleXF.Views.RedditBrowserMessagePage"
+			 Title="The Final Result (messages)!">
 	<Grid Padding="16">
 		<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
 			<xct:TabView x:Name="RedditTabView" 
@@ -13,10 +13,10 @@
 						 TabIndicatorColor="Orange"
 						 IsSwipeEnabled="False">
 				<xct:TabViewItem Text="Subreddit">
-                    <widgets:SubredditWidget x:Name="SubredditWidget" BindingContext="{Binding SubredditWidgetViewModel}" />
+					<widgets:SubredditMessageWidget x:Name="SubredditWidget" />
 				</xct:TabViewItem>
 				<xct:TabViewItem Text="Post">
-                    <widgets:PostWidget x:Name="PostWidget" BindingContext="{Binding PostWidgetViewModel}" />
+					<widgets:PostMessageWidget x:Name="PostWidget" />
 				</xct:TabViewItem>
 			</xct:TabView>
 			<controls:InteractiveSample.XamlCode>

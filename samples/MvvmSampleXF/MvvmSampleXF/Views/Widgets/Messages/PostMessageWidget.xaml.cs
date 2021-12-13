@@ -8,22 +8,23 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MvvmSample.Core.ViewModels.Widgets.Messages;
 
 namespace MvvmSampleXF.Views.Widgets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostWidget : ContentView
+    public partial class PostMessageWidget : ContentView
     {
-        public PostWidget()
+        public PostMessageWidget()
         {
             InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<PostWidgetMessageViewModel>();
 
             BindingContext = ViewModel;
         }
 
-        public PostWidgetViewModel ViewModel { get; }
+        public PostWidgetMessageViewModel ViewModel { get; }
 
         public void OnAppearing()
         {

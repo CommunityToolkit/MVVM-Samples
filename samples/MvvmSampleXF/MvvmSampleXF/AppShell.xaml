@@ -61,7 +61,11 @@
 				  Icon="{StaticResource RulerIcon}"
 				  ContentTemplate="{DataTemplate views:BuildingTheUIPage}" />
 
-	<ShellContent Title="The Final Result!"
+	<ShellContent Title="The Final Result (message)!"
+				  Icon="{StaticResource CheckerIcon}"
+				  ContentTemplate="{DataTemplate views:RedditBrowserMessagePage}" />
+
+    <ShellContent Title="The Final Result (no message)!"
 				  Icon="{StaticResource CheckerIcon}"
 				  ContentTemplate="{DataTemplate views:RedditBrowserPage}" />
 </Shell>

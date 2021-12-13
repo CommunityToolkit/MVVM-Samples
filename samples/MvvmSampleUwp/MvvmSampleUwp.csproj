@@ -134,6 +134,9 @@
     <Compile Include="Views\BuildingTheUIPage.xaml.cs">
       <DependentUpon>BuildingTheUIPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RedditBrowserPage.xaml.cs">
+      <DependentUpon>RedditBrowserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RedditServicePage.xaml.cs">
       <DependentUpon>RedditServicePage.xaml</DependentUpon>
     </Compile>
@@ -161,8 +164,8 @@
     <Compile Include="Views\IntroductionPage.xaml.cs">
       <DependentUpon>IntroductionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RedditBrowserPage.xaml.cs">
-      <DependentUpon>RedditBrowserPage.xaml</DependentUpon>
+    <Compile Include="Views\RedditBrowserMessagePage.xaml.cs">
+      <DependentUpon>RedditBrowserMessagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RelayCommandPage.xaml.cs">
       <DependentUpon>RelayCommandPage.xaml</DependentUpon>
@@ -170,10 +173,16 @@
     <Compile Include="Views\ObservableObjectPage.xaml.cs">
       <DependentUpon>ObservableObjectPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Widgets\PostWidget.xaml.cs">
+    <Compile Include="Views\Widgets\Messages\PostMessageWidget.xaml.cs">
+      <DependentUpon>PostMessageWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Widgets\Messages\SubredditMessageWidget.xaml.cs">
+      <DependentUpon>SubredditMessageWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Widgets\NoMessages\PostWidget.xaml.cs">
       <DependentUpon>PostWidget.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Widgets\SubredditWidget.xaml.cs">
+    <Compile Include="Views\Widgets\NoMessages\SubredditWidget.xaml.cs">
       <DependentUpon>SubredditWidget.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -282,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\RedditBrowserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\RedditServicePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -318,7 +331,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\RedditBrowserPage.xaml">
+    <Page Include="Views\RedditBrowserMessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -330,13 +343,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Widgets\PostWidget.xaml">
+    <Page Include="Views\Widgets\Messages\PostMessageWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Widgets\SubredditWidget.xaml">
+    <Page Include="Views\Widgets\Messages\SubredditMessageWidget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Widgets\NoMessages\PostWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Widgets\NoMessages\SubredditWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

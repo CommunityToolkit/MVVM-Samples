@@ -7,12 +7,12 @@ using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using MvvmSample.Core.Models;
 
-namespace MvvmSample.Core.ViewModels.Widgets
+namespace MvvmSample.Core.ViewModels.Widgets.Messages
 {
     /// <summary>
     /// A viewmodel for a post widget.
     /// </summary>
-    public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
+    public sealed class PostWidgetMessageViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
     {
         private Post? post;
 
@@ -28,8 +28,8 @@ namespace MvvmSample.Core.ViewModels.Widgets
         /// <inheritdoc/>
         public void Receive(PropertyChangedMessage<Post> message)
         {
-            if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &&
-                message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
+            if (message.Sender.GetType() == typeof(SubredditWidgetMessageViewModel) &&
+                message.PropertyName == nameof(SubredditWidgetMessageViewModel.SelectedPost))
             {
                 Post = message.NewValue;
             }

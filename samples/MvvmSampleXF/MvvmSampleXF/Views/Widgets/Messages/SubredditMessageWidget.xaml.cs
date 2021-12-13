@@ -8,23 +8,24 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MvvmSample.Core.ViewModels.Widgets.Messages;
 
 namespace MvvmSampleXF.Views.Widgets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SubredditWidget : ContentView
+    public partial class SubredditMessageWidget : ContentView
     {
         public event EventHandler PostSelected;
-        public SubredditWidget()
+        public SubredditMessageWidget()
         {
             InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetMessageViewModel>();
 
             BindingContext = ViewModel;
         }
 
-        public SubredditWidgetViewModel ViewModel { get; }
+        public SubredditWidgetMessageViewModel ViewModel { get; }
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

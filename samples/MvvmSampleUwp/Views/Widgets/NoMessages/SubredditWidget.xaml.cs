@@ -2,8 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using CommunityToolkit.Mvvm.DependencyInjection;
-using MvvmSample.Core.ViewModels.Widgets;
+using MvvmSample.Core.ViewModels.Widgets.NoMessages;
 using Windows.UI.Xaml.Controls;
 
 namespace MvvmSampleUwp.Views.Widgets
@@ -13,12 +12,8 @@ namespace MvvmSampleUwp.Views.Widgets
         public SubredditWidget()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public SubredditWidgetViewModel ViewModel { get; }
+        public SubredditWidgetViewModel ViewModel => DataContext as SubredditWidgetViewModel;
     }
 }

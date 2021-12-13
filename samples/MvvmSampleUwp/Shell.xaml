@@ -140,10 +140,15 @@
                             Icon="{ui:FontIcon Glyph=&#xEB3C;}"
                             ToolTipService.ToolTip="Building the UI to connect to the backend."/>
                         <muxc:NavigationViewItem
-                            x:Name="FinalResultItem"
-                            Content="The final result!"
+                            x:Name="FinalResultItemMessage"
+                            Content="The final result (messages)!"
                             Icon="{ui:FontIcon Glyph=&#xF1AD;}"
-                            ToolTipService.ToolTip="The final working sample!"/>
+                            ToolTipService.ToolTip="The final working sample (messages)!"/>
+                        <muxc:NavigationViewItem
+                            x:Name="FinalResultItem"
+                            Content="The final result (no messages)!"
+                            Icon="{ui:FontIcon Glyph=&#xF1AD;}"
+                            ToolTipService.ToolTip="The final working sample (no messages)!"/>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
