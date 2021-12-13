@@ -4,7 +4,7 @@
 
 using System.Threading.Tasks;
 using MvvmSample.Core.Models;
-using Refit;
+using RestEase;
 
 namespace MvvmSample.Core.Services;
 
@@ -18,5 +18,5 @@ public interface IRedditService
     /// </summary>
     /// <param name="subreddit">The subreddit name.</param>
     [Get("/r/{subreddit}/.json")]
-    Task<PostsQueryResponse> GetSubredditPostsAsync(string subreddit);
+    Task<PostsQueryResponse> GetSubredditPostsAsync([Path]string subreddit);
 }

@@ -107,7 +107,7 @@ public sealed class SubredditWidgetViewModel : ObservableRecipient
 
                 Posts.Clear();
 
-                foreach (var item in response.Data!.Items!)
+                foreach (var item in response.Data!.Children!)
                 {
                     Posts.Add(item.Data!);
                 }
