@@ -8,9 +8,10 @@ using Windows.UI.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSampleUwp.Services;
-using Refit;
 using MvvmSampleUwp.Helpers;
 using MvvmSample.Core.Services;
+using RestEase;
+using Newtonsoft.Json;
 
 namespace MvvmSampleUwp
 {
@@ -44,7 +45,7 @@ namespace MvvmSampleUwp
                     new ServiceCollection()
                     .AddSingleton<IFilesService, FilesService>()
                     .AddSingleton<ISettingsService, SettingsService>()
-                    .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
                     .BuildServiceProvider());
             }
 

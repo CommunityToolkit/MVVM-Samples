@@ -29,7 +29,7 @@ namespace MvvmSample.Core.Models
         /// Gets or sets the items in this listing.
         /// </summary>
         [JsonPropertyName("children")]
-        public IList<PostData>? Items { get; set; }
+        public PostData[]? Children { get; set; }
     }
 
     /// <summary>

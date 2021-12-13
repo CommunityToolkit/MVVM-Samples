@@ -2,14 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSample.Core.Services;
 using MvvmSampleXF.Services;
-using MvvmSampleXF.Views;
-using Refit;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+using RestEase;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF
 {
@@ -29,7 +23,7 @@ namespace MvvmSampleXF
                     new ServiceCollection()
                     .AddSingleton<IFilesService, FileService>()
                     .AddSingleton<ISettingsService, SettingsService>()
-                    .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
                     .BuildServiceProvider());
             }
 

@@ -107,7 +107,7 @@ namespace MvvmSample.Core.ViewModels.Widgets
 
                     Posts.Clear();
 
-                    foreach (var item in response.Data!.Items!)
+                    foreach (var item in response.Data!.Children!)
                     {
                         Posts.Add(item.Data!);
                     }
