@@ -21,27 +21,29 @@ namespace MvvmSampleWpf
         {
             base.OnStartup(e);
 
-            var viewFactory = new MappingViewFactory()
-                //Pages
-                .Register<ObservableObjectView, ObservableObjectPageViewModel>()
-                .Register<IntroductionView, IntroductionPageViewModel>()
-                .Register<RelayCommandView, RelayCommandPageViewModel>()
-                .Register<AsyncRelayCommandView, AsyncRelayCommandPageViewModel>()
-                .Register<MessengerView, MessengerPageViewModel>()
-                .Register<MessengerSendView, MessengerSendPageViewModel>()
-                .Register<MessengerRequestView, MessengerRequestPageViewModel>()
-                .Register<IocView, IocPageViewModel>()
-                .Register<PuttingThingsTogetherView, PuttingThingsTogetherPageViewModel>()
-                .Register<SettingUpTheViewModelsView, SettingUpTheViewModelsPageViewModel>()
-                .Register<SettingsServiceView, SettingsServicePageViewModel>()
-                .Register<RedditServiceView, RedditServicePageViewModel>()
-                .Register<BuildingTheUIView, BuildingTheUIPageViewModel>()
-                .Register<RedditBrowserMessageView, RedditBrowserMessagePageViewModel>()
-                .Register<RedditBrowserView, RedditBrowserPageViewModel>()
-                //Widgets
-                .Register<SubredditWidget, SubredditWidgetViewModel>()
-                .Register<PostWidget, PostWidgetViewModel>()
-                ;
+            //var mappingViewFactory = new MappingViewFactory()
+            //    //Pages
+            //    .Register<ObservableObjectView, ObservableObjectPageViewModel>()
+            //    .Register<IntroductionView, IntroductionPageViewModel>()
+            //    .Register<RelayCommandView, RelayCommandPageViewModel>()
+            //    .Register<AsyncRelayCommandView, AsyncRelayCommandPageViewModel>()
+            //    .Register<MessengerView, MessengerPageViewModel>()
+            //    .Register<MessengerSendView, MessengerSendPageViewModel>()
+            //    .Register<MessengerRequestView, MessengerRequestPageViewModel>()
+            //    .Register<IocView, IocPageViewModel>()
+            //    .Register<PuttingThingsTogetherView, PuttingThingsTogetherPageViewModel>()
+            //    .Register<SettingUpTheViewModelsView, SettingUpTheViewModelsPageViewModel>()
+            //    .Register<SettingsServiceView, SettingsServicePageViewModel>()
+            //    .Register<RedditServiceView, RedditServicePageViewModel>()
+            //    .Register<BuildingTheUIView, BuildingTheUIPageViewModel>()
+            //    .Register<RedditBrowserMessageView, RedditBrowserMessagePageViewModel>()
+            //    .Register<RedditBrowserView, RedditBrowserPageViewModel>()
+            //    //Widgets
+            //    .Register<SubredditWidget, SubredditWidgetViewModel>()
+            //    .Register<PostWidget, PostWidgetViewModel>()
+            //    ;
+
+            var namingConvenionViewFactory = new NamingConvenionViewFactory();
 
             Ioc.Default.ConfigureServices(
                     new ServiceCollection()
@@ -72,7 +74,8 @@ namespace MvvmSampleWpf
                     .AddTransient<RedditBrowserMessagePageViewModel>()
                     //WPF
                     .AddSingleton<MainViewModel>()
-                    .AddSingleton<IViewFactory>(viewFactory)
+                    //.AddSingleton<IViewFactory>(mappingViewFactory)
+                    .AddSingleton<IViewFactory>(namingConvenionViewFactory)
                     .BuildServiceProvider());
         }
     }
