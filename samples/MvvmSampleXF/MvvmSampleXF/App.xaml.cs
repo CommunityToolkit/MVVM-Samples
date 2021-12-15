@@ -39,8 +39,15 @@ namespace MvvmSampleXF
                     .AddTransient<MessengerPageViewModel>()
                     .AddTransient<ObservableObjectPageViewModel>()
                     .AddTransient<RelayCommandPageViewModel>()
-                    .AddTransient<SamplePageViewModel>()
                     .AddTransient<RedditBrowserPageViewModel>()
+                    .AddTransient<MessengerSendPageViewModel>()
+                    .AddTransient<MessengerRequestPageViewModel>()
+                    .AddTransient<PuttingThingsTogetherPageViewModel>()
+                    .AddTransient<SettingUpTheViewModelsPageViewModel>()
+                    .AddTransient<SettingsServicePageViewModel>()
+                    .AddTransient<RedditServicePageViewModel>()
+                    .AddTransient<BuildingTheUIPageViewModel>()
+                    .AddTransient<RedditBrowserMessagePageViewModel>()
                     .BuildServiceProvider());
             }
 

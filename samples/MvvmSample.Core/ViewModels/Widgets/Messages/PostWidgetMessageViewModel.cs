@@ -34,5 +34,15 @@ namespace MvvmSample.Core.ViewModels.Widgets.Messages
                 Post = message.NewValue;
             }
         }
+
+        public void Loaded()
+        {
+            IsActive = true;
+        }
+
+        public void Unloaded()
+        {
+            IsActive = false;
+        }
     }
 }

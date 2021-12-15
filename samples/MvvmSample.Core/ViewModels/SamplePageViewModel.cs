@@ -15,7 +15,7 @@ namespace MvvmSample.Core.ViewModels
     /// <summary>
     /// A base class for viewmodels for sample pages in the app.
     /// </summary>
-    public class SamplePageViewModel : ObservableObject
+    public abstract class SamplePageViewModel : ObservableObject
     {
         /// <summary>
         /// The <see cref="IFilesService"/> instance currently in use.

@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="MvvmSampleWpf.Views.MessengerRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:controls="clr-namespace:MvvmSampleWpf.Controls" 
+             xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+    
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadDocsCommand}" CommandParameter="Messenger"/>
+            <b:CallMethodAction MethodName="Loaded" TargetObject="{Binding}" />
+        </b:EventTrigger>
+        <b:EventTrigger EventName="Unloaded">
+            <b:CallMethodAction MethodName="Unloaded" TargetObject="{Binding}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+
+    <ScrollViewer Padding="16">
+        <StackPanel Margin="16">
+            <mdxaml:MarkdownScrollViewer Markdown="{Binding Texts[Using request messages]}"/>
+
+            <controls:InteractiveSample xml:space="preserve">
+                    <controls:InteractiveSample.Content>
+                        <StackPanel Margin="8" xml:space="default">
+
+                        <TextBlock Text="{Binding Username, Mode=OneWay}"/>
+                        <Button
+                                Content="Click to request the username!"
+                                Command="{Binding RequestCurrentUsernameCommand}"/>
+                        <Button
+                                Content="Click to reset the local username!"
+                                Command="{Binding ResetCurrentUsernameCommand}"/>
+                    </StackPanel>
+                    </controls:InteractiveSample.Content>
+                    <controls:InteractiveSample.XamlCode>
+    &lt;StackPanel Spacing="8">
+        &lt;TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
+        &lt;Button
+            Content="Click to request the username!"
+            Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
+        &lt;Button
+            Content="Click to reset the local username!"
+            Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
+    &lt;/StackPanel>
+                    </controls:InteractiveSample.XamlCode>
+                    <controls:InteractiveSample.CSharpCode>
+    // Simple viewmodel for a module responding to a request username message.
+    // Don't forget to set the IsActive property to true when this viewmodel is in use!
+    public class UserSenderViewModel : ObservableRecipient
+    {
+        public string Username { get; private set; } = "Bob";
+
+        protected override void OnActivated()
+        {
+            Messenger.Register&lt;UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
+        }
+    }
+
+    private string username;
+
+    public string Username
+    {
+        get => username;
+        private set => SetProperty(ref username, value);
+    }
+
+    // Sends a message to request the current username, and updates the property
+    public void RequestCurrentUsername()
+    {
+        Username = WeakReferenceMessenger.Default.Send&lt;CurrentUsernameRequestMessage>();
+    }
+
+    // Resets the current username
+    public void ResetCurrentUsername()
+    {
+        Username = null;
+    }
+
+    // A sample request message to get the current username
+    public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string>
+    {
+    }
+                    </controls:InteractiveSample.CSharpCode>
+                </controls:InteractiveSample>
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

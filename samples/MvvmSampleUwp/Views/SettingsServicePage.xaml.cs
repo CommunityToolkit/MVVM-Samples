@@ -17,11 +17,11 @@ namespace MvvmSampleUwp.Views
         {
             this.InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<SamplePageViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<SettingsServicePageViewModel>();
 
             DataContext = ViewModel;
         }
 
-        public SamplePageViewModel ViewModel { get; }
+        public SettingsServicePageViewModel ViewModel { get; }
     }
 }

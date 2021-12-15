@@ -18,25 +18,23 @@ namespace MvvmSampleUwp.Views
         {
             this.InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<MessengerSendPageViewModel>();
 
             DataContext = ViewModel;
         }
 
-        public MessengerPageViewModel ViewModel { get; }
+        public MessengerSendPageViewModel ViewModel { get; }
 
         /// <inheritdoc/>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel.SenderViewModel.IsActive = true;
-            ViewModel.ReceiverViewModel.IsActive = true;
+            ViewModel.Loaded();            
         }
 
         /// <inheritdoc/>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            ViewModel.SenderViewModel.IsActive = false;
-            ViewModel.ReceiverViewModel.IsActive = false;
+            ViewModel.Unloaded();
         }
     }
 }

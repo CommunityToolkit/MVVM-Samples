@@ -1,0 +1,53 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MvvmSampleWpf.Controls" xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml">
+
+
+    <Style TargetType="{x:Type local:InteractiveSample}">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:InteractiveSample}">
+                    <Border
+                        CornerRadius="4"
+                        BorderThickness="2"                        
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <TabControl
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <TabItem
+                                Header="INTERACTIVE SAMPLE"                               
+                                FontWeight="Bold">
+                                <ContentPresenter
+                                    Content="{TemplateBinding Content}"/>
+                            </TabItem>
+                            <TabItem Header="See XAML">
+                                <ScrollViewer>
+                                    <mdxaml:MarkdownScrollViewer
+                                        Background="#FF202020"
+                                        Padding="8"
+                                        Markdown="{TemplateBinding XamlCode}"/>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="See C#">
+                                <ScrollViewer>
+                                    <mdxaml:MarkdownScrollViewer
+                                        Background="#FF202020"
+                                        Padding="8"
+                                        Markdown="{TemplateBinding CSharpCode}"/>
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>   
+
+</ResourceDictionary>

@@ -18,28 +18,26 @@ namespace MvvmSampleXF.Views
         {
             InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
+            ViewModel = Ioc.Default.GetRequiredService<MessengerSendPageViewModel>();
 
             BindingContext = ViewModel;
         }
 
-        public MessengerPageViewModel ViewModel { get; }
+        public MessengerSendPageViewModel ViewModel { get; }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
             ViewModel.LoadDocsCommand.Execute("Messenger");
-            ViewModel.SenderViewModel.IsActive = true;
-            ViewModel.ReceiverViewModel.IsActive = true;
+            ViewModel.Loaded();            
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
-            ViewModel.SenderViewModel.IsActive = false;
-            ViewModel.ReceiverViewModel.IsActive = false;
+            ViewModel.Unloaded();            
         }
     }
 }

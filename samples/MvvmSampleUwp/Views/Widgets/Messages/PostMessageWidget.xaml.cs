@@ -17,9 +17,6 @@ namespace MvvmSampleUwp.Views.Widgets
             ViewModel = Ioc.Default.GetRequiredService<PostWidgetMessageViewModel>();
 
             DataContext = ViewModel;
-
-            this.Loaded += (s, e) => ViewModel.IsActive = true;
-            this.Unloaded += (s, e) => ViewModel.IsActive = false;
         }
 
         public PostWidgetMessageViewModel ViewModel { get; }

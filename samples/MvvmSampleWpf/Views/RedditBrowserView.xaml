@@ -1,0 +1,317 @@
+﻿<UserControl x:Class="MvvmSampleWpf.Views.RedditBrowserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MvvmSampleWpf.Views" 
+             xmlns:controls="clr-namespace:MvvmSampleWpf.Controls" 
+             xmlns:widgets="clr-namespace:MvvmSampleWpf.Views.Widgets.Messages" 
+             xmlns:mvvmsamplewpf="clr-namespace:MvvmSampleWpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid Margin="16">
+        <controls:InteractiveSample xml:space="preserve">
+            <controls:InteractiveSample.Content>
+                <Grid
+                    xml:space="default"
+                    >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <mvvmsamplewpf:ViewModelPresenter ViewModel="{Binding SubredditWidgetViewModel}" />
+                    <mvvmsamplewpf:ViewModelPresenter ViewModel="{Binding PostWidgetViewModel}" Grid.Column="1" />
+                </Grid>
+            </controls:InteractiveSample.Content>
+            <controls:InteractiveSample.XamlCode>
+&lt;!--Feed widget-->
+&lt;Grid
+    BorderThickness="1"
+    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+    &lt;Grid.RowDefinitions>
+        &lt;RowDefinition Height="60"/>
+        &lt;RowDefinition Height="8"/>
+        &lt;RowDefinition Height="*"/>
+    &lt;/Grid.RowDefinitions>
+
+    &lt;!--Header with topic selector and refresh button-->
+    &lt;Border
+        Padding="12"
+        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+        &lt;StackPanel Orientation="Horizontal" Spacing="16">
+            &lt;ComboBox
+                ItemsSource="{x:Bind ViewModel.Subreddits, Mode=OneWay}"
+                SelectedItem="{x:Bind ViewModel.SelectedSubreddit, Mode=TwoWay}"
+                SelectionChangedTrigger="Committed"
+                VerticalAlignment="Center"
+                MinWidth="240">
+                &lt;interactivity:Interaction.Behaviors>
+                    &lt;core:EventTriggerBehavior EventName="SelectionChanged">
+                        &lt;core:InvokeCommandAction Command="{x:Bind ViewModel.LoadPostsCommand}"/>
+                    &lt;/core:EventTriggerBehavior>
+                &lt;/interactivity:Interaction.Behaviors>
+            &lt;/ComboBox>
+            &lt;Button
+                Content="{extensions:SymbolIcon Symbol=Refresh}"
+                Command="{x:Bind ViewModel.LoadPostsCommand}"/>
+        &lt;/StackPanel>
+    &lt;/Border>
+
+    &lt;!--Items list-->
+    &lt;ListView
+        Grid.Row="1"
+        Grid.RowSpan="2"
+        ItemsSource="{x:Bind ViewModel.Posts}"
+        SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}"
+        ScrollViewer.CanContentRenderOutsideBounds="True">
+        &lt;ListView.ItemContainerStyle>
+            &lt;Style TargetType="ListViewItem">
+                &lt;Setter Property="Background" Value="#10FFFFFF"/>
+                &lt;Setter Property="Margin" Value="0,2,0,2"/>
+                &lt;Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            &lt;/Style>
+        &lt;/ListView.ItemContainerStyle>
+        &lt;ListView.ItemTemplate>
+            &lt;DataTemplate x:DataType="models:Post">
+                &lt;Grid
+                    ColumnSpacing="8"
+                    Padding="16">
+                    &lt;Grid.ColumnDefinitions>
+                        &lt;ColumnDefinition Width="*"/>
+                        &lt;ColumnDefinition Width="Auto"/>
+                    &lt;/Grid.ColumnDefinitions>
+                    &lt;TextBlock
+                        Text="{x:Bind Title}"
+                        FontSize="15"
+                        FontWeight="Normal"
+                        TextWrapping="WrapWholeWords"
+                        VerticalAlignment="Center"/>
+                    &lt;controls:ImageEx
+                        Grid.Column="1"
+                        Source="{x:Bind Thumbnail}"
+                        Stretch="Uniform"
+                        HorizontalAlignment="Right"
+                        Width="120"/>
+                &lt;/Grid>
+            &lt;/DataTemplate>
+        &lt;/ListView.ItemTemplate>
+    &lt;/ListView>
+
+    &lt;!--Loading bar-->
+    &lt;muxc:ProgressBar
+        Grid.Row="1"
+        Grid.RowSpan="2"
+        IsHitTestVisible="False"
+        VerticalAlignment="Top"
+        IsIndeterminate="True"
+        Visibility="{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}"/>
+
+    &lt;!--Header drop shadow-->
+    &lt;Rectangle Grid.Row="1" Height="8" IsHitTestVisible="False">
+        &lt;Rectangle.Fill>
+            &lt;LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
+                &lt;GradientStop Color="#60000000" Offset="1"/>
+                &lt;GradientStop Offset="0"/>
+            &lt;/LinearGradientBrush>
+        &lt;/Rectangle.Fill>
+    &lt;/Rectangle>
+&lt;/Grid>
+
+&lt;!--Post widget-->
+&lt;Grid
+    BorderThickness="1"
+    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+    &lt;Grid.RowDefinitions>
+        &lt;RowDefinition Height="Auto"/>
+        &lt;RowDefinition Height="*"/>
+    &lt;/Grid.RowDefinitions>
+
+    &lt;!--Self text-->
+    &lt;Border
+        Grid.Row="1"
+        extensions:UIElementExtensions.ClipToBounds="True">
+        &lt;ScrollViewer CanContentRenderOutsideBounds="True">
+            &lt;TextBlock
+                Text="{x:Bind ViewModel.Post.SelfText, Mode=OneWay}"
+                TextWrapping="WrapWholeWords"
+                Margin="16"/>
+        &lt;/ScrollViewer>
+    &lt;/Border>
+
+    &lt;!--Header-->
+    &lt;Grid
+        Grid.Row="0"
+        ColumnSpacing="8"
+        Padding="16"
+        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+        &lt;Grid.ColumnDefinitions>
+            &lt;ColumnDefinition Width="*"/>
+            &lt;ColumnDefinition Width="Auto"/>
+        &lt;/Grid.ColumnDefinitions>
+        &lt;TextBlock
+            Text="{x:Bind ViewModel.Post.Title, Mode=OneWay}"
+            FontSize="16"
+            FontWeight="SemiBold"
+            TextWrapping="WrapWholeWords"
+            VerticalAlignment="Center"/>
+        &lt;controls:ImageEx
+            Grid.Column="1"
+            Source="{x:Bind ViewModel.Post.Thumbnail, Mode=OneWay}"
+            Stretch="Uniform"
+            HorizontalAlignment="Right"
+            Width="160"/>
+    &lt;/Grid>
+
+    &lt;!--Header drop shadow-->
+    &lt;Rectangle
+        Grid.Row="1"
+        Height="8"
+        VerticalAlignment="Top"
+        IsHitTestVisible="False">
+        &lt;Rectangle.Fill>
+            &lt;LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
+                &lt;GradientStop Color="#60000000" Offset="1"/>
+                &lt;GradientStop Offset="0"/>
+            &lt;/LinearGradientBrush>
+        &lt;/Rectangle.Fill>
+    &lt;/Rectangle>
+&lt;/Grid>
+            </controls:InteractiveSample.XamlCode>
+            <controls:InteractiveSample.CSharpCode>
+/// &lt;summary>
+/// A viewmodel for a subreddit widget.
+/// &lt;/summary>
+public sealed class SubredditWidgetViewModel : ObservableRecipient
+{
+    /// &lt;summary>
+    /// Gets the &lt;see cref="IRedditService"/> instance to use.
+    /// &lt;/summary>
+    private readonly IRedditService RedditService = Ioc.Default.GetRequiredService&lt;IRedditService>();
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="ISettingsService"/> instance to use.
+    /// &lt;/summary>
+    private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService&lt;ISettingsService>();
+
+    /// &lt;summary>
+    /// An &lt;see cref="AsyncLock"/> instance to avoid concurrent requests.
+    /// &lt;/summary>
+    private readonly AsyncLock LoadingLock = new AsyncLock();
+
+    /// &lt;summary>
+    /// Creates a new &lt;see cref="SubredditWidgetViewModel"/> instance.
+    /// &lt;/summary>
+    public SubredditWidgetViewModel()
+    {
+        LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
+
+        selectedSubreddit = SettingsService.GetValue&lt;string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+    }
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="IAsyncRelayCommand"/> instance responsible for loading posts.
+    /// &lt;/summary>
+    public IAsyncRelayCommand LoadPostsCommand { get; }
+
+    /// &lt;summary>
+    /// Gets the collection of loaded posts.
+    /// &lt;/summary>
+    public ObservableCollection&lt;Post> Posts { get; } = new ObservableCollection&lt;Post>();
+
+    /// &lt;summary>
+    /// Gets the collection of available subreddits to pick from.
+    /// &lt;/summary>
+    public IReadOnlyList&lt;string> Subreddits { get; } = new[]
+    {
+        "microsoft",
+        "windows",
+        "surface",
+        "windowsphone",
+        "dotnet",
+        "csharp"
+    };
+
+    private string selectedSubreddit;
+
+    /// &lt;summary>
+    /// Gets or sets the currently selected subreddit.
+    /// &lt;/summary>
+    public string SelectedSubreddit
+    {
+        get => selectedSubreddit;
+        set
+        {
+            SetProperty(ref selectedSubreddit, value);
+
+            SettingsService.SetValue(nameof(SelectedSubreddit), value);
+        }
+    }
+
+    private Post selectedPost;
+
+    /// &lt;summary>
+    /// Gets or sets the currently selected subreddit.
+    /// &lt;/summary>
+    public Post SelectedPost
+    {
+        get => selectedPost;
+        set => SetProperty(ref selectedPost, value, true);
+    }
+
+    /// &lt;summary>
+    /// Loads the posts from a specified subreddit.
+    /// &lt;/summary>
+    private async Task LoadPostsAsync()
+    {
+        using (await LoadingLock.LockAsync())
+        {
+            try
+            {
+                var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+
+                Posts.Clear();
+
+                foreach (var item in response.Data.Items)
+                {
+                    Posts.Add(item.Data);
+                }
+            }
+            catch
+            {
+                // Whoops!
+            }
+        }
+    }
+}
+
+/// &lt;summary>
+/// A viewmodel for a post widget.
+/// &lt;/summary>
+public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient&lt;PropertyChangedMessage&lt;Post>>
+{
+    private Post post;
+
+    /// &lt;summary>
+    /// Gets the currently selected post, if any.
+    /// &lt;/summary>
+    public Post Post
+    {
+        get => post;
+        private set => SetProperty(ref post, value);
+    }
+
+    /// &lt;inheritdoc/>
+    public void Receive(PropertyChangedMessage&lt;Post> message)
+    {
+        if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &amp;&amp;
+            message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
+        {
+            Post = message.NewValue;
+        }
+    }
+}
+            </controls:InteractiveSample.CSharpCode>
+        </controls:InteractiveSample>
+    </Grid>
+</UserControl>

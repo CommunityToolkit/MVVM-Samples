@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="MvvmSampleWpf.Views.RelayCommandView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml" xmlns:controls="clr-namespace:MvvmSampleWpf.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadDocsCommand}" CommandParameter="RelayCommand"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+
+    <ScrollViewer Padding="16">
+        <StackPanel Margin="16">
+            <mdxaml:MarkdownScrollViewer Markdown="{Binding Texts[RelayCommand]}"/>
+            <mdxaml:MarkdownScrollViewer Markdown="{Binding Texts[How they work]}"/>
+            <mdxaml:MarkdownScrollViewer Markdown="{Binding Texts[Working with `ICommand`]}"/>
+
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <StackPanel >
+                        <TextBlock Text="{Binding Counter, Mode=OneWay}"/>
+                        <Button
+                            Content="Click me!"
+                            Command="{Binding IncrementCounterCommand}"/>
+                    </StackPanel>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;Page
+    x:Class="MyApp.Views.MyPage"
+    xmlns:viewModels="using:MyApp.ViewModels">
+    &lt;Page.DataContext>
+        &lt;viewModels:MyViewModel x:Name="ViewModel"/>
+    &lt;/Page.DataContext>
+
+    &lt;StackPanel Spacing="8">
+        &lt;TextBlock Text="{Binding Counter, Mode=OneWay}"/>
+        &lt;Button
+            Content="Click me!"
+            Command="{Binding IncrementCounterCommand}"/>
+    &lt;/StackPanel>
+&lt;/Page>
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+public class MyViewModel : ObservableObject
+{
+    public MyViewModel()
+    {
+        IncrementCounterCommand = new RelayCommand(IncrementCounter);
+    }
+
+    /// &lt;summary>
+    /// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
+    /// &lt;/summary>
+    public ICommand IncrementCounterCommand { get; }
+
+    private int counter;
+
+    /// &lt;summary>
+    /// Gets the current value of the counter.
+    /// &lt;/summary>
+    public int Counter
+    {
+        get => counter;
+        private set => SetProperty(ref counter, value);
+    }
+
+    /// &lt;summary>
+    /// Increments &lt;see cref="Counter"/>.
+    /// &lt;/summary>
+    private void IncrementCounter() => Counter++;
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

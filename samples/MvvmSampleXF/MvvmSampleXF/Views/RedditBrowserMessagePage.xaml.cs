@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using MvvmSample.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -17,7 +19,13 @@ namespace MvvmSampleXF.Views
         public RedditBrowserMessagePage()
         {
             InitializeComponent();
+
+            ViewModel = Ioc.Default.GetRequiredService<RedditBrowserMessagePageViewModel>();
+
+            BindingContext = ViewModel;
         }
+
+        public RedditBrowserMessagePageViewModel ViewModel { get; }
 
         protected override void OnAppearing()
         {
