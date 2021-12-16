@@ -17,13 +17,9 @@ namespace MvvmSampleXF.Views
         public MessengerRequestPage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public MessengerPageViewModel ViewModel { get; }
+        public MessengerPageViewModel ViewModel => BindingContext as MessengerPageViewModel;
 
         protected override void OnAppearing()
         {

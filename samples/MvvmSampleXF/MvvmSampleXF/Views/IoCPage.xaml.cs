@@ -12,18 +12,14 @@ using Xamarin.Forms.Xaml;
 namespace MvvmSampleXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class IoCPage : ContentPage
+    public partial class IocPage : ContentPage
     {
-        public IoCPage()
+        public IocPage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<IocPageViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public IocPageViewModel ViewModel { get; }
+        public IocPageViewModel ViewModel => BindingContext as IocPageViewModel;
 
         protected override void OnAppearing()
         {

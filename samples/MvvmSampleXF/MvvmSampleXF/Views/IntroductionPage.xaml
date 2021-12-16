@@ -3,8 +3,10 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+             xmlns:local="clr-namespace:MvvmSampleXF"
+             local:ViewModelLocator.InitViewModel="True"
 			 x:Class="MvvmSampleXF.Views.IntroductionPage"
-			 x:DataType="vm:ObservableObjectPageViewModel"
+			 x:DataType="vm:SamplePageViewModel"
 			 Title="Introduction">
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">

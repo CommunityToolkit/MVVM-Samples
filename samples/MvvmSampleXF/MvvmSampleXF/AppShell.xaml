@@ -41,7 +41,7 @@
 
 	<ShellContent Title="Inversion of Control"
 				  Icon="{StaticResource UndoIcon}"
-				  ContentTemplate="{DataTemplate views:IoCPage}" />
+				  ContentTemplate="{DataTemplate views:IocPage}" />
 	
 	<ShellContent Title="ViewModel Setup"
 				  Icon="{StaticResource CubeIcon}"

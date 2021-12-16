@@ -1,10 +1,4 @@
 ﻿using MvvmSample.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,13 +11,9 @@ namespace MvvmSampleXF.Views
         public RelayCommandPage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<RelayCommandPageViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public RelayCommandPageViewModel ViewModel { get; }
+        public RelayCommandPageViewModel ViewModel => BindingContext as RelayCommandPageViewModel;
 
         protected override void OnAppearing()
         {

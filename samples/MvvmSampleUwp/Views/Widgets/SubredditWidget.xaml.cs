@@ -13,12 +13,8 @@ namespace MvvmSampleUwp.Views.Widgets
         public SubredditWidget()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public SubredditWidgetViewModel ViewModel { get; }
+        public SubredditWidgetViewModel ViewModel => DataContext as SubredditWidgetViewModel;
     }
 }

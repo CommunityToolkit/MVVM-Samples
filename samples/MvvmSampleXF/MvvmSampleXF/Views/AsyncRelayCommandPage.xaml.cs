@@ -17,13 +17,9 @@ namespace MvvmSampleXF.Views
         public AsyncRelayCommandPage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<AsyncRelayCommandPageViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public AsyncRelayCommandPageViewModel ViewModel { get; }
+        public AsyncRelayCommandPageViewModel ViewModel => BindingContext as AsyncRelayCommandPageViewModel;
 
         protected override void OnAppearing()
         {

@@ -5,6 +5,8 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+             xmlns:local="clr-namespace:MvvmSampleXF"
+             local:ViewModelLocator.InitViewModel="True"
 			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
 			 x:DataType="vm:AsyncRelayCommandPageViewModel"
 			 Title="Commands">

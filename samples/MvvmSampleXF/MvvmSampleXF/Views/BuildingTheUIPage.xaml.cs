@@ -17,13 +17,9 @@ namespace MvvmSampleXF.Views
         public BuildingTheUIPage()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<SamplePageViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public SamplePageViewModel ViewModel { get; }
+        public SamplePageViewModel ViewModel => BindingContext as SamplePageViewModel;
 
         protected override void OnAppearing()
         {

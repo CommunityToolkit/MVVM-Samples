@@ -16,13 +16,9 @@ namespace MvvmSampleUwp.Views
         public ObservableObjectPage()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<ObservableObjectPageViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public ObservableObjectPageViewModel ViewModel { get; }
+        public ObservableObjectPageViewModel ViewModel => DataContext as ObservableObjectPageViewModel;
 
     }
 }

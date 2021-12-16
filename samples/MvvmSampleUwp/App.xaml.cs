@@ -13,6 +13,7 @@ using MvvmSampleUwp.Helpers;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels.Widgets;
 using MvvmSample.Core.ViewModels;
+using System.Linq;
 
 namespace MvvmSampleUwp
 {
@@ -41,9 +42,7 @@ namespace MvvmSampleUwp
                 TitleBarHelper.StyleTitleBar();
                 TitleBarHelper.ExpandViewIntoTitleBar();
 
-                // Register services
-                Ioc.Default.ConfigureServices(
-                    new ServiceCollection()
+                var serviceProvider = new ServiceCollection()
                     //Services
                     .AddSingleton<IFilesService, FilesService>()
                     .AddSingleton<ISettingsService, SettingsService>()
@@ -57,7 +56,27 @@ namespace MvvmSampleUwp
                     .AddTransient<ObservableObjectPageViewModel>()
                     .AddTransient<RelayCommandPageViewModel>()
                     .AddTransient<SamplePageViewModel>()
-                    .BuildServiceProvider());
+                    .BuildServiceProvider();
+
+                // Register services
+                Ioc.Default.ConfigureServices(serviceProvider);
+
+                ViewModelLocator.SetViewModelFactory(view =>
+                {
+                    var viewName = view.GetType().Name;
+                    var viewModelName = $"{viewName}ViewModel";
+                    var viewModelType = typeof(SamplePageViewModel).Assembly.GetTypes().Where(x => x.Name == viewModelName).FirstOrDefault();
+
+                    if (viewModelType == null)
+                    {
+                        if (viewModelName.Contains("Messenger"))
+                            viewModelType = typeof(MessengerPageViewModel);
+                        else
+                            viewModelType = typeof(SamplePageViewModel);
+                    }
+
+                    return serviceProvider.GetService(viewModelType);
+                });
             }
 
             // Enable the prelaunch if needed, and activate the window

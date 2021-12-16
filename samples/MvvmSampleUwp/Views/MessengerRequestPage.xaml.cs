@@ -17,13 +17,9 @@ namespace MvvmSampleUwp.Views
         public MessengerRequestPage()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public MessengerPageViewModel ViewModel { get; }
+        public MessengerPageViewModel ViewModel => DataContext as MessengerPageViewModel;
 
         /// <inheritdoc/>
         protected override void OnNavigatedTo(NavigationEventArgs e)

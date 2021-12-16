@@ -128,6 +128,7 @@
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="Views\AsyncRelayCommandPage.xaml.cs">
       <DependentUpon>AsyncRelayCommandPage.xaml</DependentUpon>
     </Compile>

@@ -16,12 +16,8 @@ namespace MvvmSampleUwp.Views
         public RelayCommandPage()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<RelayCommandPageViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public RelayCommandPageViewModel ViewModel { get; }
+        public RelayCommandPageViewModel ViewModel => DataContext as RelayCommandPageViewModel;
     }
 }

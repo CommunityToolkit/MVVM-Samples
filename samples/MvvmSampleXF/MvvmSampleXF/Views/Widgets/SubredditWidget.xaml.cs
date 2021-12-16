@@ -18,13 +18,9 @@ namespace MvvmSampleXF.Views.Widgets
         public SubredditWidget()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public SubredditWidgetViewModel ViewModel { get; }
+        public SubredditWidgetViewModel ViewModel => BindingContext as SubredditWidgetViewModel;
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

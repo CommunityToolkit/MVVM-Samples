@@ -16,12 +16,8 @@ namespace MvvmSampleUwp.Views
         public MessengerPage()
         {
             this.InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
-
-            DataContext = ViewModel;
         }
 
-        public MessengerPageViewModel ViewModel { get; }
+        public MessengerPageViewModel ViewModel => DataContext as MessengerPageViewModel;
     }
 }

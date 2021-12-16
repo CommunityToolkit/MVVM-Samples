@@ -17,13 +17,9 @@ namespace MvvmSampleXF.Views.Widgets
         public PostWidget()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
-
-            BindingContext = ViewModel;
         }
 
-        public PostWidgetViewModel ViewModel { get; }
+        public PostWidgetViewModel ViewModel => BindingContext as PostWidgetViewModel;
 
         public void OnAppearing()
         {

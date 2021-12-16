@@ -14,14 +14,10 @@ namespace MvvmSampleUwp.Views.Widgets
         {
             this.InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
-
-            DataContext = ViewModel;
-
             this.Loaded += (s, e) => ViewModel.IsActive = true;
             this.Unloaded += (s, e) => ViewModel.IsActive = false;
         }
 
-        public PostWidgetViewModel ViewModel { get; }
+        public PostWidgetViewModel ViewModel => DataContext as PostWidgetViewModel;
     }
 }

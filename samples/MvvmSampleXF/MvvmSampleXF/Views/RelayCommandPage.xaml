@@ -4,9 +4,12 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+             xmlns:local="clr-namespace:MvvmSampleXF"
+             local:ViewModelLocator.InitViewModel="True"
 			 x:Class="MvvmSampleXF.Views.RelayCommandPage"
 			 x:DataType="vm:RelayCommandPageViewModel"
-			 Title="Commands">
+			 Title="Commands"
+            >
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[RelayCommand], Mode=OneWay}" />

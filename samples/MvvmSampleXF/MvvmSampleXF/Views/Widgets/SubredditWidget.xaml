@@ -3,8 +3,9 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			 xmlns:models="clr-namespace:MvvmSample.Core.Models;assembly=MvvmSample.Core"
-			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+             xmlns:local="clr-namespace:MvvmSampleXF"
+             local:ViewModelLocator.InitViewModel="True"
 			 x:Class="MvvmSampleXF.Views.Widgets.SubredditWidget">
 	<ContentView.Resources>
 		<converters:IsSelfPostToWidthRequestConverter WidthRequest="120"
