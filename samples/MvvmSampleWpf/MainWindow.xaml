@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MvvmSampleWpf" 
+        xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -13,23 +14,23 @@
             <ColumnDefinition Width="80*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Button Content="Introduction" Command="{Binding ShowIntroductionViewModel}" />
-            <Button Content="ObservableObject" Command="{Binding ShowObservableObjectViewModel}" />
-            <Button Content="Commands" Command="{Binding ShowCommandsViewModel}" />
-            <Button Content="AsyncCommands" Command="{Binding ShowAsyncCommandsViewModel}" />
-            <Button Content="Messenger" Command="{Binding ShowMessengerViewModel}" />
-            <Button Content="Sending messages" Command="{Binding ShowSendMessageViewModel}" />
-            <Button Content="Request messages" Command="{Binding ShowRequestMessageViewModel}" />
-            <Button Content="Inversion of control" Command="{Binding ShowIocViewModel}" />
-            <Button Content="Putting things together" Command="{Binding ShowPutTogetherViewModel}" />
-            <Button Content="Setting up the ViewModels" Command="{Binding ShowSetupViewModel}" />
-            <Button Content="Settings service" Command="{Binding ShowSettingsServiceViewModel}" />
-            <Button Content="Reddit service" Command="{Binding ShowRedditServiceViewModel}" />
-            <Button Content="Building the UI" Command="{Binding ShowUIViewModel}" />
-            <Button Content="Reddit browser (messages)" Command="{Binding ShowReddibBrowserMessageViewModel}" />
-            <Button Content="Reddit browser (no messages)" Command="{Binding ShowReddibBrowserViewModel}" />
-        </StackPanel>
+        <HamburgerMenu:HamburgerMenu Grid.Column="0" Background="Purple" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
+            <HamburgerMenu:HamburgerMenuItem Text="Introduction" SelectionCommand="{Binding ShowIntroductionViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="ObservableObject" SelectionCommand="{Binding ShowObservableObjectViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Commands" SelectionCommand="{Binding ShowCommandsViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="AsyncCommands" SelectionCommand="{Binding ShowAsyncCommandsViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Messenger" SelectionCommand="{Binding ShowMessengerViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Sending messages" SelectionCommand="{Binding ShowSendMessageViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Request messages" SelectionCommand="{Binding ShowRequestMessageViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Inversion of control" SelectionCommand="{Binding ShowIocViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Putting things together" SelectionCommand="{Binding ShowPutTogetherViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Setting up the ViewModels" SelectionCommand="{Binding ShowSetupViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Settings service" SelectionCommand="{Binding ShowSettingsServiceViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Reddit service" SelectionCommand="{Binding ShowRedditServiceViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Building the UI" SelectionCommand="{Binding ShowUIViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Reddit browser (messages)" SelectionCommand="{Binding ShowReddibBrowserMessageViewModel}" />
+            <HamburgerMenu:HamburgerMenuItem Text="Reddit browser (no messages)" SelectionCommand="{Binding ShowReddibBrowserViewModel}" />
+        </HamburgerMenu:HamburgerMenu>
 
         <local:ViewModelPresenter Grid.Column="1" ViewModel="{Binding SelectedViewModel}" />
 
