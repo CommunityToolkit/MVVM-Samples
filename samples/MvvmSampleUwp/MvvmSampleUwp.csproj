@@ -120,12 +120,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DocumentationBlock.cs" >
+    <Compile Include="Controls\DocumentationBlock.cs">
       <DependentUpon>DocumentationBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\InteractiveSample.cs" >
+    <Compile Include="Controls\InteractiveSample.cs">
       <DependentUpon>InteractiveSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TaskResultConverter.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileService.cs" />

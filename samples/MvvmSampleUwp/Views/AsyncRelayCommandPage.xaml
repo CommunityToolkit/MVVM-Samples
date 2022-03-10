@@ -21,7 +21,7 @@
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
     <Page.Resources>
-        <converters:TaskResultConverter x:Key="TaskResultConverter" />
+        <converters:TaskResultConverter2 x:Key="TaskResultConverter" />
     </Page.Resources>
 
     <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
