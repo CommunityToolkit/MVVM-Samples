@@ -7,21 +7,27 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <!--Resource dictionaries-->
+            <!--  Resource dictionaries  -->
             <ResourceDictionary.MergedDictionaries>
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
-                <ResourceDictionary Source="Controls/InteractiveSample.xaml"/>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Controls/InteractiveSample.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--MarkdownTextBlock style-->
+            <!--  MarkdownTextBlock style  -->
             <Style TargetType="controls:MarkdownTextBlock">
-                <Setter Property="Background" Value="#60222222"/>
-                <Setter Property="Padding" Value="8"/>
+                <Setter Property="Background" Value="#20222222" />
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeBlackLowColor}" />
+                <Setter Property="CornerRadius" Value="4" />
                 <Setter Property="Header2FontWeight" Value="Bold" />
                 <Setter Property="Header2FontSize" Value="20" />
                 <Setter Property="Header2Margin" Value="0, 15, 0, 15" />
                 <Setter Property="Header2Foreground" Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
             </Style>
+
+            <!--  Misc resources  -->
+            <Thickness x:Key="DocumentationPageContentPadding">20</Thickness>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

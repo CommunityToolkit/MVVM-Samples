@@ -2,62 +2,58 @@
     x:Class="MvvmSampleUwp.Views.MessengerRequestPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSampleUwp.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:controls="using:MvvmSampleUwp.Controls"
     xmlns:viewModels="using:MvvmSample.Core.ViewModels"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    mc:Ignorable="d"
-    NavigationCacheMode="Enabled">
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
     <Page.DataContext>
-        <viewModels:MessengerPageViewModel x:Name="ViewModel"/>
+        <viewModels:MessengerPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
-            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="Messenger"/>
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="Messenger" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <ScrollViewer Padding="16" CanContentRenderOutsideBounds="True">
+    <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Using request messages'), Mode=OneWay}"/>
+            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Using request messages'), Mode=OneWay}" />
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
-                    <StackPanel Spacing="8" xml:space="default">
+                    <StackPanel xml:space="default" Spacing="8">
 
-                        <TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
-                        <Button
-                            Content="Click to request the username!"
-                            Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
-                        <Button
-                            Content="Click to reset the local username!"
-                            Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}" />
+                        <Button Click="{x:Bind ViewModel.RequestCurrentUsername}" Content="Click to request the username!" />
+                        <Button Click="{x:Bind ViewModel.ResetCurrentUsername}" Content="Click to reset the local username!" />
                     </StackPanel>
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
-&lt;StackPanel Spacing="8">
-    &lt;TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
+&lt;StackPanel Spacing=&quot;8&quot;&gt;
+    &lt;TextBlock Text=&quot;{x:Bind ViewModel.Username, Mode=OneWay}&quot;/&gt;
     &lt;Button
-        Content="Click to request the username!"
-        Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
+        Content=&quot;Click to request the username!&quot;
+        Click=&quot;{x:Bind ViewModel.RequestCurrentUsername}&quot;/&gt;
     &lt;Button
-        Content="Click to reset the local username!"
-        Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
-&lt;/StackPanel>
+        Content=&quot;Click to reset the local username!&quot;
+        Click=&quot;{x:Bind ViewModel.ResetCurrentUsername}&quot;/&gt;
+&lt;/StackPanel&gt;
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
 // Simple viewmodel for a module responding to a request username message.
 // Don't forget to set the IsActive property to true when this viewmodel is in use!
 public class UserSenderViewModel : ObservableRecipient
 {
-    public string Username { get; private set; } = "Bob";
+    public string Username { get; private set; } = &quot;Bob&quot;;
 
     protected override void OnActivated()
     {
-        Messenger.Register&lt;UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
+        Messenger.Register&lt;UserSenderViewModel, CurrentUsernameRequestMessage&gt;(this, (r, m) =&gt; m.Reply(r.Username));
     }
 }
 
@@ -65,14 +61,14 @@ private string username;
 
 public string Username
 {
-    get => username;
-    private set => SetProperty(ref username, value);
+    get =&gt; username;
+    private set =&gt; SetProperty(ref username, value);
 }
 
 // Sends a message to request the current username, and updates the property
 public void RequestCurrentUsername()
 {
-    Username = WeakReferenceMessenger.Default.Send&lt;CurrentUsernameRequestMessage>();
+    Username = WeakReferenceMessenger.Default.Send&lt;CurrentUsernameRequestMessage&gt;();
 }
 
 // Resets the current username
@@ -82,7 +78,7 @@ public void ResetCurrentUsername()
 }
 
 // A sample request message to get the current username
-public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string>
+public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string&gt;
 {
 }
                 </controls:InteractiveSample.CSharpCode>

@@ -7,38 +7,36 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mvvmSampleUwp="using:MvvmSampleUwp"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
-    mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400"
-    Loaded="Shell_OnLoaded">
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    Loaded="Shell_OnLoaded"
+    mc:Ignorable="d">
 
     <Grid>
 
-        <!--Background image-->
-        <Image
-            Source="https://images.unsplash.com/photo-1524439654840-b12734d89414?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80"
-            Stretch="UniformToFill"
-            Opacity="0.4"/>
-
-        <!--Navigation view-->
+        <!--  Navigation view  -->
         <muxc:NavigationView
             x:Name="NavigationView"
-            IsTitleBarAutoPaddingEnabled="False"
+            BackRequested="NavigationView_OnBackRequested"
             IsBackEnabled="False"
             IsSettingsVisible="False"
-            ItemInvoked="NavigationView_OnItemInvoked"
-            BackRequested="NavigationView_OnBackRequested">
+            IsTitleBarAutoPaddingEnabled="False"
+            ItemInvoked="NavigationView_OnItemInvoked">
+            <muxc:NavigationView.Resources>
+                <Thickness x:Key="NavigationViewContentMargin">0,32,0,0</Thickness>
+            </muxc:NavigationView.Resources>
 
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
-                    QueryIcon="Find"
                     AutomationProperties.Name="Search"
                     PlaceholderText="Search"
-                    TextChanged="SearchBox_OnTextChanged"
-                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen">
+                    QueryIcon="Find"
+                    SuggestionChosen="AutoSuggestBox_OnSuggestionChosen"
+                    TextChanged="SearchBox_OnTextChanged">
                     <AutoSuggestBox.ItemTemplate>
                         <DataTemplate x:DataType="mvvmSampleUwp:SampleEntry">
-                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
                         </DataTemplate>
                     </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
@@ -49,61 +47,61 @@
                     x:Name="IntroductionItem"
                     Content="Introduction"
                     Icon="Play"
-                    ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains."/>
-                <muxc:NavigationViewItemSeparator/>
+                    ToolTipService.ToolTip="Introduction to the MVVM Toolkit package, how to install it and the types it contains." />
+                <muxc:NavigationViewItemSeparator />
                 <muxc:NavigationViewItem
                     Content="Building Blocks"
                     Icon="ViewAll"
-                    ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit."
-                    IsExpanded="True">
+                    IsExpanded="True"
+                    ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit.">
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem
                             x:Name="ObservableObjectItem"
                             Content="ObservableObject"
                             Icon="Sort"
-                            ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged."/>
+                            ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged." />
                         <muxc:NavigationViewItem
                             Content="Commands"
                             Icon="Calendar"
-                            ToolTipService.ToolTip="A collection of types implementing the ICommand interface."
-                            IsExpanded="True">
+                            IsExpanded="True"
+                            ToolTipService.ToolTip="A collection of types implementing the ICommand interface.">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
                                     x:Name="CommandsItem"
                                     Content="Introduction"
                                     Icon="Library"
-                                    ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit."/>
+                                    ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit." />
                                 <muxc:NavigationViewItem
                                     x:Name="AsyncCommandsItem"
                                     Content="Async commands"
                                     Icon="Flag"
-                                    ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations."/>
+                                    ToolTipService.ToolTip="An overview of the available ICommand types supporting asynchronous operations." />
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             x:Name="MessengerItem"
                             Content="Messenger"
                             Icon="Comment"
-                            ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules."
-                            IsExpanded="True">
+                            IsExpanded="True"
+                            ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules.">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
                                     x:Name="SendMessagesItem"
                                     Content="Sending messages"
                                     Icon="Send"
-                                    ToolTipService.ToolTip="Send custom messages between different app modules."/>
+                                    ToolTipService.ToolTip="Send custom messages between different app modules." />
                                 <muxc:NavigationViewItem
                                     x:Name="RequestMessagesItem"
                                     Content="Request messages"
                                     Icon="Switch"
-                                    ToolTipService.ToolTip="Request values from loosely coupled app modules."/>
+                                    ToolTipService.ToolTip="Request values from loosely coupled app modules." />
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             x:Name="InversionOfControlItem"
                             Content="Inversion of control"
                             Icon="StopSlideShow"
-                            ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns."/>
+                            ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns." />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem
@@ -116,7 +114,7 @@
                             x:Name="ViewModelsSetupItem"
                             Content="Setting up the ViewModels"
                             Icon="{ui:FontIcon Glyph=&#xEBD2;}"
-                            ToolTipService.ToolTip="Setting up viewmodels for the two widgets."/>
+                            ToolTipService.ToolTip="Setting up viewmodels for the two widgets." />
                         <muxc:NavigationViewItem
                             Content="Creating a Service"
                             Icon="{ui:FontIcon Glyph=&#xF69E;}"
@@ -138,82 +136,33 @@
                             x:Name="BuildingTheUIItem"
                             Content="Building the UI"
                             Icon="{ui:FontIcon Glyph=&#xEB3C;}"
-                            ToolTipService.ToolTip="Building the UI to connect to the backend."/>
+                            ToolTipService.ToolTip="Building the UI to connect to the backend." />
                         <muxc:NavigationViewItem
                             x:Name="FinalResultItem"
                             Content="The final result!"
                             Icon="{ui:FontIcon Glyph=&#xF1AD;}"
-                            ToolTipService.ToolTip="The final working sample!"/>
+                            ToolTipService.ToolTip="The final working sample!" />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
             <muxc:NavigationView.Content>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
 
-                    <!--Navigation frame-->
-                    <Frame
-                        x:Name="NavigationFrame"
-                        Navigated="NavigationFrame_OnNavigated"
-                        Grid.Row="2"/>
-
-                    <!--Acrylic background-->
-                    <Border
-                        Grid.Row="0"
-                        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"/>
-
-                    <StackPanel Grid.Row="0">
-
-                        <!--Title bar drop shadow-->
-                        <Rectangle Height="32" Fill="#40000000"/>
-                        <Rectangle Height="8" IsHitTestVisible="False">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
-                                    <GradientStop Color="#60000000" Offset="1"/>
-                                    <GradientStop Offset="0"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-
-                        <!--Title-->
-                        <Border Padding="8,8,8,16">
-                            <TextBlock
-                                Text="WCT MVVM Toolkit Introduction"
-                                FontWeight="SemiBold"
-                                FontSize="18"/>
-                        </Border>
-                    </StackPanel>
-
-                    <!--Header drop shadow-->
-                    <Rectangle Grid.Row="1" Height="8" IsHitTestVisible="False">
-                        <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
-                                <GradientStop Color="#60000000" Offset="1"/>
-                                <GradientStop Offset="0"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Grid>
+                <!--  Navigation frame  -->
+                <Frame x:Name="NavigationFrame" Navigated="NavigationFrame_OnNavigated" />
             </muxc:NavigationView.Content>
 
         </muxc:NavigationView>
 
-        <!--Custom title bar-->
+        <!--  Custom title bar  -->
         <Border
             x:Name="TitleBarBorder"
+            Height="40"
             Margin="40,0,0,0"
             Padding="8,0,0,0"
-            Height="40"
             VerticalAlignment="Top"
             Background="Transparent">
-            <TextBlock
-                VerticalAlignment="Center"
-                Text="MVVM Toolkit Sample App"/>
+            <TextBlock VerticalAlignment="Center" Text="MVVM Toolkit Sample App" />
         </Border>
     </Grid>
 </UserControl>
