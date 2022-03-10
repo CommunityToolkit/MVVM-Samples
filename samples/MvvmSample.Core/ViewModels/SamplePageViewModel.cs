@@ -68,9 +68,8 @@ public class SamplePageViewModel : ObservableObject
         using StreamReader reader = new(stream);
         string text = await reader.ReadToEndAsync();
 
-        // Fixups
-        string trimmedText = Regex.Replace(text, @"[ \r\n]+?!\[[^]]+\]\([^)]+\)[ \r\n]+?", string.Empty); // Drop image links
-        string updatedText = trimmedText.Replace("(/dotnet", "(https://docs.microsoft.com/dotnet"); // Update relative links
+        // Drop image links
+        string trimmedText = Regex.Replace(text, @"[ \r\n]+?!\[[^]]+\]\([^)]+\)[ \r\n]+?", string.Empty);
 
         Texts = MarkdownHelper.GetParagraphs(trimmedText);
 
