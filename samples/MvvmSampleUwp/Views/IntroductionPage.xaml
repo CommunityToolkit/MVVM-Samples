@@ -21,7 +21,7 @@
 
     <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Introduction to the MVVM package'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Introduction to the MVVM Toolkit'), Mode=OneWay}" />
             <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('When should I use this package?'), Mode=OneWay}" />
         </StackPanel>
     </ScrollViewer>

@@ -70,6 +70,7 @@ public class SamplePageViewModel : ObservableObject
 
         // Fixups
         string trimmedText = Regex.Replace(text, @"[ \r\n]+?!\[[^]]+\]\([^)]+\)[ \r\n]+?", string.Empty); // Drop image links
+        string updatedText = trimmedText.Replace("(/dotnet", "(https://docs.microsoft.com/dotnet"); // Update relative links
 
         Texts = MarkdownHelper.GetParagraphs(trimmedText);
 
