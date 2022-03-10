@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -60,14 +61,17 @@ public class SamplePageViewModel : ObservableObject
         if (name is null) return;
 
         // Skip if the loading has already started
-        if (!(LoadDocsCommand.ExecutionTask is null)) return;
+        if (LoadDocsCommand.ExecutionTask is not null) return;
 
-        var path = Path.Combine("Assets", "docs", $"{name}.md");
-        using var stream = await FilesServices.OpenForReadAsync(path);
-        using var reader = new StreamReader(stream);
-        var text = await reader.ReadToEndAsync();
+        string path = Path.Combine("Assets", "docs", $"{name}.md");
+        using Stream stream = await FilesServices.OpenForReadAsync(path);
+        using StreamReader reader = new(stream);
+        string text = await reader.ReadToEndAsync();
 
-        Texts = MarkdownHelper.GetParagraphs(text);
+        // Fixups
+        string trimmedText = Regex.Replace(text, @"[ \r\n]+?!\[[^]]+\]\([^)]+\)[ \r\n]+?", string.Empty); // Drop image links
+
+        Texts = MarkdownHelper.GetParagraphs(trimmedText);
 
         OnPropertyChanged(nameof(GetParagraph));
     }

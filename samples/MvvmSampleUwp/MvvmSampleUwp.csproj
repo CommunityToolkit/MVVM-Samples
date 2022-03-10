@@ -349,35 +349,35 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\MvvmSample.Core\Docs\AsyncRelayCommand.md">
+    <Content Include="..\..\docs\mvvm\AsyncRelayCommand.md">
       <Link>Assets\docs\AsyncRelayCommand.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Introduction.md">
+    <Content Include="..\..\docs\mvvm\Introduction.md">
       <Link>Assets\docs\Introduction.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Ioc.md">
+    <Content Include="..\..\docs\mvvm\Ioc.md">
       <Link>Assets\docs\Ioc.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\Messenger.md">
+    <Content Include="..\..\docs\mvvm\Messenger.md">
       <Link>Assets\docs\Messenger.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\ObservableObject.md">
+    <Content Include="..\..\docs\mvvm\ObservableObject.md">
       <Link>Assets\docs\ObservableObject.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\ObservableRecipient.md">
+    <Content Include="..\..\docs\mvvm\ObservableRecipient.md">
       <Link>Assets\docs\ObservableRecipient.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\PuttingThingsTogether.md">
+    <Content Include="..\..\docs\mvvm\PuttingThingsTogether.md">
       <Link>Assets\docs\PuttingThingsTogether.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\MvvmSample.Core\Docs\RelayCommand.md">
+    <Content Include="..\..\docs\mvvm\RelayCommand.md">
       <Link>Assets\docs\RelayCommand.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
