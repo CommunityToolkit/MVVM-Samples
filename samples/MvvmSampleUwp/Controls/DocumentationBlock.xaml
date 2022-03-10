@@ -21,6 +21,7 @@
                         BorderThickness="1"
                         CornerRadius="4">
                         <controls:MarkdownTextBlock
+                            Padding="12"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="0"
