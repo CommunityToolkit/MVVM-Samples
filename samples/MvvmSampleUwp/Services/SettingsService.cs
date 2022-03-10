@@ -6,6 +6,8 @@ using MvvmSample.Core.Services;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 
+#nullable enable
+
 namespace MvvmSampleUwp.Services
 {
     /// <summary>
@@ -19,18 +21,18 @@ namespace MvvmSampleUwp.Services
         private readonly IPropertySet SettingsStorage = ApplicationData.Current.LocalSettings.Values;
 
         /// <inheritdoc/>
-        public void SetValue<T>(string key, T value)
+        public void SetValue<T>(string key, T? value)
         {
             if (!SettingsStorage.ContainsKey(key)) SettingsStorage.Add(key, value);
             else SettingsStorage[key] = value;
         }
 
         /// <inheritdoc/>
-        public T GetValue<T>(string key)
+        public T? GetValue<T>(string key)
         {
-            if (SettingsStorage.TryGetValue(key, out object value))
+            if (SettingsStorage.TryGetValue(key, out object? value))
             {
-                return (T)value;
+                return (T)value!;
             }
 
             return default;

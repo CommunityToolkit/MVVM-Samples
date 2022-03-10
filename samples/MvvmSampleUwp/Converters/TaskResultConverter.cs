@@ -6,6 +6,8 @@ using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
+#nullable enable
+
 namespace Microsoft.Toolkit.Uwp.UI.Converters
 {
     /// <summary>
@@ -15,7 +17,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Converters
     public sealed class TaskResultConverter2 : IValueConverter
     {
         /// <inheritdoc/>
-        public object Convert(object value, Type targetType, object parameter, string language)
+        public object? Convert(object? value, Type? targetType, object? parameter, string? language)
         {
             if (value is Task task)
             {
@@ -26,7 +28,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Converters
         }
 
         /// <inheritdoc/>
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        public object ConvertBack(object? value, Type? targetType, object? parameter, string? language)
         {
             throw new NotImplementedException();
         }
