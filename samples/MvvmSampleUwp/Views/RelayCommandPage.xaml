@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:viewModels="using:MvvmSample.Core.ViewModels"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
@@ -22,9 +21,9 @@
 
     <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('RelayCommand'), Mode=OneWay}" />
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('How they work'), Mode=OneWay}" />
-            <toolkit:MarkdownTextBlock Text="{x:Bind ViewModel.GetParagraph('Working with `ICommand`'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('RelayCommand'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('How they work'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Working with `ICommand`'), Mode=OneWay}" />
 
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>

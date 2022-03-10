@@ -29,6 +29,7 @@
                             <muxc:TabView.Resources>
                                 <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
                                 <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
+                                <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="ControlFillColorSecondary" />
                             </muxc:TabView.Resources>
                             <muxc:TabViewItem
                                 FontWeight="Bold"
