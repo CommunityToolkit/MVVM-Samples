@@ -9,9 +9,9 @@ dev_langs:
 
 # AsyncRelayCommand and AsyncRelayCommand&lt;T>
 
-The [`AsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand) and [`AsyncRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand-1) are `ICommand` implementations that extend the functionalities offered by [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand), with support for asynchronous operations.
+The [`AsyncRelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand) and [`AsyncRelayCommand<T>`](/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand-1) are `ICommand` implementations that extend the functionalities offered by [`RelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand), with support for asynchronous operations.
 
-> **Platform APIs:** [`AsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand), [`AsyncRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand-1), [`RelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand), [`IAsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand), [`IAsyncRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand-1)
+> **Platform APIs:** [`AsyncRelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand), [`AsyncRelayCommand<T>`](/dotnet/api/microsoft.toolkit.mvvm.input.AsyncRelayCommand-1), [`RelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand), [`IAsyncRelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand), [`IAsyncRelayCommand<T>`](/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand-1)
 
 ## How they work
 
@@ -20,7 +20,7 @@ The [`AsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolki
 - They extend the functionalities of the synchronous commands included in the library, with support for `Task`-returning delegates.
 - They can wrap asynchronous functions with an additional `CancellationToken` parameter to support cancelation, and they expose a `CanBeCanceled` and `IsCancellationRequested` properties, as well as a `Cancel` method.
 - They expose an `ExecutionTask` property that can be used to monitor the progress of a pending operation, and an `IsRunning` that can be used to check when an operation completes. This is particularly useful to bind a command to UI elements such as loading indicators.
-- They implement the [`IAsyncRelayCommand`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand) and [`IAsyncRelayCommand<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand-1) interfaces, which means that viewmodel can easily expose commands using these to reduce the tight coupling between types. For instance, this makes it easier to replace a command with a custom implementation exposing the same public API surface, if needed.
+- They implement the [`IAsyncRelayCommand`](/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand) and [`IAsyncRelayCommand<T>`](/dotnet/api/microsoft.toolkit.mvvm.input.IAsyncRelayCommand-1) interfaces, which means that viewmodel can easily expose commands using these to reduce the tight coupling between types. For instance, this makes it easier to replace a command with a custom implementation exposing the same public API surface, if needed.
 
 ## Working with asynchronous commands
 
@@ -79,4 +79,5 @@ Upon clicking the `Button`, the command is invoked, and the `ExecutionTask` upda
 
 ## Examples
 
-You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
+- Check out the [sample app](https://github.com/windows-toolkit/MVVM-Samples) (for multiple UI frameworks) to see the MVVM Toolkit in action.
+- You can also find more examples in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/rel/7.1.0/UnitTests/UnitTests.Shared/Mvvm).

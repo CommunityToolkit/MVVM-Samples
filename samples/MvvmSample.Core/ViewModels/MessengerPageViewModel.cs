@@ -8,100 +8,99 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 
-namespace MvvmSample.Core.ViewModels
+namespace MvvmSample.Core.ViewModels;
+
+public class MessengerPageViewModel : SamplePageViewModel
 {
-    public class MessengerPageViewModel : SamplePageViewModel
+    public MessengerPageViewModel()
     {
-        public MessengerPageViewModel()
+        RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
+        ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);
+    }
+
+    public ICommand RequestCurrentUsernameCommand { get; }
+    public ICommand ResetCurrentUsernameCommand { get; }
+
+    public UserSenderViewModel SenderViewModel { get; } = new();
+
+    public UserReceiverViewModel ReceiverViewModel { get; } = new();
+
+    // Simple viewmodel for a module sending a username message
+    public class UserSenderViewModel : ObservableRecipient
+    {
+        public UserSenderViewModel()
         {
-            RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
-            ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);
+            SendUserMessageCommand = new RelayCommand(SendUserMessage);
         }
 
-        public ICommand RequestCurrentUsernameCommand { get; }
-        public ICommand ResetCurrentUsernameCommand { get; }
+        public ICommand SendUserMessageCommand { get; }
 
-        public UserSenderViewModel SenderViewModel { get; } = new();
+        private string username = "Bob";
 
-        public UserReceiverViewModel ReceiverViewModel { get; } = new();
-
-        // Simple viewmodel for a module sending a username message
-        public class UserSenderViewModel : ObservableRecipient
-        {
-            public UserSenderViewModel()
-            {
-                SendUserMessageCommand = new RelayCommand(SendUserMessage);
-            }
-
-            public ICommand SendUserMessageCommand { get; }
-
-            private string username = "Bob";
-
-            public string Username
-            {
-                get => username;
-                private set => SetProperty(ref username, value);
-            }
-
-            protected override void OnActivated()
-            {
-                Messenger.Register<UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
-            }
-
-            public void SendUserMessage()
-            {
-                Username = Username == "Bob" ? "Alice" : "Bob";
-
-                Messenger.Send(new UsernameChangedMessage(Username));
-            }
-        }
-
-        // Simple viewmodel for a module receiving a username message
-        public class UserReceiverViewModel : ObservableRecipient
-        {
-            private string username = "";
-
-            public string Username
-            {
-                get => username;
-                private set => SetProperty(ref username, value);
-            }
-
-            protected override void OnActivated()
-            {
-                Messenger.Register<UserReceiverViewModel, UsernameChangedMessage>(this, (r, m) => r.Username = m.Value);
-            }
-        }
-
-        private string? username;
-
-        public string? Username
+        public string Username
         {
             get => username;
             private set => SetProperty(ref username, value);
         }
 
-        public void RequestCurrentUsername()
+        protected override void OnActivated()
         {
-            Username = WeakReferenceMessenger.Default.Send<CurrentUsernameRequestMessage>();
+            Messenger.Register<UserSenderViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.Username));
         }
 
-        public void ResetCurrentUsername()
+        public void SendUserMessage()
         {
-            Username = null;
+            Username = Username == "Bob" ? "Alice" : "Bob";
+
+            Messenger.Send(new UsernameChangedMessage(Username));
+        }
+    }
+
+    // Simple viewmodel for a module receiving a username message
+    public class UserReceiverViewModel : ObservableRecipient
+    {
+        private string username = "";
+
+        public string Username
+        {
+            get => username;
+            private set => SetProperty(ref username, value);
         }
 
-        // A sample message with a username value
-        public sealed class UsernameChangedMessage : ValueChangedMessage<string>
+        protected override void OnActivated()
         {
-            public UsernameChangedMessage(string value) : base(value)
-            {
-            }
+            Messenger.Register<UserReceiverViewModel, UsernameChangedMessage>(this, (r, m) => r.Username = m.Value);
         }
+    }
 
-        // A sample request message to get the current username
-        public sealed class CurrentUsernameRequestMessage : RequestMessage<string>
+    private string? username;
+
+    public string? Username
+    {
+        get => username;
+        private set => SetProperty(ref username, value);
+    }
+
+    public void RequestCurrentUsername()
+    {
+        Username = WeakReferenceMessenger.Default.Send<CurrentUsernameRequestMessage>();
+    }
+
+    public void ResetCurrentUsername()
+    {
+        Username = null;
+    }
+
+    // A sample message with a username value
+    public sealed class UsernameChangedMessage : ValueChangedMessage<string>
+    {
+        public UsernameChangedMessage(string value) : base(value)
         {
         }
+    }
+
+    // A sample request message to get the current username
+    public sealed class CurrentUsernameRequestMessage : RequestMessage<string>
+    {
     }
 }

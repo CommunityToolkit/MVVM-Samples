@@ -4,13 +4,12 @@
 
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmSampleUwp.Views.Widgets
+namespace MvvmSampleUwp.Views.Widgets;
+
+public sealed partial class SubredditWidget : UserControl
 {
-    public sealed partial class SubredditWidget : UserControl
+    public SubredditWidget()
     {
-        public SubredditWidget()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

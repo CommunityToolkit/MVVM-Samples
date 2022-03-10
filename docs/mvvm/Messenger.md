@@ -9,15 +9,15 @@ dev_langs:
 
 # Messenger
 
-The [`IMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface is a contract for types that can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an application. The MVVM Toolkit provides two implementations out of the box: [`WeakReferenceMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.WeakReferenceMessenger) and [`StrongReferenceMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.StrongReferenceMessenger): the former uses weak references internally, offering automatic memory management for recipients, while the latter uses strong references and requires developers to manually unsubscribe their recipients when they're no longer needed (more details about how to unregister message handlers can be found below), but in exchange for that offers better performance and far less memory usage.
+The [`IMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger) interface is a contract for types that can be used to exchange messages between different objects. This can be useful to decouple different modules of an application without having to keep strong references to types being referenced. It is also possible to send messages to specific channels, uniquely identified by a token, and to have different messengers in different sections of an application. The MVVM Toolkit provides two implementations out of the box: [`WeakReferenceMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.WeakReferenceMessenger) and [`StrongReferenceMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.StrongReferenceMessenger): the former uses weak references internally, offering automatic memory management for recipients, while the latter uses strong references and requires developers to manually unsubscribe their recipients when they're no longer needed (more details about how to unregister message handlers can be found below), but in exchange for that offers better performance and far less memory usage.
 
-> **Platform APIs:** [`IMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger), [`WeakReferenceMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.WeakReferenceMessenger), [`StrongReferenceMessenger`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.StrongReferenceMessenger), [`IRecipient<TMessage>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.irecipient-1), [`MessageHandler<TRecipient, TMessage>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.messagehandler-2), [`ObservableRecipient`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.ComponentModel.ObservableRecipient), [`RequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.RequestMessage-1), [`AsyncRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncRequestMessage-1), [`CollectionRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.CollectionRequestMessage-1), [`AsyncCollectionRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncCollectionRequestMessage-1).
+> **Platform APIs:** [`IMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.IMessenger), [`WeakReferenceMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.WeakReferenceMessenger), [`StrongReferenceMessenger`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.StrongReferenceMessenger), [`IRecipient<TMessage>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.irecipient-1), [`MessageHandler<TRecipient, TMessage>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.messagehandler-2), [`ObservableRecipient`](/dotnet/api/microsoft.toolkit.mvvm.ComponentModel.ObservableRecipient), [`RequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.RequestMessage-1), [`AsyncRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncRequestMessage-1), [`CollectionRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.CollectionRequestMessage-1), [`AsyncCollectionRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncCollectionRequestMessage-1).
 
 ## How it works
 
 Types implementing `IMessenger` are responsible for maintaining links between recipients (receivers of messages) and their registered message types, with relative message handlers. Any object can be registered as a recipient for a given message type using a message handler, which will be invoked whenever the `IMessenger` instance is used to send a message of that type. It is also possible to send messages through specific communication channels (each identified by a unique token), so that multiple modules can exchange messages of the same type without causing conflicts. Messages sent without a token use the default shared channel.
 
-There are two ways to perform message registration: either through the [`IRecipient<TMessage>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.irecipient-1) interface, or using a [`MessageHandler<TRecipient, TMessage>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.messagehandler-2) delegate acting as message handler. The first lets you register all the handlers with a single call to the `RegisterAll` extension, which automatically registers the recipients of all the declared message handlers, while the latter is useful when you need more flexibility or when you want to use a simple lambda expression as a message handler.
+There are two ways to perform message registration: either through the [`IRecipient<TMessage>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.irecipient-1) interface, or using a [`MessageHandler<TRecipient, TMessage>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.messagehandler-2) delegate acting as message handler. The first lets you register all the handlers with a single call to the `RegisterAll` extension, which automatically registers the recipients of all the declared message handlers, while the latter is useful when you need more flexibility or when you want to use a simple lambda expression as a message handler.
 
 Both `WeakReferenceMessenger` and `StrongReferenceMessenger` also expose a `Default` property that offers a thread-safe implementation built-in into the package. It is also possible to create multiple messenger instances if needed, for instance if a different one is injected with a DI service provider into a different module of the app (for instance, multiple windows running in the same process).
 
@@ -41,7 +41,7 @@ public class LoggedInUserChangedMessage : ValueChangedMessage<User>
 WeakReferenceMessenger.Default.Register<LoggedInUserChangedMessage>(this, (r, m) =>
 {
     // Handle the message here, with r being the recipient and m being the
-    // input messenger. Using the recipient passed as input makes it so that
+    // input message. Using the recipient passed as input makes it so that
     // the lambda expression doesn't capture "this", improving performance.
 });
 
@@ -93,7 +93,7 @@ WeakReferenceMessenger.Default.Send(new LoggedInUserChangedMessage(user));
 
 ## Using request messages
 
-Another useful feature of messenger instances is that they can also be used to request values from a module to another. In order to do so, the package includes a base [`RequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.RequestMessage-1) class, which can be used like so:
+Another useful feature of messenger instances is that they can also be used to request values from a module to another. In order to do so, the package includes a base [`RequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.RequestMessage-1) class, which can be used like so:
 
 ```csharp
 // Create a message
@@ -116,7 +116,7 @@ User user = WeakReferenceMessenger.Default.Send<LoggedInUserRequestMessage>();
 
 The `RequestMessage<T>` class includes an implicit converter that makes the conversion from a `LoggedInUserRequestMessage` to its contained `User` object possible. This will also check that a response has been received for the message, and throw an exception if that's not the case. It is also possible to send request messages without this mandatory response guarantee: just store the returned message in a local variable, and then manually check whether a response value is available or not. Doing so will not trigger the automatic exception if a response is not received when the `Send` method returns.
 
-The same namespace also includes base requests message for other scenarios: [`AsyncRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncRequestMessage-1), [`CollectionRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.CollectionRequestMessage-1) and [`AsyncCollectionRequestMessage<T>`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncCollectionRequestMessage-1).
+The same namespace also includes base requests message for other scenarios: [`AsyncRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncRequestMessage-1), [`CollectionRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.CollectionRequestMessage-1) and [`AsyncCollectionRequestMessage<T>`](/dotnet/api/microsoft.toolkit.mvvm.Messaging.Messages.AsyncCollectionRequestMessage-1).
 Here's how you can use an async request message:
 
 ```csharp
@@ -137,4 +137,5 @@ User user = await WeakReferenceMessenger.Default.Send<LoggedInUserRequestMessage
 
 ## Examples
 
-You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
+- Check out the [sample app](https://github.com/windows-toolkit/MVVM-Samples) (for multiple UI frameworks) to see the MVVM Toolkit in action.
+- You can also find more examples in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/rel/7.1.0/UnitTests/UnitTests.Shared/Mvvm).

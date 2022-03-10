@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:MvvmSampleUwp.Controls">
+
+    <!--  Operator button  -->
+    <Style TargetType="local:DocumentationBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DocumentationBlock">
+                    <Border
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+                        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+                        BorderThickness="1"
+                        CornerRadius="4">
+                        <controls:MarkdownTextBlock
+                            Name="PART_MarkdownTextBlock"
+                            Padding="12"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            Header2FontSize="20"
+                            Header2FontWeight="Bold"
+                            Header2Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"
+                            Header2Margin="0,16,0,16"
+                            Text="{TemplateBinding Text}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

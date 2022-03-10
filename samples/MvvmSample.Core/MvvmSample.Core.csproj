@@ -2,51 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>9.0</LangVersion>
-    <Nullable>enable</Nullable>
     <UserSecretsId>4e66f7b4-01a8-4f00-8733-4ae6a08c741f</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
-    <None Remove="Docs\AsyncRelayCommand.md" />
-    <None Remove="Docs\Introduction.md" />
-    <None Remove="Docs\Ioc.md" />
-    <None Remove="Docs\Messenger.md" />
-    <None Remove="Docs\ObservableObject.md" />
-    <None Remove="Docs\ObservableRecipient.md" />
-    <None Remove="Docs\PuttingThingsTogether.md" />
-    <None Remove="Docs\RelayCommand.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Docs\AsyncRelayCommand.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\Introduction.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\Ioc.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\Messenger.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\ObservableObject.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\ObservableRecipient.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\PuttingThingsTogether.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Docs\RelayCommand.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.3" />
-    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.0" />
-    <PackageReference Include="Refit" Version="6.0.38" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview2" />
+    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
+    <PackageReference Include="Refit" Version="6.3.2" />
   </ItemGroup>
 </Project>
