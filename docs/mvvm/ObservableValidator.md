@@ -9,9 +9,9 @@ dev_langs:
 
 # ObservableValidator
 
-The [`ObservableValidator`](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableValidator) is a base class implementing the [`INotifyDataErrorInfo`](https://docs.microsoft.com/dotnet/api/system.componentmodel.INotifyDataErrorInfo) interface, providing support for validating properties exposed to other application modules. It also inherits from `ObservableObject`, so it implements [`INotifyPropertyChanged`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging) as well. It can be used as a starting point for all kinds of objects that need to support both property change notifications and property validation.
+The [`ObservableValidator`](/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableValidator) is a base class implementing the [`INotifyDataErrorInfo`](/dotnet/api/system.componentmodel.INotifyDataErrorInfo) interface, providing support for validating properties exposed to other application modules. It also inherits from `ObservableObject`, so it implements [`INotifyPropertyChanged`](/dotnet/api/system.componentmodel.inotifypropertychanged) and [`INotifyPropertyChanging`](/dotnet/api/system.componentmodel.inotifypropertychanging) as well. It can be used as a starting point for all kinds of objects that need to support both property change notifications and property validation.
 
-> **Platform APIs:** [ObservableValidator](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableValidator), [ObservableObject](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject)
+> **Platform APIs:** [ObservableValidator](/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableValidator), [ObservableObject](/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject)
 
 ## How it works
 
@@ -21,9 +21,9 @@ The [`ObservableValidator`](https://docs.microsoft.com/dotnet/api/microsoft.tool
 - It provides a series of additional `SetProperty` overloads (on top of the ones provided by the base `ObservableObject` class), that offer the ability of automatically validating properties and raising the necessary events before updating their values.
 - It exposes a number of `TrySetProperty` overloads, that are similar to `SetProperty` but with the ability of only updating the target property if the validation is successful, and to return the generated errors (if any) for further inspection.
 - It exposes the `ValidateProperty` method, which can be useful to manually trigger the validation of a specific property in case its value has not been updated but its validation is dependent on the value of another property that has instead been updated.
-- It exposes the `ValidateAllProperties` method, which automatically executes the validation of all public instance properties in the current instance, provided they have at least one [`[ValidationAttribute]`](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationattribute) applied to them.
+- It exposes the `ValidateAllProperties` method, which automatically executes the validation of all public instance properties in the current instance, provided they have at least one [`[ValidationAttribute]`](/dotnet/api/system.componentmodel.dataannotations.validationattribute) applied to them.
 - It exposes a `ClearAllErrors` method that can be useful when resetting a model bound to some form that the user might want to fill in again.
-- It offers a number of constructors that allow passing different parameters to initialize the [`ValidationContext`](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext) instance that will be used to validate properties. This can be especially useful when using custom validation attributes that might require additional services or options to work correctly.
+- It offers a number of constructors that allow passing different parameters to initialize the [`ValidationContext`](/dotnet/api/system.componentmodel.dataannotations.validationcontext) instance that will be used to validate properties. This can be especially useful when using custom validation attributes that might require additional services or options to work correctly.
 
 ## Simple property
 
@@ -49,7 +49,7 @@ Here we are calling the `SetProperty<T>(ref T, T, bool, string)` method exposed 
 
 ## Custom validation methods
 
-Sometimes validating a property requires a viewmodel to have access to additional services, data, or other APIs. There are different ways to add custom validation to a property, depending on the scenario and the level of flexibility that is required. Here is an example of how the [`[CustomValidationAttribute]`](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.customvalidationattribute) type can be used to indicate that a specific method needs to be invoked to perform additional validation of a property:
+Sometimes validating a property requires a viewmodel to have access to additional services, data, or other APIs. There are different ways to add custom validation to a property, depending on the scenario and the level of flexibility that is required. Here is an example of how the [`[CustomValidationAttribute]`](/dotnet/api/system.componentmodel.dataannotations.customvalidationattribute) type can be used to indicate that a specific method needs to be invoked to perform additional validation of a property:
 
 ```csharp
 public class RegistrationForm : ObservableValidator
@@ -156,4 +156,5 @@ In this case, we have two numerical properties that must be in a specific range 
 
 ## Examples
 
-You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
+- Check out the [sample app](https://github.com/windows-toolkit/MVVM-Samples) (for multiple UI frameworks) to see the MVVM Toolkit in action.
+- You can also find more examples in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/rel/7.1.0/UnitTests/UnitTests.Shared/Mvvm).
