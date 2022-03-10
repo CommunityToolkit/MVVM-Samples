@@ -16,8 +16,10 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
+  displayName: Install NuGet tool
 
 - task: NuGetCommand@2
+  displayName: Restore solution(s)
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
@@ -25,6 +27,7 @@ steps:
     nugetConfigPath: ./samples/nuget.config
 
 - task: VSBuild@1
+  displayName: Build UWP solution
   inputs:
     platform: 'x86'
     solution: '$(solutionUwp)'
@@ -32,6 +35,7 @@ steps:
     msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
 - task: VSBuild@1
+  displayName: Build Xamarin.Forms solution
   inputs:
     platform: 'Any CPU'
     solution: '$(solutionXf)'
