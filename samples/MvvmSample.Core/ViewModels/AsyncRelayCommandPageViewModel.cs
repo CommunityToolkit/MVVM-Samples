@@ -5,22 +5,21 @@
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 
-namespace MvvmSample.Core.ViewModels
+namespace MvvmSample.Core.ViewModels;
+
+public class AsyncRelayCommandPageViewModel : SamplePageViewModel
 {
-    public class AsyncRelayCommandPageViewModel : SamplePageViewModel
+    public AsyncRelayCommandPageViewModel()
     {
-        public AsyncRelayCommandPageViewModel()
-        {
-            DownloadTextCommand = new AsyncRelayCommand(DownloadTextAsync);
-        }
+        DownloadTextCommand = new AsyncRelayCommand(DownloadTextAsync);
+    }
 
-        public IAsyncRelayCommand DownloadTextCommand { get; }
+    public IAsyncRelayCommand DownloadTextCommand { get; }
 
-        private async Task<string> DownloadTextAsync()
-        {
-            await Task.Delay(3000); // Simulate a web request
+    private async Task<string> DownloadTextAsync()
+    {
+        await Task.Delay(3000); // Simulate a web request
 
-            return "Hello world!";
-        }
+        return "Hello world!";
     }
 }

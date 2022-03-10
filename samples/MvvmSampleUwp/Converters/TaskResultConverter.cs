@@ -8,29 +8,28 @@ using Windows.UI.Xaml.Data;
 
 #nullable enable
 
-namespace Microsoft.Toolkit.Uwp.UI.Converters
+namespace Microsoft.Toolkit.Uwp.UI.Converters;
+
+/// <summary>
+/// Custom version of the converter from the Toolkit, with a bug fix.
+/// This should be moved over to the Toolkit in the next release.
+/// </summary>
+public sealed class TaskResultConverter2 : IValueConverter
 {
-    /// <summary>
-    /// Custom version of the converter from the Toolkit, with a bug fix.
-    /// This should be moved over to the Toolkit in the next release.
-    /// </summary>
-    public sealed class TaskResultConverter2 : IValueConverter
+    /// <inheritdoc/>
+    public object? Convert(object? value, Type? targetType, object? parameter, string? language)
     {
-        /// <inheritdoc/>
-        public object? Convert(object? value, Type? targetType, object? parameter, string? language)
+        if (value is Task task)
         {
-            if (value is Task task)
-            {
-                return task.GetResultOrDefault();
-            }
-
-            return null;
+            return task.GetResultOrDefault();
         }
 
-        /// <inheritdoc/>
-        public object ConvertBack(object? value, Type? targetType, object? parameter, string? language)
-        {
-            throw new NotImplementedException();
-        }
+        return null;
+    }
+
+    /// <inheritdoc/>
+    public object ConvertBack(object? value, Type? targetType, object? parameter, string? language)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -5,29 +5,28 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmSampleUwp.Controls
+namespace MvvmSampleUwp.Controls;
+
+/// <summary>
+/// A simple control that acts as a container for a documentation block.
+/// </summary>
+public sealed class DocumentationBlock : ContentControl
 {
     /// <summary>
-    /// A simple control that acts as a container for a documentation block.
+    /// Gets or sets the <see cref="string"/> representing the text to display.
     /// </summary>
-    public sealed class DocumentationBlock : ContentControl
+    public string Text
     {
-        /// <summary>
-        /// Gets or sets the <see cref="string"/> representing the text to display.
-        /// </summary>
-        public string Text
-        {
-            get => (string)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
-        }
-
-        /// <summary>
-        /// The <see cref="DependencyProperty"/> backing <see cref="Text"/>.
-        /// </summary>
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
-            nameof(Text),
-            typeof(string),
-            typeof(DocumentationBlock),
-            new PropertyMetadata(default(string)));
+        get => (string)GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
     }
+
+    /// <summary>
+    /// The <see cref="DependencyProperty"/> backing <see cref="Text"/>.
+    /// </summary>
+    public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
+        nameof(Text),
+        typeof(string),
+        typeof(DocumentationBlock),
+        new PropertyMetadata(default(string)));
 }

@@ -11,22 +11,21 @@ using Windows.Storage;
 
 #nullable enable
 
-namespace MvvmSampleUwp.Services
+namespace MvvmSampleUwp.Services;
+
+/// <summary>
+/// A <see langword="class"/> that implements the <see cref="IFilesService"/> <see langword="interface"/> using UWP APIs.
+/// </summary>
+public sealed class FilesService : IFilesService
 {
-    /// <summary>
-    /// A <see langword="class"/> that implements the <see cref="IFilesService"/> <see langword="interface"/> using UWP APIs.
-    /// </summary>
-    public sealed class FilesService : IFilesService
+    /// <inheritdoc/>
+    public string InstallationPath => Package.Current.InstalledLocation.Path;
+
+    /// <inheritdoc/>
+    public async Task<Stream> OpenForReadAsync(string path)
     {
-        /// <inheritdoc/>
-        public string InstallationPath => Package.Current.InstalledLocation.Path;
+        StorageFile file = await StorageFile.GetFileFromPathAsync(Path.Combine(InstallationPath, path));
 
-        /// <inheritdoc/>
-        public async Task<Stream> OpenForReadAsync(string path)
-        {
-            StorageFile file = await StorageFile.GetFileFromPathAsync(Path.Combine(InstallationPath, path));
-
-            return await file.OpenStreamForReadAsync();
-        }
+        return await file.OpenStreamForReadAsync();
     }
 }
