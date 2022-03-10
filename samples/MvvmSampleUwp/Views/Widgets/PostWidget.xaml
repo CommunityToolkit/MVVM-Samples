@@ -15,7 +15,11 @@
     </UserControl.DataContext>
 
     <!--  Post  -->
-    <Grid BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="1">
+    <Grid
+        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+        BorderThickness="1"
+        CornerRadius="4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -35,7 +39,7 @@
         <Grid
             Grid.Row="0"
             Padding="16"
-            Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
+            Background="{ThemeResource SystemControlAcrylicElementBrush}"
             ColumnSpacing="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -49,7 +53,7 @@
                 TextWrapping="WrapWholeWords" />
             <controls:ImageEx
                 Grid.Column="1"
-                Width="160"
+                Height="52"
                 HorizontalAlignment="Right"
                 Source="{x:Bind ViewModel.Post.Thumbnail, Mode=OneWay}"
                 Stretch="Uniform" />

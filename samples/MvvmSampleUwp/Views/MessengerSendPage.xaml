@@ -30,8 +30,9 @@
                         <!--  Sender module  -->
                         <Border
                             Padding="8"
-                            BorderBrush="#40FFFFFF"
-                            BorderThickness="2"
+                            Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+                            BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+                            BorderThickness="1"
                             CornerRadius="4">
                             <StackPanel Spacing="8">
                                 <TextBlock Text="{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}" />
@@ -42,8 +43,9 @@
                         <!--  Receiver module  -->
                         <Border
                             Padding="8"
-                            BorderBrush="#40FFFFFF"
-                            BorderThickness="2"
+                            Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+                            BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+                            BorderThickness="1"
                             CornerRadius="4">
                             <StackPanel Spacing="8">
                                 <TextBlock Text="{x:Bind ViewModel.ReceiverViewModel.Username, Mode=OneWay}" />
@@ -55,7 +57,7 @@
 &lt;StackPanel Spacing=&quot;8&quot;&gt;
 
     &lt;!--Sender module--&gt;
-    &lt;Border BorderBrush=&quot;#40FFFFFF&quot; BorderThickness=&quot;2&quot; CornerRadius=&quot;4&quot; Padding=&quot;8&quot;&gt;
+    &lt;Border BorderBrush=&quot;{ThemeResource SystemChromeBlackLowColor}&quot; BorderThickness=&quot;1&quot; CornerRadius=&quot;4&quot; Padding=&quot;8&quot;&gt;
         &lt;StackPanel Spacing=&quot;8&quot;&gt;
             &lt;TextBlock Text=&quot;{x:Bind ViewModel.SenderViewModel.Username, Mode=OneWay}&quot;/&gt;
             &lt;Button
@@ -65,7 +67,7 @@
     &lt;/Border&gt;
 
     &lt;!--Receiver module--&gt;
-    &lt;Border BorderBrush=&quot;#40FFFFFF&quot; BorderThickness=&quot;2&quot; CornerRadius=&quot;4&quot; Padding=&quot;8&quot;&gt;
+    &lt;Border BorderBrush=&quot;{ThemeResource SystemChromeBlackLowColor}&quot; BorderThickness=&quot;1&quot; CornerRadius=&quot;4&quot; Padding=&quot;8&quot;&gt;
         &lt;StackPanel Spacing=&quot;8&quot;&gt;
             &lt;TextBlock Text=&quot;{x:Bind ViewModel.ReceiverViewModel.Username, Mode=OneWay}&quot;/&gt;
         &lt;/StackPanel&gt;

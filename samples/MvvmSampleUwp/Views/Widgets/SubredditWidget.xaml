@@ -19,7 +19,11 @@
     </UserControl.DataContext>
 
     <!--  Feed  -->
-    <Grid BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="1">
+    <Grid
+        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+        BorderThickness="1"
+        CornerRadius="4">
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="8" />
@@ -27,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <!--  Header with topic selector and refresh button  -->
-        <Border Padding="12" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+        <Border Padding="12" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <StackPanel Orientation="Horizontal" Spacing="16">
                 <ComboBox
                     MinWidth="240"
@@ -52,13 +56,6 @@
             ItemsSource="{x:Bind ViewModel.Posts}"
             ScrollViewer.CanContentRenderOutsideBounds="True"
             SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="#30808080" />
-                    <Setter Property="Margin" Value="0,2,0,2" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Post">
                     <Grid Padding="16" ColumnSpacing="8">
@@ -74,8 +71,9 @@
                             TextWrapping="WrapWholeWords" />
                         <controls:ImageEx
                             Grid.Column="1"
-                            Width="120"
+                            Height="52"
                             HorizontalAlignment="Right"
+                            CornerRadius="4"
                             Source="{x:Bind Thumbnail}"
                             Stretch="Uniform" />
                     </Grid>
