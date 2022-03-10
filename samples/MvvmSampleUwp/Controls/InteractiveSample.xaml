@@ -41,18 +41,22 @@
                                     Content="{TemplateBinding Content}" />
                             </muxc:TabViewItem>
                             <muxc:TabViewItem Header="See XAML" IsClosable="False">
-                                <ScrollViewer>
+                                <ScrollViewer Background="#FF202020">
                                     <controls:MarkdownTextBlock
                                         Padding="8"
-                                        Background="#FF202020"
+                                        Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
                                         Text="{TemplateBinding XamlCode}" />
                                 </ScrollViewer>
                             </muxc:TabViewItem>
                             <muxc:TabViewItem Header="See C#" IsClosable="False">
-                                <ScrollViewer>
+                                <ScrollViewer Background="#FF202020">
                                     <controls:MarkdownTextBlock
                                         Padding="8"
-                                        Background="#FF202020"
+                                        Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
                                         Text="{TemplateBinding CSharpCode}" />
                                 </ScrollViewer>
                             </muxc:TabViewItem>

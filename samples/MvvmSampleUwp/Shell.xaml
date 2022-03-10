@@ -20,6 +20,7 @@
             x:Name="NavigationView"
             BackRequested="NavigationView_OnBackRequested"
             IsBackEnabled="False"
+            IsBackButtonVisible="Auto"
             IsSettingsVisible="False"
             IsTitleBarAutoPaddingEnabled="False"
             ItemInvoked="NavigationView_OnItemInvoked">
