@@ -62,6 +62,11 @@
                             Icon="Sort"
                             ToolTipService.ToolTip="A base class for observable objects, with built-in support for INotifyPropertyChanged." />
                         <muxc:NavigationViewItem
+                            x:Name="ObservableValidatorItem"
+                            Content="ObservableValidator"
+                            Icon="AllApps"
+                            ToolTipService.ToolTip="A base class for validator objects, with built-in support for INotifyDataErrorInfo." />
+                        <muxc:NavigationViewItem
                             Content="Commands"
                             Icon="Calendar"
                             IsExpanded="True"

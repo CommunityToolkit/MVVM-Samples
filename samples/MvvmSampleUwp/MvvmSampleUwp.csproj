@@ -139,6 +139,9 @@
     <Compile Include="Views\BuildingTheUIPage.xaml.cs">
       <DependentUpon>BuildingTheUIPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ObservableValidatorPage.xaml.cs">
+      <DependentUpon>ObservableValidatorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RedditServicePage.xaml.cs">
       <DependentUpon>RedditServicePage.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BuildingTheUIPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ObservableValidatorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
