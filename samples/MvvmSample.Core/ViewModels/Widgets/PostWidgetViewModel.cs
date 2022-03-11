@@ -7,32 +7,31 @@ using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using MvvmSample.Core.Models;
 
-namespace MvvmSample.Core.ViewModels.Widgets
+namespace MvvmSample.Core.ViewModels.Widgets;
+
+/// <summary>
+/// A viewmodel for a post widget.
+/// </summary>
+public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
 {
+    private Post? post;
+
     /// <summary>
-    /// A viewmodel for a post widget.
+    /// Gets the currently selected post, if any.
     /// </summary>
-    public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<Post>>
+    public Post? Post
     {
-        private Post? post;
+        get => post;
+        private set => SetProperty(ref post, value);
+    }
 
-        /// <summary>
-        /// Gets the currently selected post, if any.
-        /// </summary>
-        public Post? Post
+    /// <inheritdoc/>
+    public void Receive(PropertyChangedMessage<Post> message)
+    {
+        if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &&
+            message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
         {
-            get => post;
-            private set => SetProperty(ref post, value);
-        }
-
-        /// <inheritdoc/>
-        public void Receive(PropertyChangedMessage<Post> message)
-        {
-            if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &&
-                message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
-            {
-                Post = message.NewValue;
-            }
+            Post = message.NewValue;
         }
     }
 }

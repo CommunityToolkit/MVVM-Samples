@@ -13,7 +13,7 @@ A common pattern that can be used to increase modularity in the codebase of an a
 
 The MVVM Toolkit doesn't provide built-in APIs to facilitate the usage of this pattern, as there already exist dedicated libraries specifically for this such as the `Microsoft.Extensions.DependencyInjection` package, which provides a fully featured and powerful DI set of APIs, and acts as an easy to setup and use `IServiceProvider`. The following guide will refer to this library and provide a series of examples of how to integrate it into applications using the MVVM pattern.
 
-> **Platform APIs:** [`Ioc`](Microsoft.Toolkit.Mvvm.DependencyInjection.Ioc)
+> **Platform APIs:** [`Ioc`](/dotnet/api/Microsoft.Toolkit.Mvvm.DependencyInjection.Ioc)
 
 ## Configure and resolve services
 
@@ -147,8 +147,9 @@ public ContactsView()
 
 ## More docs
 
-For more info about `Microsoft.Extensions.DependencyInjection`, see [here](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+For more info about `Microsoft.Extensions.DependencyInjection`, see [here](/aspnet/core/fundamentals/dependency-injection).
 
 ## Examples
 
-You can find more examples in the [unit tests](https://github.com/Microsoft/WindowsCommunityToolkit//blob/master/UnitTests/UnitTests.Shared/Mvvm).
+- Check out the [sample app](https://github.com/windows-toolkit/MVVM-Samples) (for multiple UI frameworks) to see the MVVM Toolkit in action.
+- You can also find more examples in the [unit tests](https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/rel/7.1.0/UnitTests/UnitTests.Shared/Mvvm).
