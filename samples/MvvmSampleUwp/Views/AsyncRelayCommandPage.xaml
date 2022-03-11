@@ -13,6 +13,9 @@
     xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
+    <Page.DataContext>
+        <viewModels:AsyncRelayCommandPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="AsyncRelayCommand"/>

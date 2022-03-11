@@ -11,6 +11,9 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
+    <Page.DataContext>
+        <viewModels:ObservableObjectPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="ObservableObject"/>
