@@ -50,6 +50,11 @@ public partial class ObservableValidatorPageViewModel : SamplePageViewModel
         [EmailAddress]
         private string? email;
 
+        [ObservableProperty]
+        [Required]
+        [Phone]
+        private string? phoneNumber;
+
         [ICommand]
         private void Submit()
         {

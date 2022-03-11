@@ -16,6 +16,7 @@
                 Width="560"
                 HorizontalAlignment="Left"
                 Header="Enter your first:"
+                InputScope="NameOrPhoneNumber"
                 IsSpellCheckEnabled="False"
                 PlaceholderText="First name"
                 Text="{x:Bind ViewModel.Form.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -23,6 +24,7 @@
                 Width="560"
                 HorizontalAlignment="Left"
                 Header="Enter your last name:"
+                InputScope="NameOrPhoneNumber"
                 IsSpellCheckEnabled="False"
                 PlaceholderText="Last name"
                 Text="{x:Bind ViewModel.Form.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -30,9 +32,18 @@
                 Width="560"
                 HorizontalAlignment="Left"
                 Header="Enter your email address:"
+                InputScope="EmailNameOrAddress"
                 IsSpellCheckEnabled="False"
                 PlaceholderText="Email"
                 Text="{x:Bind ViewModel.Form.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox
+                Width="560"
+                HorizontalAlignment="Left"
+                Header="Enter your phone number:"
+                InputScope="NameOrPhoneNumber"
+                IsSpellCheckEnabled="False"
+                PlaceholderText="Phone number"
+                Text="{x:Bind ViewModel.Form.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button Command="{x:Bind ViewModel.Form.SubmitCommand}" Content="Submit" />
 
@@ -62,7 +73,7 @@
                     Message="The form was filled in with some errors."
                     Severity="Error">
                     <muxc:InfoBar.ActionButton>
-                        <Button Content="Show errors" Command="{x:Bind ViewModel.Form.ShowErrorsCommand}" />
+                        <Button Command="{x:Bind ViewModel.Form.ShowErrorsCommand}" Content="Show errors" />
                     </muxc:InfoBar.ActionButton>
                     <interactivity:Interaction.Behaviors>
                         <interactions:EventTriggerBehavior EventName="FormSubmissionFailed" SourceObject="{x:Bind ViewModel.Form}">
