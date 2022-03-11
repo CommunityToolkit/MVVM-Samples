@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using MvvmSample.Core.Models;
 using MvvmSample.Core.Services;
@@ -110,7 +109,7 @@ public sealed class SubredditWidgetViewModel : ObservableRecipient
 
                 Posts.Clear();
 
-                foreach (var item in response.Data!.Items!)
+                foreach (var item in response.Data!.Children!)
                 {
                     Posts.Add(item.Data!);
                 }

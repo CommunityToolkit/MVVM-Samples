@@ -2,9 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace MvvmSample.Core.Models;
 
@@ -16,7 +15,6 @@ public sealed class PostsQueryResponse
     /// <summary>
     /// Gets or sets the listing data for the response.
     /// </summary>
-    [JsonPropertyName("data")]
     public PostListing? Data { get; set; }
 }
 
@@ -28,8 +26,7 @@ public sealed class PostListing
     /// <summary>
     /// Gets or sets the items in this listing.
     /// </summary>
-    [JsonPropertyName("children")]
-    public IList<PostData>? Items { get; set; }
+    public PostData[]? Children { get; set; }
 }
 
 /// <summary>
@@ -40,7 +37,6 @@ public sealed class PostData
     /// <summary>
     /// Gets or sets the <see cref="Post"/> instance.
     /// </summary>
-    [JsonPropertyName("data")]
     public Post? Data { get; set; }
 }
 
@@ -52,13 +48,11 @@ public sealed class Post
     /// <summary>
     /// Gets or sets the title of the post.
     /// </summary>
-    [JsonPropertyName("title")]
     public string? Title { get; set; }
 
     /// <summary>
     /// Gets or sets the URL to the post thumbnail, if present.
     /// </summary>
-    [JsonPropertyName("thumbnail")]
     public string? Thumbnail { get; set; }
 
     /// <summary>

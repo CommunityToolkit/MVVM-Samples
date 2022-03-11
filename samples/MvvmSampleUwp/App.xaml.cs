@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSampleUwp.Services;
-using Refit;
+using RestEase;
 using MvvmSampleUwp.Helpers;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels.Widgets;
@@ -47,7 +47,7 @@ sealed partial class App : Application
                 //Services
                 .AddSingleton<IFilesService, FilesService>()
                 .AddSingleton<ISettingsService, SettingsService>()
-                .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
                 //ViewModels
                 .AddTransient<PostWidgetViewModel>()
                 .AddTransient<SubredditWidgetViewModel>()

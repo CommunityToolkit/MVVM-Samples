@@ -4,7 +4,7 @@ using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels;
 using MvvmSample.Core.ViewModels.Widgets;
 using MvvmSampleXF.Services;
-using Refit;
+using RestEase;
 using Xamarin.Forms;
 
 namespace MvvmSampleXF
@@ -26,7 +26,7 @@ namespace MvvmSampleXF
                     //Services
                     .AddSingleton<IFilesService, FileService>()
                     .AddSingleton<ISettingsService, SettingsService>()
-                    .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                    .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
                     //ViewModels
                     .AddTransient<PostWidgetViewModel>()
                     .AddTransient<SubredditWidgetViewModel>()
