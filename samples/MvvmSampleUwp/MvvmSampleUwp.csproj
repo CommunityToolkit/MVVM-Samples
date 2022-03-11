@@ -128,6 +128,7 @@
     <Compile Include="Converters\TaskResultConverter.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Shell.xaml.cs">
