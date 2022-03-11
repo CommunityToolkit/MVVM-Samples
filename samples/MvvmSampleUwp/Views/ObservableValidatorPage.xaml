@@ -23,7 +23,7 @@
             <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Simple property'), Mode=OneWay}" />
             <controls:InteractiveSample xml:space="preserve">
                 <controls:InteractiveSample.Content>
-                    <widgets:ValidationFormWidget DataContext="{x:Bind ViewModel.Form}" />
+                    <widgets:ValidationFormWidget />
                 </controls:InteractiveSample.Content>
                 <controls:InteractiveSample.XamlCode>
 &lt;StackPanel Spacing=&quot;16&quot;&gt;
@@ -98,11 +98,11 @@
 &lt;/StackPanel&gt;
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
-public partial class ObservableForm : ObservableValidator
+public partial class ValidationFormWidgetViewModel : ObservableValidator
 {
     private readonly IDialogService DialogService;
 
-    public ObservableForm(IDialogService dialogService)
+    public ValidationFormWidgetViewModel(IDialogService dialogService)
     {
         DialogService = dialogService;
     }
