@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MvvmSample.Core.Models;
 using RestEase;
 
-namespace MvvmSample.Core.Services
+namespace MvvmSample.Core.Services;
 
 /// <summary>
 /// An interface for a simple Reddit service.
