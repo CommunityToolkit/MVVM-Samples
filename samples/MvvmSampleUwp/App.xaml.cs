@@ -45,6 +45,7 @@ sealed partial class App : Application
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 //Services
+                .AddSingleton<IDialogService, DialogService>()
                 .AddSingleton<IFilesService, FilesService>()
                 .AddSingleton<ISettingsService, SettingsService>()
                 .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
@@ -55,6 +56,8 @@ sealed partial class App : Application
                 .AddTransient<IocPageViewModel>()
                 .AddTransient<MessengerPageViewModel>()
                 .AddTransient<ObservableObjectPageViewModel>()
+                .AddTransient<ObservableValidatorPageViewModel>()
+                .AddTransient<ValidationFormWidgetViewModel>()
                 .AddTransient<RelayCommandPageViewModel>()
                 .AddTransient<SamplePageViewModel>()
                 .BuildServiceProvider());

@@ -1,0 +1,164 @@
+﻿<Page
+    x:Class="MvvmSampleUwp.Views.ObservableValidatorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSampleUwp.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:widgets="using:MvvmSampleUwp.Views.Widgets"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="ObservableValidator" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
+        <StackPanel Spacing="16">
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('ObservableValidator'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Simple property'), Mode=OneWay}" />
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <widgets:ValidationFormWidget />
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+&lt;StackPanel Spacing=&quot;16&quot;&gt;
+
+    &lt;!--  Text forms  --&gt;
+    &lt;controls:ValidationTextBox
+        HeaderText=&quot;Enter your first:&quot;
+        PlaceholderText=&quot;First name&quot;
+        PropertyName=&quot;FirstName&quot;
+        Text=&quot;{x:Bind ViewModel.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot; /&gt;
+    &lt;controls:ValidationTextBox
+        HeaderText=&quot;Enter your last name:&quot;
+        PlaceholderText=&quot;Last name&quot;
+        PropertyName=&quot;LastName&quot;
+        Text=&quot;{x:Bind ViewModel.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot; /&gt;
+    &lt;controls:ValidationTextBox
+        HeaderText=&quot;Enter your email address:&quot;
+        PlaceholderText=&quot;Email&quot;
+        PropertyName=&quot;Email&quot;
+        Text=&quot;{x:Bind ViewModel.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot; /&gt;
+    &lt;controls:ValidationTextBox
+        HeaderText=&quot;Enter your phone number:&quot;
+        PlaceholderText=&quot;Phone number&quot;
+        PropertyName=&quot;PhoneNumber&quot;
+        Text=&quot;{x:Bind ViewModel.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot; /&gt;
+
+    &lt;!--  Submit command  --&gt;
+    &lt;Button Command=&quot;{x:Bind ViewModel.SubmitCommand}&quot; Content=&quot;Submit&quot; /&gt;
+
+    &lt;!--  Popups  --&gt;
+    &lt;Grid&gt;
+        &lt;muxc:InfoBar
+            x:Name=&quot;SuccessInfoBar&quot;
+            Title=&quot;Success&quot;
+            Message=&quot;The form was filled in correctly.&quot;
+            Severity=&quot;Success&quot;&gt;
+            &lt;interactivity:Interaction.Behaviors&gt;
+                &lt;interactions:EventTriggerBehavior EventName=&quot;FormSubmissionCompleted&quot; SourceObject=&quot;{x:Bind ViewModel}&quot;&gt;
+                    &lt;interactions:ChangePropertyAction
+                        PropertyName=&quot;IsOpen&quot;
+                        TargetObject=&quot;{x:Bind SuccessInfoBar}&quot;
+                        Value=&quot;True&quot; /&gt;
+                    &lt;interactions:ChangePropertyAction
+                        PropertyName=&quot;IsOpen&quot;
+                        TargetObject=&quot;{x:Bind FailureInfoBar}&quot;
+                        Value=&quot;False&quot; /&gt;
+                &lt;/interactions:EventTriggerBehavior&gt;
+            &lt;/interactivity:Interaction.Behaviors&gt;
+        &lt;/muxc:InfoBar&gt;
+        &lt;muxc:InfoBar
+            x:Name=&quot;FailureInfoBar&quot;
+            Title=&quot;Error&quot;
+            Message=&quot;The form was filled in with some errors.&quot;
+            Severity=&quot;Error&quot;&gt;
+            &lt;muxc:InfoBar.ActionButton&gt;
+                &lt;Button Command=&quot;{x:Bind ViewModel.ShowErrorsCommand}&quot; Content=&quot;Show errors&quot; /&gt;
+            &lt;/muxc:InfoBar.ActionButton&gt;
+            &lt;interactivity:Interaction.Behaviors&gt;
+                &lt;interactions:EventTriggerBehavior EventName=&quot;FormSubmissionFailed&quot; SourceObject=&quot;{x:Bind ViewModel}&quot;&gt;
+                    &lt;interactions:ChangePropertyAction
+                        PropertyName=&quot;IsOpen&quot;
+                        TargetObject=&quot;{x:Bind SuccessInfoBar}&quot;
+                        Value=&quot;False&quot; /&gt;
+                    &lt;interactions:ChangePropertyAction
+                        PropertyName=&quot;IsOpen&quot;
+                        TargetObject=&quot;{x:Bind FailureInfoBar}&quot;
+                        Value=&quot;True&quot; /&gt;
+                &lt;/interactions:EventTriggerBehavior&gt;
+            &lt;/interactivity:Interaction.Behaviors&gt;
+        &lt;/muxc:InfoBar&gt;
+    &lt;/Grid&gt;
+&lt;/StackPanel&gt;
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+public partial class ValidationFormWidgetViewModel : ObservableValidator
+{
+    private readonly IDialogService DialogService;
+
+    public ValidationFormWidgetViewModel(IDialogService dialogService)
+    {
+        DialogService = dialogService;
+    }
+
+    public event EventHandler? FormSubmissionCompleted;
+    public event EventHandler? FormSubmissionFailed;
+
+    [ObservableProperty]
+    [Required]
+    [MinLength(2)]
+    [MaxLength(100)]
+    private string? firstName;
+
+    [ObservableProperty]
+    [Required]
+    [MinLength(2)]
+    [MaxLength(100)]
+    private string? lastName;
+
+    [ObservableProperty]
+    [Required]
+    [EmailAddress]
+    private string? email;
+
+    [ObservableProperty]
+    [Required]
+    [Phone]
+    private string? phoneNumber;
+
+    [ICommand]
+    private void Submit()
+    {
+        ValidateAllProperties();
+
+        if (HasErrors)
+        {
+            FormSubmissionFailed?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            FormSubmissionCompleted?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    [ICommand]
+    private void ShowErrors()
+    {
+        string message = string.Join(Environment.NewLine, GetErrors().Select(e =&gt; e.ErrorMessage));
+
+        _ = DialogService.ShowMessageDialogAsync(&quot;Validation errors&quot;, message);
+    }
+}
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Custom validation methods'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Custom validation attributes'), Mode=OneWay}" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

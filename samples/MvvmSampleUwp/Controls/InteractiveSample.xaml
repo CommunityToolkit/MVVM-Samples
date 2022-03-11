@@ -5,7 +5,6 @@
     xmlns:local="using:MvvmSampleUwp.Controls"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <!--  Operator button  -->
     <Style TargetType="local:InteractiveSample">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

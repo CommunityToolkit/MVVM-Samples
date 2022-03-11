@@ -1,0 +1,85 @@
+﻿<UserControl
+    x:Class="MvvmSampleUwp.Views.Widgets.ValidationFormWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSampleUwp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="16">
+
+        <!--  Text forms  -->
+        <controls:ValidationTextBox
+            HeaderText="Enter your first:"
+            PlaceholderText="First name"
+            PropertyName="FirstName"
+            Text="{x:Bind ViewModel.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <controls:ValidationTextBox
+            HeaderText="Enter your last name:"
+            PlaceholderText="Last name"
+            PropertyName="LastName"
+            Text="{x:Bind ViewModel.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <controls:ValidationTextBox
+            HeaderText="Enter your email address:"
+            PlaceholderText="Email"
+            PropertyName="Email"
+            Text="{x:Bind ViewModel.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <controls:ValidationTextBox
+            HeaderText="Enter your phone number:"
+            PlaceholderText="Phone number"
+            PropertyName="PhoneNumber"
+            Text="{x:Bind ViewModel.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!--  Submit button  -->
+        <Button Command="{x:Bind ViewModel.SubmitCommand}" Content="Submit" />
+
+        <!--  Popups  -->
+        <Grid>
+            <muxc:InfoBar
+                x:Name="SuccessInfoBar"
+                Title="Success"
+                Message="The form was filled in correctly."
+                Severity="Success">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="FormSubmissionCompleted" SourceObject="{x:Bind ViewModel}">
+                        <interactions:ChangePropertyAction
+                            PropertyName="IsOpen"
+                            TargetObject="{x:Bind SuccessInfoBar}"
+                            Value="True" />
+                        <interactions:ChangePropertyAction
+                            PropertyName="IsOpen"
+                            TargetObject="{x:Bind FailureInfoBar}"
+                            Value="False" />
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </muxc:InfoBar>
+            <muxc:InfoBar
+                x:Name="FailureInfoBar"
+                Title="Error"
+                Message="The form was filled in with some errors."
+                Severity="Error">
+                <muxc:InfoBar.ActionButton>
+                    <Button Command="{x:Bind ViewModel.ShowErrorsCommand}" Content="Show errors" />
+                </muxc:InfoBar.ActionButton>
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="FormSubmissionFailed" SourceObject="{x:Bind ViewModel}">
+                        <interactions:ChangePropertyAction
+                            PropertyName="IsOpen"
+                            TargetObject="{x:Bind SuccessInfoBar}"
+                            Value="False" />
+                        <interactions:ChangePropertyAction
+                            PropertyName="IsOpen"
+                            TargetObject="{x:Bind FailureInfoBar}"
+                            Value="True" />
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </muxc:InfoBar>
+        </Grid>
+    </StackPanel>
+</UserControl>

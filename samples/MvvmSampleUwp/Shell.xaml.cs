@@ -30,6 +30,7 @@ public sealed partial class Shell : UserControl
         {
             new SampleEntry(IntroductionItem, typeof(IntroductionPage)),
             new SampleEntry(ObservableObjectItem, typeof(ObservableObjectPage), "ObservableObject", "observable inotify property changed propertychanging changing"),
+            new SampleEntry(ObservableValidatorItem, typeof(ObservableValidatorPage), "ObservableValidator", "observable form validation validate data error inotify property changed propertychanging changing"),
             new SampleEntry(CommandsItem, typeof(RelayCommandPage), "RelayCommand and RelayCommand<T>", "commands icommand relaycommand binding"),
             new SampleEntry(AsyncCommandsItem, typeof(AsyncRelayCommandPage), "AsyncRelayCommand and AsyncRelayCommand<T>", "asynccommands icommand relaycommand binding asynchronous"),
             new SampleEntry(MessengerItem, typeof(MessengerPage), "Messenger and IMessenger", "messenger messaging message receiver recipient"),
