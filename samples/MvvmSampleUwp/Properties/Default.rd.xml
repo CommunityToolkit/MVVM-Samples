@@ -31,6 +31,8 @@
     <!-- Generated code loaded through reflection -->
     <Type Name="CommunityToolkit.Mvvm.ComponentModel.__Internals.__ObservableValidatorExtensions" Dynamic="Required All" />
     <Type Name="CommunityToolkit.Mvvm.Messaging.__Internals.__IMessengerExtensions" Dynamic="Required All" />
-
+      
+    <!-- Validation properties -->
+    <Type Name="MvvmSample.Core.ViewModels.ObservableValidatorPageViewModel.ObservableForm" Dynamic="Required All" />
   </Application>
 </Directives>
