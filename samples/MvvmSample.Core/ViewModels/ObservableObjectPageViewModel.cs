@@ -11,7 +11,8 @@ namespace MvvmSample.Core.ViewModels;
 
 public class ObservableObjectPageViewModel : SamplePageViewModel
 {
-    public ObservableObjectPageViewModel(IFilesService filesService) : base(filesService)
+    public ObservableObjectPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
         ReloadTaskCommand = new RelayCommand(ReloadTask);
     }

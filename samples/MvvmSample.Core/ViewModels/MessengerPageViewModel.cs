@@ -13,7 +13,8 @@ namespace MvvmSample.Core.ViewModels;
 
 public class MessengerPageViewModel : SamplePageViewModel
 {
-    public MessengerPageViewModel(IFilesService filesService) : base(filesService)
+    public MessengerPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
         RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
         ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);

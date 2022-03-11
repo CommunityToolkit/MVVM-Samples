@@ -10,7 +10,8 @@ namespace MvvmSample.Core.ViewModels;
 
 public class AsyncRelayCommandPageViewModel : SamplePageViewModel
 {
-    public AsyncRelayCommandPageViewModel(IFilesService filesService) : base(filesService)
+    public AsyncRelayCommandPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
         DownloadTextCommand = new AsyncRelayCommand(DownloadTextAsync);
     }

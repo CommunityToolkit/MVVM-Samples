@@ -8,7 +8,8 @@ namespace MvvmSample.Core.ViewModels;
 
 public class IocPageViewModel : SamplePageViewModel
 {
-    public IocPageViewModel(IFilesService filesService) : base(filesService)
+    public IocPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
     }
 }

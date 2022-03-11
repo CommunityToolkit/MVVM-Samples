@@ -10,7 +10,8 @@ namespace MvvmSample.Core.ViewModels;
 
 public class RelayCommandPageViewModel : SamplePageViewModel
 {
-    public RelayCommandPageViewModel(IFilesService filesService) : base(filesService)
+    public RelayCommandPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
         IncrementCounterCommand = new RelayCommand(IncrementCounter);
     }
