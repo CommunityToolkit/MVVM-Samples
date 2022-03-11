@@ -1,0 +1,30 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:MvvmSampleUwp.Controls">
+
+    <Style TargetType="local:ValidationTextBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ValidationTextBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="560" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            HorizontalAlignment="Stretch"
+                            Header="{TemplateBinding HeaderText}"
+                            InputScope="{TemplateBinding InputScope}"
+                            IsSpellCheckEnabled="False"
+                            PlaceholderText="{TemplateBinding PlaceholderText}"
+                            Text="{TemplateBinding Text}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

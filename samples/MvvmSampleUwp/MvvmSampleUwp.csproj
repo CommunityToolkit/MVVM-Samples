@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ValidationTextBox.cs">
+      <DependentUpon>ValidationTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DocumentationBlock.cs">
       <DependentUpon>DocumentationBlock.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ValidationTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DocumentationBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

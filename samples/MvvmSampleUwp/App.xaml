@@ -11,6 +11,7 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="Controls/InteractiveSample.xaml" />
                 <ResourceDictionary Source="Controls/DocumentationBlock.xaml" />
+                <ResourceDictionary Source="Controls/ValidationTextBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Misc resources  -->

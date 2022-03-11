@@ -3,7 +3,6 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:local="using:MvvmSampleUwp.Controls">
 
-    <!--  Operator button  -->
     <Style TargetType="local:DocumentationBlock">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
