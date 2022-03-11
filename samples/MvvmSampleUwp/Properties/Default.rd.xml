@@ -29,10 +29,10 @@
     <Type Name="MvvmSample.Core.Models.Post" Dynamic="Required Public" />
 
     <!-- Generated code loaded through reflection -->
-    <Type Name="CommunityToolkit.Mvvm.ComponentModel.__Internals.__ObservableValidatorExtensions" Dynamic="Required All" />
-    <Type Name="CommunityToolkit.Mvvm.Messaging.__Internals.__IMessengerExtensions" Dynamic="Required All" />
+    <Type Name="CommunityToolkit.Mvvm.ComponentModel.__Internals.__ObservableValidatorExtensions" Dynamic="Required Public" />
+    <Type Name="CommunityToolkit.Mvvm.Messaging.__Internals.__IMessengerExtensions" Dynamic="Required Public" />
       
     <!-- Validation properties -->
-    <Type Name="MvvmSample.Core.ViewModels.ObservableValidatorPageViewModel.ObservableForm" Dynamic="Required All" />
+    <Type Name="MvvmSample.Core.ViewModels.ObservableValidatorPageViewModel.ObservableForm" Dynamic="Required Public" />
   </Application>
 </Directives>
