@@ -9,18 +9,27 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ValidationTextBox">
-                    <Grid>
+                    <Grid ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="560" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBox
+                            Name="PART_TextBox"
                             HorizontalAlignment="Stretch"
                             Header="{TemplateBinding HeaderText}"
-                            InputScope="{TemplateBinding InputScope}"
                             IsSpellCheckEnabled="False"
                             PlaceholderText="{TemplateBinding PlaceholderText}"
                             Text="{TemplateBinding Text}" />
+                        <FontIcon
+                            Name="PART_WarningIcon"
+                            Grid.Column="1"
+                            Margin="0,32,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Foreground="Orange"
+                            Glyph="&#xE814;"
+                            Visibility="Collapsed" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

@@ -14,24 +14,28 @@
     <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
             <controls:ValidationTextBox
+                DataContext="{x:Bind ViewModel.Form}"
                 HeaderText="Enter your first:"
-                InputScope="NameOrPhoneNumber"
                 PlaceholderText="First name"
+                PropertyName="FirstName"
                 Text="{x:Bind ViewModel.Form.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <controls:ValidationTextBox
+                DataContext="{x:Bind ViewModel.Form}"
                 HeaderText="Enter your last name:"
-                InputScope="NameOrPhoneNumber"
                 PlaceholderText="Last name"
+                PropertyName="LastName"
                 Text="{x:Bind ViewModel.Form.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <controls:ValidationTextBox
+                DataContext="{x:Bind ViewModel.Form}"
                 HeaderText="Enter your email address:"
-                InputScope="EmailNameOrAddress"
                 PlaceholderText="Email"
+                PropertyName="Email"
                 Text="{x:Bind ViewModel.Form.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <controls:ValidationTextBox
+                DataContext="{x:Bind ViewModel.Form}"
                 HeaderText="Enter your phone number:"
-                InputScope="NameOrPhoneNumber"
                 PlaceholderText="Phone number"
+                PropertyName="PhoneNumber"
                 Text="{x:Bind ViewModel.Form.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button Command="{x:Bind ViewModel.Form.SubmitCommand}" Content="Submit" />
