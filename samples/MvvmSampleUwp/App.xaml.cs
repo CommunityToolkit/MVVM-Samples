@@ -13,49 +13,48 @@ using MvvmSample.Core.Services;
 using RestEase;
 using Newtonsoft.Json;
 
-namespace MvvmSampleUwp
+namespace MvvmSampleUwp;
+
+/// <summary>
+/// Provides application-specific behavior to supplement the default <see cref="Application"/> class.
+/// </summary>
+sealed partial class App : Application
 {
     /// <summary>
-    /// Provides application-specific behavior to supplement the default <see cref="Application"/> class.
+    /// Initializes the singleton application object. This is the first line of authored code
+    /// executed, and as such is the logical equivalent of main() or WinMain().
     /// </summary>
-    sealed partial class App : Application
+    public App()
     {
-        /// <summary>
-        /// Initializes the singleton application object. This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
-        public App()
+        this.InitializeComponent();
+    }
+
+    /// <inheritdoc/>
+    protected override void OnLaunched(LaunchActivatedEventArgs e)
+    {
+        // Ensure the UI is initialized
+        if (Window.Current.Content is null)
         {
-            this.InitializeComponent();
+            Window.Current.Content = new Shell();
+
+            TitleBarHelper.StyleTitleBar();
+            TitleBarHelper.ExpandViewIntoTitleBar();
+
+            // Register services
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<IFilesService, FilesService>()
+                .AddSingleton<ISettingsService, SettingsService>()
+                .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
+                .BuildServiceProvider());
         }
 
-        /// <inheritdoc/>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        // Enable the prelaunch if needed, and activate the window
+        if (e.PrelaunchActivated == false)
         {
-            // Ensure the UI is initialized
-            if (Window.Current.Content is null)
-            {
-                Window.Current.Content = new Shell();
+            CoreApplication.EnablePrelaunch(true);
 
-                TitleBarHelper.StyleTitleBar();
-                TitleBarHelper.ExpandViewIntoTitleBar();
-
-                // Register services
-                Ioc.Default.ConfigureServices(
-                    new ServiceCollection()
-                    .AddSingleton<IFilesService, FilesService>()
-                    .AddSingleton<ISettingsService, SettingsService>()
-                    .AddSingleton(RestClient.For<IRedditService>("https://www.reddit.com/"))
-                    .BuildServiceProvider());
-            }
-
-            // Enable the prelaunch if needed, and activate the window
-            if (e.PrelaunchActivated == false)
-            {
-                CoreApplication.EnablePrelaunch(true);
-
-                Window.Current.Activate();
-            }
+            Window.Current.Activate();
         }
     }
 }

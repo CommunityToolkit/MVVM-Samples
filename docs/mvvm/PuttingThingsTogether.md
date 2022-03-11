@@ -1,5 +1,5 @@
 ---
-title: PuttingThingsTogether
+title: Putting things together
 author: Sergio0694
 description: An overview of how to combine different features of the MVVM Toolkit into a practical example
 keywords: windows 10, uwp, windows community toolkit, uwp community toolkit, uwp toolkit, mvvm, service, messenger, messaging, net core, net standard
@@ -9,7 +9,7 @@ dev_langs:
 
 # Putting things together
 
-Now that we've outline all the different components that are available through the `Microsoft.Toolkit.Mvvm` package, we can look at a practical example of them all coming together to build a single, larger example. In this case, we want to build a very simple and minimalistic Reddit browser for a select number of subreddits.
+Now that we've outlined all the different components that are available through the `Microsoft.Toolkit.Mvvm` package, we can look at a practical example of them all coming together to build a single, larger example. In this case, we want to build a very simple and minimalistic Reddit browser for a select number of subreddits.
 
 ## What do we want to build
 
@@ -453,6 +453,10 @@ The last missing piece is the UI for the post widget. As before, we've removed a
 ```
 
 Here we just have a header, with a `TextBlock` and an `ImageEx` control binding their `Text` and `Source` properties to the respective properties in our `Post` model, and a simple `TextBlock` inside a `ScrollViewer` that is used to display the (sample) content of the selected post.
+
+## Sample Application
+
+Sample application available [here](https://aka.ms/mvvmtoolkit/samples).
 
 ## Good to go! 🚀
 

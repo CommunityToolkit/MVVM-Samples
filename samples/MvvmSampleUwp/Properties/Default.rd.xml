@@ -28,8 +28,9 @@
     <Type Name="MvvmSample.Core.Models.PostData" Dynamic="Required Public" />
     <Type Name="MvvmSample.Core.Models.Post" Dynamic="Required Public" />
 
-    <!-- IRecipient<T> registration support -->
-    <Type Name="Microsoft.Toolkit.Mvvm.Messaging.IMessengerExtensions" Dynamic="Required All" />
+    <!-- Generated code loaded through reflection -->
+    <Type Name="CommunityToolkit.Mvvm.ComponentModel.__Internals.__ObservableValidatorExtensions" Dynamic="Required All" />
+    <Type Name="CommunityToolkit.Mvvm.Messaging.__Internals.__IMessengerExtensions" Dynamic="Required All" />
 
   </Application>
 </Directives>

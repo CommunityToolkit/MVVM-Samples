@@ -12,110 +12,109 @@ using MvvmSample.Core.Models;
 using MvvmSample.Core.Services;
 using Nito.AsyncEx;
 
-namespace MvvmSample.Core.ViewModels.Widgets
+namespace MvvmSample.Core.ViewModels.Widgets;
+
+/// <summary>
+/// A viewmodel for a subreddit widget.
+/// </summary>
+public sealed class SubredditWidgetViewModel : ObservableRecipient
 {
     /// <summary>
-    /// A viewmodel for a subreddit widget.
+    /// Gets the <see cref="IRedditService"/> instance to use.
     /// </summary>
-    public sealed class SubredditWidgetViewModel : ObservableRecipient
+    private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
+
+    /// <summary>
+    /// Gets the <see cref="ISettingsService"/> instance to use.
+    /// </summary>
+    private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService<ISettingsService>();
+
+    /// <summary>
+    /// An <see cref="AsyncLock"/> instance to avoid concurrent requests.
+    /// </summary>
+    private readonly AsyncLock LoadingLock = new();
+
+    /// <summary>
+    /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
+    /// </summary>
+    public SubredditWidgetViewModel()
     {
-        /// <summary>
-        /// Gets the <see cref="IRedditService"/> instance to use.
-        /// </summary>
-        private readonly IRedditService RedditService = Ioc.Default.GetRequiredService<IRedditService>();
+        LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
 
-        /// <summary>
-        /// Gets the <see cref="ISettingsService"/> instance to use.
-        /// </summary>
-        private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService<ISettingsService>();
+        selectedSubreddit = SettingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+    }
 
-        /// <summary>
-        /// An <see cref="AsyncLock"/> instance to avoid concurrent requests.
-        /// </summary>
-        private readonly AsyncLock LoadingLock = new();
+    /// <summary>
+    /// Gets the <see cref="IAsyncRelayCommand"/> instance responsible for loading posts.
+    /// </summary>
+    public IAsyncRelayCommand LoadPostsCommand { get; }
 
-        /// <summary>
-        /// Creates a new <see cref="SubredditWidgetViewModel"/> instance.
-        /// </summary>
-        public SubredditWidgetViewModel()
+    /// <summary>
+    /// Gets the collection of loaded posts.
+    /// </summary>
+    public ObservableCollection<Post> Posts { get; } = new();
+
+    /// <summary>
+    /// Gets the collection of available subreddits to pick from.
+    /// </summary>
+    public IReadOnlyList<string> Subreddits { get; } = new[]
+    {
+        "microsoft",
+        "windows",
+        "surface",
+        "windowsphone",
+        "dotnet",
+        "csharp"
+    };
+
+    private string selectedSubreddit;
+
+    /// <summary>
+    /// Gets or sets the currently selected subreddit.
+    /// </summary>
+    public string SelectedSubreddit
+    {
+        get => selectedSubreddit;
+        set
         {
-            LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
+            SetProperty(ref selectedSubreddit, value);
 
-            selectedSubreddit = SettingsService.GetValue<string>(nameof(SelectedSubreddit)) ?? Subreddits[0];
+            SettingsService.SetValue(nameof(SelectedSubreddit), value);
         }
+    }
 
-        /// <summary>
-        /// Gets the <see cref="IAsyncRelayCommand"/> instance responsible for loading posts.
-        /// </summary>
-        public IAsyncRelayCommand LoadPostsCommand { get; }
+    private Post? selectedPost;
 
-        /// <summary>
-        /// Gets the collection of loaded posts.
-        /// </summary>
-        public ObservableCollection<Post> Posts { get; } = new();
+    /// <summary>
+    /// Gets or sets the currently selected post, if any.
+    /// </summary>
+    public Post? SelectedPost
+    {
+        get => selectedPost;
+        set => SetProperty(ref selectedPost, value, true);
+    }
 
-        /// <summary>
-        /// Gets the collection of available subreddits to pick from.
-        /// </summary>
-        public IReadOnlyList<string> Subreddits { get; } = new[]
+    /// <summary>
+    /// Loads the posts from a specified subreddit.
+    /// </summary>
+    private async Task LoadPostsAsync()
+    {
+        using (await LoadingLock.LockAsync())
         {
-            "microsoft",
-            "windows",
-            "surface",
-            "windowsphone",
-            "dotnet",
-            "csharp"
-        };
-
-        private string selectedSubreddit;
-
-        /// <summary>
-        /// Gets or sets the currently selected subreddit.
-        /// </summary>
-        public string SelectedSubreddit
-        {
-            get => selectedSubreddit;
-            set
+            try
             {
-                SetProperty(ref selectedSubreddit, value);
+                var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
 
-                SettingsService.SetValue(nameof(SelectedSubreddit), value);
+                Posts.Clear();
+
+                foreach (var item in response.Data!.Items!)
+                {
+                    Posts.Add(item.Data!);
+                }
             }
-        }
-
-        private Post? selectedPost;
-
-        /// <summary>
-        /// Gets or sets the currently selected post, if any.
-        /// </summary>
-        public Post? SelectedPost
-        {
-            get => selectedPost;
-            set => SetProperty(ref selectedPost, value, true);
-        }
-
-        /// <summary>
-        /// Loads the posts from a specified subreddit.
-        /// </summary>
-        private async Task LoadPostsAsync()
-        {
-            using (await LoadingLock.LockAsync())
+            catch
             {
-                try
-                {
-                    var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
-
-                    Posts.Clear();
-
-                    foreach (var item in response.Data!.Items!)
-                    {
-                        Posts.Add(item.Data!);
-                    }
-                }
-                catch
-                {
-                    // Whoops!
-                }
+                // Whoops!
             }
         }
     }

@@ -7,17 +7,16 @@ using MvvmSample.Core.Models;
 using RestEase;
 
 namespace MvvmSample.Core.Services
+
+/// <summary>
+/// An interface for a simple Reddit service.
+/// </summary>
+public interface IRedditService
 {
     /// <summary>
-    /// An interface for a simple Reddit service.
+    /// Get a list of posts from a given subreddit
     /// </summary>
-    public interface IRedditService
-    {
-        /// <summary>
-        /// Get a list of posts from a given subreddit
-        /// </summary>
-        /// <param name="subreddit">The subreddit name.</param>
-        [Get("/r/{subreddit}/.json")]
-        Task<PostsQueryResponse> GetSubredditPostsAsync([Path]string subreddit);
-    }
+    /// <param name="subreddit">The subreddit name.</param>
+    [Get("/r/{subreddit}/.json")]
+    Task<PostsQueryResponse> GetSubredditPostsAsync([Path]string subreddit);
 }
