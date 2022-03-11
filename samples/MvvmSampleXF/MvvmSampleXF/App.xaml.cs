@@ -1,11 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSample.Core.Services;
-using MvvmSample.Core.ViewModels;
-using MvvmSample.Core.ViewModels.Widgets;
 using MvvmSampleXF.Services;
+using MvvmSampleXF.Views;
 using Refit;
+using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace MvvmSampleXF
 {
@@ -23,19 +27,9 @@ namespace MvvmSampleXF
                 _initialized = true;
                 Ioc.Default.ConfigureServices(
                     new ServiceCollection()
-                    //Services
                     .AddSingleton<IFilesService, FileService>()
                     .AddSingleton<ISettingsService, SettingsService>()
                     .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
-                    //ViewModels
-                    .AddTransient<PostWidgetViewModel>()
-                    .AddTransient<SubredditWidgetViewModel>()
-                    .AddTransient<AsyncRelayCommandPageViewModel>()
-                    .AddTransient<IocPageViewModel>()
-                    .AddTransient<MessengerPageViewModel>()
-                    .AddTransient<ObservableObjectPageViewModel>()
-                    .AddTransient<RelayCommandPageViewModel>()
-                    .AddTransient<SamplePageViewModel>()
                     .BuildServiceProvider());
             }
 

@@ -7,6 +7,9 @@
 			 x:Class="MvvmSampleXF.Views.ObservableObjectPage"
 			 x:DataType="vm:ObservableObjectPageViewModel"
 			 Title="ObservableObject">
+	<ContentPage.BindingContext>
+		<vm:ObservableObjectPageViewModel x:Name="ViewModel" />
+	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[ObservableObject], Mode=OneWay}" />

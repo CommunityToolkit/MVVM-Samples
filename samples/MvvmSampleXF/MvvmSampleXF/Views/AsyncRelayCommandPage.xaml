@@ -8,6 +8,9 @@
 			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
 			 x:DataType="vm:AsyncRelayCommandPageViewModel"
 			 Title="Commands">
+	<ContentPage.BindingContext>
+		<vm:AsyncRelayCommandPageViewModel x:Name="ViewModel" />
+	</ContentPage.BindingContext>
 	<ContentPage.Resources>
 		<converters:TaskResultConverter x:Key="TaskResultConverter" />
 	</ContentPage.Resources>

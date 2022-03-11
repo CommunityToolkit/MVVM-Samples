@@ -5,13 +5,12 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using MvvmSample.Core.Services;
 
 namespace MvvmSample.Core.ViewModels
 {
     public class ObservableObjectPageViewModel : SamplePageViewModel
     {
-        public ObservableObjectPageViewModel(IFilesService filesService) : base(filesService)
+        public ObservableObjectPageViewModel()
         {
             ReloadTaskCommand = new RelayCommand(ReloadTask);
         }

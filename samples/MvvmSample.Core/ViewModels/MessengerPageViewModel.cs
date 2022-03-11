@@ -7,13 +7,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using MvvmSample.Core.Services;
 
 namespace MvvmSample.Core.ViewModels
 {
     public class MessengerPageViewModel : SamplePageViewModel
     {
-        public MessengerPageViewModel(IFilesService filesService) : base(filesService)
+        public MessengerPageViewModel()
         {
             RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
             ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);

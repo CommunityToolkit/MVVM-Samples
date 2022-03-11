@@ -7,6 +7,9 @@
 			 x:Class="MvvmSampleXF.Views.MessengerSendPage"
 			 x:DataType="vm:MessengerPageViewModel"
 			 Title="Messenger">
+	<ContentPage.BindingContext>
+		<vm:MessengerPageViewModel x:Name="ViewModel" />
+	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />

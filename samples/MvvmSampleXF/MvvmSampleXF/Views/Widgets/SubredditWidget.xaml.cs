@@ -1,10 +1,8 @@
-﻿using MvvmSample.Core.ViewModels.Widgets;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,13 +16,7 @@ namespace MvvmSampleXF.Views.Widgets
         public SubredditWidget()
         {
             InitializeComponent();
-
-            ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-
-            BindingContext = ViewModel;
         }
-
-        public SubredditWidgetViewModel ViewModel { get; }
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

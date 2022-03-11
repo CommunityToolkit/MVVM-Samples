@@ -4,13 +4,12 @@
 
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using MvvmSample.Core.Services;
 
 namespace MvvmSample.Core.ViewModels
 {
     public class AsyncRelayCommandPageViewModel : SamplePageViewModel
     {
-        public AsyncRelayCommandPageViewModel(IFilesService filesService) : base(filesService)
+        public AsyncRelayCommandPageViewModel()
         {
             DownloadTextCommand = new AsyncRelayCommand(DownloadTextAsync);
         }
