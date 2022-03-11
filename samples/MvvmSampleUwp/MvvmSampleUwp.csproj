@@ -188,6 +188,9 @@
     <Compile Include="Views\Widgets\SubredditWidget.xaml.cs">
       <DependentUpon>SubredditWidget.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Widgets\ValidationFormWidget.xaml.cs">
+      <DependentUpon>ValidationFormWidget.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -359,6 +362,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Widgets\SubredditWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Widgets\ValidationFormWidget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
