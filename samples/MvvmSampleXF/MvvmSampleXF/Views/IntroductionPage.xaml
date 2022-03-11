@@ -6,9 +6,6 @@
 			 x:Class="MvvmSampleXF.Views.IntroductionPage"
 			 x:DataType="vm:ObservableObjectPageViewModel"
 			 Title="Introduction">
-	<ContentPage.BindingContext>
-		<vm:ObservableObjectPageViewModel x:Name="ViewModel" />
-	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Introduction to the MVVM package], Mode=OneWay}" />

@@ -4,12 +4,14 @@
 
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
+using MvvmSample.Core.Services;
 
 namespace MvvmSample.Core.ViewModels;
 
 public class RelayCommandPageViewModel : SamplePageViewModel
 {
-    public RelayCommandPageViewModel()
+    public RelayCommandPageViewModel(IFilesService filesService) 
+        : base(filesService)
     {
         IncrementCounterCommand = new RelayCommand(IncrementCounter);
     }

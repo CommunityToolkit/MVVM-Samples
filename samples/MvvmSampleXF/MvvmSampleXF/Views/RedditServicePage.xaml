@@ -6,9 +6,6 @@
 			 x:DataType="vm:SamplePageViewModel"
 			 x:Class="MvvmSampleXF.Views.RedditServicePage"
 			 Title="Creating a Service">
-	<ContentPage.BindingContext>
-		<vm:SamplePageViewModel x:Name="ViewModel" />
-	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown"

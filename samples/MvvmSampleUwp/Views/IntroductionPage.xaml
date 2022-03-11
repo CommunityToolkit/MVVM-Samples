@@ -10,9 +10,6 @@
     xmlns:viewModels="using:MvvmSample.Core.ViewModels"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
-    <Page.DataContext>
-        <viewModels:ObservableObjectPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="Introduction" />

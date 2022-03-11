@@ -6,9 +6,6 @@
 			 x:Class="MvvmSampleXF.Views.IoCPage"
 			 x:DataType="vm:IocPageViewModel"
 			 Title="Inversion of Control">
-	<ContentPage.BindingContext>
-		<vm:IocPageViewModel x:Name="ViewModel" />
-	</ContentPage.BindingContext>
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Ioc (Inversion of control)], Mode=OneWay}" />
