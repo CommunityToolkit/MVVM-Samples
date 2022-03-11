@@ -17,10 +17,8 @@ public sealed partial class RedditServicePage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<SamplePageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<SamplePageViewModel>();
     }
 
-    public SamplePageViewModel ViewModel { get; }
+    public SamplePageViewModel ViewModel => (SamplePageViewModel)DataContext;
 }

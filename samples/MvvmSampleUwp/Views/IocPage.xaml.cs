@@ -17,10 +17,8 @@ public sealed partial class IocPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<IocPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<IocPageViewModel>();
     }
 
-    public IocPageViewModel ViewModel { get; }
+    public IocPageViewModel ViewModel => (IocPageViewModel)DataContext;
 }

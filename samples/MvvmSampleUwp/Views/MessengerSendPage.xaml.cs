@@ -18,12 +18,10 @@ public sealed partial class MessengerSendPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
     }
 
-    public MessengerPageViewModel ViewModel { get; }
+    public MessengerPageViewModel ViewModel => (MessengerPageViewModel)DataContext;
 
     /// <inheritdoc/>
     protected override void OnNavigatedTo(NavigationEventArgs e)

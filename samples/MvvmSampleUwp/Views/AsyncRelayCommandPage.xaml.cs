@@ -17,10 +17,8 @@ public sealed partial class AsyncRelayCommandPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<AsyncRelayCommandPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<AsyncRelayCommandPageViewModel>();
     }
 
-    public AsyncRelayCommandPageViewModel ViewModel { get; }
+    public AsyncRelayCommandPageViewModel ViewModel => (AsyncRelayCommandPageViewModel)DataContext;
 }

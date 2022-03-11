@@ -17,10 +17,8 @@ public sealed partial class RelayCommandPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<RelayCommandPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<RelayCommandPageViewModel>();
     }
 
-    public RelayCommandPageViewModel ViewModel { get; }
+    public RelayCommandPageViewModel ViewModel => (RelayCommandPageViewModel)DataContext;
 }

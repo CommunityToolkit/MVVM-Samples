@@ -14,13 +14,11 @@ public sealed partial class PostWidget : UserControl
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
 
         this.Loaded += (s, e) => ViewModel.IsActive = true;
         this.Unloaded += (s, e) => ViewModel.IsActive = false;
     }
 
-    public PostWidgetViewModel ViewModel { get; }
+    public PostWidgetViewModel ViewModel => (PostWidgetViewModel)DataContext;
 }

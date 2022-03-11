@@ -17,10 +17,8 @@ public sealed partial class MessengerPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<MessengerPageViewModel>();
     }
 
-    public MessengerPageViewModel ViewModel { get; }
+    public MessengerPageViewModel ViewModel => (MessengerPageViewModel)DataContext;
 }

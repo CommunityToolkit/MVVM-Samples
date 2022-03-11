@@ -14,10 +14,8 @@ public sealed partial class SubredditWidget : UserControl
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
     }
 
-    public SubredditWidgetViewModel ViewModel { get; }
+    public SubredditWidgetViewModel ViewModel => (SubredditWidgetViewModel)DataContext;
 }

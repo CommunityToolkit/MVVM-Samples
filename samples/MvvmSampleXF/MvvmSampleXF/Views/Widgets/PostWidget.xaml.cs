@@ -1,9 +1,4 @@
 ﻿using MvvmSample.Core.ViewModels.Widgets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
@@ -18,12 +13,10 @@ namespace MvvmSampleXF.Views.Widgets
         {
             InitializeComponent();
 
-            ViewModel = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
-
-            BindingContext = ViewModel;
+            BindingContext = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
         }
 
-        public PostWidgetViewModel ViewModel { get; }
+        public PostWidgetViewModel ViewModel => (PostWidgetViewModel)BindingContext;
 
         public void OnAppearing()
         {

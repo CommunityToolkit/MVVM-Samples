@@ -17,10 +17,8 @@ public sealed partial class ObservableObjectPage : Page
     {
         this.InitializeComponent();
 
-        ViewModel = Ioc.Default.GetRequiredService<ObservableObjectPageViewModel>();
-
-        DataContext = ViewModel;
+        DataContext = Ioc.Default.GetRequiredService<ObservableObjectPageViewModel>();
     }
 
-    public ObservableObjectPageViewModel ViewModel { get; }
+    public ObservableObjectPageViewModel ViewModel => (ObservableObjectPageViewModel)DataContext;
 }
