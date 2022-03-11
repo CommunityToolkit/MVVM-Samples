@@ -13,6 +13,8 @@
     mc:Ignorable="d">
 
     <StackPanel Spacing="16">
+
+        <!--  Text forms  -->
         <controls:ValidationTextBox
             HeaderText="Enter your first:"
             PlaceholderText="First name"
@@ -34,6 +36,7 @@
             PropertyName="PhoneNumber"
             Text="{x:Bind ViewModel.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
+        <!--  Submit button  -->
         <Button Command="{x:Bind ViewModel.SubmitCommand}" Content="Submit" />
 
         <!--  Popups  -->
