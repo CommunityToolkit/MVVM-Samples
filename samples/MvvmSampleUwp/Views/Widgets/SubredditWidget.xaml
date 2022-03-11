@@ -10,7 +10,6 @@
     xmlns:models="using:MvvmSample.Core.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
-    xmlns:widgets="using:MvvmSample.Core.ViewModels.Widgets"
     d:DesignHeight="300"
     d:DesignWidth="400"
     mc:Ignorable="d">
