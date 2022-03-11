@@ -1,2 +1,5 @@
 # Refactor to file-scoped namespaces
 4c8a30e4d6588d0921dca49e8ab3fb1c01e35c08
+
+# Fix incorrect line terminators
+382a58f8883388e36fdbc0154c415141317080d9
