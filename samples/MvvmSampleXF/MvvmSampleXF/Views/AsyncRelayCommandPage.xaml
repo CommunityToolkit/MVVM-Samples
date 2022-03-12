@@ -5,9 +5,11 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
 			 x:DataType="vm:AsyncRelayCommandPageViewModel"
-			 Title="Commands">
+			 Title="Commands"
+             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ContentPage.Resources>
 		<converters:TaskResultConverter x:Key="TaskResultConverter" />
 	</ContentPage.Resources>

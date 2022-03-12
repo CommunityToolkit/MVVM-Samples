@@ -1,5 +1,4 @@
 ﻿using MvvmSample.Core.ViewModels;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,13 +6,11 @@ using Xamarin.Forms.Xaml;
 namespace MvvmSampleXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class IoCPage : ContentPage
+    public partial class IocPage : ContentPage
     {
-        public IoCPage()
+        public IocPage()
         {
             InitializeComponent();
-
-            BindingContext = Ioc.Default.GetRequiredService<IocPageViewModel>();
         }
 
         public IocPageViewModel ViewModel => (IocPageViewModel)BindingContext;

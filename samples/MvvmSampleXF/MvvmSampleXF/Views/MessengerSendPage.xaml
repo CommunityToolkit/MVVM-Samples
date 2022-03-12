@@ -4,9 +4,11 @@
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:Class="MvvmSampleXF.Views.MessengerSendPage"
 			 x:DataType="vm:MessengerPageViewModel"
-			 Title="Messenger">
+			 Title="Messenger"
+             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />

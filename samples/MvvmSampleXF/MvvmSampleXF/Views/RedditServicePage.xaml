@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:DataType="vm:SamplePageViewModel"
 			 x:Class="MvvmSampleXF.Views.RedditServicePage"
-			 Title="Creating a Service">
+			 Title="Creating a Service"
+             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown"

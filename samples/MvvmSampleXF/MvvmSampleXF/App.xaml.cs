@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
+﻿using System.Linq;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels;
@@ -21,8 +22,8 @@ namespace MvvmSampleXF
             if (!_initialized)
             {
                 _initialized = true;
-                Ioc.Default.ConfigureServices(
-                    new ServiceCollection()
+
+                var serviceProvider = new ServiceCollection()
                     //Services
                     .AddSingleton<IFilesService, FileService>()
                     .AddSingleton<ISettingsService, SettingsService>()
@@ -36,7 +37,26 @@ namespace MvvmSampleXF
                     .AddTransient<ObservableObjectPageViewModel>()
                     .AddTransient<RelayCommandPageViewModel>()
                     .AddTransient<SamplePageViewModel>()
-                    .BuildServiceProvider());
+                    .BuildServiceProvider();
+
+                Ioc.Default.ConfigureServices(serviceProvider);
+
+                ViewModelLocator.SetViewModelFactory(view =>
+                {
+                    var viewName = view.GetType().Name;
+                    var viewModelName = $"{viewName}ViewModel";
+                    var viewModelType = typeof(SamplePageViewModel).Assembly.GetTypes().FirstOrDefault(x => x.Name == viewModelName);
+
+                    if (viewModelType == null)
+                    {
+                        if (viewModelName.Contains("Messenger"))
+                            viewModelType = typeof(MessengerPageViewModel);
+                        else
+                            viewModelType = typeof(SamplePageViewModel);
+                    }
+
+                    return serviceProvider.GetService(viewModelType);
+                });
             }
 
             MainPage = new AppShell();

@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Linq;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
@@ -41,9 +42,7 @@ sealed partial class App : Application
             TitleBarHelper.StyleTitleBar();
             TitleBarHelper.ExpandViewIntoTitleBar();
 
-            // Register services
-            Ioc.Default.ConfigureServices(
-                new ServiceCollection()
+            var serviceProvider = new ServiceCollection()
                 //Services
                 .AddSingleton<IDialogService, DialogService>()
                 .AddSingleton<IFilesService, FilesService>()
@@ -60,7 +59,27 @@ sealed partial class App : Application
                 .AddTransient<ValidationFormWidgetViewModel>()
                 .AddTransient<RelayCommandPageViewModel>()
                 .AddTransient<SamplePageViewModel>()
-                .BuildServiceProvider());
+                .BuildServiceProvider();
+
+            // Register services
+            Ioc.Default.ConfigureServices(serviceProvider);
+
+            ViewModelLocator.SetViewModelFactory(view =>
+            {
+                var viewName = view.GetType().Name;
+                var viewModelName = $"{viewName}ViewModel";
+                var viewModelType = typeof(SamplePageViewModel).Assembly.GetTypes().FirstOrDefault(x => x.Name == viewModelName);
+
+                if (viewModelType == null)
+                {
+                    if (viewModelName.Contains("Messenger"))
+                        viewModelType = typeof(MessengerPageViewModel);
+                    else
+                        viewModelType = typeof(SamplePageViewModel);
+                }
+
+                return serviceProvider.GetService(viewModelType);
+            });
         }
 
         // Enable the prelaunch if needed, and activate the window

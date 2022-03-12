@@ -8,9 +8,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:mvvmSampleUwp="using:MvvmSampleUwp"
     NavigationCacheMode="Enabled"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    mvvmSampleUwp:ViewModelLocator.InitViewModel="True">
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="AsyncRelayCommand" />
