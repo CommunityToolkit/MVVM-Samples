@@ -8,7 +8,7 @@
 			 x:Class="MvvmSampleXF.Views.RelayCommandPage"
 			 x:DataType="vm:RelayCommandPageViewModel"
 			 Title="Commands"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[RelayCommand], Mode=OneWay}" />

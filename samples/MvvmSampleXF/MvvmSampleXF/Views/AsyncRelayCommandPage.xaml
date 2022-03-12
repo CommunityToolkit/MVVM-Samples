@@ -9,7 +9,7 @@
 			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
 			 x:DataType="vm:AsyncRelayCommandPageViewModel"
 			 Title="Commands"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ContentPage.Resources>
 		<converters:TaskResultConverter x:Key="TaskResultConverter" />
 	</ContentPage.Resources>

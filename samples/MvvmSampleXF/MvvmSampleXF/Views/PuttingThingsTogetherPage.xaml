@@ -6,7 +6,7 @@
 			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:Class="MvvmSampleXF.Views.PuttingThingsTogetherPage"
 			 x:DataType="vm:SamplePageViewModel"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Putting things together], Mode=OneWay}" />

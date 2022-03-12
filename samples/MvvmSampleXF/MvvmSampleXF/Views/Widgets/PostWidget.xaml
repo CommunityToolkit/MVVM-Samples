@@ -5,7 +5,7 @@
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
 			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:Class="MvvmSampleXF.Views.Widgets.PostWidget"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ContentView.Resources>
 		<converters:IsSelfPostToWidthRequestConverter WidthRequest="160"
 													  x:Key="IsSelfPostToWidthRequestConverter" />

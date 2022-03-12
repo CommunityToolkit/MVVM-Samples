@@ -7,7 +7,7 @@
 			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:DataType="vm:SamplePageViewModel"
 			 Title="Creating a Service"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown"

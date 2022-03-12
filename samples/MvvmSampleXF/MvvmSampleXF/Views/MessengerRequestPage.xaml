@@ -7,7 +7,7 @@
 			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:Class="MvvmSampleXF.Views.MessengerRequestPage"
 			 Title="Messenger"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />

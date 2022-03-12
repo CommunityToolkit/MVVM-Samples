@@ -7,7 +7,7 @@
 			 x:Class="MvvmSampleXF.Views.MessengerPage"
 			 x:DataType="vm:MessengerPageViewModel"
 			 Title="Messenger"
-             mvvmSampleXf:ViewModelLocator.InitViewModel="True">
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Messenger], Mode=OneWay}" />
