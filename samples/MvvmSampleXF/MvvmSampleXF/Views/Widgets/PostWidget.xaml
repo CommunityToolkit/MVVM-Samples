@@ -3,7 +3,9 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
 			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
-			 x:Class="MvvmSampleXF.Views.Widgets.PostWidget">
+			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
+			 x:Class="MvvmSampleXF.Views.Widgets.PostWidget"
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ContentView.Resources>
 		<converters:IsSelfPostToWidthRequestConverter WidthRequest="160"
 													  x:Key="IsSelfPostToWidthRequestConverter" />

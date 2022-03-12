@@ -4,8 +4,10 @@
 			 x:Class="MvvmSampleXF.Views.SettingUpTheViewModelsPage"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 xmlns:mvvmSampleXf="clr-namespace:MvvmSampleXF;assembly=MvvmSampleXF"
 			 x:DataType="vm:SamplePageViewModel"
-			 Title="ViewModel Setup">
+			 Title="ViewModel Setup"
+			 mvvmSampleXf:ViewModelLocator.InitViewModel="True">
 	<ScrollView Padding="16">
 		<StackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown" 

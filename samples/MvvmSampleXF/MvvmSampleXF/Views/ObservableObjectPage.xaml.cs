@@ -1,5 +1,4 @@
 ﻿using MvvmSample.Core.ViewModels;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,8 +11,6 @@ namespace MvvmSampleXF.Views
         public ObservableObjectPage()
         {
             InitializeComponent();
-
-            BindingContext = Ioc.Default.GetRequiredService<ObservableObjectPageViewModel>();
         }
 
         public ObservableObjectPageViewModel ViewModel => (ObservableObjectPageViewModel)BindingContext;

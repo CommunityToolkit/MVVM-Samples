@@ -5,7 +5,7 @@
     xmlns:controls="using:MvvmSampleUwp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:widgets="using:MvvmSampleUwp.Views.Widgets"
+    xmlns:widgets="using:MvvmSampleUwp.Views.Widgets" 
     mc:Ignorable="d">
 
     <Grid Padding="{StaticResource DocumentationPageContentPadding}">
