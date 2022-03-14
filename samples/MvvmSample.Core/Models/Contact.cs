@@ -10,11 +10,15 @@ namespace MvvmSample.Core.Models;
 /// <summary>
 /// A class for a query for contacts.
 /// </summary>
+/// <param name="Contacts">Gets the list of returned contacts.</param>
 public sealed record ContactsQueryResponse([property: JsonPropertyName("results")] IList<Contact> Contacts);
 
 /// <summary>
 /// A simple model for a contact.
 /// </summary>
+/// <param name="Name">Gets the name of the contact.</param>
+/// <param name="Email">Gets the email of the contact.</param>
+/// <param name="Picture">Gets the picture of the contact.</param>
 public sealed record Contact(
     [property: JsonPropertyName("name")] Name Name,
     [property: JsonPropertyName("email")] string Email,
