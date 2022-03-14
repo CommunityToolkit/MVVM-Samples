@@ -3,33 +3,36 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:collections="using:CommunityToolkit.Common.Collections"
+    xmlns:contacts="using:MvvmSample.Core.Models"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="using:MvvmSample.Core.ViewModels"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:system="using:System"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <interactivity:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="RelayCommand" />
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadContactsCommand}" />
         </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
     <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
         <StackPanel Spacing="16">
 
-            <Border Height="480">
-                <Border.Resources>
+            <Grid Height="480">
+                <Grid.Resources>
 
                     <!--  SemanticZoom grouped sourc  -->
                     <CollectionViewSource
                         x:Name="PeopleViewSource"
                         IsSourceGrouped="True"
-                        Source="{x:Bind ViewModel.Contacts}" />
+                        Source="{x:Bind ViewModel.Contacts, Mode=OneWay}" />
 
                     <!--  Contact template  -->
-                    <DataTemplate x:Key="PersonListViewTemplate" x:DataType="viewmodels:Person">
+                    <DataTemplate x:Key="PersonListViewTemplate" x:DataType="contacts:Contact">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -46,29 +49,41 @@
                                 Height="32"
                                 Margin="6"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}" />
+                                VerticalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind Picture.Url}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
                             <TextBlock
                                 Grid.Column="1"
                                 Margin="12,6,0,0"
                                 x:Phase="1"
                                 Style="{ThemeResource BaseTextBlockStyle}"
-                                Text="{x:Bind FirstName}" />
+                                Text="{x:Bind system:String.Format('{0}', Name.First)}" />
                             <TextBlock
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="12,0,0,6"
                                 x:Phase="2"
                                 Style="{ThemeResource BodyTextBlockStyle}"
-                                Text="{x:Bind LastName}" />
+                                Text="{x:Bind Email}" />
                         </Grid>
                     </DataTemplate>
-                </Border.Resources>
+                </Grid.Resources>
+
+                <!--  Loading bar  -->
+                <muxc:ProgressBar
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="Transparent"
+                    IsIndeterminate="{x:Bind ViewModel.LoadContactsCommand.IsRunning, Mode=OneWay}" />
+
+                <!--  Contacts view  -->
                 <SemanticZoom>
                     <SemanticZoom.ZoomedInView>
                         <ListView
                             ItemTemplate="{StaticResource PersonListViewTemplate}"
-                            ItemsSource="{x:Bind PeopleViewSource.View}"
+                            ItemsSource="{x:Bind PeopleViewSource.View, Mode=OneWay}"
                             SelectionMode="Single">
                             <ListView.GroupStyle>
                                 <GroupStyle HidesIfEmpty="True">
@@ -87,20 +102,24 @@
                     <SemanticZoom.ZoomedOutView>
                         <GridView
                             HorizontalAlignment="Stretch"
-                            ItemsSource="{x:Bind PeopleViewSource.View.CollectionGroups}"
+                            ItemsSource="{x:Bind PeopleViewSource.View.CollectionGroups, Mode=OneWay}"
                             SelectionMode="Single">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="ICollectionViewGroup">
-                                    <TextBlock
-                                        FontSize="32"
-                                        Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
-                                        Text="{x:Bind Group.(collections:IReadOnlyObservableGroup.Key)}" />
+                                    <Border Width="80" Height="80">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="40"
+                                            Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
+                                            Text="{x:Bind Group.(collections:IReadOnlyObservableGroup.Key)}" />
+                                    </Border>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
                     </SemanticZoom.ZoomedOutView>
                 </SemanticZoom>
-            </Border>
+            </Grid>
         </StackPanel>
     </ScrollViewer>
 </Page>

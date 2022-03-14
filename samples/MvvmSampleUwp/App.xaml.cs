@@ -49,6 +49,7 @@ sealed partial class App : Application
                 .AddSingleton<IFilesService, FilesService>()
                 .AddSingleton<ISettingsService, SettingsService>()
                 .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
+                .AddSingleton(RestService.For<IContactsService>("https://randomuser.me/"))
                 //ViewModels
                 .AddTransient<PostWidgetViewModel>()
                 .AddTransient<SubredditWidgetViewModel>()
