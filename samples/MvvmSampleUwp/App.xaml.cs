@@ -59,6 +59,7 @@ sealed partial class App : Application
                 .AddTransient<ObservableValidatorPageViewModel>()
                 .AddTransient<ValidationFormWidgetViewModel>()
                 .AddTransient<RelayCommandPageViewModel>()
+                .AddTransient<CollectionsPageViewModel>()
                 .AddTransient<SamplePageViewModel>()
                 .BuildServiceProvider());
         }
