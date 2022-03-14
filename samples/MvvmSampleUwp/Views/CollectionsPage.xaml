@@ -25,6 +25,18 @@
             <Grid Height="480">
                 <Grid.Resources>
 
+                    <!--  Shared menu flyout for all contacts  -->
+                    <MenuFlyout x:Key="ContactMenuFlyout">
+                        <MenuFlyoutItem
+                            Command="{x:Bind ViewModel.DeleteContactCommand}"
+                            CommandParameter="{Binding}"
+                            Text="Remove contact">
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="Delete" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+
                     <!--  SemanticZoom grouped sourc  -->
                     <CollectionViewSource
                         x:Name="PeopleViewSource"
@@ -33,7 +45,7 @@
 
                     <!--  Contact template  -->
                     <DataTemplate x:Key="PersonListViewTemplate" x:DataType="contacts:Contact">
-                        <Grid>
+                        <Grid ContextFlyout="{StaticResource ContactMenuFlyout}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
@@ -110,7 +122,7 @@
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            FontSize="40"
+                                            FontSize="32"
                                             Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
                                             Text="{x:Bind Group.(collections:IReadOnlyObservableGroup.Key)}" />
                                     </Border>

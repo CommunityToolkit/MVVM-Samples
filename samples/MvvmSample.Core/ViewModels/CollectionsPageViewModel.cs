@@ -44,4 +44,14 @@ public partial class CollectionsPageViewModel : SamplePageViewModel
 
         OnPropertyChanged(nameof(Contacts));
     }
+
+    /// <summary>
+    /// Removes a given contact from the list.
+    /// </summary>
+    /// <param name="contact">The contact to remove.</param>
+    [ICommand]
+    private void DeleteContact(Contact contact)
+    {
+        Contacts.First(char.ToUpperInvariant(contact.Name.First[0]).ToString()).Remove(contact);
+    }
 }
