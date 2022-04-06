@@ -44,15 +44,14 @@ sealed partial class App : Application
             // Register services
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                //Services
-                .AddSingleton<IDialogService, DialogService>()
+                .AddSingleton<IDialogService, DialogService>() //Services
                 .AddSingleton<IFilesService, FilesService>()
                 .AddSingleton<ISettingsService, SettingsService>()
                 .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
                 .AddSingleton(RestService.For<IContactsService>("https://randomuser.me/"))
-                //ViewModels
-                .AddTransient<PostWidgetViewModel>()
+                .AddTransient<PostWidgetViewModel>() //ViewModels
                 .AddTransient<SubredditWidgetViewModel>()
+                .AddTransient<ContactsListWidgetViewModel>()
                 .AddTransient<AsyncRelayCommandPageViewModel>()
                 .AddTransient<IocPageViewModel>()
                 .AddTransient<MessengerPageViewModel>()

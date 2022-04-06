@@ -185,6 +185,9 @@
     <Compile Include="Views\ObservableObjectPage.xaml.cs">
       <DependentUpon>ObservableObjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Widgets\ContactsListWidget.xaml.cs">
+      <DependentUpon>ContactsListWidget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Widgets\PostWidget.xaml.cs">
       <DependentUpon>PostWidget.xaml</DependentUpon>
     </Compile>
@@ -363,6 +366,10 @@
     <Page Include="Views\ObservableObjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Widgets\ContactsListWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Widgets\PostWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
