@@ -31,7 +31,14 @@ public sealed record Contact(
 /// <param name="Last">The last name of the contact.</param>
 public sealed record Name(
     [property: JsonPropertyName("first")] string First,
-    [property: JsonPropertyName("last")] string Last);
+    [property: JsonPropertyName("last")] string Last)
+{
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        return $"{First} {Last}";
+    }
+}
 
 /// <summary>
 /// A simple model for the picture of a contact.

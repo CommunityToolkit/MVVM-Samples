@@ -9,7 +9,6 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:system="using:System"
     d:DesignHeight="300"
     d:DesignWidth="400"
     mc:Ignorable="d">
@@ -68,7 +67,7 @@
                         Margin="12,6,0,0"
                         x:Phase="1"
                         Style="{ThemeResource BaseTextBlockStyle}"
-                        Text="{x:Bind system:String.Format('{0}', Name.First)}" />
+                        Text="{x:Bind Name}" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="1"
@@ -128,5 +127,13 @@
                 </GridView>
             </SemanticZoom.ZoomedOutView>
         </SemanticZoom>
+
+        <!--  Loads more contacts  -->
+        <Button
+            Margin="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="{x:Bind ViewModel.LoadMoreContactsCommand}"
+            Content="Load more contacts" />
     </Grid>
 </UserControl>

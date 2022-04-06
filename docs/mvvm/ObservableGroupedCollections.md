@@ -42,7 +42,10 @@ Suppose we had a simple definition of a `Contact` model like this:
 ```csharp
 public sealed record Contact(Name Name, string Email, Picture Picture);
 
-public sealed record Name(string First, string Last);
+public sealed record Name(string First, string Last)
+{
+    public override string ToString() => $"{First} {Last}";
+}
 
 public sealed record Picture(string Url);
 ```

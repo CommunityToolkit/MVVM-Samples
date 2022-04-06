@@ -74,7 +74,7 @@
                     Margin=&quot;12,6,0,0&quot;
                     x:Phase=&quot;1&quot;
                     Style=&quot;{ThemeResource BaseTextBlockStyle}&quot;
-                    Text=&quot;{x:Bind system:String.Format('{0}', Name.First)}&quot; /&gt;
+                    Text=&quot;{x:Bind Name}&quot; /&gt;
                 &lt;TextBlock
                     Grid.Row=&quot;1&quot;
                     Grid.Column=&quot;1&quot;

@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Collections;
@@ -46,6 +47,26 @@ public partial class ContactsListWidgetViewModel : ObservableObject
             .OrderBy(static g => g.Key));
 
         OnPropertyChanged(nameof(Contacts));
+    }
+
+    /// <summary>
+    /// Loads more contacts.
+    /// </summary>
+    [ICommand]
+    private async Task LoadMoreContacts()
+    {
+        ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(10);
+
+        foreach (Contact contact in contacts.Contacts)
+        {
+            string key = char.ToUpperInvariant(contact.Name.First[0]).ToString();
+
+            Contacts.InsertItem(
+                key: key,
+                keyComparer: Comparer<string>.Default,
+                item: contact,
+                itemComparer: Comparer<Contact>.Create(static (left, right) => Comparer<string>.Default.Compare(left.ToString(), right.ToString())));
+        }
     }
 
     /// <summary>
