@@ -13,7 +13,7 @@ The [`ObservableGroup<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collec
 
 > **Platform APIs:** [`ObservableGroup<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collections.ObservableGroup-2), [`ReadOnlyObservableGroup<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collections.ReadOnlyObservableGroup-2), [`IReadOnlyObservableGroup`](/dotnet/api/communitytoolkit.mvvm.collections.IReadOnlyObservableGroup), [`IReadOnlyObservableGroup<TKey>`](/dotnet/api/communitytoolkit.mvvm.collections.IReadOnlyObservableGroup-1), [`IReadOnlyObservableGroup<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collections.IReadOnlyObservableGroup-2)
 
-## Features
+## ObservableGroup&lt;TKey, TElement> features
 
 `ObservableGroup<TKey, TElement>` and `ReadOnlyObservableGroup<TKey, TElement>` have the following main features:
 
@@ -27,7 +27,7 @@ The [`ObservableGroupedCollection<TKey, TElement>`](/dotnet/api/communitytoolkit
 
 > **Platform APIs:** [`ObservableGroupedCollection<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collections.ObservableGroupedCollection-2), [`ReadOnlyObservableGroupedCollection<TKey, TElement>`](/dotnet/api/communitytoolkit.mvvm.collections.ReadOnlyObservableGroup-2), [`ObservableGroupedCollectionExtensions`](/dotnet/api/communitytoolkit.mvvm.collections.ObservableGroupedCollectionExtensions).
 
-## Features
+## ObservableGroupedCollection&lt;TKey, TElement> features
 
 `ObservableGroupedCollection<TKey, TElement>` and `ReadOnlyObservableGroupedCollection<TKey, TElement>` have the following main features:
 
