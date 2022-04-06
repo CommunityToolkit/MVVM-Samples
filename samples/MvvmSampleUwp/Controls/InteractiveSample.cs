@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -12,6 +14,14 @@ namespace MvvmSampleUwp.Controls;
 /// </summary>
 public sealed class InteractiveSample : ContentControl
 {
+    /// <summary>
+    /// Creates a new <see cref="InteractiveSample"/> instance.
+    /// </summary>
+    public InteractiveSample()
+    {
+        Implicit.SetAnimations(this, new ImplicitAnimationSet { new OffsetAnimation() });
+    }
+
     /// <summary>
     /// Gets or sets the <see cref="string"/> representing the C# code to display.
     /// </summary>

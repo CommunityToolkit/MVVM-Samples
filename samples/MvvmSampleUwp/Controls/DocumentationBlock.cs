@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -16,6 +17,14 @@ namespace MvvmSampleUwp.Controls;
 [TemplatePart(Name = "PART_MarkdownTextBlock", Type = typeof(MarkdownTextBlock))]
 public sealed class DocumentationBlock : ContentControl
 {
+    /// <summary>
+    /// Creates a new <see cref="DocumentationBlock"/> instance.
+    /// </summary>
+    public DocumentationBlock()
+    {
+        Implicit.SetAnimations(this, new ImplicitAnimationSet { new OffsetAnimation() });
+    }
+
     /// <summary>
     /// The <see cref="MarkdownTextBlock"/> instance in use.
     /// </summary>
