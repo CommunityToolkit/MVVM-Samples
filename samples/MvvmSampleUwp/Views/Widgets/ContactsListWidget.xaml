@@ -1,0 +1,139 @@
+﻿<UserControl
+    x:Class="MvvmSampleUwp.Views.Widgets.ContactsListWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:collections="using:CommunityToolkit.Mvvm.Collections"
+    xmlns:contacts="using:MvvmSample.Core.Models"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadContactsCommand}" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <Grid Height="480">
+        <Grid.Resources>
+
+            <!--  Shared menu flyout for all contacts  -->
+            <MenuFlyout x:Key="ContactMenuFlyout">
+                <MenuFlyoutItem
+                    Command="{x:Bind ViewModel.DeleteContactCommand}"
+                    CommandParameter="{Binding}"
+                    Text="Remove contact">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="Delete" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+            </MenuFlyout>
+
+            <!--  SemanticZoom grouped sourc  -->
+            <CollectionViewSource
+                x:Name="PeopleViewSource"
+                IsSourceGrouped="True"
+                Source="{x:Bind ViewModel.Contacts, Mode=OneWay}" />
+
+            <!--  Contact template  -->
+            <DataTemplate x:Key="PersonListViewTemplate" x:DataType="contacts:Contact">
+                <Grid ContextFlyout="{StaticResource ContactMenuFlyout}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Ellipse
+                        x:Name="Ellipse"
+                        Grid.RowSpan="2"
+                        Width="32"
+                        Height="32"
+                        Margin="6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{x:Bind Picture.Url}" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="12,6,0,0"
+                        x:Phase="1"
+                        Style="{ThemeResource BaseTextBlockStyle}"
+                        Text="{x:Bind Name}" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="12,0,0,6"
+                        x:Phase="2"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        Text="{x:Bind Email}" />
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <!--  Loading bar  -->
+        <muxc:ProgressBar
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            IsIndeterminate="{x:Bind ViewModel.LoadContactsCommand.IsRunning, Mode=OneWay}" />
+
+        <!--  Contacts view  -->
+        <SemanticZoom>
+            <SemanticZoom.ZoomedInView>
+                <ListView
+                    ItemTemplate="{StaticResource PersonListViewTemplate}"
+                    ItemsSource="{x:Bind PeopleViewSource.View, Mode=OneWay}"
+                    SelectionMode="Single">
+                    <ListView.GroupStyle>
+                        <GroupStyle HidesIfEmpty="True">
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="collections:IReadOnlyObservableGroup">
+                                    <TextBlock
+                                        FontSize="24"
+                                        Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
+                                        Text="{x:Bind Key}" />
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <GridView
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Bind PeopleViewSource.View.CollectionGroups, Mode=OneWay}"
+                    SelectionMode="Single">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="ICollectionViewGroup">
+                            <Border Width="80" Height="80">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="32"
+                                    Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
+                                    Text="{x:Bind Group.(collections:IReadOnlyObservableGroup.Key)}" />
+                            </Border>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+        <!--  Loads more contacts  -->
+        <Button
+            Margin="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="{x:Bind ViewModel.LoadMoreContactsCommand}"
+            Content="Load more contacts" />
+    </Grid>
+</UserControl>

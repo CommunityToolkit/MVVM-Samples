@@ -149,6 +149,9 @@
     <Compile Include="Views\RedditServicePage.xaml.cs">
       <DependentUpon>RedditServicePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CollectionsPage.xaml.cs">
+      <DependentUpon>CollectionsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsServicePage.xaml.cs">
       <DependentUpon>SettingsServicePage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,9 @@
     </Compile>
     <Compile Include="Views\ObservableObjectPage.xaml.cs">
       <DependentUpon>ObservableObjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Widgets\ContactsListWidget.xaml.cs">
+      <DependentUpon>ContactsListWidget.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Widgets\PostWidget.xaml.cs">
       <DependentUpon>PostWidget.xaml</DependentUpon>
@@ -267,6 +273,9 @@
     <PackageReference Include="Microsoft.Toolkit">
       <Version>7.1.2</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>7.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>7.1.2</Version>
     </PackageReference>
@@ -313,6 +322,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\CollectionsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SettingsServicePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -356,6 +369,10 @@
     <Page Include="Views\ObservableObjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Widgets\ContactsListWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Widgets\PostWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -413,6 +430,12 @@
       <Project>{28e524f7-61b3-455d-8cbd-615bc4fde814}</Project>
       <Name>MvvmSample.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\docs\mvvm\ObservableGroupedCollections.md">
+      <Link>Assets\docs\ObservableGroupedCollections.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

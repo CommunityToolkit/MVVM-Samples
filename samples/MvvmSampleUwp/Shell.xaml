@@ -108,6 +108,11 @@
                             Content="Inversion of control"
                             Icon="StopSlideShow"
                             ToolTipService.ToolTip="Explore the support for different types of Inversion of control patterns." />
+                        <muxc:NavigationViewItem
+                            x:Name="CollectionsItem"
+                            Content="Collections"
+                            Icon="AlignLeft"
+                            ToolTipService.ToolTip="Explore the observable collection types included in the library." />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem

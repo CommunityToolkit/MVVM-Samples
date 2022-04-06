@@ -44,14 +44,14 @@ sealed partial class App : Application
             // Register services
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                //Services
-                .AddSingleton<IDialogService, DialogService>()
+                .AddSingleton<IDialogService, DialogService>() //Services
                 .AddSingleton<IFilesService, FilesService>()
                 .AddSingleton<ISettingsService, SettingsService>()
                 .AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
-                //ViewModels
-                .AddTransient<PostWidgetViewModel>()
+                .AddSingleton(RestService.For<IContactsService>("https://randomuser.me/"))
+                .AddTransient<PostWidgetViewModel>() //ViewModels
                 .AddTransient<SubredditWidgetViewModel>()
+                .AddTransient<ContactsListWidgetViewModel>()
                 .AddTransient<AsyncRelayCommandPageViewModel>()
                 .AddTransient<IocPageViewModel>()
                 .AddTransient<MessengerPageViewModel>()
@@ -59,6 +59,7 @@ sealed partial class App : Application
                 .AddTransient<ObservableValidatorPageViewModel>()
                 .AddTransient<ValidationFormWidgetViewModel>()
                 .AddTransient<RelayCommandPageViewModel>()
+                .AddTransient<CollectionsPageViewModel>()
                 .AddTransient<SamplePageViewModel>()
                 .BuildServiceProvider());
         }

@@ -11,56 +11,30 @@ namespace MvvmSample.Core.Models;
 /// <summary>
 /// A class for a query for posts in a given subreddit.
 /// </summary>
-public sealed class PostsQueryResponse
-{
-    /// <summary>
-    /// Gets or sets the listing data for the response.
-    /// </summary>
-    [JsonPropertyName("data")]
-    public PostListing? Data { get; set; }
-}
+/// <param name="Data">Gets the listing data for the response.</param>
+public sealed record PostsQueryResponse([property: JsonPropertyName("data")] PostListing Data);
 
 /// <summary>
 /// A class for a Reddit listing of posts.
 /// </summary>
-public sealed class PostListing
-{
-    /// <summary>
-    /// Gets or sets the items in this listing.
-    /// </summary>
-    [JsonPropertyName("children")]
-    public IList<PostData>? Items { get; set; }
-}
+/// <param name="Items">Gets the items in this listing,</param>
+public sealed record PostListing([property: JsonPropertyName("children")] IList<PostData> Items);
 
 /// <summary>
 /// A wrapping class for a post.
 /// </summary>
-public sealed class PostData
-{
-    /// <summary>
-    /// Gets or sets the <see cref="Post"/> instance.
-    /// </summary>
-    [JsonPropertyName("data")]
-    public Post? Data { get; set; }
-}
+/// <param name="Data">Gets the <see cref="Post"/> instance.</param>
+public sealed record PostData([property: JsonPropertyName("data")] Post Data);
 
 /// <summary>
 /// A simple model for a Reddit post.
 /// </summary>
-public sealed class Post
+/// <param name="Title">Gets the title of the post.</param>
+/// <param name="Thumbnail">Gets the URL to the post thumbnail, if present.</param>
+public sealed record Post(
+    [property: JsonPropertyName("title")] string Title,
+    [property: JsonPropertyName("thumbnail")] string? Thumbnail)
 {
-    /// <summary>
-    /// Gets or sets the title of the post.
-    /// </summary>
-    [JsonPropertyName("title")]
-    public string? Title { get; set; }
-
-    /// <summary>
-    /// Gets or sets the URL to the post thumbnail, if present.
-    /// </summary>
-    [JsonPropertyName("thumbnail")]
-    public string? Thumbnail { get; set; }
-
     /// <summary>
     /// Gets the text of the post.
     /// </summary>
