@@ -48,7 +48,7 @@ public partial class ValidationFormWidgetViewModel : ObservableValidator
     [Phone]
     private string? phoneNumber;
 
-    [ICommand]
+    [RelayCommand]
     private void Submit()
     {
         ValidateAllProperties();
@@ -63,7 +63,7 @@ public partial class ValidationFormWidgetViewModel : ObservableValidator
         }
     }
 
-    [ICommand]
+    [RelayCommand]
     private void ShowErrors()
     {
         string message = string.Join(Environment.NewLine, GetErrors().Select(e => e.ErrorMessage));
