@@ -36,7 +36,7 @@ public partial class ContactsListWidgetViewModel : ObservableObject
     /// <summary>
     /// Loads the contacts to display.
     /// </summary>
-    [ICommand]
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
     private async Task LoadContactsAsync()
     {
         ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(50);
@@ -52,8 +52,8 @@ public partial class ContactsListWidgetViewModel : ObservableObject
     /// <summary>
     /// Loads more contacts.
     /// </summary>
-    [ICommand]
-    private async Task LoadMoreContacts()
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
+    private async Task LoadMoreContactsAsync()
     {
         ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(10);
 
@@ -73,7 +73,7 @@ public partial class ContactsListWidgetViewModel : ObservableObject
     /// Removes a given contact from the list.
     /// </summary>
     /// <param name="contact">The contact to remove.</param>
-    [ICommand]
+    [RelayCommand]
     private void DeleteContact(Contact contact)
     {
         Contacts.FirstGroupByKey(char.ToUpperInvariant(contact.Name.First[0]).ToString()).Remove(contact);
