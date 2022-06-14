@@ -36,7 +36,7 @@ public partial class ContactsListWidgetViewModel : ObservableObject
     /// <summary>
     /// Loads the contacts to display.
     /// </summary>
-    [RelayCommand]
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
     private async Task LoadContactsAsync()
     {
         ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(50);
@@ -52,8 +52,8 @@ public partial class ContactsListWidgetViewModel : ObservableObject
     /// <summary>
     /// Loads more contacts.
     /// </summary>
-    [RelayCommand]
-    private async Task LoadMoreContacts()
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
+    private async Task LoadMoreContactsAsync()
     {
         ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(10);
 
