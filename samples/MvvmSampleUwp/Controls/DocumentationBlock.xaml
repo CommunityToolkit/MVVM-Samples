@@ -15,25 +15,33 @@
                     <Border
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
-                        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
+                         Padding="24,12,24,24"
                         CornerRadius="4">
                         <controls:MarkdownTextBlock
                             Name="PART_MarkdownTextBlock"
-                            Padding="12"
+                            QuoteMargin="12,12,0,0"
+                            ListMargin="-6,4,0,4"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="0"
-                            Header2FontSize="20"
-                            Header2FontWeight="Bold"
-                            Header2Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"
-                            Header2Margin="0,16,0,16"
+                            Header1FontSize="26"
+                            Header1FontWeight="SemiBold"
+                            Header1Margin="0,0,0,12"
+                            Header2FontSize="22"
+                            Header2FontWeight="Normal"
+                            CodePadding="12,12,0,12"
+                            CodeMargin="0,12,0,12"
+                            Header2Margin="0,0,0,0"
+                            InlineCodePadding="6,0,6,0"
+                            InlineCodeMargin="0"
+                            Header3Margin="0,48,0,0"
                             Text="{TemplateBinding Text}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>
