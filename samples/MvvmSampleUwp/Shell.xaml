@@ -175,12 +175,15 @@
             Padding="8,0,0,0"
             VerticalAlignment="Top"
             Background="Transparent">
-            <StackPanel Orientation="Horizontal" Spacing="16">
-                <Image
-                    Width="16"
-                    Height="16"
-                    Source="ms-appx:///Assets/StoreLogo.scale-400.png" />
-                <TextBlock VerticalAlignment="Center" Text="MVVM Toolkit Sample App" />
+            <StackPanel Orientation="Horizontal"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Center"
+                    Margin="0,14,8,8">
+                <Image Source="ms-appx:///Assets/StoreLogo.scale-400.png"
+                   Width="18" Margin="0,0,0,0"/>
+                <TextBlock Style="{StaticResource CaptionTextBlockStyle}"
+                       Margin="12,0,0,0"
+                       Text="MVVM Toolkit Gallery" />
             </StackPanel>
         </Border>
     </Grid>
