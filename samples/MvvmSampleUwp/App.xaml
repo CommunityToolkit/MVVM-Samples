@@ -15,12 +15,13 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Misc resources  -->
-            <Thickness x:Key="DocumentationPageContentPadding">20</Thickness>
+            <Thickness x:Key="DocumentationPageContentPadding">12,20,20,20</Thickness>
 
             <Style x:Key="CardStyle" TargetType="Grid">
                 <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
                 <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="4" />
             </Style>
             
         </ResourceDictionary>

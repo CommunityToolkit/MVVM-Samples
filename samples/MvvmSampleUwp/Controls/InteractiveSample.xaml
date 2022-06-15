@@ -18,41 +18,38 @@
                     <Grid Style="{StaticResource CardStyle}"
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                        
-                        <Pivot>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Sample" Margin="24,12,0,0" FontSize="22" FontWeight="Normal" />
+                        <Pivot Grid.Row="1" Margin="14,0,0,0">
                             <Pivot.Resources>
                                 <FontWeight x:Key="PivotHeaderItemThemeFontWeight">SemiBold</FontWeight>
                                 <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
                             </Pivot.Resources>
 
                             <PivotItem Header="Sample">
-                                <Border>
-                                    <ContentPresenter
-                                    Padding="12"
-                                  
-                                    Content="{TemplateBinding Content}" />
-                                </Border>
-                               
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  Margin="0,8,0,0"/>
                             </PivotItem>
                             <PivotItem Header="XAML">
-                                <Border Background="#FF202020">
-                                    <controls:MarkdownTextBlock
+                                <controls:MarkdownTextBlock
                                         Padding="8"
                                         Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
+                                        Margin="-8,4,0,0"
                                         Text="{TemplateBinding XamlCode}" />
-                                </Border>
                             </PivotItem>
                             <PivotItem Header="C#">
-                                <Border Background="#FF202020">
-                                    <controls:MarkdownTextBlock
+                                <controls:MarkdownTextBlock
                                         Padding="8"
                                         Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
+                                        Margin="-8,4,0,0"
                                         Text="{TemplateBinding CSharpCode}" />
-                                </Border>
                             </PivotItem>
                         </Pivot>
                         
