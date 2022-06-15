@@ -16,6 +16,13 @@
 
             <!--  Misc resources  -->
             <Thickness x:Key="DocumentationPageContentPadding">20</Thickness>
+
+            <Style x:Key="CardStyle" TargetType="Grid">
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

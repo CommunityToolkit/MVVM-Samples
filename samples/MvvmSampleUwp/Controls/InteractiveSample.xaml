@@ -5,6 +5,7 @@
     xmlns:local="using:MvvmSampleUwp.Controls"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
+
     <Style TargetType="local:InteractiveSample">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -14,32 +15,26 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:InteractiveSample">
-                    <Border
+                    <Grid Style="{StaticResource CardStyle}"
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
-                        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
-                        BorderThickness="1"
-                        CornerRadius="4">
-                        <muxc:TabView
-                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                            IsAddTabButtonVisible="False">
-                            <muxc:TabView.Resources>
-                                <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
-                                <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
-                                <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="ControlFillColorSecondary" />
-                            </muxc:TabView.Resources>
-                            <muxc:TabViewItem
-                                FontWeight="Bold"
-                                Header="INTERACTIVE SAMPLE"
-                                IsClosable="False">
-                                <ContentPresenter
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        
+                        <Pivot>
+                            <Pivot.Resources>
+                                <FontWeight x:Key="PivotHeaderItemThemeFontWeight">SemiBold</FontWeight>
+                                <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
+                            </Pivot.Resources>
+
+                            <PivotItem Header="Sample">
+                                <Border>
+                                    <ContentPresenter
                                     Padding="12"
-                                    Background="#60121212"
+                                  
                                     Content="{TemplateBinding Content}" />
-                            </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See XAML" IsClosable="False">
+                                </Border>
+                               
+                            </PivotItem>
+                            <PivotItem Header="XAML">
                                 <Border Background="#FF202020">
                                     <controls:MarkdownTextBlock
                                         Padding="8"
@@ -48,8 +43,8 @@
                                         BorderThickness="0"
                                         Text="{TemplateBinding XamlCode}" />
                                 </Border>
-                            </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See C#" IsClosable="False">
+                            </PivotItem>
+                            <PivotItem Header="C#">
                                 <Border Background="#FF202020">
                                     <controls:MarkdownTextBlock
                                         Padding="8"
@@ -58,9 +53,11 @@
                                         BorderThickness="0"
                                         Text="{TemplateBinding CSharpCode}" />
                                 </Border>
-                            </muxc:TabViewItem>
-                        </muxc:TabView>
-                    </Border>
+                            </PivotItem>
+                        </Pivot>
+                        
+                    
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
