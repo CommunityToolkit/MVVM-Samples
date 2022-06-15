@@ -26,6 +26,8 @@
             ItemInvoked="NavigationView_OnItemInvoked">
             <muxc:NavigationView.Resources>
                 <Thickness x:Key="NavigationViewContentMargin">0,32,0,0</Thickness>
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
+                <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
             </muxc:NavigationView.Resources>
 
             <muxc:NavigationView.AutoSuggestBox>
