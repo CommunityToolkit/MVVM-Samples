@@ -9,6 +9,8 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
+#nullable enable
+
 namespace MvvmSampleUwp.Controls;
 
 /// <summary>
@@ -28,14 +30,14 @@ public sealed class DocumentationBlock : ContentControl
     /// <summary>
     /// The <see cref="MarkdownTextBlock"/> instance in use.
     /// </summary>
-    private MarkdownTextBlock markdownTextBlock;
+    private MarkdownTextBlock? markdownTextBlock;
 
     /// <inheritdoc/>
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
 
-        markdownTextBlock = (MarkdownTextBlock)GetTemplateChild("PART_MarkdownTextBlock");
+        markdownTextBlock = (MarkdownTextBlock)GetTemplateChild("PART_MarkdownTextBlock")!;
 
         markdownTextBlock.LinkClicked += MarkdownTextBlock_LinkClicked;
     }
