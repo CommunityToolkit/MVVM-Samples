@@ -78,14 +78,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\AsyncRelayCommand.md" Link="Assets\docs\AsyncRelayCommand.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\Introduction.md" Link="Assets\docs\Introduction.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\Ioc.md" Link="Assets\docs\Ioc.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\Messenger.md" Link="Assets\docs\Messenger.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\ObservableObject.md" Link="Assets\docs\ObservableObject.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\ObservableRecipient.md" Link="Assets\docs\ObservableRecipient.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\PuttingThingsTogether.md" Link="Assets\docs\PuttingThingsTogether.md" />
-    <EmbeddedResource Include="..\..\MvvmSample.Core\Docs\RelayCommand.md" Link="Assets\docs\RelayCommand.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\AsyncRelayCommand.md" Link="Assets\docs\AsyncRelayCommand.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\Index.md" Link="Assets\docs\Introduction.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\Ioc.md" Link="Assets\docs\Ioc.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\Messenger.md" Link="Assets\docs\Messenger.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\ObservableObject.md" Link="Assets\docs\ObservableObject.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\ObservableRecipient.md" Link="Assets\docs\ObservableRecipient.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\PuttingThingsTogether.md" Link="Assets\docs\PuttingThingsTogether.md" />
+    <EmbeddedResource Include="..\..\..\msdocs-communitytoolkit\docs\mvvm\RelayCommand.md" Link="Assets\docs\RelayCommand.md" />
   </ItemGroup>
 
   <ItemGroup>
