@@ -388,43 +388,43 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\AsyncRelayCommand.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\AsyncRelayCommand.md">
       <Link>Assets\docs\AsyncRelayCommand.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\index.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\index.md">
       <Link>Assets\docs\Introduction.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\Ioc.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\Ioc.md">
       <Link>Assets\docs\Ioc.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\Messenger.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\Messenger.md">
       <Link>Assets\docs\Messenger.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\ObservableObject.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableObject.md">
       <Link>Assets\docs\ObservableObject.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\ObservableValidator.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableValidator.md">
       <Link>Assets\docs\ObservableValidator.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\ObservableRecipient.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableRecipient.md">
       <Link>Assets\docs\ObservableRecipient.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\PuttingThingsTogether.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\PuttingThingsTogether.md">
       <Link>Assets\docs\PuttingThingsTogether.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\RelayCommand.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\RelayCommand.md">
       <Link>Assets\docs\RelayCommand.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\CommunityToolkit\docs\mvvm\ObservableGroupedCollections.md">
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableGroupedCollections.md">
       <Link>Assets\docs\ObservableGroupedCollections.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
