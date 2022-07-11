@@ -42,6 +42,8 @@
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                     BorderThickness="0"
+                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
                                     Text="{TemplateBinding XamlCode}" />
                             </PivotItem>
                             <PivotItem Header="C#">
@@ -51,6 +53,8 @@
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                     BorderThickness="0"
+                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
                                     Text="{TemplateBinding CSharpCode}" />
                             </PivotItem>
                         </Pivot>

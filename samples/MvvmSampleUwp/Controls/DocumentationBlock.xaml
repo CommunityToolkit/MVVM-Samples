@@ -35,6 +35,8 @@
                             InlineCodePadding="6,0,6,0"
                             ListMargin="-6,4,0,4"
                             QuoteMargin="12,12,0,0"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollMode="Disabled"
                             Text="{TemplateBinding Text}" />
                     </Grid>
                 </ControlTemplate>
