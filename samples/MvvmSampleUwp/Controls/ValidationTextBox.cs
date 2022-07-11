@@ -8,6 +8,8 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
+#nullable enable
+
 namespace MvvmSampleUwp.Controls;
 
 /// <summary>
@@ -20,17 +22,17 @@ public sealed class ValidationTextBox : ContentControl
     /// <summary>
     /// The <see cref="TextBox"/> instance in use.
     /// </summary>
-    private TextBox textBox;
+    private TextBox? textBox;
 
     /// <summary>
     /// The <see cref="MarkdownTextBlock"/> instance in use.
     /// </summary>
-    private FontIcon warningIcon;
+    private FontIcon? warningIcon;
 
     /// <summary>
     /// The previous data context in use.
     /// </summary>
-    private INotifyDataErrorInfo oldDataContext;
+    private INotifyDataErrorInfo? oldDataContext;
 
     public ValidationTextBox()
     {
@@ -42,8 +44,8 @@ public sealed class ValidationTextBox : ContentControl
     {
         base.OnApplyTemplate();
 
-        textBox = (TextBox)GetTemplateChild("PART_TextBox");
-        warningIcon = (FontIcon)GetTemplateChild("PART_WarningIcon");
+        textBox = (TextBox)GetTemplateChild("PART_TextBox")!;
+        warningIcon = (FontIcon)GetTemplateChild("PART_WarningIcon")!;
 
         textBox.TextChanged += TextBox_TextChanged;
     }
