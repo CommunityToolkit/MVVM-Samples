@@ -176,7 +176,7 @@
             Background="Transparent">
             <StackPanel
                 Grid.ColumnSpan="2"
-                Margin="0,14,8,8"
+                Margin="0,15,8,8"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
                 <Image Width="16" Source="ms-appx:///Assets/Icon/AppIcon.svg" />
