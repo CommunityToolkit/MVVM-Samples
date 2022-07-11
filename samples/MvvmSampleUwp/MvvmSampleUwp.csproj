@@ -204,7 +204,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Icon\AppIcon.svg" />
+    <Content Include="Assets\Icon\AppIcon.scale-100.png" />
+    <Content Include="Assets\Icon\AppIcon.scale-125.png" />
+    <Content Include="Assets\Icon\AppIcon.scale-150.png" />
+    <Content Include="Assets\Icon\AppIcon.scale-200.png" />
+    <Content Include="Assets\Icon\AppIcon.scale-400.png" />
     <Content Include="Assets\Icon\AppList.scale-100.png" />
     <Content Include="Assets\Icon\AppList.scale-100_altform-colorful_theme-light.png" />
     <Content Include="Assets\Icon\AppList.scale-125.png" />
