@@ -1,0 +1,3 @@
+[submodule "CommunityToolkit"]
+	path = msdocs-communitytoolkit
+	url = https://github.com/MicrosoftDocs/CommunityToolkit
