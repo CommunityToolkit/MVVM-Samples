@@ -14,60 +14,53 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:InteractiveSample">
-                    <Border
+                    <Grid
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                        Background="{ThemeResource SubtleFillColorTertiaryBrush}"
-                        BorderBrush="{ThemeResource SystemChromeBlackLowColor}"
-                        BorderThickness="1"
-                        CornerRadius="4">
-                        <muxc:TabView
-                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                            IsAddTabButtonVisible="False">
-                            <muxc:TabView.Resources>
-                                <x:Double x:Key="TabViewHeaderPadding">0</x:Double>
-                                <x:Double x:Key="TabViewItemHeaderFontSize">14</x:Double>
-                                <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="ControlFillColorSecondary" />
-                            </muxc:TabView.Resources>
-                            <muxc:TabViewItem
-                                FontWeight="Bold"
-                                Header="INTERACTIVE SAMPLE"
-                                IsClosable="False">
-                                <ContentPresenter
-                                    Padding="12"
-                                    Background="#60121212"
-                                    Content="{TemplateBinding Content}" />
-                            </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See XAML" IsClosable="False">
-                                <Border Background="#FF202020">
-                                    <controls:MarkdownTextBlock
-                                        Padding="8"
-                                        Background="Transparent"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="0"
-                                        Text="{TemplateBinding XamlCode}"
-                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                        ScrollViewer.VerticalScrollMode="Disabled"/>
-                                </Border>
-                            </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="See C#" IsClosable="False">
-                                <Border Background="#FF202020">
-                                    <controls:MarkdownTextBlock
-                                        Padding="8"
-                                        Background="Transparent"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="0"
-                                        Text="{TemplateBinding CSharpCode}"
-                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                        ScrollViewer.VerticalScrollMode="Disabled"/>
-                                </Border>
-                            </muxc:TabViewItem>
-                        </muxc:TabView>
-                    </Border>
+                        Style="{StaticResource CardStyle}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Margin="24,12,0,0"
+                            FontSize="22"
+                            FontWeight="Normal"
+                            Text="Sample" />
+                        <Pivot Grid.Row="1" Margin="14,0,0,0">
+                            <Pivot.Resources>
+                                <FontWeight x:Key="PivotHeaderItemThemeFontWeight">SemiBold</FontWeight>
+                                <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
+                            </Pivot.Resources>
+                            <PivotItem Header="Sample">
+                                <ContentPresenter Margin="0,8,0,0" Content="{TemplateBinding Content}" />
+                            </PivotItem>
+                            <PivotItem Header="XAML">
+                                <controls:MarkdownTextBlock
+                                    Margin="-8,4,0,0"
+                                    Padding="8"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    Text="{TemplateBinding XamlCode}" />
+                            </PivotItem>
+                            <PivotItem Header="C#">
+                                <controls:MarkdownTextBlock
+                                    Margin="-8,4,0,0"
+                                    Padding="8"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    Text="{TemplateBinding CSharpCode}" />
+                            </PivotItem>
+                        </Pivot>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

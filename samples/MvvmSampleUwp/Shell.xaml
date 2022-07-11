@@ -14,7 +14,6 @@
     mc:Ignorable="d">
 
     <Grid>
-
         <!--  Navigation view  -->
         <muxc:NavigationView
             x:Name="NavigationView"
@@ -26,6 +25,8 @@
             ItemInvoked="NavigationView_OnItemInvoked">
             <muxc:NavigationView.Resources>
                 <Thickness x:Key="NavigationViewContentMargin">0,32,0,0</Thickness>
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
+                <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
             </muxc:NavigationView.Resources>
 
             <muxc:NavigationView.AutoSuggestBox>
@@ -173,12 +174,17 @@
             Padding="8,0,0,0"
             VerticalAlignment="Top"
             Background="Transparent">
-            <StackPanel Orientation="Horizontal" Spacing="16">
-                <Image
-                    Width="16"
-                    Height="16"
-                    Source="ms-appx:///Assets/StoreLogo.scale-400.png" />
-                <TextBlock VerticalAlignment="Center" Text="MVVM Toolkit Sample App" />
+            <StackPanel
+                Grid.ColumnSpan="2"
+                Margin="0,15,8,8"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Image Width="16" Source="ms-appx:///Assets/Icon/AppIcon.png" />
+
+                <TextBlock
+                    Margin="12,0,0,0"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="MVVM Toolkit Sample App" />
             </StackPanel>
         </Border>
     </Grid>
