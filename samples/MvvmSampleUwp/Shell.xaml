@@ -179,9 +179,7 @@
                 Margin="0,15,8,8"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
-                <Viewbox Width="16">
-                    <Image Source="ms-appx:///Assets/Icon/AppIcon.png" />
-                </Viewbox>
+                <Image Width="16" Source="ms-appx:///Assets/Icon/AppIcon.png" />
 
                 <TextBlock
                     Margin="12,0,0,0"
