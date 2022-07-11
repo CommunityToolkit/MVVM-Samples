@@ -17,7 +17,7 @@
   <Properties>
     <DisplayName>MVVM Toolkit Sample App</DisplayName>
     <PublisherDisplayName>Microsoft</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\Icon\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
