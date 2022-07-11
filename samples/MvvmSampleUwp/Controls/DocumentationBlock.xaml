@@ -29,7 +29,9 @@
                             Header2FontWeight="Bold"
                             Header2Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"
                             Header2Margin="0,16,0,16"
-                            Text="{TemplateBinding Text}" />
+                            Text="{TemplateBinding Text}"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollMode="Disabled"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -46,7 +46,9 @@
                                         Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
-                                        Text="{TemplateBinding XamlCode}" />
+                                        Text="{TemplateBinding XamlCode}"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollMode="Disabled"/>
                                 </Border>
                             </muxc:TabViewItem>
                             <muxc:TabViewItem Header="See C#" IsClosable="False">
@@ -56,7 +58,9 @@
                                         Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
-                                        Text="{TemplateBinding CSharpCode}" />
+                                        Text="{TemplateBinding CSharpCode}"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollMode="Disabled"/>
                                 </Border>
                             </muxc:TabViewItem>
                         </muxc:TabView>
