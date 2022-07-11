@@ -18,6 +18,10 @@ steps:
 - task: NuGetToolInstaller@1
   displayName: Install NuGet tool
 
+- task: CmdLine@2
+  inputs:
+    script: 'git submodule update --init --recursive' 
+
 - task: NuGetCommand@2
   displayName: Restore solution(s)
   inputs:
