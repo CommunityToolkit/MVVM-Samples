@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="MvvmSampleUwp.Views.SourceGeneratorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSampleUwp.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="generators/Overview" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
+        <StackPanel Spacing="16">
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('MVVM source generators'), Mode=OneWay}" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

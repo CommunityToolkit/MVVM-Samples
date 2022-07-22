@@ -29,6 +29,10 @@ public sealed partial class Shell : UserControl
         NavigationItems = new[]
         {
             new SampleEntry(IntroductionItem, typeof(IntroductionPage)),
+            new SampleEntry(SourceGeneratorsItem, typeof(SourceGeneratorsPage), "MVVM source generators", "observable inotify property changed propertychanging changing roslyn source generators"),
+            new SampleEntry(ObservablePropertyAttributeItem, typeof(ObservablePropertyAttributePage), "[ObservableProperty]", "observable inotify property changed propertychanging changing roslyn source generators"),
+            new SampleEntry(RelayCommandAttributeItem, typeof(RelayCommandAttributePage), "[RelayCommand]", "observable inotify property changed propertychanging changing command icommand relay roslyn source generators"),
+            new SampleEntry(INotifyPropertyChangedAttributeItem, typeof(INotifyPropertyChangedAttributePage), "[INotifyPropertyChanged]", "observable inotify property changed propertychanging changing roslyn source generators"),
             new SampleEntry(ObservableObjectItem, typeof(ObservableObjectPage), "ObservableObject", "observable inotify property changed propertychanging changing"),
             new SampleEntry(ObservableValidatorItem, typeof(ObservableValidatorPage), "ObservableValidator", "observable form validation validate data error inotify property changed propertychanging changing"),
             new SampleEntry(CommandsItem, typeof(RelayCommandPage), "RelayCommand and RelayCommand<T>", "commands icommand relaycommand binding"),

@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="MvvmSampleUwp.Views.RelayCommandAttributePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MvvmSampleUwp.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{x:Bind ViewModel.LoadDocsCommand}" CommandParameter="generators/RelayCommand" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" CanContentRenderOutsideBounds="True">
+        <StackPanel Spacing="16">
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('RelayCommand attribute'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('How it works'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Command parameters'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Asynchronous commands'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Enabling and disabling commands'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Handling concurrent executions'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Handling asynchronous exceptions'), Mode=OneWay}" />
+            <controls:DocumentationBlock Text="{x:Bind ViewModel.GetParagraph('Cancel commands for asynchronous operations'), Mode=OneWay}" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

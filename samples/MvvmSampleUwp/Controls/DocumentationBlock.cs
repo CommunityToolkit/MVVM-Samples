@@ -8,6 +8,7 @@ using Microsoft.Toolkit.Uwp.UI.Controls;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 #nullable enable
 
@@ -40,6 +41,7 @@ public sealed class DocumentationBlock : ContentControl
         markdownTextBlock = (MarkdownTextBlock)GetTemplateChild("PART_MarkdownTextBlock")!;
 
         markdownTextBlock.LinkClicked += MarkdownTextBlock_LinkClicked;
+        markdownTextBlock.ImageResolving += MarkdownTextBlock_ImageResolving;
     }
 
     /// <summary>
@@ -54,6 +56,20 @@ public sealed class DocumentationBlock : ContentControl
              Uri.TryCreate($"https://docs.microsoft.com{e.Link}", UriKind.Absolute, out result)))
         {
             _ = Launcher.LaunchUriAsync(result);
+        }
+    }
+
+    /// <summary>
+    /// Handles an image being resolved and loads images from the local assets.
+    /// </summary>
+    /// <param name="sender">The source <see cref="MarkdownTextBlock"/> control.</param>
+    /// <param name="e">The input arguments.</param>
+    private void MarkdownTextBlock_ImageResolving(object sender, ImageResolvingEventArgs e)
+    {
+        if (e.Url?.Contains("source-generator-visualization.png") == true)
+        {
+            e.Image = new BitmapImage(new Uri("ms-appx:///Assets/docs/images/source-generator-visualization.png"));
+            e.Handled = true;
         }
     }
 
