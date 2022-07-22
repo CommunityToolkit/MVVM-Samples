@@ -143,8 +143,20 @@
     <Compile Include="Views\BuildingTheUIPage.xaml.cs">
       <DependentUpon>BuildingTheUIPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\INotifyPropertyChangedAttributePage.xaml.cs">
+      <DependentUpon>INotifyPropertyChangedAttributePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RelayCommandAttributePage.xaml.cs">
+      <DependentUpon>RelayCommandAttributePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ObservableValidatorPage.xaml.cs">
       <DependentUpon>ObservableValidatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ObservablePropertyAttributePage.xaml.cs">
+      <DependentUpon>ObservablePropertyAttributePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceGeneratorsPage.xaml.cs">
+      <DependentUpon>SourceGeneratorsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RedditServicePage.xaml.cs">
       <DependentUpon>RedditServicePage.xaml</DependentUpon>
@@ -391,7 +403,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\INotifyPropertyChangedAttributePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RelayCommandAttributePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ObservableValidatorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ObservablePropertyAttributePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SourceGeneratorsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -503,6 +531,22 @@
     </Content>
     <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableGroupedCollections.md">
       <Link>Assets\docs\ObservableGroupedCollections.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\Overview.md">
+      <Link>Assets\docs\Overview.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\ObservableProperty.md">
+      <Link>Assets\docs\ObservablePropertyAttribute.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\RelayCommand.md">
+      <Link>Assets\docs\RelayCommandAttribute.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\INotifyPropertyChanged.md">
+      <Link>Assets\docs\INotifyPropertyChangedAttribute.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -58,6 +58,29 @@
                     ToolTipService.ToolTip="A showcase of all the individual building blocks available in the MVVM Toolkit.">
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem
+                            x:Name="SourceGeneratorsItem"
+                            Content="Source generators"
+                            Icon="ClearSelection"
+                            ToolTipService.ToolTip="Brand new incremental Roslyn source generators to power MVVM scenarios.">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem
+                                    x:Name="ObservablePropertyAttributeItem"
+                                    Content="[ObservableProperty]"
+                                    Icon="ReShare"
+                                    ToolTipService.ToolTip="An attribute that allows generating observable properties from annotated fields." />
+                                <muxc:NavigationViewItem
+                                    x:Name="RelayCommandAttributeItem"
+                                    Content="[RelayCommand]"
+                                    Icon="Directions"
+                                    ToolTipService.ToolTip="An attribute to generate relay command properties from annotated methods." />
+                                <muxc:NavigationViewItem
+                                    x:Name="INotifyPropertyChangedAttributeItem"
+                                    Content="[INotifyPropertyChanged]"
+                                    Icon="Orientation"
+                                    ToolTipService.ToolTip="Attributes to inject MVVM support into partial classes using composition." />
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem
                             x:Name="ObservableObjectItem"
                             Content="ObservableObject"
                             Icon="Sort"
@@ -70,7 +93,6 @@
                         <muxc:NavigationViewItem
                             Content="Commands"
                             Icon="Calendar"
-                            IsExpanded="True"
                             ToolTipService.ToolTip="A collection of types implementing the ICommand interface.">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
@@ -89,7 +111,6 @@
                             x:Name="MessengerItem"
                             Content="Messenger"
                             Icon="Comment"
-                            IsExpanded="True"
                             ToolTipService.ToolTip="An easy to use and powerful type to exchange messages between different app modules.">
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
