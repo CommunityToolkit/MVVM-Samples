@@ -64,15 +64,17 @@ public class SamplePageViewModel : ObservableObject
         // Skip if the loading has already started
         if (LoadDocsCommand.ExecutionTask is not null) return;
 
-        string path = Path.Combine("Assets", "docs", $"{name}.md");
+        string directory = Path.GetDirectoryName(name);
+        string filename = Path.GetFileName(name);
+        string path = Path.Combine("Assets", "docs", directory, $"{filename}.md");
         using Stream stream = await FilesServices.OpenForReadAsync(path);
         using StreamReader reader = new(stream);
         string text = await reader.ReadToEndAsync();
 
-        // Drop image links
-        string trimmedText = Regex.Replace(text, @"[ \r\n]+?!\[[^]]+\]\([^)]+\)[ \r\n]+?", string.Empty);
+        // Fixup image links
+        string fixedText = Regex.Replace(text, @"!\[[^\]]+\]\(([^ \)]+)(?:[^\)]+)?\)", m => $"![]({m.Groups[1].Value})");
 
-        Texts = MarkdownHelper.GetParagraphs(trimmedText);
+        Texts = MarkdownHelper.GetParagraphs(fixedText);
 
         OnPropertyChanged(nameof(GetParagraph));
     }

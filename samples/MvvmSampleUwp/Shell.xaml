@@ -97,7 +97,7 @@
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
                                     x:Name="CommandsItem"
-                                    Content="Introduction"
+                                    Content="Relay commands"
                                     Icon="Library"
                                     ToolTipService.ToolTip="Get started with the available command types included in the MVVM Toolkit." />
                                 <muxc:NavigationViewItem

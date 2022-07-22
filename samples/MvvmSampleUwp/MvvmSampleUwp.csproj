@@ -534,19 +534,23 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\Overview.md">
-      <Link>Assets\docs\Overview.md</Link>
+      <Link>Assets\docs\generators\Overview.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\ObservableProperty.md">
-      <Link>Assets\docs\ObservablePropertyAttribute.md</Link>
+      <Link>Assets\docs\generators\ObservableProperty.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\RelayCommand.md">
-      <Link>Assets\docs\RelayCommandAttribute.md</Link>
+      <Link>Assets\docs\generators\RelayCommand.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\msdocs-communitytoolkit\docs\mvvm\generators\INotifyPropertyChanged.md">
-      <Link>Assets\docs\INotifyPropertyChangedAttribute.md</Link>
+      <Link>Assets\docs\generators\INotifyPropertyChanged.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\msdocs-communitytoolkit\docs\images\source-generator-visualization.png">
+      <Link>Assets\docs\images\source-generator-visualization.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
