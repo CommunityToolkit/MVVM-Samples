@@ -27,13 +27,13 @@
                             FontSize="22"
                             FontWeight="Normal"
                             Text="Sample" />
-                        <Pivot Grid.Row="1" Margin="14,0,0,0">
+                        <Pivot Grid.Row="1" Margin="14,0,12,12">
                             <Pivot.Resources>
                                 <FontWeight x:Key="PivotHeaderItemThemeFontWeight">SemiBold</FontWeight>
                                 <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
                             </Pivot.Resources>
                             <PivotItem Header="Sample">
-                                <ContentPresenter Margin="0,8,0,0" Content="{TemplateBinding Content}" />
+                                <ContentPresenter Margin="0,4,0,12" Content="{TemplateBinding Content}" />
                             </PivotItem>
                             <PivotItem Header="XAML">
                                 <controls:MarkdownTextBlock
@@ -49,7 +49,7 @@
                             <PivotItem Header="C#">
                                 <controls:MarkdownTextBlock
                                     Margin="-8,4,0,0"
-                                    Padding="8"
+                                    Padding="8,8,0,0"
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                     BorderThickness="0"
