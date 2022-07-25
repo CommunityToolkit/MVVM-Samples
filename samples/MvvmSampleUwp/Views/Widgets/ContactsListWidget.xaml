@@ -130,9 +130,10 @@
 
         <!--  Loads more contacts  -->
         <Button
-            Margin="20"
+            
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
+            Style="{StaticResource AccentButtonStyle}"
             Command="{x:Bind ViewModel.LoadMoreContactsCommand}"
             Content="Load more contacts" />
     </Grid>
