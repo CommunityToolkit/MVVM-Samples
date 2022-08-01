@@ -18,15 +18,13 @@
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
   <Application>
 
-    <!-- Refit support for the Reddit service -->
+    <!-- Refit support for the Reddit and contacts services -->
     <Type Name="MvvmSample.Core.Services.IRedditService" Dynamic="Required All" />
+    <Type Name="MvvmSample.Core.Services.IContactsService" Dynamic="Required All" />
     <Namespace Name="Refit.Implementation" Dynamic="Required All" />
 
     <!-- JSON models -->
-    <Type Name="MvvmSample.Core.Models.PostsQueryResponse" Dynamic="Required Public" />
-    <Type Name="MvvmSample.Core.Models.PostListing" Dynamic="Required Public" />
-    <Type Name="MvvmSample.Core.Models.PostData" Dynamic="Required Public" />
-    <Type Name="MvvmSample.Core.Models.Post" Dynamic="Required Public" />
+    <Namespace Name="MvvmSample.Core.Models" Dynamic="Required All" />
 
     <!-- Generated code loaded through reflection -->
     <Type Name="CommunityToolkit.Mvvm.ComponentModel.__Internals.__ObservableValidatorExtensions" Dynamic="Required Public" />
