@@ -5,7 +5,7 @@
     <UserSecretsId>4e66f7b4-01a8-4f00-8733-4ae6a08c741f</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
     <PackageReference Include="Refit" Version="6.3.2" />
   </ItemGroup>
