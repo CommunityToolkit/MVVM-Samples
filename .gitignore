@@ -15,6 +15,7 @@
 
 # Mono auto generated files
 mono_crash.*
+Resource.designer.cs
 
 # Build results
 [Dd]ebug/
