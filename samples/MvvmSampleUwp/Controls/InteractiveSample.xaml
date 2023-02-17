@@ -36,17 +36,21 @@
                                 <ContentPresenter Margin="0,4,0,12" Content="{TemplateBinding Content}" />
                             </PivotItem>
                             <PivotItem Header="XAML">
-                                <controls:MarkdownTextBlock
-                                    Margin="-8,4,0,0"
-                                    Padding="8"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    BorderThickness="0"
-                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                    ScrollViewer.VerticalScrollMode="Disabled"
-                                    Text="{TemplateBinding XamlCode}" />
+                                <ScrollViewer>
+                                    <controls:MarkdownTextBlock
+                                        Margin="-8,4,0,0"
+                                        Padding="8"
+                                        Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollMode="Disabled"
+                                        Text="{TemplateBinding XamlCode}" />
+                                </ScrollViewer>
                             </PivotItem>
-                            <PivotItem Header="C#">
+                            <PivotItem
+                                Header="C#">
+                                <ScrollViewer>
                                 <controls:MarkdownTextBlock
                                     Margin="-8,4,0,0"
                                     Padding="8,8,0,0"
@@ -56,6 +60,7 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                     ScrollViewer.VerticalScrollMode="Disabled"
                                     Text="{TemplateBinding CSharpCode}" />
+                            </ScrollViewer>
                             </PivotItem>
                         </Pivot>
                     </Grid>
