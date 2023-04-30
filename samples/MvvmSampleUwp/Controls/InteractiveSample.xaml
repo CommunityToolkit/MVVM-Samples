@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -36,6 +36,7 @@
                                 <ContentPresenter Margin="0,4,0,12" Content="{TemplateBinding Content}" />
                             </PivotItem>
                             <PivotItem Header="XAML">
+                                <ScrollViewer>
                                 <controls:MarkdownTextBlock
                                     Margin="-8,4,0,0"
                                     Padding="8"
@@ -45,8 +46,10 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                     ScrollViewer.VerticalScrollMode="Disabled"
                                     Text="{TemplateBinding XamlCode}" />
+                                    </ScrollViewer>
                             </PivotItem>
                             <PivotItem Header="C#">
+                                <ScrollViewer>
                                 <controls:MarkdownTextBlock
                                     Margin="-8,4,0,0"
                                     Padding="8,8,0,0"
@@ -56,6 +59,7 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                     ScrollViewer.VerticalScrollMode="Disabled"
                                     Text="{TemplateBinding CSharpCode}" />
+                                    </ScrollViewer>
                             </PivotItem>
                         </Pivot>
                     </Grid>
