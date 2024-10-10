@@ -23,9 +23,9 @@ public static class MauiProgram
 			.UseMauiCommunityToolkitMarkup()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("FontAwesomeRegular.otf", "FaRegularFont");
-				fonts.AddFont("FontAwesomeSolid.otf", "FaSolidFont");
-				fonts.AddFont("FontAwesomeBrands.otf", "FaBrandsFont");
+				fonts.AddFont("FontAwesomeRegular.otf", "FontAwesomeRegular");
+				fonts.AddFont("FontAwesomeSolid.otf", "FontAwesomeSolid");
+				fonts.AddFont("FontAwesomeBrands.otf", "FontAwesomeBrands");
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
@@ -33,49 +33,53 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		builder.Services.AddSingleton<IFilesService, FileService>()
-			.AddSingleton<ISettingsService, SettingsService>()
-			.AddRefitClient<IRedditService>()
-			.ConfigureHttpClient(static client => client.BaseAddress = new Uri("https://www.reddit.com"))
-			.AddStandardResilienceHandler(static options => options.Retry = new MobileHttpRetryStrategyOptions());
-
+		RegisterServices(builder.Services);
 		RegisterViews(builder.Services);
 		RegisterViewModels(builder.Services);
 
 		return builder.Build();
 	}
 
+	static void RegisterServices(in IServiceCollection services)
+	{
+		services.AddSingleton<IFilesService, FileService>();
+		services.AddSingleton<ISettingsService, SettingsService>();
+		services.AddRefitClient<IRedditService>()
+			.ConfigureHttpClient(static client => client.BaseAddress = new Uri("https://www.reddit.com"))
+			.AddStandardResilienceHandler(static options => options.Retry = new MobileHttpRetryStrategyOptions());
+	}
+
 	static void RegisterViews(in IServiceCollection services)
 	{
-		services.AddTransient<AsyncRelayCommandPage>()
-			.AddTransient<BuildingTheUIPage>()
-			.AddTransient<FlyoutHeader>()
-			.AddTransient<InteractiveSample>()
-			.AddTransient<IntroductionPage>()
-			.AddTransient<IoCPage>()
-			.AddTransient<MessengerPage>()
-			.AddTransient<MessengerRequestPage>()
-			.AddTransient<MessengerSendPage>()
-			.AddTransient<ObservableObjectPage>()
-			.AddTransient<PuttingThingsTogetherPage>()
-			.AddTransient<RedditBrowserPage>()
-			.AddTransient<RedditServicePage>()
-			.AddTransient<RelayCommandPage>()
-			.AddTransient<SettingsServicePage>();
+		services.AddTransient<AsyncRelayCommandPage>();
+		services.AddTransient<BuildingTheUIPage>();
+		services.AddTransient<FlyoutHeader>();
+		services.AddTransient<InteractiveSample>();
+		services.AddTransient<IntroductionPage>();
+		services.AddTransient<IoCPage>();
+		services.AddTransient<MessengerPage>();
+		services.AddTransient<MessengerRequestPage>();
+		services.AddTransient<MessengerSendPage>();
+		services.AddTransient<ObservableObjectPage>();
+		services.AddTransient<PuttingThingsTogetherPage>();
+		services.AddTransient<RedditBrowserPage>();
+		services.AddTransient<RedditServicePage>();
+		services.AddTransient<RelayCommandPage>();
+		services.AddTransient<SettingsServicePage>();
 	}
 
 	static void RegisterViewModels(in IServiceCollection services)
 	{
-		services.AddTransient<AsyncRelayCommandPageViewModel>()
-			.AddTransient<ContactsListWidgetViewModel>()
-			.AddTransient<IocPageViewModel>()
-			.AddTransient<MessengerPageViewModel>()
-			.AddTransient<ObservableObjectPageViewModel>()
-			.AddTransient<PostWidgetViewModel>()
-			.AddTransient<RelayCommandPageViewModel>()
-			.AddTransient<SamplePageViewModel>()
-			.AddTransient<SubredditWidgetViewModel>()
-			.AddTransient<ValidationFormWidgetViewModel>();
+		services.AddTransient<AsyncRelayCommandPageViewModel>();
+		services.AddTransient<ContactsListWidgetViewModel>();
+		services.AddTransient<IocPageViewModel>();
+		services.AddTransient<MessengerPageViewModel>();
+		services.AddTransient<ObservableObjectPageViewModel>();
+		services.AddTransient<PostWidgetViewModel>();
+		services.AddTransient<RelayCommandPageViewModel>();
+		services.AddTransient<SamplePageViewModel>();
+		services.AddTransient<SubredditWidgetViewModel>();
+		services.AddTransient<ValidationFormWidgetViewModel>();
 	}
 
 	sealed class MobileHttpRetryStrategyOptions : HttpRetryStrategyOptions
