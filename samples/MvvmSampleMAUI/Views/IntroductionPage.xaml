@@ -7,9 +7,9 @@
 			 x:DataType="vm:ObservableObjectPageViewModel"
 			 Title="Introduction">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Introduction to the MVVM package], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[When should I use this package?], Mode=OneWay}" />
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

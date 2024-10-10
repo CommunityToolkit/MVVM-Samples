@@ -8,19 +8,19 @@
 			 x:DataType="vm:ObservableObjectPageViewModel"
 			 Title="ObservableObject">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[ObservableObject], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[How it works], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Simple property], Mode=OneWay}" />
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
 										HeightRequest="300">
-				<StackLayout Spacing="8">
+				<VerticalStackLayout Spacing="8">
 					<!--Simple property sample-->
 					<Entry Placeholder="Type here to update the text below"
 						   Text="{Binding Name, Mode=TwoWay}" />
 					<Label Text="{Binding Name, Mode=OneWay}" />
-				</StackLayout>
+				</VerticalStackLayout
 				<controls:InteractiveSample.XamlCode>
 ```xml
 &lt;StackLayout Spacing="8">
@@ -56,11 +56,11 @@ public string Name
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
 										HeightRequest="400">
-				<StackLayout Spacing="8">
+				<VerticalStackLayout Spacing="8">
 					<Button Text="Click me to load a Task to await"
 							Command="{Binding ReloadTaskCommand}" />
 					<Label Text="{Binding MyTask.Status, Mode=OneWay}" />
-				</StackLayout>
+				</VerticalStackLayout
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;StackLayout Spacing="8">
@@ -104,6 +104,6 @@ public void ReloadTask()
 ```
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

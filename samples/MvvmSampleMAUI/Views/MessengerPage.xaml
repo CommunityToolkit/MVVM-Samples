@@ -7,9 +7,9 @@
 			 x:DataType="vm:MessengerPageViewModel"
 			 Title="Messenger">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Messenger], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[How it works], Mode=OneWay}" />
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

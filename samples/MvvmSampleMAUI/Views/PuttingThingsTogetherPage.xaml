@@ -6,9 +6,9 @@
 			 x:Class="MvvmSampleXF.Views.PuttingThingsTogetherPage"
 			 x:DataType="vm:SamplePageViewModel">
 	<ScrollView Padding="16">
-		<StackLayout Spacing="16">
+		<VerticalStackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Putting things together], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[What do we want to build], Mode=OneWay}" />
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

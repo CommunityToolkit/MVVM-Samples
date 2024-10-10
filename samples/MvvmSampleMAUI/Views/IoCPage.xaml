@@ -7,10 +7,10 @@
 			 x:DataType="vm:IocPageViewModel"
 			 Title="Inversion of Control">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Ioc (Inversion of control)], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Configure and resolve services], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Constructor injection], Mode=OneWay}" />
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

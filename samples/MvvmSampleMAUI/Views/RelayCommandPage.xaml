@@ -8,18 +8,18 @@
 			 x:DataType="vm:RelayCommandPageViewModel"
 			 Title="Commands">
 	<ScrollView Padding="16">
-		<StackLayout Spacing="16">
+		<VerticalStackLayout Spacing="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[RelayCommand], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[How they work], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Working with `ICommand`], Mode=OneWay}" />
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
 										HeightRequest="400">
-				<StackLayout Spacing="8">
+				<VerticalStackLayout Spacing="8">
 					<Label Text="{Binding Counter}"/>
 					<Button Text="Click me!"
 							Command="{Binding IncrementCounterCommand}" />
-				</StackLayout>
+				</VerticalStackLayout
 			<controls:InteractiveSample.XamlCode>
 ```xml
 &lt;StackLayout Spacing="8">
@@ -62,6 +62,6 @@ public class MyViewModel : ObservableObject
 ```
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

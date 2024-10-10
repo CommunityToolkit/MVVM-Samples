@@ -7,19 +7,19 @@
 			 x:Class="MvvmSampleXF.Views.MessengerRequestPage"
 			 Title="Messenger">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
 										HeightRequest="500">
-				<StackLayout Spacing="8">
+				<VerticalStackLayout Spacing="8">
 
 					<Label Text="{Binding Username, Mode=OneWay}" />
 					<Button Text="Click to request the username!"
 							Command="{Binding RequestCurrentUsernameCommand}" />
 					<Button Text="Click to reset the local username!"
 							Command="{Binding ResetCurrentUsernameCommand}" />
-				</StackLayout>
+				</VerticalStackLayout
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;StackLayout Spacing="8">
@@ -74,6 +74,6 @@ public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string>
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
 
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

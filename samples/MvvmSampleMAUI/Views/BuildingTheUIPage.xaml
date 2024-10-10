@@ -7,9 +7,9 @@
 			 x:DataType="vm:SamplePageViewModel"
 			 Title="Building the UI">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Building the UI], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Good to go! 🚀], Mode=OneWay}" />
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

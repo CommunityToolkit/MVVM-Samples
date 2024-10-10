@@ -7,9 +7,9 @@
 			 x:DataType="vm:SamplePageViewModel"
 			 Title="ViewModel Setup">
 	<ScrollView Padding="16">
-		<StackLayout Spacing="16">
+		<VerticalStackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown" 
 							 Markdown="{Binding Path=Texts[Building the settings service], Mode=OneWay}"/>
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>

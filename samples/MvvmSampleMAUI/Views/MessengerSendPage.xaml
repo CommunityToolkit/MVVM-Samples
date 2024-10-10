@@ -8,33 +8,33 @@
 			 x:DataType="vm:MessengerPageViewModel"
 			 Title="Messenger">
 	<ScrollView Padding="16">
-		<StackLayout Padding="16">
+		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
 										HeightRequest="600">
-				<StackLayout Spacing="8">
+				<VerticalStackLayout Spacing="8">
 
 					<!--Sender module-->
 					<Border BorderColor="#40FFFFFF"
 							CornerRadius="4"
 							Padding="8">
-						<StackLayout Spacing="8">
+						<VerticalStackLayout Spacing="8">
 							<Label Text="{Binding SenderViewModel.Username, Mode=OneWay}" />
 							<Button Text="Click to send a message!"
 									Command="{Binding SenderViewModel.SendUserMessageCommand}" />
-						</StackLayout>
+						</VerticalStackLayout
 					</Border>
 
 					<!--Receiver module-->
 					<Border BorderColor="#40FFFFFF"
 							CornerRadius="4"
 							Padding="8">
-						<StackLayout Spacing="8">
+						<VerticalStackLayout Spacing="8">
 							<Label Text="{Binding ReceiverViewModel.Username, Mode=OneWay}" />
-						</StackLayout>
+						</VerticalStackLayout
 					</Border>
-				</StackLayout>
+				</VerticalStackLayout
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;StackLayout Spacing="8">
@@ -140,6 +140,6 @@ public sealed class UsernameChangedMessage : ValueChangedMessage&lt;string>
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
 
-		</StackLayout>
+		</VerticalStackLayout
 	</ScrollView>
 </ContentPage>
