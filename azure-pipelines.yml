@@ -1,46 +1,87 @@
-trigger:
-- master
-
-pr:
-- master
-
-pool:
-  vmImage: 'windows-latest'
-
 variables:
   solutionUwp: 'samples/MvvmSampleUwp.sln'
   solutionXf: 'samples/MvvmSampleUwp.sln'
+  solutionMaui: 'samples/MvvmSampleMAUI.sln'
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+  Xcode_Version: '16'
 
-steps:
-- task: NuGetToolInstaller@1
-  displayName: Install NuGet tool
+trigger:
+  branches:
+    include:
+    - master
 
-- task: CmdLine@2
-  inputs:
-    script: 'git submodule update --init --recursive' 
+pr:
+  autoCancel: 'true'
+  branches:
+    include:
+    - master
 
-- task: NuGetCommand@2
-  displayName: Restore solution(s)
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'config'
-    nugetConfigPath: ./samples/nuget.config
+jobs:
+  - job: build_samples
+    displayName: Build Sample Apps
+    strategy:
+      matrix:
+        'Windows':
+          image: 'windows-latest'
+        'macOS':
+          image: 'macos-14'
+    pool:
+      vmImage: $(image)
+    steps:
+      - task: UseDotNet@2
+        displayName: 'Install Latest .NET SDK, v8.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '8.0.x'
+          includePreviewVersions: false
 
-- task: VSBuild@1
-  displayName: Build UWP solution
-  inputs:
-    platform: 'x86'
-    solution: '$(solutionUwp)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+      - task: CmdLine@2
+        displayName: 'Set Xcode v$(Xcode_Version)'
+        condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
+        inputs:
+          script: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(Xcode_Version).app;sudo xcode-select --switch /Applications/Xcode_$(Xcode_Version).app/Contents/Developer
 
-- task: VSBuild@1
-  displayName: Build Xamarin.Forms solution
-  inputs:
-    platform: 'Any CPU'
-    solution: '$(solutionXf)'
-    configuration: '$(buildConfiguration)'
+      - task: CmdLine@2
+        displayName: 'Install Latest .NET MAUI Workload'
+        inputs:
+          script: 'dotnet workload install maui'
+
+      - task: NuGetToolInstaller@1
+        displayName: Install NuGet tool
+
+      - task: CmdLine@2
+        inputs:
+          script: 'git submodule update --init --recursive' 
+
+      - task: NuGetCommand@2
+        displayName: Restore solution(s)
+        inputs:
+          command: 'restore'
+          restoreSolution: '**/*.sln'
+          feedsToUse: 'config'
+          nugetConfigPath: ./samples/nuget.config
+
+      - task: VSBuild@1
+        displayName: Build UWP solution
+        condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows
+        inputs:
+          platform: 'x86'
+          solution: '$(solutionUwp)'
+          configuration: '$(buildConfiguration)'
+          msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+
+      - task: VSBuild@1
+        displayName: Build Xamarin.Forms solution
+        inputs:
+          platform: 'Any CPU'
+          solution: '$(solutionXf)'
+          configuration: '$(buildConfiguration)'
+
+      - task: VSBuild@1
+        displayName: Build MAUI solution
+        inputs:
+          platform: 'Any CPU'
+          solution: '$(solutionMaui)'
+          configuration: '$(buildConfiguration)'
