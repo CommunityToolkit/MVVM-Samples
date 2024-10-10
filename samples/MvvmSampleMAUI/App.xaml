@@ -115,92 +115,68 @@
 					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
 		</Style>
 
-		<OnPlatform x:Key="FaSolidFont"
-					x:TypeArguments="x:String">
-			<On Platform="iOS"
-				Value="FontAwesome5Free-Solid" />
-			<On Platform="Android"
-				Value="FontAwesomeSolid.otf#Regular" />
-		</OnPlatform>
-
-		<OnPlatform x:Key="FaRegularFont"
-					x:TypeArguments="x:String">
-			<On Platform="iOS"
-				Value="FontAwesome5Free-Regular" />
-			<On Platform="Android"
-				Value="FontAwesomeRegular.otf#Regular" />
-		</OnPlatform>
-
-		<OnPlatform x:Key="FaBrandsFont"
-					x:TypeArguments="x:String">
-			<On Platform="iOS"
-				Value="FontAwesome5Brands-Regular" />
-			<On Platform="Android"
-				Value="FontAwesomeBrands.otf#Regular" />
-		</OnPlatform>
-
 		<FontImage x:Key="PlayIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf04b;"/>
 
 		<FontImage x:Key="ExchangeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf362;" />
 
 		<FontImage x:Key="CalendarIcon"
-				   FontFamily="{StaticResource FaRegularFont}"
+				   FontFamily="FaRegularFont"
 				   Glyph="&#xf073;" />
 
 		<FontImage x:Key="BookIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf02d;" />
 
 		<FontImage x:Key="FlagIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf024;" />
 		
 		<FontImage x:Key="CommentIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf4ad;" />
 
 		<FontImage x:Key="SendIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf1d8;" />
 
 		<FontImage x:Key="SortIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf338;" />
 
 		<FontImage x:Key="UndoIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf0e2;" />
 
 		<FontImage x:Key="CubeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf1b3;" />
 
 		<FontImage x:Key="ToolsIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf7d9;" />
 
 		<FontImage x:Key="WrenchIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf0ad;" />
 
 		<FontImage x:Key="GlobeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf57d;" />
 
 		<FontImage x:Key="RulerIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf5ae;" />
 
 		<FontImage x:Key="CheckerIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf11e;" />
 		
 		<FontImage x:Key="RefreshIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FaSolidFont"
 				   Glyph="&#xf021;" />
 		<toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 	</Application.Resources>
