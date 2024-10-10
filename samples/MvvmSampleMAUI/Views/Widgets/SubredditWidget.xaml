@@ -14,7 +14,7 @@
 	<Grid RowDefinitions="60, 8, *">
 
 		<!--Header with topic selector and refresh button-->
-		<Frame Padding="10,0,10,0">
+		<Border Padding="10,0,10,0">
 			<Grid ColumnDefinitions="*, Auto">
 				<Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
 						SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
@@ -30,7 +30,7 @@
 						Grid.Column="1"
 						Command="{Binding LoadPostsCommand}" />
 			</Grid>
-		</Frame>
+		</Border>
 
 		<!--Items list-->
 		<CollectionView Grid.Row="2"
@@ -41,7 +41,7 @@
 						IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay, Converter={StaticResource InvertedBoolConverter}}">
 			<CollectionView.ItemTemplate>
 				<DataTemplate x:DataType="models:Post">
-					<Frame BorderColor="Black">
+					<Border BorderColor="Black">
 						<Grid ColumnSpacing="8"
 							  Padding="16"
 							  ColumnDefinitions="*, Auto">
@@ -55,7 +55,7 @@
 								   HorizontalOptions="End"
 								   WidthRequest="{Binding Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
 						</Grid>
-					</Frame>
+					</Border>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>

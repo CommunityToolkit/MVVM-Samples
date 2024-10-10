@@ -12,16 +12,16 @@
 	<Grid RowDefinitions="Auto, *">
 
 		<!--Self text-->
-		<Frame Grid.Row="1">
+		<Border Grid.Row="1">
 			<ScrollView>
 				<Label Text="{Binding Post.SelfText, Mode=OneWay}"
 					   LineBreakMode="WordWrap"
 					   Margin="16" />
 			</ScrollView>
-		</Frame>
+		</Border>
 
 		<!--Header-->
-		<Frame>
+		<Border>
 			<Grid Grid.Row="0"
 				  ColumnSpacing="8"
 				  Padding="16"
@@ -37,6 +37,6 @@
 					   HorizontalOptions="End"
 					   WidthRequest="{Binding Post.Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
 			</Grid>
-		</Frame>
+		</Border>
 	</Grid>
 </ContentView>

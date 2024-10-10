@@ -6,7 +6,7 @@
 			 x:Class="MvvmSampleXF.Controls.InteractiveSample">
 	<ContentView.Resources>
 		<ControlTemplate x:Key="InteractiveSampleTemplate">
-			<Frame CornerRadius="4"
+			<Border CornerRadius="4"
 				   BackgroundColor="Transparent"
 				   BorderColor="{StaticResource PrimaryColor}">
 				<toolkit:TabView TabIndicatorColor="{StaticResource PrimaryColor}"
@@ -30,7 +30,7 @@
 						</ScrollView>
 					</toolkit:TabViewItem>
 				</toolkit:TabView>
-			</Frame>
+			</Border>
 		</ControlTemplate>
 	</ContentView.Resources>
 </ContentView>

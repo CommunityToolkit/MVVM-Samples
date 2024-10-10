@@ -16,7 +16,7 @@
 				<StackLayout Spacing="8">
 
 					<!--Sender module-->
-					<Frame BorderColor="#40FFFFFF"
+					<Border BorderColor="#40FFFFFF"
 							CornerRadius="4"
 							Padding="8">
 						<StackLayout Spacing="8">
@@ -24,16 +24,16 @@
 							<Button Text="Click to send a message!"
 									Command="{Binding SenderViewModel.SendUserMessageCommand}" />
 						</StackLayout>
-					</Frame>
+					</Border>
 
 					<!--Receiver module-->
-					<Frame BorderColor="#40FFFFFF"
+					<Border BorderColor="#40FFFFFF"
 							CornerRadius="4"
 							Padding="8">
 						<StackLayout Spacing="8">
 							<Label Text="{Binding ReceiverViewModel.Username, Mode=OneWay}" />
 						</StackLayout>
-					</Frame>
+					</Border>
 				</StackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
