@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Markup;
 using Microsoft.Extensions.Http.Resilience;
 using Microsoft.Extensions.Logging;
 using MvvmSample.Core.Services;
@@ -19,6 +20,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder()
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
+			.UseMauiCommunityToolkitMarkup()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("FontAwesomeRegular.otf", "FaRegularFont");
