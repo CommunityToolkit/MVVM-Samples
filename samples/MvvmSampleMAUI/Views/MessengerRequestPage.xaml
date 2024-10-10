@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
-			 x:Class="MvvmSampleMAUI.Views.MessengerRequestPage"
-			 Title="Messenger">
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:TypeArguments="vm:MessengerPageViewModel"
+                       x:DataType="vm:MessengerPageViewModel"
+                       x:Class="MvvmSampleMAUI.Views.MessengerRequestPage"
+                       Title="Messenger">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />
@@ -19,7 +22,7 @@
 							Command="{Binding RequestCurrentUsernameCommand}" />
 					<Button Text="Click to reset the local username!"
 							Command="{Binding ResetCurrentUsernameCommand}" />
-				</VerticalStackLayout
+				</VerticalStackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;StackLayout Spacing="8">
@@ -74,6 +77,6 @@ public sealed class CurrentUsernameRequestMessage : RequestMessage&lt;string>
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
 
-		</VerticalStackLayout
+		</VerticalStackLayout>
 	</ScrollView>
-</ContentPage>
+</views:BaseContentPage>

@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 x:Class="MvvmSampleMAUI.Views.SettingUpTheViewModelsPage"
-			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:DataType="vm:SamplePageViewModel"
-			 Title="ViewModel Setup">
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:TypeArguments="vm:SamplePageViewModel"
+                       x:DataType="vm:SamplePageViewModel"
+                       x:Class="MvvmSampleMAUI.Views.SettingUpTheViewModelsPage"
+                       Title="ViewModel Setup">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Spacing="16">
 			<md:MarkdownView x:Name="Markdown" 
 							 Markdown="{Binding Path=Texts[Building the settings service], Mode=OneWay}"/>
-		</VerticalStackLayout
+		</VerticalStackLayout>
 	</ScrollView>
-</ContentPage>
+</views:BaseContentPage>

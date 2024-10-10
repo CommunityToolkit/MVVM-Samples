@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
-			 x:Class="MvvmSampleMAUI.Views.MessengerSendPage"
-			 x:DataType="vm:MessengerPageViewModel"
-			 Title="Messenger">
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:Class="MvvmSampleMAUI.Views.MessengerSendPage"
+                       x:TypeArguments="vm:MessengerPageViewModel"
+                       x:DataType="vm:MessengerPageViewModel"
+                       Title="Messenger">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />
@@ -23,7 +25,7 @@
 							<Label Text="{Binding SenderViewModel.Username, Mode=OneWay}" />
 							<Button Text="Click to send a message!"
 									Command="{Binding SenderViewModel.SendUserMessageCommand}" />
-						</VerticalStackLayout
+						</VerticalStackLayout>
 					</Border>
 
 					<!--Receiver module-->
@@ -32,9 +34,9 @@
 							Padding="8">
 						<VerticalStackLayout Spacing="8">
 							<Label Text="{Binding ReceiverViewModel.Username, Mode=OneWay}" />
-						</VerticalStackLayout
+						</VerticalStackLayout>
 					</Border>
-				</VerticalStackLayout
+				</VerticalStackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;StackLayout Spacing="8">
@@ -140,6 +142,6 @@ public sealed class UsernameChangedMessage : ValueChangedMessage&lt;string>
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
 
-		</VerticalStackLayout
+		</VerticalStackLayout>
 	</ScrollView>
-</ContentPage>
+</views:BaseContentPage>

@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
-			 xmlns:converters="clr-namespace:MvvmSampleMAUI.Converters"
-			 xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
-			 x:Class="MvvmSampleMAUI.Views.AsyncRelayCommandPage"
-			 x:DataType="vm:AsyncRelayCommandPageViewModel"
-			 Title="Commands">
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+       xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+       xmlns:converters="clr-namespace:MvvmSampleMAUI.Converters"
+       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+       x:TypeArguments="vm:AsyncRelayCommandPageViewModel"
+       x:Class="MvvmSampleMAUI.Views.AsyncRelayCommandPage"
+       x:DataType="vm:AsyncRelayCommandPageViewModel"
+       Title="Commands">
 	<ContentPage.Resources>
 		<converters:TaskResultConverter x:Key="TaskResultConverter" />
 	</ContentPage.Resources>
@@ -28,7 +29,7 @@
 					<ActivityIndicator HorizontalOptions="Center"
 									   IsVisible="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}"
 									   IsRunning="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}" />
-				</VerticalStackLayout
+				</VerticalStackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
 &lt;ContentPage.Resources>
@@ -65,6 +66,6 @@ private async Task&lt;string> DownloadTextAsync()
 ```
 				</controls:InteractiveSample.CSharpCode>
 			</controls:InteractiveSample>
-		</VerticalStackLayout
+		</VerticalStackLayout>
 	</ScrollView>
-</ContentPage>
+</views:BaseContentPage>

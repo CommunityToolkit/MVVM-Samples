@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:Class="MvvmSampleMAUI.Views.MessengerPage"
-			 x:DataType="vm:MessengerPageViewModel"
-			 Title="Messenger">
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:Class="MvvmSampleMAUI.Views.MessengerPage"
+                       x:TypeArguments="vm:MessengerPageViewModel"
+                       x:DataType="vm:MessengerPageViewModel"
+                       Title="Messenger">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Padding="16">
 			<md:MarkdownView Markdown="{Binding Path=Texts[Messenger], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[How it works], Mode=OneWay}" />
-		</VerticalStackLayout
+		</VerticalStackLayout>
 	</ScrollView>
-</ContentPage>
+</views:BaseContentPage>
