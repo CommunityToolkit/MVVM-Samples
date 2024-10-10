@@ -2,7 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
 			 x:Class="MvvmSampleMAUI.App">
 	<Application.Resources>
 		<Color x:Key="PrimaryColor">#3750D1</Color>
@@ -12,9 +12,6 @@
 
 		<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
 		<Color x:Key="TextPrimaryColorLight">#323130</Color>
-
-		<md:DarkMarkdownTheme x:Key="DarkMarkdownTheme" />
-		<md:LightMarkdownTheme x:Key="LightMarkdownTheme" />
 
 		<OnPlatform x:Key="ShellForegroundColorLight"
 					x:TypeArguments="Color">
@@ -93,11 +90,6 @@
 			</Setter>
 		</Style>
 
-		<Style TargetType="md:MarkdownView">
-			<Setter Property="Theme"
-					Value="{AppThemeBinding Dark={StaticResource DarkMarkdownTheme}, Light={StaticResource LightMarkdownTheme}}" />
-		</Style>
-
 		<Style TargetType="Page"
 			   ApplyToDerivedTypes="True"
 			   BasedOn="{StaticResource BaseStyle}">
@@ -115,11 +107,6 @@
 			   ApplyToDerivedTypes="True">
 			<Setter Property="BackgroundColor"
 					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
-		</Style>
-
-		<Style TargetType="toolkit:TabViewItem">
-			<Setter Property="TextColor"
-					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
 		</Style>
 
 
@@ -216,6 +203,5 @@
 				   FontFamily="{StaticResource FaSolidFont}"
 				   Glyph="&#xf021;" />
 		<toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
-		<toolkit:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />
 	</Application.Resources>
 </Application>

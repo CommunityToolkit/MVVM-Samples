@@ -23,7 +23,7 @@ public partial class MessengerRequestPage : BaseContentPage<MessengerPageViewMod
     {
         base.OnDisappearing();
 
-        ViewModel.SenderViewModel.IsActive = false;
-        ViewModel.ReceiverViewModel.IsActive = false;
+        BindingContext.SenderViewModel.IsActive = false;
+        BindingContext.ReceiverViewModel.IsActive = false;
     }
 }

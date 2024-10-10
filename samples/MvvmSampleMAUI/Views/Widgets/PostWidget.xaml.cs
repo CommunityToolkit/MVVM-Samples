@@ -1,31 +1,25 @@
 ﻿using MvvmSample.Core.ViewModels.Widgets;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+namespace MvvmSampleMAUI.Views.Widgets;
 
-namespace MvvmSampleMAUI.Views.Widgets
+[XamlCompilation(XamlCompilationOptions.Compile)]
+public partial class PostWidget : BaseContentView<PostWidgetViewModel>
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostWidget : ContentView
+    public PostWidget(PostWidgetViewModel viewModel) : base(viewModel)
     {
-        public PostWidget()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            BindingContext = Ioc.Default.GetRequiredService<PostWidgetViewModel>();
-        }
+        Loaded += HandleLoaded;
+        Unloaded += HandleUnloaded;
+    }
 
-        public PostWidgetViewModel ViewModel => (PostWidgetViewModel)BindingContext;
-
-        public void OnAppearing()
-        {
-            ViewModel.IsActive = true;
-        }
-
-        public void OnDisappearing()
-        {
-            ViewModel.IsActive = false;
-        }
+    void HandleLoaded(object? sender, EventArgs e)
+    {
+        BindingContext.IsActive = true;
+    }
+    
+    void HandleUnloaded(object? sender, EventArgs e)
+    {
+        BindingContext.IsActive = false;
     }
 }

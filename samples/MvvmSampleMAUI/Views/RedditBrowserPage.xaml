@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
@@ -6,20 +7,15 @@
 			 xmlns:widgets="clr-namespace:MvvmSampleMAUI.Views.Widgets"
 			 x:Class="MvvmSampleMAUI.Views.RedditBrowserPage"
 			 Title="The Final Result!">
-	<Grid Padding="16">
-		<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
-			<toolkit:TabView x:Name="RedditTabView" 
-						 TabIndicatorPlacement="Bottom"
-						 TabIndicatorColor="Orange"
-						 IsSwipeEnabled="False">
-				<toolkit:TabViewItem Text="Subreddit">
-					<widgets:SubredditWidget x:Name="SubredditWidget" />
-				</toolkit:TabViewItem>
-				<toolkit:TabViewItem Text="Post">
-					<widgets:PostWidget x:Name="PostWidget" />
-				</toolkit:TabViewItem>
-			</toolkit:TabView>
-			<controls:InteractiveSample.XamlCode>
+	<VerticalStackLayout Padding="16" Spacing="24">
+        <Label Text="XAML Code" 
+               FontSize="24" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+        
+        <controls:InteractiveSample.XamlCode>
 	
 			```xml
 &lt;!--Feed-->
@@ -112,8 +108,16 @@
     &lt;/Frame>
 &lt;/Grid>
 ```
-            </controls:InteractiveSample.XamlCode>
-            <controls:InteractiveSample.CSharpCode>
+        </controls:InteractiveSample.XamlCode>
+        
+        <Label Text="XAML Code" 
+               FontSize="24" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+        
+        <controls:InteractiveSample.CSharpCode>
 ```csharp
 /// &lt;summary>
 /// A viewmodel for a subreddit widget.
@@ -248,7 +252,6 @@ public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient&lt;Pro
     }
 }
 ```
-            </controls:InteractiveSample.CSharpCode>
-        </controls:InteractiveSample>
-	</Grid>
+        </controls:InteractiveSample.CSharpCode>
+	</VerticalStackLayout>
 </ContentPage>

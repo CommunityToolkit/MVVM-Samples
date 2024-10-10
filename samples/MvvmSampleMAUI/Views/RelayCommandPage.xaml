@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
                        xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
                        xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
                        xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
@@ -9,61 +10,61 @@
                        x:TypeArguments="vm:RelayCommandPageViewModel"
                        x:DataType="vm:RelayCommandPageViewModel"
                        Title="Commands">
-	<ScrollView Padding="16">
-		<VerticalStackLayout Spacing="16">
-			<md:MarkdownView Markdown="{Binding Path=Texts[RelayCommand], Mode=OneWay}" />
-			<md:MarkdownView Markdown="{Binding Path=Texts[How they work], Mode=OneWay}" />
-			<md:MarkdownView Markdown="{Binding Path=Texts[Working with `ICommand`], Mode=OneWay}" />
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[RelayCommand], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[How they work], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[Working with `ICommand`], Mode=OneWay}" />
 
-			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
-										HeightRequest="400">
-				<VerticalStackLayout Spacing="8">
-					<Label Text="{Binding Counter}"/>
-					<Button Text="Click me!"
-							Command="{Binding IncrementCounterCommand}" />
-				</VerticalStackLayout>
-			<controls:InteractiveSample.XamlCode>
-```xml
-&lt;StackLayout Spacing="8">
-    &lt;Label Text="{Binding Counter}"/>
-    &lt;Button Text="Click me!"
-            Command="{Binding IncrementCounterCommand}" />
-&lt;/StackLayout>
-```
-				</controls:InteractiveSample.XamlCode>
-				<controls:InteractiveSample.CSharpCode>
-```csharp
-public class MyViewModel : ObservableObject
-{
-    public MyViewModel()
-    {
-        IncrementCounterCommand = new RelayCommand(IncrementCounter);
-    }
+            <controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
+                                        HeightRequest="400">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding Counter}" />
+                    <Button Text="Click me!"
+                            Command="{Binding IncrementCounterCommand}" />
+                </VerticalStackLayout>
+                <controls:InteractiveSample.XamlCode>
+                    ```xml
+                    &lt;StackLayout Spacing="8">
+                    &lt;Label Text="{Binding Counter}"/>
+                    &lt;Button Text="Click me!"
+                    Command="{Binding IncrementCounterCommand}" />
+                    &lt;/StackLayout>
+                    ```
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+                    ```csharp
+                    public class MyViewModel : ObservableObject
+                    {
+                    public MyViewModel()
+                    {
+                    IncrementCounterCommand = new RelayCommand(IncrementCounter);
+                    }
 
-    /// &lt;summary>
-    /// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
-    /// &lt;/summary>
-    public ICommand IncrementCounterCommand { get; }
+                    /// &lt;summary>
+                    /// Gets the &lt;see cref="ICommand"/> responsible for incrementing &lt;see cref="Counter"/>.
+                    /// &lt;/summary>
+                    public ICommand IncrementCounterCommand { get; }
 
-    private int counter;
+                    private int counter;
 
-    /// &lt;summary>
-    /// Gets the current value of the counter.
-    /// &lt;/summary>
-    public int Counter
-    {
-        get => counter;
-        private set => SetProperty(ref counter, value);
-    }
+                    /// &lt;summary>
+                    /// Gets the current value of the counter.
+                    /// &lt;/summary>
+                    public int Counter
+                    {
+                    get => counter;
+                    private set => SetProperty(ref counter, value);
+                    }
 
-    /// &lt;summary>
-    /// Increments &lt;see cref="Counter"/>.
-    /// &lt;/summary>
-    private void IncrementCounter() => Counter++;
-}
-```
-				</controls:InteractiveSample.CSharpCode>
-			</controls:InteractiveSample>
-		</VerticalStackLayout>
-	</ScrollView>
+                    /// &lt;summary>
+                    /// Increments &lt;see cref="Counter"/>.
+                    /// &lt;/summary>
+                    private void IncrementCounter() => Counter++;
+                    }
+                    ```
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+        </VerticalStackLayout>
+    </ScrollView>
 </views:BaseContentPage>

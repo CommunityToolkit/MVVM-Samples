@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
                        xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
                        x:Class="MvvmSampleMAUI.Views.PuttingThingsTogetherPage"
                        x:TypeArguments="vm:SamplePageViewModel"
                        x:DataType="vm:SamplePageViewModel">
-	<ScrollView Padding="16">
-		<VerticalStackLayout Spacing="16">
-			<md:MarkdownView Markdown="{Binding Path=Texts[Putting things together], Mode=OneWay}" />
-			<md:MarkdownView Markdown="{Binding Path=Texts[What do we want to build], Mode=OneWay}" />
-		</VerticalStackLayout>
-	</ScrollView>
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[Putting things together], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[What do we want to build], Mode=OneWay}" />
+        </VerticalStackLayout>
+    </ScrollView>
 </views:BaseContentPage>

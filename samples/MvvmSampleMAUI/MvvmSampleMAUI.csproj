@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+        <TargetFrameworks>$(NetVersion)-android;$(NetVersion)-ios;$(NetVersion)-maccatalyst</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);$(NetVersion)-windows10.0.19041.0</TargetFrameworks>
         <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-        <!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+        <!-- <TargetFrameworks>$(TargetFrameworks);$(NetVersion)-tizen</TargetFrameworks> -->
 
         <OutputType>Exe</OutputType>
         <RootNamespace>MvvmSampleMAUI</RootNamespace>
@@ -55,10 +55,22 @@
         <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="8.10.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0"/>
         <PackageReference Include="Indiko.Maui.Controls.Markdown" Version="1.0.17"/>
+        <PackageReference Include="Refit.HttpClientFactory" Version="7.2.1"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MvvmSample.Core\MvvmSample.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\AsyncRelayCommand.md" Link="Resources\raw\AsyncRelayCommand.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\Index.md" Link="Resources\raw\Introduction.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\Ioc.md" Link="Resources\raw\Ioc.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\Messenger.md" Link="Resources\raw\Messenger.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableObject.md" Link="Resources\raw\ObservableObject.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\ObservableRecipient.md" Link="Resources\raw\ObservableRecipient.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\PuttingThingsTogether.md" Link="Resources\raw\PuttingThingsTogether.md" />
+        <EmbeddedResource Include="..\..\msdocs-communitytoolkit\docs\mvvm\RelayCommand.md" Link="Resources\raw\RelayCommand.md" />
     </ItemGroup>
 
 </Project>

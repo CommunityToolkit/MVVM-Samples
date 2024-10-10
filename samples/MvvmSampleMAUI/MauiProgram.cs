@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Maui;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Http.Resilience;
 using Microsoft.Extensions.Logging;
 using MvvmSample.Core.Services;
 using MvvmSample.Core.ViewModels;
 using MvvmSample.Core.ViewModels.Widgets;
+using MvvmSampleMAUI.Controls;
 using MvvmSampleMAUI.Services;
 using MvvmSampleMAUI.Views;
 using Polly;
@@ -16,8 +16,7 @@ public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
-		var builder = MauiApp.CreateBuilder();
-		builder
+		var builder = MauiApp.CreateBuilder()
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
@@ -31,39 +30,47 @@ public static class MauiProgram
 #endif
 		builder.Services.AddSingleton<IFilesService, FileService>()
 			.AddSingleton<ISettingsService, SettingsService>()
-			.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"))
-			.AddTransientWithShellRoute<AsyncRelayCommandPage, AsyncRelayCommandPageViewModel>()
-			.AddTransientWithShellRoute<BuildingTheUIPage, SamplePageViewModel>()
-			.AddTransientWithShellRoute<IntroductionPage, ObservableObjectPageViewModel>()
-			.AddTransientWithShellRoute<IoCPage, IocPageViewModel>()
-			.AddTransientWithShellRoute<MessengerPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerRequestPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<ObservableObjectPage, ObservableObjectPageViewModel>()
-			.AddTransientWithShellRoute<PuttingThingsTogetherPage, SamplePageViewModel>()
-			.AddTransientWithShellRoute<RedditBrowserPage>()
-			.AddTransientWithShellRoute<RedditServicePage, SamplePageViewModel>()
-			.AddTransientWithShellRoute<RelayCommandPage, RelayCommandPageViewModel>()
-			.AddTransientWithShellRoute<SettingsServicePage, SamplePageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>()
-			.AddTransientWithShellRoute<MessengerSendPage, MessengerPageViewModel>();
+			.AddRefitClient<IRedditService>()
+			.ConfigureHttpClient(static client => client.BaseAddress = new Uri("https://www.reddit.com"))
+			.AddStandardResilienceHandler(static options => options.Retry = new MobileHttpRetryStrategyOptions());
+
+		RegisterViews(builder.Services);
+		RegisterViewModels(builder.Services);
 
 		return builder.Build();
 	}
 
-	static IServiceCollection AddTransientWithShellRoute<TPage>(this IServiceCollection services) where TPage : ContentPage
+	static void RegisterViews(in IServiceCollection services)
 	{
-		Routing.RegisterRoute(AppShell.GetPageRoute<TPage>(), typeof(TPage));
-		return services.AddTransient<TPage>();
+		services.AddTransient<AsyncRelayCommandPage>()
+			.AddTransient<BuildingTheUIPage>()
+			.AddTransient<FlyoutHeader>()
+			.AddTransient<InteractiveSample>()
+			.AddTransient<IntroductionPage>()
+			.AddTransient<IoCPage>()
+			.AddTransient<MessengerPage>()
+			.AddTransient<MessengerRequestPage>()
+			.AddTransient<MessengerSendPage>()
+			.AddTransient<ObservableObjectPage>()
+			.AddTransient<PuttingThingsTogetherPage>()
+			.AddTransient<RedditBrowserPage>()
+			.AddTransient<RedditServicePage>()
+			.AddTransient<RelayCommandPage>()
+			.AddTransient<SettingsServicePage>();
 	}
 
-	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) where TPage : BaseContentPage<TViewModel>
-		where TViewModel : ObservableObject
+	static void RegisterViewModels(in IServiceCollection services)
 	{
-		return services.AddTransientWithShellRoute<TPage, TViewModel>(AppShell.GetPageRoute<TPage>());
+		services.AddTransient<AsyncRelayCommandPageViewModel>()
+			.AddTransient<ContactsListWidgetViewModel>()
+			.AddTransient<IocPageViewModel>()
+			.AddTransient<MessengerPageViewModel>()
+			.AddTransient<ObservableObjectPageViewModel>()
+			.AddTransient<PostWidgetViewModel>()
+			.AddTransient<RelayCommandPageViewModel>()
+			.AddTransient<SamplePageViewModel>()
+			.AddTransient<SubredditWidgetViewModel>()
+			.AddTransient<ValidationFormWidgetViewModel>();
 	}
 
 	sealed class MobileHttpRetryStrategyOptions : HttpRetryStrategyOptions

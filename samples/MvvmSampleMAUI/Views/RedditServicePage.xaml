@@ -1,17 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
-                       xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+                       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
                        xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
                        x:Class="MvvmSampleMAUI.Views.RedditServicePage"
                        x:DataType="vm:SamplePageViewModel"
                        x:TypeArguments="vm:SamplePageViewModel"
                        Title="Creating a Service">
-	<ScrollView Padding="16">
-		<VerticalStackLayout Spacing="16">
-			<md:MarkdownView x:Name="Markdown"
-							 Markdown="{Binding Path=Texts[Building the Reddit service], Mode=OneWay}" />
-		</VerticalStackLayout>
-	</ScrollView>
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <md:MarkdownView x:Name="Markdown"
+                             MarkdownText="{Binding Path=Texts[Building the Reddit service], Mode=OneWay}" />
+        </VerticalStackLayout>
+    </ScrollView>
 </views:BaseContentPage>

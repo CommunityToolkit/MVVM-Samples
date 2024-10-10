@@ -1,33 +1,40 @@
 ﻿using MvvmSample.Core.ViewModels.Widgets;
-using System;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+namespace MvvmSampleMAUI.Views.Widgets;
 
-namespace MvvmSampleMAUI.Views.Widgets
+[XamlCompilation(XamlCompilationOptions.Compile)]
+public partial class SubredditWidget : BaseContentView<SubredditWidgetViewModel>
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SubredditWidget : ContentView
+    readonly WeakEventManager postSelectedEventManager = new();
+    
+    public SubredditWidget(SubredditWidgetViewModel viewModel) : base(viewModel)
     {
-        public event EventHandler PostSelected;
-        public SubredditWidget()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            BindingContext = Ioc.Default.GetRequiredService<SubredditWidgetViewModel>();
-        }
-
-        public SubredditWidgetViewModel ViewModel => (SubredditWidgetViewModel)BindingContext;
-
-        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            PostSelected?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void OnAppearing()
-        {
-            ViewModel.LoadPostsCommand.Execute(null);
-        }
+        Loaded += HandleLoaded;
     }
+
+    public event EventHandler PostSelected
+    {
+        add => postSelectedEventManager.AddEventHandler(value);
+        remove => postSelectedEventManager.RemoveEventHandler(value);
+    }
+
+    void CollectionView_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        ArgumentNullException.ThrowIfNull(sender);
+
+        var collectionView = (CollectionView)sender;
+        
+        OnPostSelected();
+
+        collectionView.SelectedItem = null;
+    }
+    
+    void HandleLoaded(object? sender, EventArgs e)
+    {
+        BindingContext.LoadPostsCommand.Execute(null);
+    }
+
+    void OnPostSelected() => postSelectedEventManager.HandleEvent(this, EventArgs.Empty, nameof(PostSelected));
 }
