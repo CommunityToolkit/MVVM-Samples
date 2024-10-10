@@ -92,7 +92,27 @@
         </Style>
 
         <Style TargetType="md:MarkdownView">
-
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#ffffff, Dark = #2b303b}"/>
+            <Setter Property="H1Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H2Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H3Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TableRowTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="CodeBlockTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TableHeaderTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H1FontSize" Value="21" />
+            <Setter Property="H2FontSize" Value="20" />
+            <Setter Property="H3FontSize" Value="18" />
+            <Setter Property="BlockQuoteBackgroundColor" Value="{AppThemeBinding Light=#f6f8fa, Dark = #4f5b66}" />
+            <Setter Property="BlockQuoteBorderColor" Value="{AppThemeBinding Light=#dfe2e5, Dark = #a7adba}" />
+            <Setter Property="CodeBlockBackgroundColor" Value="{AppThemeBinding Light=#f6f8fa, Dark = #4f5b66}" />
+            <Setter Property="CodeBlockFontSize" Value="12" />
+            <Setter Property="CodeBlockFontFace" Value="Consolas" />
+            <Setter Property="HyperlinkColor" Value="BlueViolet" />
+            <Setter Property="LineColor" Value="Gray" />
+            <Setter Property="ImageAspect" Value="AspectFit" />
+            <Setter Property="TableHeaderBackgroundColor" Value="LightGray" />
+            <Setter Property="TableRowFontSize" Value="12" />
         </Style>
 
         <Style TargetType="Page"
@@ -123,57 +143,57 @@
         <FontImage x:Key="PlayIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf04b;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="ExchangeIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf362;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="CalendarIcon"
                    FontFamily="FontAwesomeRegular"
                    Glyph="&#xf073;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="BookIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf02d;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="FlagIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf024;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="CommentIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf4ad;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="SendIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf1d8;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="SortIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf338;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="UndoIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf0e2;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="CubeIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf1b3;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="ToolsIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf7d9;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="WrenchIcon"
                    FontFamily="FontAwesomeSolid"
@@ -183,22 +203,22 @@
         <FontImage x:Key="GlobeIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf57d;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="RulerIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf5ae;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="CheckerIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf11e;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <FontImage x:Key="RefreshIcon"
                    FontFamily="FontAwesomeSolid"
                    Glyph="&#xf021;"
-                   Color="{AppThemeBinding Light=Black, Dark=White}" />
+                   Color="Grey" />
 
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
     </Application.Resources>
