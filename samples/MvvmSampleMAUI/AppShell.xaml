@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	   xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
-	   xmlns:views="clr-namespace:MvvmSampleXF.Views"
-	   x:Class="MvvmSampleXF.AppShell">
+	   xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+	   xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+	   x:Class="MvvmSampleMAUI.AppShell">
 	<Shell.FlyoutHeader>
 		<controls:FlyoutHeader />
 	</Shell.FlyoutHeader>

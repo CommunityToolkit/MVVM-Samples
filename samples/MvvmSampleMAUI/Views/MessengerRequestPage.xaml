@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
-			 x:Class="MvvmSampleXF.Views.MessengerRequestPage"
+			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+			 x:Class="MvvmSampleMAUI.Views.MessengerRequestPage"
 			 Title="Messenger">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Padding="16">

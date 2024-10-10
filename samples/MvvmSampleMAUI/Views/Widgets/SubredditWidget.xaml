@@ -4,8 +4,8 @@
 			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 xmlns:models="clr-namespace:MvvmSample.Core.Models;assembly=MvvmSample.Core"
 			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
-			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
-			 x:Class="MvvmSampleXF.Views.Widgets.SubredditWidget">
+			 xmlns:converters="clr-namespace:MvvmSampleMAUI.Converters"
+			 x:Class="MvvmSampleMAUI.Views.Widgets.SubredditWidget">
 	<ContentView.Resources>
 		<converters:IsSelfPostToWidthRequestConverter WidthRequest="120"
 													  x:Key="IsSelfPostToWidthRequestConverter" />

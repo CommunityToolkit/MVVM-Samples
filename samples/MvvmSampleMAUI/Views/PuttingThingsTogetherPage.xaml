@@ -3,7 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:Class="MvvmSampleXF.Views.PuttingThingsTogetherPage"
+			 x:Class="MvvmSampleMAUI.Views.PuttingThingsTogetherPage"
 			 x:DataType="vm:SamplePageViewModel">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Spacing="16">

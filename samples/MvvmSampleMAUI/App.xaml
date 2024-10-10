@@ -3,7 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:Class="MvvmSampleXF.App">
+			 x:Class="MvvmSampleMAUI.App">
 	<Application.Resources>
 		<Color x:Key="PrimaryColor">#3750D1</Color>
 		<Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>

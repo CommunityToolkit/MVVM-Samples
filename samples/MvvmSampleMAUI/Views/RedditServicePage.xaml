@@ -4,7 +4,7 @@
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 x:DataType="vm:SamplePageViewModel"
-			 x:Class="MvvmSampleXF.Views.RedditServicePage"
+			 x:Class="MvvmSampleMAUI.Views.RedditServicePage"
 			 Title="Creating a Service">
 	<ScrollView Padding="16">
 		<VerticalStackLayout Spacing="16">

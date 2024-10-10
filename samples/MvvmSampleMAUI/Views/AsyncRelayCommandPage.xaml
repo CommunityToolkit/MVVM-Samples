@@ -3,9 +3,10 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
-			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
-			 x:Class="MvvmSampleXF.Views.AsyncRelayCommandPage"
+			 xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+			 xmlns:converters="clr-namespace:MvvmSampleMAUI.Converters"
+			 xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+			 x:Class="MvvmSampleMAUI.Views.AsyncRelayCommandPage"
 			 x:DataType="vm:AsyncRelayCommandPageViewModel"
 			 Title="Commands">
 	<ContentPage.Resources>
