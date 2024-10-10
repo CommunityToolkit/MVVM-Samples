@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 x:Class="MvvmSampleXF.Controls.InteractiveSample">
+	<ContentView.Resources>
+		<ControlTemplate x:Key="InteractiveSampleTemplate">
+			<Frame CornerRadius="4"
+				   BackgroundColor="Transparent"
+				   BorderColor="{StaticResource PrimaryColor}">
+				<toolkit:TabView TabIndicatorColor="{StaticResource PrimaryColor}"
+							 TabIndicatorPlacement="Bottom">
+					<toolkit:TabViewItem Text="INTERACTIVE SAMPLE"
+									 FontAttributes="Bold">
+						<ContentPresenter Padding="12"
+										  Content="{TemplateBinding Content}"
+										  BindingContext="{TemplateBinding BindingContext}"/>
+					</toolkit:TabViewItem>
+					<toolkit:TabViewItem Text="See XAML">
+						<ScrollView>
+							<md:MarkdownView Padding="8"
+											 Markdown="{TemplateBinding XamlCode}" />
+						</ScrollView>
+					</toolkit:TabViewItem>
+					<toolkit:TabViewItem Text="See C#">
+						<ScrollView>
+							<md:MarkdownView Padding="8"
+											 Markdown="{TemplateBinding CSharpCode}" />
+						</ScrollView>
+					</toolkit:TabViewItem>
+				</toolkit:TabView>
+			</Frame>
+		</ControlTemplate>
+	</ContentView.Resources>
+</ContentView>

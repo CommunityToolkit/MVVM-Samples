@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
+			 x:Class="MvvmSampleXF.Views.MessengerSendPage"
+			 x:DataType="vm:MessengerPageViewModel"
+			 Title="Messenger">
+	<ScrollView Padding="16">
+		<StackLayout Padding="16">
+			<md:MarkdownView Markdown="{Binding Path=Texts[Sending and receiving messages], Mode=OneWay}" />
+
+			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
+										HeightRequest="600">
+				<StackLayout Spacing="8">
+
+					<!--Sender module-->
+					<Frame BorderColor="#40FFFFFF"
+							CornerRadius="4"
+							Padding="8">
+						<StackLayout Spacing="8">
+							<Label Text="{Binding SenderViewModel.Username, Mode=OneWay}" />
+							<Button Text="Click to send a message!"
+									Command="{Binding SenderViewModel.SendUserMessageCommand}" />
+						</StackLayout>
+					</Frame>
+
+					<!--Receiver module-->
+					<Frame BorderColor="#40FFFFFF"
+							CornerRadius="4"
+							Padding="8">
+						<StackLayout Spacing="8">
+							<Label Text="{Binding ReceiverViewModel.Username, Mode=OneWay}" />
+						</StackLayout>
+					</Frame>
+				</StackLayout>
+				<controls:InteractiveSample.XamlCode>
+					```xml
+&lt;StackLayout Spacing="8">
+
+    &lt;!--Sender module-->
+    &lt;Frame BorderColor="#40FFFFFF"
+            CornerRadius="4"
+            Padding="8">
+        &lt;StackLayout Spacing="8">
+            &lt;Label Text="{Binding SenderViewModel.Username, Mode=OneWay}" />
+            &lt;Button Text="Click to send a message!"
+                    Command="{Binding SenderViewModel.SendUserMessageCommand}" />
+        &lt;/StackLayout>
+    &lt;/Frame>
+
+    &lt;!--Receiver module-->
+    &lt;Frame BorderColor="#40FFFFFF"
+            CornerRadius="4"
+            Padding="8">
+        &lt;StackLayout Spacing="8">
+            &lt;Label Text="{Binding ReceiverViewModel.Username, Mode=OneWay}" />
+        &lt;/StackLayout>
+    &lt;/Frame>
+&lt;/StackLayout>
+
+```
+				</controls:InteractiveSample.XamlCode>
+				<controls:InteractiveSample.CSharpCode>
+					```csharp
+public class MessengerPageViewModel : SamplePageViewModel
+{
+	public MessengerPageViewModel()
+	{
+        RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
+        ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);
+    }
+
+    public ICommand RequestCurrentUsernameCommand { get; }
+    public ICommand ResetCurrentUsernameCommand { get; }
+
+    public UserSenderViewModel SenderViewModel { get; } = new UserSenderViewModel();
+
+    public UserReceiverViewModel ReceiverViewModel { get; } = new UserReceiverViewModel();
+
+    // Simple viewmodel for a module sending a username message
+    public class UserSenderViewModel : ObservableRecipient
+    {
+        public UserSenderViewModel()
+        {
+            SendUserMessageCommand = new RelayCommand(SendUserMessage);
+        }
+
+        public ICommand SendUserMessageCommand { get; }
+
+        private string username = "Bob";
+
+        public string Username
+        {
+            get => username;
+            private set => SetProperty(ref username, value);
+        }
+
+        protected override void OnActivated()
+        {
+            Messenger.Register
+				&lt;CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+        }
+
+        public void SendUserMessage()
+        {
+            Username = Username == "Bob" ? "Alice" : "Bob";
+
+            Messenger.Send(new UsernameChangedMessage(Username));
+        }
+    }
+
+    // Simple viewmodel for a module receiving a username message
+    public class UserReceiverViewModel : ObservableRecipient
+    {
+        private string username = "";
+
+        public string Username
+        {
+            get => username;
+            private set => SetProperty(ref username, value);
+        }
+
+        protected override void OnActivated()
+        {
+            Messenger.Register
+					&lt;UsernameChangedMessage>(this, m => Username = m.Value);
+        }
+    }
+
+// A sample message with a username value
+public sealed class UsernameChangedMessage : ValueChangedMessage&lt;string>
+{
+    public UsernameChangedMessage(string value) : base(value)
+    {
+    }
+}
+```
+				</controls:InteractiveSample.CSharpCode>
+			</controls:InteractiveSample>
+
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

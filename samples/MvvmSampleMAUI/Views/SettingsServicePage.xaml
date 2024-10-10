@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="MvvmSampleXF.Views.SettingsServicePage"
+			 xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+			 x:DataType="vm:SamplePageViewModel"
+			 Title="Creating a Service">
+	<ScrollView Padding="16">
+		<StackLayout Spacing="16">
+			<md:MarkdownView x:Name="Markdown"
+							 Markdown="{Binding Path=Texts[Building the settings service], Mode=OneWay}" />
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

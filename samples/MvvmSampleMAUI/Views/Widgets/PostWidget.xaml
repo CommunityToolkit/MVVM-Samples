@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:widgets="clr-namespace:MvvmSample.Core.ViewModels.Widgets;assembly=MvvmSample.Core"
+			 xmlns:converters="clr-namespace:MvvmSampleXF.Converters"
+			 x:Class="MvvmSampleXF.Views.Widgets.PostWidget">
+	<ContentView.Resources>
+		<converters:IsSelfPostToWidthRequestConverter WidthRequest="160"
+													  x:Key="IsSelfPostToWidthRequestConverter" />
+	</ContentView.Resources>
+	<!--Post-->
+	<Grid RowDefinitions="Auto, *">
+
+		<!--Self text-->
+		<Frame Grid.Row="1">
+			<ScrollView>
+				<Label Text="{Binding Post.SelfText, Mode=OneWay}"
+					   LineBreakMode="WordWrap"
+					   Margin="16" />
+			</ScrollView>
+		</Frame>
+
+		<!--Header-->
+		<Frame>
+			<Grid Grid.Row="0"
+				  ColumnSpacing="8"
+				  Padding="16"
+				  ColumnDefinitions="*, Auto">
+				<Label Text="{Binding Post.Title, Mode=OneWay}"
+					   FontSize="16"
+					   FontAttributes="Bold"
+					   LineBreakMode="WordWrap"
+					   VerticalOptions="Center" />
+				<Image Grid.Column="1"
+					   Source="{Binding Post.Thumbnail, Mode=OneWay}"
+					   Aspect="AspectFit"
+					   HorizontalOptions="End"
+					   WidthRequest="{Binding Post.Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+			</Grid>
+		</Frame>
+	</Grid>
+</ContentView>
