@@ -17,7 +17,7 @@ public partial class PostWidget : BaseContentView<PostWidgetViewModel>
     {
         BindingContext.IsActive = true;
     }
-    
+
     void HandleUnloaded(object? sender, EventArgs e)
     {
         BindingContext.IsActive = false;

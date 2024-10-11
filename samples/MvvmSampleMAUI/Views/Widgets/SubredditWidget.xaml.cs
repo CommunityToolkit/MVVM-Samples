@@ -6,7 +6,7 @@ namespace MvvmSampleMAUI.Views.Widgets;
 public partial class SubredditWidget : BaseContentView<SubredditWidgetViewModel>
 {
     readonly WeakEventManager postSelectedEventManager = new();
-    
+
     public SubredditWidget(SubredditWidgetViewModel viewModel) : base(viewModel)
     {
         InitializeComponent();
@@ -25,12 +25,12 @@ public partial class SubredditWidget : BaseContentView<SubredditWidgetViewModel>
         ArgumentNullException.ThrowIfNull(sender);
 
         var collectionView = (CollectionView)sender;
-        
+
         OnPostSelected();
 
         collectionView.SelectedItem = null;
     }
-    
+
     void HandleLoaded(object? sender, EventArgs e)
     {
         BindingContext.LoadPostsCommand.Execute(null);
