@@ -1,5 +1,6 @@
 variables:
   solutionUwp: 'samples/MvvmSampleUwp.sln'
+  solutionXf: 'samples/MvvmSampleXF.sln'
   solutionMaui: 'samples/MvvmSampleMAUI.sln'
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
@@ -71,6 +72,14 @@ jobs:
           solution: '$(solutionUwp)'
           configuration: '$(buildConfiguration)'
           msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+
+      - task: VSBuild@1
+        displayName: Build Xamarin.Forms solution
+        condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows
+        inputs:
+          platform: 'Any CPU'
+          solution: '$(solutionXf)'
+          configuration: '$(buildConfiguration)'
 
       - task: VSBuild@1
         displayName: Build MAUI solution
