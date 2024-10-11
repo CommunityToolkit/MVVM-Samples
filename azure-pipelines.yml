@@ -53,16 +53,7 @@ jobs:
 
       - task: CmdLine@2
         inputs:
-          script: 'git submodule update --init --recursive' 
-
-      - task: NuGetCommand@2
-        displayName: Restore solution(s)
-        condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows
-        inputs:
-          command: 'restore'
-          restoreSolution: '**/*.sln'
-          feedsToUse: 'config'
-          nugetConfigPath: ./samples/nuget.config
+          script: 'git submodule update --init --recursive'
 
       - task: CmdLine@2
         displayName: Restore NuGet Packages
