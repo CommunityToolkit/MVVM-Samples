@@ -84,29 +84,6 @@ jobs:
           msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
       - task: CmdLine@2
-        displayName: Install Xamarin
-        condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
-        inputs:
-          targetType: 'inline'
-          script: |
-            brew install --cask xamarin-ios
-            brew install --cask xamarin-android
-
-      - task: XamarinAndroid@1
-        displayName: Build Xamarin.Forms Android project
-        inputs:
-          projectFile: '$(solutionXf)'
-          jdkOption: 'default'
-          configuration: 'Release'
-
-      - task: XamariniOS@2
-        displayName: Build Xamarin.Forms iOS project
-        condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
-        inputs:
-          solutionFile: '$(solutionXf)'
-          configuration: 'Release'
-
-      - task: CmdLine@2
         displayName: 'Build .NET MAUI solution'
         inputs:
           script: 'dotnet build -c Release $(solutionMaui)'          
