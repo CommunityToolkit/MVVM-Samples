@@ -83,19 +83,25 @@ jobs:
           configuration: '$(buildConfiguration)'
           msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
+      - task: CmdLine@2
+        displayName: Install Xamarin
+        condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
+        inputs:
+          targetType: 'inline'
+          script: |
+            brew install --cask xamarin-ios
+            brew install --cask xamarin-android
+
       - task: XamarinAndroid@1
         displayName: Build Xamarin.Forms Android project
-        condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows because the macOS build agents no longer support Xamarin
         inputs:
           projectFile: '$(solutionXf)'
           jdkOption: 'default'
           configuration: 'Release'
 
-      # Xamarin.iOS v2
-      # Build an iOS app with Xamarin on macOS.
       - task: XamariniOS@2
         displayName: Build Xamarin.Forms iOS project
-        condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows because the macOS build agents no longer support Xamarin
+        condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
         inputs:
           solutionFile: '$(solutionXf)'
           configuration: 'Release'
