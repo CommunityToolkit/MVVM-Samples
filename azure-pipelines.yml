@@ -64,6 +64,14 @@ jobs:
           feedsToUse: 'config'
           nugetConfigPath: ./samples/nuget.config
 
+      - task: CmdLine@2
+        displayName: Restore NuGet Packages
+        inputs:
+          script: |
+            dotnet restore $(solutionUwp)
+            dotnet restore $(solutionXf)
+            dotnet restore $(solutionMaui)
+
       - task: VSBuild@1
         displayName: Build UWP solution
         condition: eq(variables['Agent.OS'], 'Windows_NT') # Only run this step on Windows
