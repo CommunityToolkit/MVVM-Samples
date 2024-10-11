@@ -8,19 +8,19 @@ namespace MvvmSampleXF.Services
 {
     public sealed class SettingsService : ISettingsService
     {
-        private readonly IDictionary<string, object> _properties = Xamarin.Forms.Application.Current.Properties;
+        private readonly IDictionary<string, object?> _properties = Xamarin.Forms.Application.Current.Properties;
 
-        public T GetValue<T>(string key)
+        public T? GetValue<T>(string key)
         {
             if (_properties.TryGetValue(key, out var value))
             {
-                return (T)value;
+                return (T?)value;
             }
 
             return default;
         }
 
-        public void SetValue<T>(string key, T value)
+        public void SetValue<T>(string key, T? value)
         {
             if (!_properties.ContainsKey(key))
             {
