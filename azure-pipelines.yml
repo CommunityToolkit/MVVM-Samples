@@ -1,6 +1,6 @@
 variables:
   solutionUwp: 'samples/MvvmSampleUwp.sln'
-  solutionXf: 'samples/MvvmSampleUwp.sln'
+  solutionXf: 'samples/MvvmSampleXF.sln'
   solutionMaui: 'samples/MvvmSampleMAUI.sln'
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
