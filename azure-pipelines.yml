@@ -68,9 +68,9 @@ jobs:
         displayName: Restore NuGet Packages
         inputs:
           script: |
-            dotnet restore $(solutionUwp)
-            dotnet restore $(solutionXf)
-            dotnet restore $(solutionMaui)
+            dotnet restore $(solutionUwp) --configfile ./samples/nuget.config
+            dotnet restore $(solutionXf) --configfile ./samples/nuget.config
+            dotnet restore $(solutionMaui) --configfile ./samples/nuget.config
 
       - task: VSBuild@1
         displayName: Build UWP solution
