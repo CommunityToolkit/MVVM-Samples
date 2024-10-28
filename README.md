@@ -36,7 +36,7 @@ The package targets .NET Standard so it can be used on any app platform: UWP, Wi
 
 ## Background
 
-This library was inspired by [MVVMLight](https://www.mvvmlight.net/) by Laurent Bugnion. Development was started in April 2020 as a path forward for developers using MVVMLight. We've worked with Laurent, the community, and [Windows Template Studio](https://aka.ms/wts) to ensure successful migration paths for projects using MVVMLight today.
+This library was inspired by [MVVMLight](https://github.com/lbugnion/mvvmlight/) by Laurent Bugnion. Development was started in April 2020 as a path forward for developers using MVVMLight. We've worked with Laurent, the community, and [Windows Template Studio](https://aka.ms/wts) to ensure successful migration paths for projects using MVVMLight today.
 
 We decided to start from the ground-up as a new project to architect a modern .NET Standard starting point as well as targeting a high-performance implementation which reduces overhead for memory and CPU cycles. Many things in the .NET ecosystem have evolved and changed since the time MVVMLight had begun.
 
