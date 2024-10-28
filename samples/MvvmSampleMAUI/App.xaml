@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
+             x:Class="MvvmSampleMAUI.App">
+    <Application.Resources>
+        <Color x:Key="PrimaryColor">#3750D1</Color>
+        <Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>
+        <Color x:Key="BackgroundColorDark">#121212</Color>
+        <Color x:Key="BackgroundColorLight">#EFF2F5</Color>
+
+        <Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
+        <Color x:Key="TextPrimaryColorLight">#323130</Color>
+
+        <OnPlatform x:Key="ShellForegroundColorLight"
+                    x:TypeArguments="Color">
+            <On Platform="Android"
+                Value="{StaticResource TextPrimaryColorDark}" />
+            <On Platform="iOS"
+                Value="{StaticResource TextPrimaryColorLight}" />
+        </OnPlatform>
+
+        <Style x:Key="BaseStyle"
+               TargetType="Element"
+               ApplyToDerivedTypes="True">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="{AppThemeBinding {StaticResource PrimaryColor}}" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource ShellForegroundColorLight}}" />
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+            <Setter Property="Shell.NavBarHasShadow"
+                    Value="false" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="Gray" />
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="{StaticResource PrimaryColor}" />
+        </Style>
+
+        <Style TargetType="TabBar"
+               ApplyToDerivedTypes="True"
+               BasedOn="{StaticResource BaseStyle}" />
+
+        <Style TargetType="FlyoutItem"
+               ApplyToDerivedTypes="True"
+               BasedOn="{StaticResource BaseStyle}">
+        </Style>
+
+
+        <Style BasedOn="{StaticResource BaseStyle}"
+               ApplyToDerivedTypes="True"
+               TargetType="Tab" />
+
+        <Style TargetType="Shell"
+               ApplyToDerivedTypes="True">
+            <Setter Property="FlyoutBackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+        </Style>
+
+
+        <Style TargetType="Label"
+               Class="FlyoutItemLabelStyle">
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextPrimaryColorDark}" />
+        </Style>
+
+        <Style TargetType="Layout"
+               Class="FlyoutItemLayoutStyle"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource PrimaryColor}}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{AppThemeBinding Dark={StaticResource PrimaryColor}, Light={StaticResource FrameBackgroundColorDark}}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style TargetType="md:MarkdownView">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#ffffff, Dark = #2b303b}"/>
+            <Setter Property="H1Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H2Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H3Color" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TableRowTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="CodeBlockTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="TableHeaderTextColor" Value="{AppThemeBinding Light=#24292e, Dark = #eff1f5}" />
+            <Setter Property="H1FontSize" Value="21" />
+            <Setter Property="H2FontSize" Value="20" />
+            <Setter Property="H3FontSize" Value="18" />
+            <Setter Property="BlockQuoteBackgroundColor" Value="{AppThemeBinding Light=#f6f8fa, Dark = #4f5b66}" />
+            <Setter Property="BlockQuoteBorderColor" Value="{AppThemeBinding Light=#dfe2e5, Dark = #a7adba}" />
+            <Setter Property="CodeBlockBackgroundColor" Value="{AppThemeBinding Light=#f6f8fa, Dark = #4f5b66}" />
+            <Setter Property="CodeBlockFontSize" Value="12" />
+            <Setter Property="CodeBlockFontFace" Value="Consolas" />
+            <Setter Property="HyperlinkColor" Value="BlueViolet" />
+            <Setter Property="LineColor" Value="Gray" />
+            <Setter Property="ImageAspect" Value="AspectFit" />
+            <Setter Property="TableHeaderBackgroundColor" Value="LightGray" />
+            <Setter Property="TableRowFontSize" Value="12" />
+        </Style>
+
+        <Style TargetType="Page"
+               ApplyToDerivedTypes="True"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+        </Style>
+
+        <Style TargetType="Label"
+               ApplyToDerivedTypes="True">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+        </Style>
+
+        <Style TargetType="Frame"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+        </Style>
+
+
+        <Style TargetType="Picker">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+        </Style>
+
+        <FontImage x:Key="PlayIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf04b;"
+                   Color="Grey" />
+
+        <FontImage x:Key="ExchangeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf362;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CalendarIcon"
+                   FontFamily="FontAwesomeRegular"
+                   Glyph="&#xf073;"
+                   Color="Grey" />
+
+        <FontImage x:Key="BookIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf02d;"
+                   Color="Grey" />
+
+        <FontImage x:Key="FlagIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf024;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CommentIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf4ad;"
+                   Color="Grey" />
+
+        <FontImage x:Key="SendIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf1d8;"
+                   Color="Grey" />
+
+        <FontImage x:Key="SortIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf338;"
+                   Color="Grey" />
+
+        <FontImage x:Key="UndoIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf0e2;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CubeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf1b3;"
+                   Color="Grey" />
+
+        <FontImage x:Key="ToolsIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf7d9;"
+                   Color="Grey" />
+
+        <FontImage x:Key="WrenchIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf0ad;">
+        </FontImage>
+
+        <FontImage x:Key="GlobeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf57d;"
+                   Color="Grey" />
+
+        <FontImage x:Key="RulerIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf5ae;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CheckerIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf11e;"
+                   Color="Grey" />
+
+        <FontImage x:Key="RefreshIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf021;"
+                   Color="Grey" />
+
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    </Application.Resources>
+</Application>

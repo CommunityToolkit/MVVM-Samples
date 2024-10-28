@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
+                       xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:TypeArguments="vm:ObservableObjectPageViewModel"
+                       x:Class="MvvmSampleMAUI.Views.ObservableObjectPage"
+                       x:DataType="vm:ObservableObjectPageViewModel"
+                       Title="ObservableObject">
+    <ScrollView Padding="16">
+        <VerticalStackLayout Padding="16">
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[ObservableObject], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[How it works], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[Simple property], Mode=OneWay}" />
+
+            <controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
+                                        HeightRequest="300">
+                <VerticalStackLayout Spacing="8">
+                    <!--Simple property sample-->
+                    <Entry Placeholder="Type here to update the text below"
+                           Text="{Binding Name, Mode=TwoWay}" />
+                    <Label Text="{Binding Name, Mode=OneWay}" />
+                </VerticalStackLayout>
+                <controls:InteractiveSample.XamlCode>
+                    ```xml
+                    &lt;StackLayout Spacing="8">
+                    &lt;!--Simple property sample-->
+                    &lt;Entry Placeholder="Type here to update the text below"
+                    Text="{Binding Name, Mode=TwoWay}" />
+                    &lt;Label Text="{Binding Name, Mode=OneWay}" />
+                    &lt;/StackLayout>
+
+                    ```
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+                    ```csharp
+                    private string name;
+
+                    /// &lt;summary>
+                    /// Gets or sets the name to display.
+                    /// &lt;/summary>
+                    public string Name
+                    {
+                    get => name;
+                    set => SetProperty(ref name, value);
+                    }
+
+                    ```
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+
+
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[Wrapping a non-observable model], Mode=OneWay}" />
+            <md:MarkdownView MarkdownText="{Binding Path=Texts[Handling `Task&lt;T>` properties], Mode=OneWay}" />
+
+            <controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
+                                        HeightRequest="400">
+                <VerticalStackLayout Spacing="8">
+                    <Button Text="Click me to load a Task to await"
+                            Command="{Binding ReloadTaskCommand}" />
+                    <Label Text="{Binding MyTask.Status, Mode=OneWay}" />
+                </VerticalStackLayout>
+                <controls:InteractiveSample.XamlCode>
+                    ```xml
+                    &lt;StackLayout Spacing="8">
+                    &lt;Button Text="Click me to load a Task to await"
+                    Command="{Binding ReloadTaskCommand}" />
+                    &lt;Label Text="{Binding MyTask.Status, Mode=OneWay}" />
+                    &lt;/StackLayout>
+
+                    ```
+                </controls:InteractiveSample.XamlCode>
+                <controls:InteractiveSample.CSharpCode>
+                    ```csharp
+                    public ObservableObjectPageViewModel()
+                    {
+                    ReloadTaskCommand = new RelayCommand(ReloadTask);
+                    }
+
+                    public ICommand ReloadTaskCommand { get; }
+
+                    private string name;
+
+                    public string Name
+                    {
+                    get => name;
+                    set => SetProperty(ref name, value);
+                    }
+
+                    private TaskNotifier myTask;
+
+                    public Task MyTask
+                    {
+                    get => myTask;
+                    private set => SetPropertyAndNotifyOnCompletion(ref myTask, value);
+                    }
+
+                    public void ReloadTask()
+                    {
+                    MyTask = Task.Delay(3000);
+                    }
+
+                    ```
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+        </VerticalStackLayout>
+    </ScrollView>
+</views:BaseContentPage>

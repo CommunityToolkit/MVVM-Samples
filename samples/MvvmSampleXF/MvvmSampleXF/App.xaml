@@ -128,7 +128,7 @@
 					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
 		</Style>
 
-		<OnPlatform x:Key="FaSolidFont"
+		<OnPlatform x:Key="FontAwesomeSolid"
 					x:TypeArguments="x:String">
 			<On Platform="iOS"
 				Value="FontAwesome5Free-Solid" />
@@ -136,7 +136,7 @@
 				Value="FontAwesomeSolid.otf#Regular" />
 		</OnPlatform>
 
-		<OnPlatform x:Key="FaRegularFont"
+		<OnPlatform x:Key="FontAwesomeRegular"
 					x:TypeArguments="x:String">
 			<On Platform="iOS"
 				Value="FontAwesome5Free-Regular" />
@@ -144,7 +144,7 @@
 				Value="FontAwesomeRegular.otf#Regular" />
 		</OnPlatform>
 
-		<OnPlatform x:Key="FaBrandsFont"
+		<OnPlatform x:Key="FontAwesomeBrands"
 					x:TypeArguments="x:String">
 			<On Platform="iOS"
 				Value="FontAwesome5Brands-Regular" />
@@ -153,67 +153,67 @@
 		</OnPlatform>
 
 		<FontImage x:Key="PlayIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf04b;"/>
 
 		<FontImage x:Key="ExchangeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf362;" />
 
 		<FontImage x:Key="CalendarIcon"
-				   FontFamily="{StaticResource FaRegularFont}"
+				   FontFamily="FontAwesomeRegular"
 				   Glyph="&#xf073;" />
 
 		<FontImage x:Key="BookIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf02d;" />
 
 		<FontImage x:Key="FlagIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf024;" />
 		
 		<FontImage x:Key="CommentIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf4ad;" />
 
 		<FontImage x:Key="SendIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf1d8;" />
 
 		<FontImage x:Key="SortIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf338;" />
 
 		<FontImage x:Key="UndoIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf0e2;" />
 
 		<FontImage x:Key="CubeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf1b3;" />
 
 		<FontImage x:Key="ToolsIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf7d9;" />
 
 		<FontImage x:Key="WrenchIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf0ad;" />
 
 		<FontImage x:Key="GlobeIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf57d;" />
 
 		<FontImage x:Key="RulerIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf5ae;" />
 
 		<FontImage x:Key="CheckerIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf11e;" />
 		
 		<FontImage x:Key="RefreshIcon"
-				   FontFamily="{StaticResource FaSolidFont}"
+				   FontFamily="FontAwesomeSolid"
 				   Glyph="&#xf021;" />
 		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />

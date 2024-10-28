@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       x:Class="MvvmSampleMAUI.Views.SettingsServicePage"
+                       xmlns:vm="clr-namespace:MvvmSample.Core.ViewModels;assembly=MvvmSample.Core"
+                       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
+                       xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+                       x:TypeArguments="vm:SamplePageViewModel"
+                       x:DataType="vm:SamplePageViewModel"
+                       Title="Creating a Service">
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <md:MarkdownView x:Name="Markdown"
+                             MarkdownText="{Binding Path=Texts[Building the settings service], Mode=OneWay}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</views:BaseContentPage>

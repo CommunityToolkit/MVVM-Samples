@@ -10,7 +10,7 @@ namespace MvvmSampleXF.Views.Widgets
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubredditWidget : ContentView
     {
-        public event EventHandler PostSelected;
+        public event EventHandler? PostSelected;
         public SubredditWidget()
         {
             InitializeComponent();
