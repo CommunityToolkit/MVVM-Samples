@@ -137,24 +137,71 @@
 &lt;/Grid&gt;
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
-public class MyViewModel : ObservableObject
+/// &lt;summary&gt;
+/// A viewmodel for a contacts list widget.
+/// &lt;/summary&gt;
+public partial class ContactsListWidgetViewModel : ObservableObject
 {
-    public MyViewModel()
+    /// &lt;summary&gt;
+    /// The &lt;see cref="IContactsService"/&gt; instance currently in use.
+    /// &lt;/summary&gt;
+    private readonly IContactsService ContactsService;
+
+    public ContactsListWidgetViewModel(IContactsService contactsService)
     {
-        IncrementCounterCommand = new RelayCommand(IncrementCounter);
+        ContactsService = contactsService;
     }
 
-    private int counter;
+    /// &lt;summary&gt;
+    /// Gets the current collection of contacts
+    /// &lt;/summary&gt;
+    public ObservableGroupedCollection&lt;string, Contact&gt; Contacts { get; private set; } = new();
 
-    public int Counter
+    /// &lt;summary&gt;
+    /// Loads the contacts to display.
+    /// &lt;/summary&gt;
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
+    private async Task LoadContactsAsync()
     {
-        get =&gt; counter;
-        private set =&gt; SetProperty(ref counter, value);
+        ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(50);
+
+        Contacts = new ObservableGroupedCollection&lt;string, Contact&gt;(
+            contacts.Contacts
+            .GroupBy(static c =&gt; char.ToUpperInvariant(c.Name.First[0]).ToString())
+            .OrderBy(static g =&gt; g.Key));
+
+        OnPropertyChanged(nameof(Contacts));
     }
 
-    public ICommand IncrementCounterCommand { get; }
+    /// &lt;summary&gt;
+    /// Loads more contacts.
+    /// &lt;/summary&gt;
+    [RelayCommand(FlowExceptionsToTaskScheduler = true)]
+    private async Task LoadMoreContactsAsync()
+    {
+        ContactsQueryResponse contacts = await ContactsService.GetContactsAsync(10);
 
-    private void IncrementCounter() =&gt; Counter++;
+        foreach (Contact contact in contacts.Contacts)
+        {
+            string key = char.ToUpperInvariant(contact.Name.First[0]).ToString();
+
+            Contacts.InsertItem(
+                key: key,
+                keyComparer: Comparer&lt;string&gt;.Default,
+                item: contact,
+                itemComparer: Comparer&lt;Contact&gt;.Create(static (left, right) =&gt; Comparer&lt;string&gt;.Default.Compare(left.ToString(), right.ToString())));
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Removes a given contact from the list.
+    /// &lt;/summary&gt;
+    /// &lt;param name="contact"&gt;The contact to remove.&lt;/param&gt;
+    [RelayCommand]
+    private void DeleteContact(Contact contact)
+    {
+        Contacts.FirstGroupByKey(char.ToUpperInvariant(contact.Name.First[0]).ToString()).Remove(contact);
+    }
 }
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
