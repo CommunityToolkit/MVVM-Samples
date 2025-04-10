@@ -48,7 +48,10 @@ jobs:
         displayName: 'Set Xcode v$(Xcode_Version)'
         condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
         inputs:
-          script: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(Xcode_Version).app;sudo xcode-select --switch /Applications/Xcode_$(Xcode_Version).app/Contents/Developer
+          script: |
+            echo Installed Xcode Versions:
+            ls -al  /Applications | grep Xcode
+            echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(Xcode_Version).app;sudo xcode-select --switch /Applications/Xcode_$(Xcode_Version).app/Contents/Developer
 
       - task: CmdLine@2
         displayName: 'Install Latest .NET MAUI Workload'
