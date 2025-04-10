@@ -9,305 +9,307 @@
     mc:Ignorable="d">
 
     <Grid Padding="{StaticResource DocumentationPageContentPadding}">
-        <controls:InteractiveSample xml:space="preserve">
-            <controls:InteractiveSample.Content>
-                <Grid xml:space="default" ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <widgets:SubredditWidget />
-                    <widgets:PostWidget Grid.Column="1" />
-                </Grid>
-            </controls:InteractiveSample.Content>
-            <controls:InteractiveSample.XamlCode>
-&lt;!--Feed widget--&gt;
-&lt;Grid
-    BorderThickness=&quot;1&quot;
-    BorderBrush=&quot;{ThemeResource SystemControlBackgroundBaseLowBrush}&quot;&gt;
-    &lt;Grid.RowDefinitions&gt;
-        &lt;RowDefinition Height=&quot;60&quot;/&gt;
-        &lt;RowDefinition Height=&quot;8&quot;/&gt;
-        &lt;RowDefinition Height=&quot;*&quot;/&gt;
-    &lt;/Grid.RowDefinitions&gt;
+        <ScrollViewer>
+            <controls:InteractiveSample xml:space="preserve">
+                <controls:InteractiveSample.Content>
+                    <Grid xml:space="default" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <widgets:SubredditWidget />
+                            <widgets:PostWidget Grid.Column="1" />
+                        </Grid>
+                </controls:InteractiveSample.Content>
+                <controls:InteractiveSample.XamlCode>
+        &lt;!--Feed widget--&gt;
+        &lt;Grid
+            BorderThickness=&quot;1&quot;
+            BorderBrush=&quot;{ThemeResource SystemControlBackgroundBaseLowBrush}&quot;&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height=&quot;60&quot;/&gt;
+                &lt;RowDefinition Height=&quot;8&quot;/&gt;
+                &lt;RowDefinition Height=&quot;*&quot;/&gt;
+            &lt;/Grid.RowDefinitions&gt;
 
-    &lt;!--Header with topic selector and refresh button--&gt;
-    &lt;Border
-        Padding=&quot;12&quot;
-        Background=&quot;{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}&quot;&gt;
-        &lt;StackPanel Orientation=&quot;Horizontal&quot; Spacing=&quot;16&quot;&gt;
-            &lt;ComboBox
-                ItemsSource=&quot;{x:Bind ViewModel.Subreddits, Mode=OneWay}&quot;
-                SelectedItem=&quot;{x:Bind ViewModel.SelectedSubreddit, Mode=TwoWay}&quot;
-                SelectionChangedTrigger=&quot;Committed&quot;
-                VerticalAlignment=&quot;Center&quot;
-                MinWidth=&quot;240&quot;&gt;
-                &lt;interactivity:Interaction.Behaviors&gt;
-                    &lt;core:EventTriggerBehavior EventName=&quot;SelectionChanged&quot;&gt;
-                        &lt;core:InvokeCommandAction Command=&quot;{x:Bind ViewModel.LoadPostsCommand}&quot;/&gt;
-                    &lt;/core:EventTriggerBehavior&gt;
-                &lt;/interactivity:Interaction.Behaviors&gt;
-            &lt;/ComboBox&gt;
-            &lt;Button
-                Content=&quot;{extensions:SymbolIcon Symbol=Refresh}&quot;
-                Command=&quot;{x:Bind ViewModel.LoadPostsCommand}&quot;/&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Border&gt;
+            &lt;!--Header with topic selector and refresh button--&gt;
+            &lt;Border
+                Padding=&quot;12&quot;
+                Background=&quot;{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}&quot;&gt;
+                &lt;StackPanel Orientation=&quot;Horizontal&quot; Spacing=&quot;16&quot;&gt;
+                    &lt;ComboBox
+                        ItemsSource=&quot;{x:Bind ViewModel.Subreddits, Mode=OneWay}&quot;
+                        SelectedItem=&quot;{x:Bind ViewModel.SelectedSubreddit, Mode=TwoWay}&quot;
+                        SelectionChangedTrigger=&quot;Committed&quot;
+                        VerticalAlignment=&quot;Center&quot;
+                        MinWidth=&quot;240&quot;&gt;
+                        &lt;interactivity:Interaction.Behaviors&gt;
+                            &lt;core:EventTriggerBehavior EventName=&quot;SelectionChanged&quot;&gt;
+                                &lt;core:InvokeCommandAction Command=&quot;{x:Bind ViewModel.LoadPostsCommand}&quot;/&gt;
+                            &lt;/core:EventTriggerBehavior&gt;
+                        &lt;/interactivity:Interaction.Behaviors&gt;
+                    &lt;/ComboBox&gt;
+                    &lt;Button
+                        Content=&quot;{extensions:SymbolIcon Symbol=Refresh}&quot;
+                        Command=&quot;{x:Bind ViewModel.LoadPostsCommand}&quot;/&gt;
+                &lt;/StackPanel&gt;
+            &lt;/Border&gt;
 
-    &lt;!--Items list--&gt;
-    &lt;ListView
-        Grid.Row=&quot;1&quot;
-        Grid.RowSpan=&quot;2&quot;
-        ItemsSource=&quot;{x:Bind ViewModel.Posts}&quot;
-        SelectedItem=&quot;{x:Bind ViewModel.SelectedPost, Mode=TwoWay}&quot;
-        ScrollViewer.CanContentRenderOutsideBounds=&quot;True&quot;&gt;
-        &lt;ListView.ItemContainerStyle&gt;
-            &lt;Style TargetType=&quot;ListViewItem&quot;&gt;
-                &lt;Setter Property=&quot;Background&quot; Value=&quot;#10FFFFFF&quot;/&gt;
-                &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,2,0,2&quot;/&gt;
-                &lt;Setter Property=&quot;HorizontalContentAlignment&quot; Value=&quot;Stretch&quot;/&gt;
-            &lt;/Style&gt;
-        &lt;/ListView.ItemContainerStyle&gt;
-        &lt;ListView.ItemTemplate&gt;
-            &lt;DataTemplate x:DataType=&quot;models:Post&quot;&gt;
-                &lt;Grid
-                    ColumnSpacing=&quot;8&quot;
-                    Padding=&quot;16&quot;&gt;
-                    &lt;Grid.ColumnDefinitions&gt;
-                        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
-                        &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
-                    &lt;/Grid.ColumnDefinitions&gt;
+            &lt;!--Items list--&gt;
+            &lt;ListView
+                Grid.Row=&quot;1&quot;
+                Grid.RowSpan=&quot;2&quot;
+                ItemsSource=&quot;{x:Bind ViewModel.Posts}&quot;
+                SelectedItem=&quot;{x:Bind ViewModel.SelectedPost, Mode=TwoWay}&quot;
+                ScrollViewer.CanContentRenderOutsideBounds=&quot;True&quot;&gt;
+                &lt;ListView.ItemContainerStyle&gt;
+                    &lt;Style TargetType=&quot;ListViewItem&quot;&gt;
+                        &lt;Setter Property=&quot;Background&quot; Value=&quot;#10FFFFFF&quot;/&gt;
+                        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,2,0,2&quot;/&gt;
+                        &lt;Setter Property=&quot;HorizontalContentAlignment&quot; Value=&quot;Stretch&quot;/&gt;
+                    &lt;/Style&gt;
+                &lt;/ListView.ItemContainerStyle&gt;
+                &lt;ListView.ItemTemplate&gt;
+                    &lt;DataTemplate x:DataType=&quot;models:Post&quot;&gt;
+                        &lt;Grid
+                            ColumnSpacing=&quot;8&quot;
+                            Padding=&quot;16&quot;&gt;
+                            &lt;Grid.ColumnDefinitions&gt;
+                                &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
+                                &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
+                            &lt;/Grid.ColumnDefinitions&gt;
+                            &lt;TextBlock
+                                Text=&quot;{x:Bind Title}&quot;
+                                FontSize=&quot;15&quot;
+                                FontWeight=&quot;Normal&quot;
+                                TextWrapping=&quot;WrapWholeWords&quot;
+                                VerticalAlignment=&quot;Center&quot;/&gt;
+                            &lt;controls:ImageEx
+                                Grid.Column=&quot;1&quot;
+                                Source=&quot;{x:Bind Thumbnail}&quot;
+                                Stretch=&quot;Uniform&quot;
+                                HorizontalAlignment=&quot;Right&quot;
+                                Width=&quot;120&quot;/&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DataTemplate&gt;
+                &lt;/ListView.ItemTemplate&gt;
+            &lt;/ListView&gt;
+
+            &lt;!--Loading bar--&gt;
+            &lt;muxc:ProgressBar
+                Grid.Row=&quot;1&quot;
+                Grid.RowSpan=&quot;2&quot;
+                IsHitTestVisible=&quot;False&quot;
+                VerticalAlignment=&quot;Top&quot;
+                IsIndeterminate=&quot;True&quot;
+                Visibility=&quot;{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}&quot;/&gt;
+
+            &lt;!--Header drop shadow--&gt;
+            &lt;Rectangle Grid.Row=&quot;1&quot; Height=&quot;8&quot; IsHitTestVisible=&quot;False&quot;&gt;
+                &lt;Rectangle.Fill&gt;
+                    &lt;LinearGradientBrush EndPoint=&quot;0,0&quot; StartPoint=&quot;0,1&quot;&gt;
+                        &lt;GradientStop Color=&quot;#60000000&quot; Offset=&quot;1&quot;/&gt;
+                        &lt;GradientStop Offset=&quot;0&quot;/&gt;
+                    &lt;/LinearGradientBrush&gt;
+                &lt;/Rectangle.Fill&gt;
+            &lt;/Rectangle&gt;
+        &lt;/Grid&gt;
+
+        &lt;!--Post widget--&gt;
+        &lt;Grid
+            BorderThickness=&quot;1&quot;
+            BorderBrush=&quot;{ThemeResource SystemControlBackgroundBaseLowBrush}&quot;&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+                &lt;RowDefinition Height=&quot;*&quot;/&gt;
+            &lt;/Grid.RowDefinitions&gt;
+
+            &lt;!--Self text--&gt;
+            &lt;Border
+                Grid.Row=&quot;1&quot;
+                extensions:UIElementExtensions.ClipToBounds=&quot;True&quot;&gt;
+                &lt;ScrollViewer CanContentRenderOutsideBounds=&quot;True&quot;&gt;
                     &lt;TextBlock
-                        Text=&quot;{x:Bind Title}&quot;
-                        FontSize=&quot;15&quot;
-                        FontWeight=&quot;Normal&quot;
+                        Text=&quot;{x:Bind ViewModel.Post.SelfText, Mode=OneWay}&quot;
                         TextWrapping=&quot;WrapWholeWords&quot;
-                        VerticalAlignment=&quot;Center&quot;/&gt;
-                    &lt;controls:ImageEx
-                        Grid.Column=&quot;1&quot;
-                        Source=&quot;{x:Bind Thumbnail}&quot;
-                        Stretch=&quot;Uniform&quot;
-                        HorizontalAlignment=&quot;Right&quot;
-                        Width=&quot;120&quot;/&gt;
-                &lt;/Grid&gt;
-            &lt;/DataTemplate&gt;
-        &lt;/ListView.ItemTemplate&gt;
-    &lt;/ListView&gt;
+                        Margin=&quot;16&quot;/&gt;
+                &lt;/ScrollViewer&gt;
+            &lt;/Border&gt;
 
-    &lt;!--Loading bar--&gt;
-    &lt;muxc:ProgressBar
-        Grid.Row=&quot;1&quot;
-        Grid.RowSpan=&quot;2&quot;
-        IsHitTestVisible=&quot;False&quot;
-        VerticalAlignment=&quot;Top&quot;
-        IsIndeterminate=&quot;True&quot;
-        Visibility=&quot;{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}&quot;/&gt;
+            &lt;!--Header--&gt;
+            &lt;Grid
+                Grid.Row=&quot;0&quot;
+                ColumnSpacing=&quot;8&quot;
+                Padding=&quot;16&quot;
+                Background=&quot;{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}&quot;&gt;
+                &lt;Grid.ColumnDefinitions&gt;
+                    &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
+                    &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
+                &lt;/Grid.ColumnDefinitions&gt;
+                &lt;TextBlock
+                    Text=&quot;{x:Bind ViewModel.Post.Title, Mode=OneWay}&quot;
+                    FontSize=&quot;16&quot;
+                    FontWeight=&quot;SemiBold&quot;
+                    TextWrapping=&quot;WrapWholeWords&quot;
+                    VerticalAlignment=&quot;Center&quot;/&gt;
+                &lt;controls:ImageEx
+                    Grid.Column=&quot;1&quot;
+                    Source=&quot;{x:Bind ViewModel.Post.Thumbnail, Mode=OneWay}&quot;
+                    Stretch=&quot;Uniform&quot;
+                    HorizontalAlignment=&quot;Right&quot;
+                    Width=&quot;160&quot;/&gt;
+            &lt;/Grid&gt;
 
-    &lt;!--Header drop shadow--&gt;
-    &lt;Rectangle Grid.Row=&quot;1&quot; Height=&quot;8&quot; IsHitTestVisible=&quot;False&quot;&gt;
-        &lt;Rectangle.Fill&gt;
-            &lt;LinearGradientBrush EndPoint=&quot;0,0&quot; StartPoint=&quot;0,1&quot;&gt;
-                &lt;GradientStop Color=&quot;#60000000&quot; Offset=&quot;1&quot;/&gt;
-                &lt;GradientStop Offset=&quot;0&quot;/&gt;
-            &lt;/LinearGradientBrush&gt;
-        &lt;/Rectangle.Fill&gt;
-    &lt;/Rectangle&gt;
-&lt;/Grid&gt;
-
-&lt;!--Post widget--&gt;
-&lt;Grid
-    BorderThickness=&quot;1&quot;
-    BorderBrush=&quot;{ThemeResource SystemControlBackgroundBaseLowBrush}&quot;&gt;
-    &lt;Grid.RowDefinitions&gt;
-        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-        &lt;RowDefinition Height=&quot;*&quot;/&gt;
-    &lt;/Grid.RowDefinitions&gt;
-
-    &lt;!--Self text--&gt;
-    &lt;Border
-        Grid.Row=&quot;1&quot;
-        extensions:UIElementExtensions.ClipToBounds=&quot;True&quot;&gt;
-        &lt;ScrollViewer CanContentRenderOutsideBounds=&quot;True&quot;&gt;
-            &lt;TextBlock
-                Text=&quot;{x:Bind ViewModel.Post.SelfText, Mode=OneWay}&quot;
-                TextWrapping=&quot;WrapWholeWords&quot;
-                Margin=&quot;16&quot;/&gt;
-        &lt;/ScrollViewer&gt;
-    &lt;/Border&gt;
-
-    &lt;!--Header--&gt;
-    &lt;Grid
-        Grid.Row=&quot;0&quot;
-        ColumnSpacing=&quot;8&quot;
-        Padding=&quot;16&quot;
-        Background=&quot;{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}&quot;&gt;
-        &lt;Grid.ColumnDefinitions&gt;
-            &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
-            &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
-        &lt;/Grid.ColumnDefinitions&gt;
-        &lt;TextBlock
-            Text=&quot;{x:Bind ViewModel.Post.Title, Mode=OneWay}&quot;
-            FontSize=&quot;16&quot;
-            FontWeight=&quot;SemiBold&quot;
-            TextWrapping=&quot;WrapWholeWords&quot;
-            VerticalAlignment=&quot;Center&quot;/&gt;
-        &lt;controls:ImageEx
-            Grid.Column=&quot;1&quot;
-            Source=&quot;{x:Bind ViewModel.Post.Thumbnail, Mode=OneWay}&quot;
-            Stretch=&quot;Uniform&quot;
-            HorizontalAlignment=&quot;Right&quot;
-            Width=&quot;160&quot;/&gt;
-    &lt;/Grid&gt;
-
-    &lt;!--Header drop shadow--&gt;
-    &lt;Rectangle
-        Grid.Row=&quot;1&quot;
-        Height=&quot;8&quot;
-        VerticalAlignment=&quot;Top&quot;
-        IsHitTestVisible=&quot;False&quot;&gt;
-        &lt;Rectangle.Fill&gt;
-            &lt;LinearGradientBrush EndPoint=&quot;0,0&quot; StartPoint=&quot;0,1&quot;&gt;
-                &lt;GradientStop Color=&quot;#60000000&quot; Offset=&quot;1&quot;/&gt;
-                &lt;GradientStop Offset=&quot;0&quot;/&gt;
-            &lt;/LinearGradientBrush&gt;
-        &lt;/Rectangle.Fill&gt;
-    &lt;/Rectangle&gt;
-&lt;/Grid&gt;
-            </controls:InteractiveSample.XamlCode>
-            <controls:InteractiveSample.CSharpCode>
-/// &lt;summary&gt;
-/// A viewmodel for a subreddit widget.
-/// &lt;/summary&gt;
-public sealed class SubredditWidgetViewModel : ObservableRecipient
-{
-    /// &lt;summary&gt;
-    /// Gets the &lt;see cref=&quot;IRedditService&quot;/&gt; instance to use.
-    /// &lt;/summary&gt;
-    private readonly IRedditService RedditService = Ioc.Default.GetRequiredService&lt;IRedditService&gt;();
-
-    /// &lt;summary&gt;
-    /// Gets the &lt;see cref=&quot;ISettingsService&quot;/&gt; instance to use.
-    /// &lt;/summary&gt;
-    private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService&lt;ISettingsService&gt;();
-
-    /// &lt;summary&gt;
-    /// An &lt;see cref=&quot;AsyncLock&quot;/&gt; instance to avoid concurrent requests.
-    /// &lt;/summary&gt;
-    private readonly AsyncLock LoadingLock = new AsyncLock();
-
-    /// &lt;summary&gt;
-    /// Creates a new &lt;see cref=&quot;SubredditWidgetViewModel&quot;/&gt; instance.
-    /// &lt;/summary&gt;
-    public SubredditWidgetViewModel()
-    {
-        LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
-
-        selectedSubreddit = SettingsService.GetValue&lt;string&gt;(nameof(SelectedSubreddit)) ?? Subreddits[0];
-    }
-
-    /// &lt;summary&gt;
-    /// Gets the &lt;see cref=&quot;IAsyncRelayCommand&quot;/&gt; instance responsible for loading posts.
-    /// &lt;/summary&gt;
-    public IAsyncRelayCommand LoadPostsCommand { get; }
-
-    /// &lt;summary&gt;
-    /// Gets the collection of loaded posts.
-    /// &lt;/summary&gt;
-    public ObservableCollection&lt;Post&gt; Posts { get; } = new ObservableCollection&lt;Post&gt;();
-
-    /// &lt;summary&gt;
-    /// Gets the collection of available subreddits to pick from.
-    /// &lt;/summary&gt;
-    public IReadOnlyList&lt;string&gt; Subreddits { get; } = new[]
-    {
-        &quot;microsoft&quot;,
-        &quot;windows&quot;,
-        &quot;surface&quot;,
-        &quot;windowsphone&quot;,
-        &quot;dotnet&quot;,
-        &quot;csharp&quot;
-    };
-
-    private string selectedSubreddit;
-
-    /// &lt;summary&gt;
-    /// Gets or sets the currently selected subreddit.
-    /// &lt;/summary&gt;
-    public string SelectedSubreddit
-    {
-        get =&gt; selectedSubreddit;
-        set
+            &lt;!--Header drop shadow--&gt;
+            &lt;Rectangle
+                Grid.Row=&quot;1&quot;
+                Height=&quot;8&quot;
+                VerticalAlignment=&quot;Top&quot;
+                IsHitTestVisible=&quot;False&quot;&gt;
+                &lt;Rectangle.Fill&gt;
+                    &lt;LinearGradientBrush EndPoint=&quot;0,0&quot; StartPoint=&quot;0,1&quot;&gt;
+                        &lt;GradientStop Color=&quot;#60000000&quot; Offset=&quot;1&quot;/&gt;
+                        &lt;GradientStop Offset=&quot;0&quot;/&gt;
+                    &lt;/LinearGradientBrush&gt;
+                &lt;/Rectangle.Fill&gt;
+            &lt;/Rectangle&gt;
+        &lt;/Grid&gt;
+                    </controls:InteractiveSample.XamlCode>
+                    <controls:InteractiveSample.CSharpCode>
+        /// &lt;summary&gt;
+        /// A viewmodel for a subreddit widget.
+        /// &lt;/summary&gt;
+        public sealed class SubredditWidgetViewModel : ObservableRecipient
         {
-            SetProperty(ref selectedSubreddit, value);
+            /// &lt;summary&gt;
+            /// Gets the &lt;see cref=&quot;IRedditService&quot;/&gt; instance to use.
+            /// &lt;/summary&gt;
+            private readonly IRedditService RedditService = Ioc.Default.GetRequiredService&lt;IRedditService&gt;();
 
-            SettingsService.SetValue(nameof(SelectedSubreddit), value);
-        }
-    }
+            /// &lt;summary&gt;
+            /// Gets the &lt;see cref=&quot;ISettingsService&quot;/&gt; instance to use.
+            /// &lt;/summary&gt;
+            private readonly ISettingsService SettingsService = Ioc.Default.GetRequiredService&lt;ISettingsService&gt;();
 
-    private Post selectedPost;
+            /// &lt;summary&gt;
+            /// An &lt;see cref=&quot;AsyncLock&quot;/&gt; instance to avoid concurrent requests.
+            /// &lt;/summary&gt;
+            private readonly AsyncLock LoadingLock = new AsyncLock();
 
-    /// &lt;summary&gt;
-    /// Gets or sets the currently selected subreddit.
-    /// &lt;/summary&gt;
-    public Post SelectedPost
-    {
-        get =&gt; selectedPost;
-        set =&gt; SetProperty(ref selectedPost, value, true);
-    }
-
-    /// &lt;summary&gt;
-    /// Loads the posts from a specified subreddit.
-    /// &lt;/summary&gt;
-    private async Task LoadPostsAsync()
-    {
-        using (await LoadingLock.LockAsync())
-        {
-            try
+            /// &lt;summary&gt;
+            /// Creates a new &lt;see cref=&quot;SubredditWidgetViewModel&quot;/&gt; instance.
+            /// &lt;/summary&gt;
+            public SubredditWidgetViewModel()
             {
-                var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+                LoadPostsCommand = new AsyncRelayCommand(LoadPostsAsync);
 
-                Posts.Clear();
+                selectedSubreddit = SettingsService.GetValue&lt;string&gt;(nameof(SelectedSubreddit)) ?? Subreddits[0];
+            }
 
-                foreach (var item in response.Data.Items)
+            /// &lt;summary&gt;
+            /// Gets the &lt;see cref=&quot;IAsyncRelayCommand&quot;/&gt; instance responsible for loading posts.
+            /// &lt;/summary&gt;
+            public IAsyncRelayCommand LoadPostsCommand { get; }
+
+            /// &lt;summary&gt;
+            /// Gets the collection of loaded posts.
+            /// &lt;/summary&gt;
+            public ObservableCollection&lt;Post&gt; Posts { get; } = new ObservableCollection&lt;Post&gt;();
+
+            /// &lt;summary&gt;
+            /// Gets the collection of available subreddits to pick from.
+            /// &lt;/summary&gt;
+            public IReadOnlyList&lt;string&gt; Subreddits { get; } = new[]
+            {
+                &quot;microsoft&quot;,
+                &quot;windows&quot;,
+                &quot;surface&quot;,
+                &quot;windowsphone&quot;,
+                &quot;dotnet&quot;,
+                &quot;csharp&quot;
+            };
+
+            private string selectedSubreddit;
+
+            /// &lt;summary&gt;
+            /// Gets or sets the currently selected subreddit.
+            /// &lt;/summary&gt;
+            public string SelectedSubreddit
+            {
+                get =&gt; selectedSubreddit;
+                set
                 {
-                    Posts.Add(item.Data);
+                    SetProperty(ref selectedSubreddit, value);
+
+                    SettingsService.SetValue(nameof(SelectedSubreddit), value);
                 }
             }
-            catch
+
+            private Post selectedPost;
+
+            /// &lt;summary&gt;
+            /// Gets or sets the currently selected subreddit.
+            /// &lt;/summary&gt;
+            public Post SelectedPost
             {
-                // Whoops!
+                get =&gt; selectedPost;
+                set =&gt; SetProperty(ref selectedPost, value, true);
+            }
+
+            /// &lt;summary&gt;
+            /// Loads the posts from a specified subreddit.
+            /// &lt;/summary&gt;
+            private async Task LoadPostsAsync()
+            {
+                using (await LoadingLock.LockAsync())
+                {
+                    try
+                    {
+                        var response = await RedditService.GetSubredditPostsAsync(SelectedSubreddit);
+
+                        Posts.Clear();
+
+                        foreach (var item in response.Data.Items)
+                        {
+                            Posts.Add(item.Data);
+                        }
+                    }
+                    catch
+                    {
+                        // Whoops!
+                    }
+                }
             }
         }
-    }
-}
 
-/// &lt;summary&gt;
-/// A viewmodel for a post widget.
-/// &lt;/summary&gt;
-public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient&lt;PropertyChangedMessage&lt;Post&gt;&gt;
-{
-    private Post post;
-
-    /// &lt;summary&gt;
-    /// Gets the currently selected post, if any.
-    /// &lt;/summary&gt;
-    public Post Post
-    {
-        get =&gt; post;
-        private set =&gt; SetProperty(ref post, value);
-    }
-
-    /// &lt;inheritdoc/&gt;
-    public void Receive(PropertyChangedMessage&lt;Post&gt; message)
-    {
-        if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &amp;&amp;
-            message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
+        /// &lt;summary&gt;
+        /// A viewmodel for a post widget.
+        /// &lt;/summary&gt;
+        public sealed class PostWidgetViewModel : ObservableRecipient, IRecipient&lt;PropertyChangedMessage&lt;Post&gt;&gt;
         {
-            Post = message.NewValue;
+            private Post post;
+
+            /// &lt;summary&gt;
+            /// Gets the currently selected post, if any.
+            /// &lt;/summary&gt;
+            public Post Post
+            {
+                get =&gt; post;
+                private set =&gt; SetProperty(ref post, value);
+            }
+
+            /// &lt;inheritdoc/&gt;
+            public void Receive(PropertyChangedMessage&lt;Post&gt; message)
+            {
+                if (message.Sender.GetType() == typeof(SubredditWidgetViewModel) &amp;&amp;
+                    message.PropertyName == nameof(SubredditWidgetViewModel.SelectedPost))
+                {
+                    Post = message.NewValue;
+                }
+            }
         }
-    }
-}
-            </controls:InteractiveSample.CSharpCode>
-        </controls:InteractiveSample>
+                </controls:InteractiveSample.CSharpCode>
+            </controls:InteractiveSample>
+        </ScrollViewer>
     </Grid>
 </Page>
