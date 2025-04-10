@@ -66,6 +66,7 @@ public static class MauiProgram
         services.AddTransient<RedditServicePage>();
         services.AddTransient<RelayCommandPage>();
         services.AddTransient<SettingsServicePage>();
+        services.AddSingleton<AppShell>();
     }
 
     static void RegisterViewModels(in IServiceCollection services)

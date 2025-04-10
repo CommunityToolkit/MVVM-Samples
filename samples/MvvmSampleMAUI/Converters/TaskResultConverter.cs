@@ -1,17 +1,13 @@
 ﻿using System.Globalization;
+using CommunityToolkit.Maui.Converters;
+
 namespace MvvmSampleMAUI.Converters;
 
-public class TaskResultConverter : IValueConverter
+[AcceptEmptyServiceProvider]
+public class TaskResultConverter : BaseConverterOneWay<Task<string>, string?>
 {
-    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
-    {
-        if (value is Task<string> task)
-        {
-            return task.Status == TaskStatus.RanToCompletion ? task.Result : default;
-        }
+    public override string? DefaultConvertReturnValue { get; set; } = null;
 
-        return null;
-    }
-
-    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => throw new NotImplementedException();
+    public override string? ConvertFrom(Task<string> value, CultureInfo? culture) => 
+        value.Status == TaskStatus.RanToCompletion ? value.Result : null;
 }
