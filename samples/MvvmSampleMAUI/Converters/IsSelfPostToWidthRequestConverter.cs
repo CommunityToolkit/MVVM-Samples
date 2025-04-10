@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Converters;
 
 namespace MvvmSampleMAUI.Converters;
 
+[AcceptEmptyServiceProvider]
 public class IsSelfPostToWidthRequestConverter : BaseConverterOneWay<string, double>
 {
     public double WidthRequest { get; set; } = 0;

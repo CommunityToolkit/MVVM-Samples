@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Converters;
 
 namespace MvvmSampleMAUI.Converters;
 
+[AcceptEmptyServiceProvider]
 public class TaskResultConverter : BaseConverterOneWay<Task<string>, string?>
 {
     public override string? DefaultConvertReturnValue { get; set; } = null;
