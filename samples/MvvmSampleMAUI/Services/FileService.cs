@@ -5,7 +5,7 @@ namespace MvvmSampleMAUI.Services;
 
 public sealed class FileService : IFilesService
 {
-    public string InstallationPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+    public string InstallationPath { get; } = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
     public Task<Stream> OpenForReadAsync(string path)
     {

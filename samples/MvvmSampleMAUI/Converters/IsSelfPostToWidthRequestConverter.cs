@@ -1,18 +1,18 @@
 ﻿using System.Globalization;
+using CommunityToolkit.Maui.Converters;
+
 namespace MvvmSampleMAUI.Converters;
 
-public class IsSelfPostToWidthRequestConverter : IValueConverter
+public class IsSelfPostToWidthRequestConverter : BaseConverterOneWay<string, double>
 {
-    public double WidthRequest { get; set; }
-    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
-    {
-        if (value is string str)
-        {
-            return str.Equals("self", StringComparison.OrdinalIgnoreCase) ? 0 : WidthRequest;
-        }
+    public double WidthRequest { get; set; } = 0;
 
-        return 0d;
+    public override double DefaultConvertReturnValue
+    {
+        get => WidthRequest;
+        set => WidthRequest = value;
     }
 
-    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => throw new NotImplementedException();
+    public override double ConvertFrom(string value, CultureInfo? culture) =>
+        value.Equals("self", StringComparison.OrdinalIgnoreCase) ? 0 : WidthRequest;
 }
