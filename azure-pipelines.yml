@@ -5,7 +5,7 @@ variables:
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
-  Xcode_Version: '16'
+  Xcode_Version: '16.3'
 
 trigger:
   branches:
@@ -26,7 +26,7 @@ jobs:
         'Windows':
           image: 'windows-latest'
         'macOS':
-          image: 'macos-14'
+          image: 'macos-15'
     pool:
       vmImage: $(image)
     steps:
@@ -35,6 +35,13 @@ jobs:
         inputs:
           packageType: 'sdk'
           version: '8.0.x'
+          includePreviewVersions: false
+
+      - task: UseDotNet@2
+        displayName: 'Install Latest .NET SDK, v9.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '9.0.x'
           includePreviewVersions: false
 
       - task: CmdLine@2
