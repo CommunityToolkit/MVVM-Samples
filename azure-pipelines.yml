@@ -5,7 +5,7 @@ variables:
   buildPlatform: 'x86|x64|ARM|ARM64'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
-  Xcode_Version: '16'
+  Xcode_Version: '16.3'
 
 trigger:
   branches:
@@ -26,7 +26,7 @@ jobs:
         'Windows':
           image: 'windows-latest'
         'macOS':
-          image: 'macos-14'
+          image: 'macos-15'
     pool:
       vmImage: $(image)
     steps:
@@ -37,11 +37,34 @@ jobs:
           version: '8.0.x'
           includePreviewVersions: false
 
+      - task: UseDotNet@2
+        displayName: 'Install Latest .NET SDK, v9.0.x'
+        inputs:
+          packageType: 'sdk'
+          version: '9.0.x'
+          includePreviewVersions: false
+          
+      - task: JavaToolInstaller@0
+        inputs:
+          versionSpec: '11'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
+
       - task: CmdLine@2
         displayName: 'Set Xcode v$(Xcode_Version)'
         condition: eq(variables['Agent.OS'], 'Darwin') # Only run this step on macOS
         inputs:
-          script: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(Xcode_Version).app;sudo xcode-select --switch /Applications/Xcode_$(Xcode_Version).app/Contents/Developer
+          script: |
+            echo Installed Xcode Versions:
+            ls -al  /Applications | grep Xcode
+            
+            echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(Xcode_Version).app
+            sudo xcode-select --switch /Applications/Xcode_$(Xcode_Version).app/Contents/Developer
+            
+            xcodebuild -downloadPlatform iOS
+            
+            echo Installed Simulator SDKs:
+            xcodebuild -showsdks
 
       - task: CmdLine@2
         displayName: 'Install Latest .NET MAUI Workload'

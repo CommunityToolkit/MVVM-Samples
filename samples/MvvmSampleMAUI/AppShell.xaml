@@ -4,10 +4,95 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:controls="clr-namespace:MvvmSampleMAUI.Controls"
        xmlns:views="clr-namespace:MvvmSampleMAUI.Views"
+       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+       xmlns:md="clr-namespace:Indiko.Maui.Controls.Markdown;assembly=Indiko.Maui.Controls.Markdown"
        x:Class="MvvmSampleMAUI.AppShell">
+    
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>
+    
+    <Shell.Resources>
+        <FontImage x:Key="PlayIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf04b;"
+                   Color="Grey" />
+
+        <FontImage x:Key="ExchangeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf362;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CalendarIcon"
+                   FontFamily="FontAwesomeRegular"
+                   Glyph="&#xf073;"
+                   Color="Grey" />
+
+        <FontImage x:Key="BookIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf02d;"
+                   Color="Grey" />
+
+        <FontImage x:Key="FlagIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf024;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CommentIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf4ad;"
+                   Color="Grey" />
+
+        <FontImage x:Key="SendIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf1d8;"
+                   Color="Grey" />
+
+        <FontImage x:Key="SortIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf338;"
+                   Color="Grey" />
+
+        <FontImage x:Key="UndoIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf0e2;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CubeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf1b3;"
+                   Color="Grey" />
+
+        <FontImage x:Key="ToolsIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf7d9;"
+                   Color="Grey" />
+
+        <FontImage x:Key="WrenchIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf0ad;">
+        </FontImage>
+
+        <FontImage x:Key="GlobeIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf57d;"
+                   Color="Grey" />
+
+        <FontImage x:Key="RulerIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf5ae;"
+                   Color="Grey" />
+
+        <FontImage x:Key="CheckerIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf11e;"
+                   Color="Grey" />
+
+        <FontImage x:Key="RefreshIcon"
+                   FontFamily="FontAwesomeSolid"
+                   Glyph="&#xf021;"
+                   Color="Grey" />
+    </Shell.Resources>
 
     <ShellContent Title="Introduction"
                   Icon="{StaticResource PlayIcon}"
