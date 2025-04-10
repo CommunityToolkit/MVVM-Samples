@@ -43,6 +43,12 @@ jobs:
           packageType: 'sdk'
           version: '9.0.x'
           includePreviewVersions: false
+          
+      - task: JavaToolInstaller@0
+        inputs:
+          versionSpec: '11'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
 
       - task: CmdLine@2
         displayName: 'Set Xcode v$(Xcode_Version)'
