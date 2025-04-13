@@ -7,6 +7,6 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
-    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Refit" Version="7.2.22" />
   </ItemGroup>
 </Project>
