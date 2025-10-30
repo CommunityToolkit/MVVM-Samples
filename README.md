@@ -48,7 +48,7 @@ It is not our intent to add or support platform-specific features. We encourage 
 
 - Use samples to understand how to integrate with their platform
 - Build upon this work for simplification of patterns for a specific platform
-- If needed, utilize other .NET Foundation supported alternatives like [MVVMCross](https://www.mvvmcross.com/) and [Prism](https://prismlibrary.com/)
+- If needed, utilize other .NET Foundation supported alternatives like [MVVMCross](https://www.mvvmcross.com/)
 
 ## Contributing
 
